@@ -1,0 +1,93 @@
+<!-- This whole code is inside a div. The *ngFor directive iterates over the pagesMenu$ observable to create a menu for each item.
+  This is in the sidebar-menu.component.ts -->
+
+<div class="pt-4" *ngFor="let menu of pagesMenu$ | async">
+
+  <ul class="flex flex-col space-y-1">
+
+    <!-- The code below creates a li element for each item in the menu.items array using the *ngFor directive. -->
+
+    <!-- List items -->
+    <li *ngFor="let item of menu.items">
+
+      <!-- This line below creates a div element that has an on-click event listener to toggle the menu and a class of group
+      relative text-gray-400 dark:text-night-400. When the element is clicked, the function toggleMenu() is executed, and the
+      item object is passed as an argument to the function. The parentheses around click is an event binding.-->
+
+      <!-- Menu List -->
+      <div (click)="toggleMenu(item)" class="group relative text-gray-400 dark:text-night-400">
+        <!-- Icon -->
+
+        <!-- This line creates a div element that shows an icon for each menu item. The ngClass directive adds a class of text-[#e73c35]
+          to the icon if the item is active. -->
+
+        <div
+          class="pointer-events-none absolute m-2">
+
+            <i [ngClass]="item.active ? '!text-[#e73c35]' : ''" class="{{ item.icon }} text-gray-100 text-center h-5 w-5"></i>
+
+        </div>
+
+        <!--  This code is dynamically rendering a template called parentMenu and passing a context object with an 'item' property to
+          that template. -->
+
+        <ng-container
+          [ngTemplateOutlet]="parentMenu"
+          [ngTemplateOutletContext]="{ item: item }">
+        </ng-container>
+
+        <!-- The ng-template directive is used to define a template with the IDs parentMenu. This template
+          is used to render the parent and child menu items respectively.
+
+        The let-item="item" syntax is used to define a template variable item that will be used to reference the data object that contains
+        information about the menu item being rendered. -->
+
+        <!-- Workaround:: Enable routerLink -->
+        <ng-template #parentMenu let-item="item">
+
+        <!-- The routerLink directive is used to set the link to navigate to when the menu item is clicked. -->
+
+          <div
+            routerLinkActive="bg-gray-100"
+            routerLink="{{ item.route }}"
+            class="flex h-9 cursor-pointer items-center justify-start rounded text-gray-100 hover:bg-gray-500/[.5]
+             dark:hover:bg-night-600">
+            <a
+              routerLinkActive="text-[#e73c35]"
+              class="ml-10 truncate text-xs font-semibold tracking-wide focus:outline-none">
+              {{ item.label }}
+            </a>
+          </div>
+        </ng-template>
+
+
+        <!-- Tooltip -->
+
+        <!-- The *ngIf attribute conditionally renders the element based on the expression that
+        elements will only be rendered if the showSideBar$ observable does not emit a value (i.e., is falsy). -->
+
+        <!-- Once the observable emits a value, the | async pipe will update the view and the tooltip will be hidden or shown depending on
+        the value emitted by the observable. -->
+
+        <div class="fixed w-full" *ngIf="!(showSideBar$ | async)">
+          <span
+            class="z-1 absolute left-14 -top-[34px] w-auto min-w-max origin-left scale-0 rounded-md bg-black p-2 text-xs
+            font-bold text-white shadow-md transition-all duration-200 group-hover:scale-100 dark:bg-white dark:text-night-900">
+            {{ item.label }}
+          </span>
+        </div>
+      </div>
+
+      <!-- [submenu] is a property of the app-sidebar-submenu component. This property is expecting to receive an object as input.
+      This code is passing an object called item to a child component called app-sidebar-submenu using property binding.
+      The child component will then use the data in the item object to render its own view. -->
+
+      <!-- Submenu items -->
+      <app-sidebar-submenu [submenu]="item"></app-sidebar-submenu>
+    </li>
+  </ul>
+
+  <!-- <div class="pt-3" *ngIf="menu.separator">
+    <hr class="border-dashed border-gray-200 dark:border-night-500" />
+  </div> -->
+</div>

@@ -1,0 +1,38 @@
+<div class="flex h-screen w-screen">
+  <div style="background-image: url('assets/bg/bulsu-bg-gradient-2.jpg');" class="hidden flex-1 items-center justify-center bg-[#e73c35] bg-cover lg:flex">
+    <div class="max-w-2xl space-y-4 p-8 text-center text-white">
+      <!-- <img src="./assets/images/auth-screens.png" alt="dashboard widget" /> -->
+      <h1 class="text-4xl font-bold">"Web-based On-the-Job Training Portal"</h1>
+      <p class="text-xs font-light">
+        Welcome to the
+        <span class="cursor-pointer font-medium text-yellow-400"> Web-based On-the-Job Training Portal for Bulacan State University!</span>
+        Our system streamlines the management
+        of on-the-job training programs for students, HTE, and OJT instructors. Students can easily track
+        their progress, while employers and OJT instructors can post opportunities, review applications, and monitor performance.
+         <span class="cursor-pointer font-medium text-yellow-400">Our user-friendly
+          system</span>
+         is accessible from any device with an internet connection, making the OJT experience seamless and rewarding. Thank you
+        for choosing our system for your OJT needs!
+      </p>
+    </div>
+  </div>
+  <div class="flex flex-1 items-center justify-center bg-white dark:bg-night-700">
+    <div class="max-w-md overflow-y-auto px-4 sm:w-[500px]">
+      <!-- logo -->
+      <div class="flex items-center justify-center">
+        <a class="rounded p-2">
+          <img src="assets/icons/BulSU Logo.png" alt="Logo" class="h-6 w-6">
+        </a>
+        <b class="text-md pl-3 font-bold text-gray-700 dark:text-white"> Bulacan State University </b>
+      </div>
+      <!-- Route -->
+
+      <!-- <router-outlet></router-outlet> is a directive from the Angular Router module that is used to render the corresponding
+      component of the route that matches the URL. In this code, it is placed inside the div with class max-w-md overflow-y-auto
+      px-4 sm:w-[500px], which is the container for the router-outlet. When a user navigates to a route defined in the router module,
+      the content of that component is rendered within this div. -->
+
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
