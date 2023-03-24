@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+    production: false,
+    apiRootRoute: 'http://la-passport.test',
+    clientRoot: 'http://localhost:4200',
+    clientId: '5',
+    clientSecret: 'M14ZncSPP7dTzXjXpYzuaQImjBUvJOd3QfYsg7TJ',
 };
 
 /*
