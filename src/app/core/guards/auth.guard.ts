@@ -15,13 +15,13 @@ export class AuthGuard implements CanActivate {
     ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
         //   restrict access to un-authenticated users
-        if (this.localStorage.get('access_token') === null || this.localStorage.get('user') === null) {
-            // navigate to login page if user is not authenticated
-            this.localStorage.remove('access_token');
-            this.localStorage.remove('user');
-            this.router.navigate(['/auth/sign-in']);
-            return false;
-        }
+        // if (this.localStorage.get('access_token') === null || this.localStorage.get('user') === null) {
+        //     // navigate to login page if user is not authenticated
+        //     this.localStorage.remove('access_token');
+        //     this.localStorage.remove('user');
+        //     this.router.navigate(['/auth/sign-in']);
+        //     return false;
+        // }
         return true;
     }
 }
