@@ -7,22 +7,63 @@ export class Menu {
   public static pages: MenuItem[] = [
 
     {
-      group: 'Menu',
+        group: 'Dashboard',
+        separator: true,
+        items: [
+          {
+            icon: 'fa-solid fa-house',
+            label: 'Dashboard',
+            route: '/dashboard',
+          },
+
+        ],
+      },
+
+    {
+        group: 'Drop Down',
+        separator: false,
+        items: [
+          {
+            icon: 'fa-solid fa-chart-simple',
+            label: 'Faculty and Schedule',
+            route: '/schedule',
+            children: [
+                { label: 'Faculty Management', route: '/faculty' },
+                { label: 'Schedule Management', route: '/schedule' },
+                { label: 'Attendance Monitoring', route: '/attendance' },
+            ],
+          },
+          {
+            icon: 'fa-solid fa-layer-group',
+            label: 'Content Management',
+            route: '/cms',
+            children: [
+              { label: 'Semester Management', route: '/semester' },
+              { label: 'Subject Management', route: '/subject' },
+              { label: 'Room Management', route: '/room' },
+            ],
+          },
+        ],
+      },
+
+    {
+      group: 'Plain',
       separator: true,
       items: [
+
         {
-          icon: 'fa-solid fa-house',
-          label: 'Dashboard',
-          route: '/dashboard',
+          icon: 'fa-solid fa-key',
+          label: 'Room Key Monitoring',
+          route: '/key',
         },
         {
-          icon: 'fa-solid fa-file',
-          label: 'Report',
-          route: '/report',
-        },
+            icon: 'fa-solid fa-file',
+            label: 'Reports',
+            route: '/report',
+          },
         {
           icon: 'fa-solid fa-users',
-          label: 'Users',
+          label: 'User Management',
           route: '/users',
         },
         {
