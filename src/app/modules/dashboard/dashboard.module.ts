@@ -4,9 +4,11 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
-// Importing the DashboardRoutingModule, NftComponent, and SharedModule from local files
+
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ChartCardComponent } from './chart-card/chart-card.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 // Importing all necessary components
 import { DashboardComponent } from './dashboard.component';
@@ -16,6 +18,7 @@ import { DashboardComponent } from './dashboard.component';
 @NgModule({
   declarations: [
     DashboardComponent,
+    ChartCardComponent,
   ],
 
   // Importing necessary modules to be used in this module
@@ -24,6 +27,7 @@ import { DashboardComponent } from './dashboard.component';
     DashboardRoutingModule,
     SharedModule,
     HttpClientModule,
+    NgApexchartsModule,
     AngularSvgIconModule.forRoot(),
   ],
 })

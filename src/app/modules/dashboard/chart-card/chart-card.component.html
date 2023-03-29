@@ -1,0 +1,94 @@
+<div class="flex-col rounded-lg bg-white px-8 py-8 dark:bg-night-700 sm:flex-row">
+  <!-- Card Header -->
+  <div class="mb-2 flex items-center justify-between">
+
+
+  </div>
+  <!-- end Card Header -->
+  <div class="mb-3 flex items-center justify-start gap-2">
+    <div class="cursor-pointer rounded-md bg-primary-50 px-4 py-2 text-sm text-primary-700">12 months</div>
+    <div
+      class="cursor-pointer rounded-md px-4 py-2 text-sm text-gray-400 hover:bg-primary-50 hover:text-primary-700 dark:text-night-300 dark:hover:text-white">
+      3 months
+    </div>
+    <div
+      class="cursor-pointer rounded-md px-4 py-2 text-sm text-gray-400 hover:bg-primary-50 hover:text-primary-700 dark:text-night-300 dark:hover:text-white">
+      30 days
+    </div>
+    <div
+      class="cursor-pointer rounded-md px-4 py-2 text-sm text-gray-400 hover:bg-primary-50 hover:text-primary-700 dark:text-night-300 dark:hover:text-white">
+      7 days
+    </div>
+    <div
+      class="cursor-pointer rounded-md px-4 py-2 text-sm text-gray-400 hover:bg-primary-50 hover:text-primary-700 dark:text-night-300 dark:hover:text-white">
+      24 hours
+    </div>
+  </div>
+  <!-- Card Body -->
+  <apx-chart
+    [series]="chartOptions.series!"
+    [chart]="chartOptions.chart!"
+    [legend]="chartOptions.legend!"
+    [dataLabels]="chartOptions.dataLabels!"
+    [fill]="chartOptions.fill!"
+    [stroke]="chartOptions.stroke!"
+    [xaxis]="chartOptions.xaxis!"
+    [yaxis]="chartOptions.yaxis!"
+    [states]="chartOptions.states!"
+    [tooltip]="chartOptions.tooltip!"
+    [colors]="chartOptions.colors!"
+    [grid]="chartOptions.grid!"
+    [title]="chartOptions.title!">
+  </apx-chart>
+  <!-- end Chart -->
+
+  <!--months-->
+  <div class="mt-3 flex items-center justify-between">
+
+    <div
+      class="cursor-pointer rounded-md px-4 py-2 text-sm text-gray-400  dark:text-night-300">
+      Jan
+    </div>
+    <div
+      class="cursor-pointer rounded-md px-4 py-2 text-sm text-gray-400  dark:text-night-300">
+      Feb
+    </div>
+    <div
+      class="cursor-pointer rounded-md px-4 py-2 text-sm text-gray-400 dark:text-night-300">
+      Mar
+    </div>
+    <div
+      class="cursor-pointer rounded-md px-4 py-2 text-sm text-gray-400 dark:text-night-300">
+      Apr
+    </div>
+    <div
+      class="cursor-pointer rounded-md px-4 py-2 text-sm text-gray-400 dark:text-night-300">
+      May
+    </div>
+    <div
+    class="cursor-pointer rounded-md px-4 py-2 text-sm text-gray-400 dark:text-night-300">
+    Jun
+  </div>
+  <div
+      class="cursor-pointer rounded-md px-4 py-2 text-sm text-gray-400 dark:text-night-300">
+      Jul
+    </div>
+    <div
+      class="cursor-pointer rounded-md px-4 py-2 text-sm text-gray-400 dark:text-night-300">
+      Aug
+    </div>
+    <div
+      class="cursor-pointer rounded-md px-4 py-2 text-sm text-gray-400 dark:text-night-300">
+      Sep
+    </div>
+    <div
+      class="cursor-pointer rounded-md px-4 py-2 text-sm text-gray-400 dark:text-night-300">
+      Nov
+    </div>
+    <div
+      class="cursor-pointer rounded-md px-4 py-2 text-sm text-gray-400 dark:text-night-300">
+      Dec
+    </div>
+  </div>
+  <!--end months-->
+</div>
