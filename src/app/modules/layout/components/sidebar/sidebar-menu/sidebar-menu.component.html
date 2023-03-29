@@ -54,7 +54,7 @@
              dark:hover:bg-night-600">
             <a
               routerLinkActive="text-gray-100"
-              class="ml-10 truncate text-xs font-semibold tracking-wide focus:outline-none">
+              class="ml-10 truncate text-sm font-medium tracking-wide focus:outline-none">
               {{ item.label }}
             </a>
           </div>
@@ -79,7 +79,7 @@
 
         <div class="fixed w-full" *ngIf="!(showSideBar$ | async)">
           <span
-            class="z-1 absolute left-14 -top-[34px] w-auto min-w-max origin-left scale-0 rounded-md bg-black p-2 text-xs
+            class="z-10 absolute left-14 -top-[34px] w-auto min-w-max origin-left scale-0 rounded-md bg-black p-2 text-xs
             font-bold text-white shadow-md transition-all duration-200 group-hover:scale-100 dark:bg-white dark:text-night-900">
             {{ item.label }}
           </span>

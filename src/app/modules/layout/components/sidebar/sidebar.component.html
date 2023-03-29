@@ -6,7 +6,7 @@ If the observable value is falsy (i.e.,showSideBar$emitsfalse), the class "w-[70
 
 <!-- replace the violet if not satisfied. use this #feb07f  #9c5aa9-->
 
-<nav [ngClass]="(showSideBar$ | async) ? 'w-52 xl:w-64' : 'w-[70px]'"
+<nav [ngClass]="(showSideBar$ | async) ? 'w-52 xl:w-[312px]' : 'w-[70px]'"
     class="scrollbar-thumb-rounded scrollbar-track-rounded hidden h-full flex-col justify-between overflow-auto bg-primary-700 pt-3 transition-all duration-300 scrollbar-thin scrollbar-track-primary-700 scrollbar-thumb-primary-700 dark:bg-night-700 lg:flex">
     <div class="px-4">
         <!-- Logo -->
@@ -15,7 +15,7 @@ If the observable value is falsy (i.e.,showSideBar$emitsfalse), the class "w-[70
                 <a class="flex items-center justify-center rounded bg-white p-2 focus:outline-none focus:ring-1">
                     <img src="assets/icons/BulSU Logo.png" alt="Logo" class="h-6 w-6">
                 </a>
-                <b class="ml-1 pl-2 text-sm font-bold text-gray-100 dark:text-night-50">
+                <b class="ml-1 pl-2 text-xl font-medium text-gray-100 dark:text-night-50">
                     Sentry
                 </b>
             </div>
@@ -42,7 +42,7 @@ If the observable value is falsy (i.e.,showSideBar$emitsfalse), the class "w-[70
 
             <i class="fa-solid fa-search text-gray-100 text-center w-5"></i>
 
-            <a class="ml-3 truncate text-xs font-semibold tracking-wide text-gray-100 focus:outline-none">
+            <a class="ml-3 truncate text-sm font-medium tracking-wide text-gray-100 focus:outline-none">
                 Search
             </a>
 
@@ -64,7 +64,7 @@ If the observable value is falsy (i.e.,showSideBar$emitsfalse), the class "w-[70
 
             <i class="fa-solid fa-cog text-gray-100 text-center w-5"></i>
 
-            <a class="ml-3 truncate text-xs font-semibold tracking-wide text-gray-100 focus:outline-none">
+            <a class="ml-3 truncate text-sm font-medium tracking-wide text-gray-100 focus:outline-none">
                 Settings
             </a>
 
@@ -84,7 +84,7 @@ If the observable value is falsy (i.e.,showSideBar$emitsfalse), the class "w-[70
             <i class="fa-solid fa-{{ themeService.isDark ? 'sun' : 'moon' }} text-gray-100 text-center w-5"></i>
 
 
-            <a class="ml-3 truncate text-xs font-semibold tracking-wide text-gray-100 focus:outline-none">
+            <a class="ml-3 truncate text-sm font-medium tracking-wide text-gray-100 focus:outline-none">
                 {{ themeService.isDark ? 'Light Theme' : 'Dark Theme' }}
             </a>
 
@@ -124,7 +124,7 @@ If the observable value is falsy (i.e.,showSideBar$emitsfalse), the class "w-[70
               <img class="rounded-full w-10" src="assets/avatars/avt-01.jpg" alt="" />
 
         <div class="truncate">
-            <p class="ml-3 truncate text-xs font-semibold tracking-wide text-gray-100 focus:outline-none">
+            <p class="ml-3 truncate text-sm font-medium tracking-wide text-gray-100 focus:outline-none">
                 Allen Vincent
             </p>
             <p class="ml-3 truncate text-[0.6rem] font-semibold tracking-wide text-gray-100 focus:outline-none">
@@ -141,7 +141,7 @@ If the observable value is falsy (i.e.,showSideBar$emitsfalse), the class "w-[70
 
         <div class="fixed w-full" *ngIf="!(showSideBar$ | async)">
             <span
-                class="z-1 absolute left-12 -top-4 w-auto min-w-max origin-left scale-0 rounded-md bg-black p-2 text-xs font-bold text-white shadow-md transition-all duration-200 group-hover:scale-100 dark:bg-white dark:text-night-900">
+                class="absolute left-12 -top-4 w-auto min-w-max origin-left scale-0 rounded-md bg-black p-2 text-xs font-bold text-white shadow-md transition-all duration-200 group-hover:scale-100 dark:bg-white dark:text-night-900">
                 Sign out
             </span>
         </div>
