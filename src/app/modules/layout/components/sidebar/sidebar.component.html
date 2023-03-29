@@ -42,9 +42,13 @@ If the observable value is falsy (i.e.,showSideBar$emitsfalse), the class "w-[70
 
             <i class="fa-solid fa-search text-gray-100 text-center w-5"></i>
 
-            <a class="ml-3 truncate text-sm font-medium tracking-wide text-gray-100 focus:outline-none">
+            <!-- <a class="ml-3 truncate text-sm font-medium tracking-wide text-gray-100 focus:outline-none">
                 Search
-            </a>
+            </a> -->
+
+            <form class="truncate text-sm font-medium tracking-wide text-gray-100 outline-none focus:outline-none" action="#" method="GET">
+                <input type="search" name="q" class="bg-transparent truncate text-sm outline-none border-none font-medium tracking-wide placeholder:text-gray-100 text-gray-100 focus:outline-none" placeholder="Search">
+            </form>
 
             <div class="fixed w-full" *ngIf="!(showSideBar$ | async)">
                 <span
