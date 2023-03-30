@@ -24,7 +24,7 @@
         <div
           class="pointer-events-none absolute m-2">
 
-            <i [ngClass]="item.active ? '!text-[#e73c35]' : ''" class="{{ item.icon }} text-gray-100 text-center h-5 w-5"></i>
+            <i [ngClass]="item.active ? 'text-gray-100' : ''" class="{{ item.icon }} text-gray-100 text-center h-5 w-5"></i>
 
         </div>
 
@@ -48,17 +48,25 @@
         <!-- The routerLink directive is used to set the link to navigate to when the menu item is clicked. -->
 
           <div
-            routerLinkActive="bg-gray-100"
+            routerLinkActive="bg-primary-800"
             routerLink="{{ item.route }}"
-            class="flex h-9 cursor-pointer items-center justify-start rounded text-gray-100 hover:bg-gray-500/[.5]
+            class="flex h-9 cursor-pointer items-center justify-start rounded text-gray-100 hover:bg-primary-600
              dark:hover:bg-night-600">
             <a
-              routerLinkActive="text-[#e73c35]"
-              class="ml-10 truncate text-xs font-semibold tracking-wide focus:outline-none">
+              routerLinkActive="text-gray-100"
+              class="ml-10 truncate text-sm font-medium tracking-wide focus:outline-none">
               {{ item.label }}
             </a>
           </div>
         </ng-template>
+
+        <!-- Arrow Icon -->
+        <button
+          *ngIf="item.children"
+          [ngClass]="{ hidden: !(showSideBar$ | async), 'rotate-180': item.expanded }"
+          class="pointer-events-none absolute top-1 right-0 flex items-center p-1 text-gray-100 transition-all duration-500 dark:text-night-400">
+          <i class="fa-solid fa-chevron-down text-gray-100 text-center text-xs"></i>
+        </button>
 
 
         <!-- Tooltip -->
@@ -71,7 +79,7 @@
 
         <div class="fixed w-full" *ngIf="!(showSideBar$ | async)">
           <span
-            class="z-1 absolute left-14 -top-[34px] w-auto min-w-max origin-left scale-0 rounded-md bg-black p-2 text-xs
+            class="z-10 absolute left-14 -top-[34px] w-auto min-w-max origin-left scale-0 rounded-md bg-black p-2 text-xs
             font-bold text-white shadow-md transition-all duration-200 group-hover:scale-100 dark:bg-white dark:text-night-900">
             {{ item.label }}
           </span>
