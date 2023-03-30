@@ -1,17 +1,6 @@
 <!-- This creates a div element with class "dropdown" and "relative" and "inline-block" styles. It also uses the Angular
 directive "ngFor" to loop over the array of menus, assigning each item to the variable "menu". -->
 
-<div class="dropdown relative inline-block" *ngFor="let menu of pagesMenu$ | async">
-
-  <!-- This creates a button element that serves as the main dropdown button. It uses Angular's ngClass directive to conditionally
-  apply CSS classes based on the menu's selected and active properties. The button has text content derived from the "group"
-  property of the current menu item. -->
-
-  <!-- Button -->
-  <button
-    class="bg-[#e73c35] text-white mr-2 inline-flex rounded-md px-3 py-2 text-sm font-medium">
-    <span>Web-based OJT Portal</span>
-  </button>
 
   <!-- This creates a div element that will serve as the dropdown menu. It has the "dropdown-content" class, which will be styled
   to display the dropdown contents below the button. It also has the Angular directive "navbar-submenu", which will be used to
