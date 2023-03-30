@@ -61,7 +61,7 @@ export class AppComponent {
 
     private configureWithNewConfigApi() {
         this.oauthService.configure(authConfig);
-        this.oauthService.tokenValidationHandler = new JwksValidationHandler();
+        // this.oauthService.tokenValidationHandler = new JwksValidationHandler();
         this.oauthService.setupAutomaticSilentRefresh();
         this.oauthService.tryLoginCodeFlow({
             onLoginError: (err: object) => {

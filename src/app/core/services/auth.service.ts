@@ -1,10 +1,10 @@
+import { IUserTypes } from './../models/user.model';
 import { Router } from '@angular/router';
-import { IToken } from './../models/user.model';
 import { environment as env } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHeaders } from '@angular/common/http';
 import { IUser } from '../models/user.model';
-import { BehaviorSubject, catchError, combineLatest, map, Observable, ReplaySubject, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, catchError, combineLatest, forkJoin, map, Observable, ReplaySubject, switchMap, tap } from 'rxjs';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { LocalStorageService } from './local-storage.service';
 import { OAuthService, JwksValidationHandler, AuthConfig, OAuthErrorEvent } from 'angular-oauth2-oidc';
@@ -13,10 +13,20 @@ import { OAuthService, JwksValidationHandler, AuthConfig, OAuthErrorEvent } from
 export class AuthService {
     deviceInfo?: any;
     deviceName?: string;
-    options?: any;
+    options?: any = {
+        headers: new HttpHeaders({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Headers': '*'
+        })
+    };
 
     access_token: any;
     refresh_token: any;
+
+    current_user!: IUser;
+    current_user_type: any;
+    user_types!: IUserTypes;
 
     constructor(
         private http: HttpClient,
@@ -26,17 +36,6 @@ export class AuthService {
         private oauthService: OAuthService
     ) {
         this.initDevice();
-        this.initHeaders();
-    }
-
-    initHeaders() {
-        this.options = {
-            headers: new HttpHeaders({
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Headers': '*'
-            }),
-        };
     }
 
     initDevice() {
@@ -44,29 +43,33 @@ export class AuthService {
         this.deviceName = this.deviceInfo.userAgent ?? 'Unknown';
     }
 
-    handleCallback() {
-        // this.access_token = this.oauthService.getAccessToken();
-        // this.refresh_token = this.oauthService.getRefreshToken();
-        this.getUser().subscribe((user) => {
-            localStorage.setItem('user', JSON.stringify(user));
-        });
-        this.getUserTypes().subscribe((types) => {
-            localStorage.setItem('types', JSON.stringify(types));
-        });
+    handleCallback$() {
+        this.loadUser$();
     }
 
-    getHeaders() {
-        return new HttpHeaders().set('Authorization', this.oauthService.authorizationHeader());
+    getUser$() {
+        // this.options.headers = this.options.headers.set('Authorization', this.oauthService.authorizationHeader());
+        return this.http.get<IUser>(env.apiRootRoute + '/api/user', { headers: this.options.headers });
     }
 
-    getUser() {
+    loadUser$() {
+        const obs$ = forkJoin([
+            this.getUserTypes$(),
+            this.getUser$()
+        ]);
+
+        return obs$.pipe(
+            tap(([types, user]) => {
+                this.current_user = user;
+                this.user_types = types;
+                this.current_user_type = this.user_types.cast[+this.current_user.type];
+            }),
+        );
+    }
+
+    getUserTypes$() {
         this.options.headers = this.options.headers.set('Authorization', this.oauthService.authorizationHeader());
-        return this.http.get(env.apiRootRoute + '/api/user', this.options);
-    }
-
-    getUserTypes() {
-        this.options.headers = this.options.headers.set('Authorization', this.oauthService.authorizationHeader());
-        return this.http.get(env.apiRootRoute + '/api/user/types', this.options);
+        return this.http.get<IUserTypes>(env.apiRootRoute + '/api/user/types', { headers: this.options.headers });
     }
 
     getRefreshToken() {

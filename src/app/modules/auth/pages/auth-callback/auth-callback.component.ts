@@ -16,10 +16,7 @@ export class AuthCallbackComponent implements OnInit {
         private authService: AuthService
     ) { }
     ngOnInit(): void {
-        console.log('access token: ', this.oauthService.getAccessToken());
-        console.log('refresh token: ', this.oauthService.getRefreshToken());
-
-        this.authService.handleCallback();
+        this.authService.handleCallback$();
 
         this.router.navigate(['/dashboard']);
     }
