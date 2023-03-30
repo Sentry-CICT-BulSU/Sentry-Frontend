@@ -3,28 +3,27 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-// Importing the ReportRoutingModule, ReportContentComponent, and SharedModule from local files
-import { ReportRoutingModule } from './report-routing.module';
+import { UserRoutingModule } from './user-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 // Importing all necessary components
-import { ReportComponent } from './report.component';
+import { UserComponent } from './user.component';
 
 
 // Defining the NgModule for the Report feature module
 @NgModule({
   declarations: [
-    ReportComponent,
+    UserComponent,
   ],
 
   // Importing necessary modules to be used in this module
   imports: [
     CommonModule,
-    ReportRoutingModule,
+    UserRoutingModule,
     SharedModule,
     HttpClientModule,
   ],
 })
 
 // Exporting the ReportModule class
-export class ReportModule {}
+export class UserModule {}
