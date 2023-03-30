@@ -30,8 +30,8 @@ export class SignInComponent implements OnInit {
     // Define the method that is called when this component is initialized
     ngOnInit(): void {
         this.signinForm = this.fBuilder.group({
-            email: ['', [Validators.required, Validators.email], []],
-            password: ['', [Validators.required], []],
+            email: ['', [/* Validators.required, Validators.email */], []],
+            password: ['', [/* Validators.required */], []],
         });
     }
 
@@ -39,18 +39,7 @@ export class SignInComponent implements OnInit {
         this.loading = true;
         this.errors = false;
 
-        this.authService.login(this.signinForm.value)
-            .subscribe({
-                next: (resp: any) => {
-                    this.localStorage.set('access_token', JSON.stringify(resp.token));
-                    this.localStorage.set('user', JSON.stringify(resp.user));
-                    this.loading = false;
-                    console.log('Login successful');
-                    console.log(resp);
-                    this.router.navigate(['/dashboard']);
-                },
-                error: this.hanldeErrors
-            });
+        this.authService.login();
     }
 
     hanldeErrors(error: any) {

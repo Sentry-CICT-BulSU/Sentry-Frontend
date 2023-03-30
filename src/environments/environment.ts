@@ -5,8 +5,8 @@
 export const environment = {
     production: false,
     apiRootRoute: 'http://la-passport.test',
-    clientRoot: 'http://localhost:4200',
-    clientId: '5',
+    clientRoot: 'http://app.la-passport.test:4200',
+    clientId: '2',
     clientSecret: 'M14ZncSPP7dTzXjXpYzuaQImjBUvJOd3QfYsg7TJ',
 };
 

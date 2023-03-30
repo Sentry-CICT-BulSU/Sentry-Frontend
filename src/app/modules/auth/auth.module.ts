@@ -15,6 +15,7 @@ import { NewPasswordComponent } from './pages/new-password/new-password.componen
 import { TwoStepsComponent } from './pages/two-steps/two-steps.component';   // imports the TwoStepsComponent from the 'pages' directory
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { UniversalDeviceDetectorService } from './../../core/services/universal-device-detector.service';
+import { AuthCallbackComponent } from './pages/auth-callback/auth-callback.component';
 
 @NgModule({
     declarations: [
@@ -24,6 +25,7 @@ import { UniversalDeviceDetectorService } from './../../core/services/universal-
         ForgotPasswordComponent,
         NewPasswordComponent,
         TwoStepsComponent,
+        AuthCallbackComponent,
     ],   // declares all the components that are part of this module
 
     imports: [

@@ -1,30 +1,29 @@
 import { Router } from '@angular/router';
 import { IToken } from './../models/user.model';
-import { environment } from './../../../environments/environment';
+import { environment as env } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IUser } from '../models/user.model';
-import { catchError, map, Observable, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, catchError, combineLatest, map, Observable, ReplaySubject, switchMap, tap } from 'rxjs';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { LocalStorageService } from './local-storage.service';
+import { OAuthService, JwksValidationHandler, AuthConfig, OAuthErrorEvent } from 'angular-oauth2-oidc';
 
 @Injectable()
 export class AuthService {
     deviceInfo?: any;
     deviceName?: string;
     options?: any;
-    authURL: string = `${environment.apiRootRoute}/oauth/token`;
-    apiURL: string = `${environment.apiRootRoute}/api`;
-    // cookieURL: string = `${environment.apiRootRoute}/sanctum/cookie`;
-    clientId: string = environment.clientId;
-    clientSecret: string = environment.clientSecret;
-    grantType: string = 'client_credentials';
+
+    access_token: any;
+    refresh_token: any;
 
     constructor(
         private http: HttpClient,
         private deviceService: DeviceDetectorService,
         private localStorage: LocalStorageService,
         private router: Router,
+        private oauthService: OAuthService
     ) {
         this.initDevice();
         this.initHeaders();
@@ -35,6 +34,7 @@ export class AuthService {
             headers: new HttpHeaders({
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
+                'Access-Control-Allow-Headers': '*'
             }),
         };
     }
@@ -44,14 +44,36 @@ export class AuthService {
         this.deviceName = this.deviceInfo.userAgent ?? 'Unknown';
     }
 
-    getUser() {
-        return this.localStorage.get('user') ?? '';
+    handleCallback() {
+        // this.access_token = this.oauthService.getAccessToken();
+        // this.refresh_token = this.oauthService.getRefreshToken();
+        this.getUser().subscribe((user) => {
+            localStorage.setItem('user', JSON.stringify(user));
+        });
+        this.getUserTypes().subscribe((types) => {
+            localStorage.setItem('types', JSON.stringify(types));
+        });
     }
+
+    getHeaders() {
+        return new HttpHeaders().set('Authorization', this.oauthService.authorizationHeader());
+    }
+
+    getUser() {
+        this.options.headers = this.options.headers.set('Authorization', this.oauthService.authorizationHeader());
+        return this.http.get(env.apiRootRoute + '/api/user', this.options);
+    }
+
+    getUserTypes() {
+        this.options.headers = this.options.headers.set('Authorization', this.oauthService.authorizationHeader());
+        return this.http.get(env.apiRootRoute + '/api/user/types', this.options);
+    }
+
     getRefreshToken() {
-        return this.localStorage.get('refresh_token') ?? '';
+        return this.oauthService.getRefreshToken();
     }
     getToken() {
-        return this.localStorage.get('access_token') ?? '';
+        return this.oauthService.getAccessToken();
     }
 
     isAuthenticated(): boolean {
@@ -59,45 +81,27 @@ export class AuthService {
         return !!this.getToken();
     }
 
-    login(req: {
-        email: string,
-        password: string;
-    }): Observable<any> {
-
-        // return this.http.post<any>(
-        //     this.authURL, req, this.options
-        // ).pipe(
-        //     tap((response: any) => {
-        //         this.localStorage.set('access_token', response.token);
-        //         this.localStorage.set('refresh_token', response.refresh_token);
-        //     }),
-        // );
-
-        return this.http.post<any>(
-            this.authURL, {
-            grant_type: this.grantType,
-            client_id: this.clientId,
-            client_secret: this.clientSecret,
-            username: req.email,
-            password: req.password
-        }, this.options
-        ).pipe(
-            tap((response: any) => {
-                this.localStorage.set('access_token', response.token);
-                this.localStorage.set('refresh_token', response.refresh_token);
-            }),
-        );
+    login() {
+        return this.oauthService.initCodeFlow();
     }
 
     logout(): void {
-        this.localStorage.remove('user');
-        this.localStorage.remove('access_token');
-        this.localStorage.remove('refresh_token');
+        this.oauthService.logOut();
         this.router.navigate(['/auth/sign-in']);
     }
 
     handleError(error: any) {
         console.log(error);
         return error;
+    }
+    private randomString(length: any, chars: any) {
+        let result = '';
+        if (chars.indexOf('a') > -1) result += 'abcdefghijklmnopqrstuvwxyz';
+        if (chars.indexOf('A') > -1) result += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        if (chars.indexOf('#') > -1) result += '0123456789';
+        if (chars.indexOf('!') > -1) result += '~`!@#$%^&*()_+-={}[]:";\'<>?,./|\\';
+        for (var i = length; i > 0; --i)
+            result += chars[Math.floor(Math.random() * chars.length)];
+        return result;
     }
 }

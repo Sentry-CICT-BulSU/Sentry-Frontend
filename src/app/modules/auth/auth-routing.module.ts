@@ -1,4 +1,5 @@
-import { GuestGuard } from './../../core/guards/guest.guard';
+import { AuthGuard } from './../../core/guards/auth.guard';
+import { AuthCallbackComponent } from './pages/auth-callback/auth-callback.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './auth.component';
@@ -24,7 +25,7 @@ const routes: Routes = [
 
             // The redirectTo property specifies the target route to redirect to, and the pathMatch property specifies the matching strategy to use.
             // In this case, the full strategy means that the whole URL path must match the empty path exactly ('') for the redirection to happen.
-
+            { path: 'callback', component: AuthCallbackComponent, canActivate: [AuthGuard] },
             { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
 
             // This code defines a route for the "Sign-In" page of the Angular application. It maps the path "sign-in" to the component
@@ -35,7 +36,7 @@ const routes: Routes = [
             // For example, if the user is on the "dashboard" page and clicks a link that requires authentication, they will be redirected to
             // the "sign-in" page. After they sign in, they can be automatically redirected back to the "dashboard" page thanks to the "returnUrl" field.
 
-            { path: 'sign-in', component: SignInComponent, data: { returnUrl: window.location.pathname }, canActivate: [GuestGuard] },
+            { path: 'sign-in', component: SignInComponent, data: { returnUrl: window.location.pathname }, },
             { path: 'sign-up', component: SignUpComponent },
             { path: 'forgot-password', component: ForgotPasswordComponent },
             { path: 'new-password', component: NewPasswordComponent },

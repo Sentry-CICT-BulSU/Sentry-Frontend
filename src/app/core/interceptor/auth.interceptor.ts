@@ -1,3 +1,4 @@
+import { OAuthService } from 'angular-oauth2-oidc';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Injectable } from '@angular/core';
 import {
@@ -13,16 +14,20 @@ import { Observable } from 'rxjs';
 export class AuthInterceptor implements HttpInterceptor {
 
     headerName = 'X-XSRF-TOKEN';
-    constructor(private tokenService: HttpXsrfTokenExtractor, private authService: AuthService) { }
+    constructor(
+        private tokenService: HttpXsrfTokenExtractor,
+        private authService: AuthService,
+        private oauthService: OAuthService,
+    ) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if (this.authService.isAuthenticated()) {
-            req = req.clone({
-                setHeaders: {
-                    Authorization: `Bearer ${this.authService.getToken()}`
-                }
-            });
-        }
+        // if (this.authService.isAuthenticated()) {
+        //     req = req.clone({
+        //         setHeaders: {
+        //             Authorization: this.oauthService.authorizationHeader()
+        //         }
+        //     });
+        // }
         return next.handle(req);
     }
 }
