@@ -9,7 +9,7 @@ import { IUserConfig } from '../models/admin.model';
 })
 export class AdminService {
     adminApiRoute = env.apiRootRoute + '/api/admin';
-    options: any = {
+    options = {
         headers: new HttpHeaders({
             Accept: 'application/json',
             'Content-Type': 'application/json',
@@ -19,42 +19,42 @@ export class AdminService {
 
     constructor(private http: HttpClient) { }
 
-    getUsers() {
+    getUsers$() {
         return this.http.get<IUserResponse>(
             this.adminApiRoute + '/users',
             { headers: this.options.headers }
         );
     }
 
-    getUser(user: IUser) {
+    getUser$(user: IUser) {
         return this.http.get<IUserResponse>(
             this.adminApiRoute + '/users' + user.id,
             { headers: this.options.headers }
         );
     }
 
-    createUser(newUser: IUserConfig) {
+    createUser$(newUser: IUserConfig) {
         return this.http.post<IUserResponse>(
             this.adminApiRoute + '/users',
             newUser, { headers: this.options.headers }
         );
     }
 
-    editUser(updatedUser: IUserConfig) {
+    editUser$(updatedUser: IUserConfig) {
         return this.http.patch<IUserResponse>(
             this.adminApiRoute + '/users/' + updatedUser.id,
             updatedUser, { headers: this.options.headers }
         );
     }
 
-    softDeleteUser(deleteUser: IUserConfig) {
+    softDeleteUser$(deleteUser: IUserConfig) {
         return this.http.delete<IUserResponse>(
             this.adminApiRoute + '/users/' + deleteUser.id,
             { headers: this.options.headers }
         );
     }
 
-    restoreUser(restoreUser: IUserConfig) {
+    restoreUser$(restoreUser: IUserConfig) {
         return this.http.post<IUserResponse>(
             this.adminApiRoute + '/users/' + restoreUser.id + '/restore',
             null, { headers: this.options.headers }

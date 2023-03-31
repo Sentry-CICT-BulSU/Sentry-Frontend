@@ -19,7 +19,7 @@ export class UserListComponent implements OnInit {
 
     // Implementing the ngOnInit lifecycle hook
     ngOnInit(): void {
-        this.adminService.getUsers().subscribe((response: IUserResponse) => {
+        this.adminService.getUsers$().subscribe((response: IUserResponse) => {
             this.user_pagination = response.paginate;
             console.log(this.user_pagination);
         });

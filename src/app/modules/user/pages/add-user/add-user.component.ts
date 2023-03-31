@@ -48,7 +48,7 @@ export class AddUserComponent {
     }
 
     onSubmit() {
-        this.adminService.createUser(this.newUserForm.value as IUserConfig)
+        this.adminService.createUser$(this.newUserForm.value as IUserConfig)
             .subscribe({
                 next: (response: IUserResponse) => {
                     console.log(response);
