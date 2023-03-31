@@ -11,7 +11,7 @@ export interface IUser {
     email_verified_at?: string;
     created_at: string;
     updated_at: string;
-    deleted_at: string;
+    deleted_at?: string;
 }
 
 export interface IUserTypes {
