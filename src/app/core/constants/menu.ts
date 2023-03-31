@@ -64,7 +64,7 @@ export class Menu {
         {
           icon: 'fa-solid fa-users',
           label: 'User Management',
-          route: '/users',
+          route: '/user',
         },
         {
           icon: 'fa-solid fa-cog',

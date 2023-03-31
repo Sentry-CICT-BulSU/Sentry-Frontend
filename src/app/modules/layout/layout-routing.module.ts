@@ -18,12 +18,17 @@ const routes: Routes = [
 
     {
 
-        // A route definition for the report path, which loads the DashboardModule lazily and displays it using the LayoutComponent.
+    path: 'user',
+    component: LayoutComponent,
+    loadChildren: () => import('../user/user.module').then((m) => m.UserModule),
+  },
 
-        path: 'report', canActivate: [AuthGuard],
-        component: LayoutComponent,
-        loadChildren: () => import('../report/report.module').then((m) => m.ReportModule),
-    },
+  {
+
+    path: 'add-user',
+    component: LayoutComponent,
+    loadChildren: () => import('../add-user/add-user.module').then((m) => m.AddUserModule),
+  },
 
     // A route definition that redirects the root path to the dashboard path.
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
