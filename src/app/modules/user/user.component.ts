@@ -1,5 +1,5 @@
 import { AdminService } from './../../core/services/admin.service';
-import { IUser, IUserResponse } from './../../core/models/user.model';
+import { IUser, IUserResponse, IUserPaginate } from './../../core/models/user.model';
 // Importing necessary modules from @angular
 import { Component, OnInit } from '@angular/core';
 
@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 
 // Exporting the DashboardComponent class and implementing the OnInit interface
 export class UserComponent implements OnInit {
-    user_pagination: any;
+    user_pagination?: IUserPaginate;
 
     // Defining a constructor for the DashboardComponent class
     constructor(private adminService: AdminService) { }

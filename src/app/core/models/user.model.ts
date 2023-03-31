@@ -6,6 +6,7 @@ export interface IUser {
     position: string;
     college: string;
     contact: string;
+    status: string;
     email: string;
     email_verified_at?: string;
     created_at: string;
