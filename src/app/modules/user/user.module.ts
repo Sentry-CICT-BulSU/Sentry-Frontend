@@ -1,4 +1,3 @@
-// Importing necessary modules from @angular and other third-party packages
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -6,17 +5,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserRoutingModule } from './user-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 
-// Importing all necessary components
+
 import { UserComponent } from './user.component';
+import { UserListComponent } from './pages/user-list/user-list.component';
+import { AddUserComponent } from './pages/add-user/add-user.component';
 
 
-// Defining the NgModule for the Report feature module
 @NgModule({
   declarations: [
     UserComponent,
+    UserListComponent,
+    AddUserComponent,
   ],
 
-  // Importing necessary modules to be used in this module
+
   imports: [
     CommonModule,
     UserRoutingModule,
@@ -25,5 +27,6 @@ import { UserComponent } from './user.component';
   ],
 })
 
-// Exporting the ReportModule class
 export class UserModule {}
+
+
