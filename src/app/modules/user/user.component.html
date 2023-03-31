@@ -121,7 +121,8 @@
 
     <div class="grid grid-cols-1 rounded-b-lg border-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
         <div class="flex items-center justify-between space-x-3">
-            <button type="button"
+            <button type="button" [disabled]="!user_pagination?.prev_page_url"
+                [routerLink]="user_pagination?.prev_page_url"
                 class="relative selection:flex justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
                 Previous
             </button>
@@ -131,17 +132,11 @@
                 1
             </div>
 
-            <button type="button"
+            <button type="button" [disabled]="!user_pagination?.next_page_url"
+                [routerLink]="user_pagination?.next_page_url"
                 class="relative selection:flex justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
                 Next
             </button>
-
-
-
         </div>
-
     </div>
-
-
-
 </div>
