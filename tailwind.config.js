@@ -89,11 +89,11 @@ module.exports = {
                     800: '#53389E',
                 }
             },
-        },
-        fontFamily: {
-            sans: ['Inter', 'poppins', 'sans-serif'],
-            poppins: ['Poppins', 'system-ui', 'sans-serif'],
-            nunito: ['Nunito Sans', 'sans-serif'],
+            fontFamily: {
+                sans: ['Inter', 'poppins', 'sans-serif'],
+                poppins: ['Poppins', 'system-ui', 'sans-serif'],
+                nunito: ['Nunito Sans', 'sans-serif'],
+            },
         },
     },
     variants: {

@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IUserPaginate } from 'src/app/core/models/user.model';
 
 @Component({
-  selector: 'app-user-table',
-  templateUrl: './user-table.component.html',
+    selector: 'app-user-table',
+    templateUrl: './user-table.component.html',
 })
 export class UserTableComponent implements OnInit {
 
-  constructor() {}
+    @Input() pagination?: IUserPaginate;
 
-  ngOnInit(): void {}
+    constructor() { }
+
+    ngOnInit(): void { }
 }
