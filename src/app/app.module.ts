@@ -12,6 +12,7 @@ import { SharedModule } from './shared/shared.module';
 import { CredentialsInterceptor } from './core/interceptor/credentials.interceptor';
 import { AuthInterceptor } from './core/interceptor/auth.interceptor';
 import { OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export function storageFactory(): OAuthStorage {
     return localStorage;
@@ -34,7 +35,8 @@ export function storageFactory(): OAuthStorage {
                 allowedUrls: [environment.apiRootRoute],
                 sendAccessToken: true
             }
-        })
+        }),
+         BrowserAnimationsModule
     ],
 
     // No providers are needed for this module. The providers array can be used to specify services that should be available

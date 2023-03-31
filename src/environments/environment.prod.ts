@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiRootRoute: 'http://laravelangular-back.test'
+  apiRootRoute: 'http://app.la-passport.test:4200'
 };

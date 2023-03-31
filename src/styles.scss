@@ -1,50 +1,98 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$sentry-frontend-primary: mat.define-palette(mat.$indigo-palette);
+$sentry-frontend-accent: mat.define-palette(
+    mat.$pink-palette,
+    A200,
+    A100,
+    A400
+);
+
+// The warn palette is optional (defaults to red).
+$sentry-frontend-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$sentry-frontend-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $sentry-frontend-primary,
+            accent: $sentry-frontend-accent,
+            warn: $sentry-frontend-warn,
+        ),
+    )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($sentry-frontend-theme);
+
 /* You can add global styles to this file, and also import other style files */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
+@import "./assets/fonts/Inter/stylesheet";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 @layer base {
-	[type='text'],
-	[type='email'],
-	[type='url'],
-	[type='password'],
-	[type='number'],
-	[type='date'],
-	[type='datetime-local'],
-	[type='month'],
-	[type='tel'],
-	[type='time'],
-	[type='week'],
-	[multiple],
-	textarea,
-	select {
-		@apply w-full rounded-md border border-gray-300 px-3 py-3 text-xs placeholder-gray-400 focus:z-10  focus:border-[#e73c35] focus:outline-none focus:ring-[#e73c35] dark:border-night-500 dark:bg-night-700 dark:text-night-400 dark:placeholder-night-200;
-	}
+    [type="text"],
+    [type="email"],
+    [type="url"],
+    [type="password"],
+    [type="number"],
+    [type="date"],
+    [type="datetime-local"],
+    [type="month"],
+    [type="tel"],
+    [type="time"],
+    [type="week"],
+    [multiple],
+    textarea,
+    select {
+        @apply w-full rounded-md border border-gray-300 px-3 py-3 text-xs placeholder-gray-400 focus:z-10  focus:border-primary-700 focus:outline-none focus:ring-primary-700 dark:border-night-500 dark:bg-night-700 dark:text-night-400 dark:placeholder-night-200;
+    }
 
-	[type='checkbox'],
-	[type='radio'] {
-		@apply h-4 w-4 rounded border-gray-300 bg-gray-100 text-[#e73c35] focus:ring-2 focus:ring-[#e73c35] dark:border-night-600 dark:bg-night-700 dark:ring-offset-night-800 dark:focus:ring-[#e73c35];
-	}
+    [type="checkbox"],
+    [type="radio"] {
+        @apply h-4 w-4 rounded border-gray-300 bg-gray-100 text-primary-700 focus:ring-2 focus:ring-primary-700 dark:border-night-600 dark:bg-night-700 dark:ring-offset-night-800 dark:focus:ring-primary-700;
+    }
 }
 
 @layer components {
-	.dropdown-content {
-		@apply pointer-events-none scale-95 opacity-0 duration-100 ease-in;
-	}
+    .dropdown-content {
+        @apply pointer-events-none scale-95 opacity-0 duration-100 ease-in;
+    }
 
-	.dropdown:hover > .dropdown-content {
-		@apply pointer-events-auto block scale-100 animate-fade-in-up opacity-100 duration-200;
-	}
+    .dropdown:hover > .dropdown-content {
+        @apply pointer-events-auto block scale-100 animate-fade-in-up opacity-100 duration-200;
+    }
 }
 
 /** Scroll bar **/
 @supports selector(::-webkit-scrollbar) {
-	.supports-scrollbars\: pr-2 {
-		padding-right: 0.5rem;
-	}
+    .supports-scrollbars\: pr-2 {
+        padding-right: 0.5rem;
+    }
 }
 
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
