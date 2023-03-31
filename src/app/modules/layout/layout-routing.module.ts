@@ -17,10 +17,16 @@ const routes: Routes = [
 
   {
 
-
     path: 'user',
     component: LayoutComponent,
     loadChildren: () => import('../user/user.module').then((m) => m.UserModule),
+  },
+
+  {
+
+    path: 'add-user',
+    component: LayoutComponent,
+    loadChildren: () => import('../add-user/add-user.module').then((m) => m.AddUserModule),
   },
 
   // A route definition that redirects the root path to the dashboard path.

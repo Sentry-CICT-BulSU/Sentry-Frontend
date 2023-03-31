@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 // Defining a new component with the selector 'app-dashboard' and the template URL 'dashboard.component.html'
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-user',
   templateUrl: './user.component.html',
 })
 

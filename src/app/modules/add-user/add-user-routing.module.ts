@@ -1,12 +1,13 @@
+// Importing necessary modules from @angular
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { UserComponent } from './user.component';
+import { AddUserComponent } from './add-user.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: UserComponent,
+    component: AddUserComponent,
   },
 ];
 
@@ -16,4 +17,4 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 
-export class UserRoutingModule {}
+export class AddUserRoutingModule {}
