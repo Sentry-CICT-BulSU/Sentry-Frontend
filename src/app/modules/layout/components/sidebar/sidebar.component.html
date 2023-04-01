@@ -46,8 +46,11 @@ If the observable value is falsy (i.e.,showSideBar$emitsfalse), the class "w-[70
                 Search
             </a> -->
 
-            <form class="truncate text-sm font-medium tracking-wide text-gray-100 outline-none focus:outline-none" action="#" method="GET">
-                <input type="search" name="q" class="bg-transparent truncate text-sm outline-none border-none font-medium tracking-wide placeholder:text-gray-100 text-gray-100 focus:outline-none" placeholder="Search">
+            <form class="truncate text-sm font-medium tracking-wide text-gray-100 outline-none focus:outline-none"
+                action="#" method="GET">
+                <input type="search" name="q"
+                    class="bg-transparent truncate text-sm outline-none border-none font-medium tracking-wide placeholder:text-gray-100 text-gray-100 focus:outline-none"
+                    placeholder="Search">
             </form>
 
             <div class="fixed w-full" *ngIf="!(showSideBar$ | async)">
@@ -122,35 +125,33 @@ If the observable value is falsy (i.e.,showSideBar$emitsfalse), the class "w-[70
             <hr class="border-solid border-gray-400 dark:border-night-500" />
         </div>
 
-        <div
-        class="group flex h-9 cursor-pointer items-center justify-start rounded p-2">
+        <div class="group flex h-9 cursor-pointer items-center justify-start rounded p-2">
 
-              <img class="rounded-full w-10" src="assets/avatars/avt-01.jpg" alt="" />
+            <div *ngIf="user" class="flex">
+                <img class="rounded-full w-10" [src]="
+                    user.profile_img
+                    ?user.profile_img
+                    :'assets/avatars/avt-01.jpg'
+                " alt="" />
 
-        <div class="truncate">
-            <p class="ml-3 truncate text-sm font-medium tracking-wide text-gray-100 focus:outline-none">
-                Allen Vincent
-            </p>
-            <p class="ml-3 truncate text-[0.6rem] font-semibold tracking-wide text-gray-100 focus:outline-none">
-                aveb@gmail.com
-            </p>
+                <div class="truncate">
+                    <p class="ml-3 truncate text-sm font-medium tracking-wide text-gray-100 focus:outline-none">
+                        {{user.first_name}} {{user.last_name}}
+                    </p>
+                    <p class="ml-3 truncate text-[0.6rem] font-semibold tracking-wide text-gray-100 focus:outline-none">
+                        {{user.email}}
+                    </p>
+                </div>
+            </div>
 
+            <i class="truncate ml-auto fa-solid fa-arrow-right-from-bracket text-gray-100 text-center w-5"></i>
+
+            <div class="fixed w-full" *ngIf="!(showSideBar$ | async)">
+                <span
+                    class="absolute left-12 -top-4 w-auto min-w-max origin-left scale-0 rounded-md bg-black p-2 text-xs font-bold text-white shadow-md transition-all duration-200 group-hover:scale-100 dark:bg-white dark:text-night-900">
+                    Sign out
+                </span>
+            </div>
         </div>
-
-        <i class="truncate ml-auto fa-solid fa-arrow-right-from-bracket text-gray-100 text-center w-5"></i>
-
-
-
-
-
-        <div class="fixed w-full" *ngIf="!(showSideBar$ | async)">
-            <span
-                class="absolute left-12 -top-4 w-auto min-w-max origin-left scale-0 rounded-md bg-black p-2 text-xs font-bold text-white shadow-md transition-all duration-200 group-hover:scale-100 dark:bg-white dark:text-night-900">
-                Sign out
-            </span>
-        </div>
-    </div>
-
-
     </div>
 </nav>

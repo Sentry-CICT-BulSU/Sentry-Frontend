@@ -4,6 +4,8 @@ import { MenuItem } from 'src/app/core/models/menu.model';
 import { ThemeService } from 'src/app/core/services/theme.service';
 import packageJson from '../../../../../../package.json';
 import { MenuService } from '../../services/menu.service';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { IUser } from 'src/app/core/models/user.model';
 
 @Component({
     selector: 'app-sidebar',
@@ -12,9 +14,7 @@ import { MenuService } from '../../services/menu.service';
 })
 
 // Defining the class for the Sidebar Component and implementing the OnInit Interface
-
 export class SidebarComponent implements OnInit {
-
     // Defining two observable variables showSideBar$ and pagesMenu$.
     // These observables are used to store the state of the menu items and sidebar.
 
@@ -24,21 +24,29 @@ export class SidebarComponent implements OnInit {
     // Defining the appJson variable and initializing it with the package.json file.
     // This is used to store the application version number.
 
-    public appJson: any = packageJson;
+    public appJson = packageJson;
+    user?: IUser;
 
-    @Output() signOut = new EventEmitter<boolean>();
+    @Output() signOut: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     // Initializing the constructor with the ThemeService and MenuService.
 
-    constructor(public themeService: ThemeService, private menuService: MenuService) {
-
+    constructor(
+        public themeService: ThemeService,
+        private menuService: MenuService,
+        private authService: AuthService
+    ) {
         // Subscribing to the showSideBar$ and pagesMenu$ observables and storing their state in the class variables.
 
         this.showSideBar$ = this.menuService.showSideBar$;
         this.pagesMenu$ = this.menuService.pagesMenu$;
     }
 
-    ngOnInit(): void { }
+    ngOnInit(): void {
+        this.authService.current_user_subject$?.subscribe(
+            (user: IUser | undefined) => (this.user = user)
+        );
+    }
 
     // A method to toggle the sidebar on and off.
 

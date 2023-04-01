@@ -2,12 +2,12 @@ import { IUserTypes } from './../models/user.model';
 import { Router } from '@angular/router';
 import { environment as env } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEvent, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IUser } from '../models/user.model';
-import { BehaviorSubject, catchError, combineLatest, forkJoin, map, Observable, ReplaySubject, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, forkJoin, map, pipe, tap } from 'rxjs';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { LocalStorageService } from './local-storage.service';
-import { OAuthService, JwksValidationHandler, AuthConfig, OAuthErrorEvent } from 'angular-oauth2-oidc';
+import { OAuthService } from 'angular-oauth2-oidc';
 
 @Injectable()
 export class AuthService {
@@ -17,8 +17,8 @@ export class AuthService {
         headers: new HttpHeaders({
             Accept: 'application/json',
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Headers': '*'
-        })
+            'Access-Control-Allow-Headers': '*',
+        }),
     };
 
     access_token: any;
@@ -27,6 +27,9 @@ export class AuthService {
     current_user!: IUser;
     current_user_type: any;
     user_types!: IUserTypes;
+
+    current_user_subject$?: BehaviorSubject<IUser | undefined> =
+        new BehaviorSubject<IUser | undefined>(undefined);
 
     constructor(
         private http: HttpClient,
@@ -49,27 +52,33 @@ export class AuthService {
 
     getUser$() {
         // this.options.headers = this.options.headers.set('Authorization', this.oauthService.authorizationHeader());
-        return this.http.get<IUser>(env.apiRootRoute + '/api/user', { headers: this.options.headers });
+        return this.http.get<IUser>(env.apiRootRoute + '/api/user', {
+            headers: this.options.headers,
+        });
     }
 
     loadUser$() {
-        const obs$ = forkJoin([
-            this.getUserTypes$(),
-            this.getUser$()
-        ]);
+        const obs$ = forkJoin([this.getUserTypes$(), this.getUser$()]);
 
         return obs$.pipe(
-            tap(([types, user]) => {
+            tap(([types, user]: [IUserTypes, IUser]): void => {
                 this.current_user = user;
                 this.user_types = types;
-                this.current_user_type = this.user_types.cast[+this.current_user.type];
-            }),
+                this.current_user_type =
+                    this.user_types.cast[+this.current_user.type];
+                this.current_user_subject$?.next(user);
+            })
         );
     }
 
     getUserTypes$() {
-        this.options.headers = this.options.headers.set('Authorization', this.oauthService.authorizationHeader());
-        return this.http.get<IUserTypes>(env.apiRootRoute + '/api/user/types', { headers: this.options.headers });
+        this.options.headers = this.options.headers.set(
+            'Authorization',
+            this.oauthService.authorizationHeader()
+        );
+        return this.http.get<IUserTypes>(env.apiRootRoute + '/api/user/types', {
+            headers: this.options.headers,
+        });
     }
 
     getRefreshToken() {
@@ -102,8 +111,9 @@ export class AuthService {
         if (chars.indexOf('a') > -1) result += 'abcdefghijklmnopqrstuvwxyz';
         if (chars.indexOf('A') > -1) result += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         if (chars.indexOf('#') > -1) result += '0123456789';
-        if (chars.indexOf('!') > -1) result += '~`!@#$%^&*()_+-={}[]:";\'<>?,./|\\';
-        for (var i = length; i > 0; --i)
+        if (chars.indexOf('!') > -1)
+            result += '~`!@#$%^&*()_+-={}[]:";\'<>?,./|\\';
+        for (let i = length; i > 0; --i)
             result += chars[Math.floor(Math.random() * chars.length)];
         return result;
     }

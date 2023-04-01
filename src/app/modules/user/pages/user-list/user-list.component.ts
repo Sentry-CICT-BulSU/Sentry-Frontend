@@ -11,20 +11,21 @@ import { AdminService } from 'src/app/core/services/admin.service';
 
 // Exporting the DashboardComponent class and implementing the OnInit interface
 export class UserListComponent implements OnInit {
-
     user_pagination?: IUserCollectionResponse;
     isMultiPage?: boolean;
 
     // Defining a constructor for the DashboardComponent class
-    constructor(private adminService: AdminService) { }
+    constructor(private adminService: AdminService) {}
 
     // Implementing the ngOnInit lifecycle hook
     ngOnInit(): void {
-        this.adminService.getUsers$().subscribe((response: IUserCollectionResponse): void => {
-            this.user_pagination = response;
-            console.log(this.user_pagination);
-            this.isMultiPage = this.user_pagination?.meta?.last_page !== 1;
-        });
+        this.adminService
+            .getUsers$()
+            .subscribe((response: IUserCollectionResponse): void => {
+                this.user_pagination = response;
+                this.isMultiPage = this.user_pagination?.meta?.last_page !== 1;
+                console.log(this.user_pagination);
+            });
     }
 
     pageMaxCount() {

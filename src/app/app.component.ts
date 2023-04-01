@@ -1,9 +1,9 @@
-import { HttpHeaders } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { environment as env } from 'src/environments/environment';
 // Import the Component and ThemeService from Angular core.
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ThemeService } from './core/services/theme.service';
-import { OAuthService, JwksValidationHandler, AuthConfig, ReceivedTokens } from 'angular-oauth2-oidc';
+import { OAuthService, AuthConfig, ReceivedTokens } from 'angular-oauth2-oidc';
+import { AuthService } from './core/services/auth.service';
 
 export function randomString(length: any, chars: any) {
     let result = '';
@@ -11,14 +11,14 @@ export function randomString(length: any, chars: any) {
     if (chars.indexOf('A') > -1) result += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     if (chars.indexOf('#') > -1) result += '0123456789';
     if (chars.indexOf('!') > -1) result += '~`!@#$%^&*()_+-={}[]:";\'<>?,./|\\';
-    for (var i = length; i > 0; --i)
+    for (let i = length; i > 0; --i)
         result += chars[Math.floor(Math.random() * chars.length)];
     return result;
 }
 export const authConfig: AuthConfig = {
-    issuer: environment.apiRootRoute + '/oauth/authorize',
-    tokenEndpoint: environment.apiRootRoute + '/oauth/token',
-    loginUrl: environment.apiRootRoute + '/oauth/authorize',
+    issuer: env.apiRootRoute + '/oauth/authorize',
+    tokenEndpoint: env.apiRootRoute + '/oauth/token',
+    loginUrl: env.apiRootRoute + '/oauth/authorize',
     redirectUri: window.location.origin,
     clientId: '1',
     scope: '',
@@ -33,7 +33,7 @@ export const authConfig: AuthConfig = {
     sessionChecksEnabled: true,
     customQueryParams: {
         // Your API's name
-        audience: environment.apiRootRoute + '/api',
+        audience: env.apiRootRoute + '/api',
     },
     // dummyClientSecret: 'test',
 };
@@ -46,17 +46,21 @@ export const authConfig: AuthConfig = {
 })
 
 // Define the AppComponent class.
-export class AppComponent {
+export class AppComponent implements OnInit {
     title = 'Tean 404 System'; // Define a title property for the component.
 
     // Define a constructor that takes the ThemeService as a dependency. Constructor is a special method that is called
     //when a new instance of a class is created
     constructor(
         public themeService: ThemeService,
-        private oauthService: OAuthService
+        private oauthService: OAuthService,
+        private authService: AuthService
     ) {
         this.configureWithNewConfigApi();
-        console.log(window.location.origin);
+    }
+
+    ngOnInit(): void {
+        this.authService.loadUser$().subscribe();
     }
 
     private configureWithNewConfigApi() {
@@ -70,7 +74,7 @@ export class AppComponent {
             onTokenReceived: (info: ReceivedTokens) => {
                 console.debug(info);
                 console.debug(info.state); //state
-            }
+            },
         });
     }
 }
