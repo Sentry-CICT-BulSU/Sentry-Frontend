@@ -50,7 +50,7 @@ export class AddUserComponent {
     onSubmit() {
         this.adminService.createUser$(this.newUserForm.value as IUserConfig)
             .subscribe({
-                next: (response: IUserResponse) => {
+                next: (response) => {
                     console.log(response);
                 },
                 error: (error) => {

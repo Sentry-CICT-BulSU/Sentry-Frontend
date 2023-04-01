@@ -2,8 +2,9 @@
     <div class="flex justify-between">
         <div class="flex items-center justify-between">
             <h3 class="text-lg font-medium text-gray-900 dark:text-white mr-3">Users</h3>
-            <div class="rounded-xl bg-primary-50 py-1 px-2 text-xs font-semibold text-primary-700">
-                {{user_pagination?.total}} total users
+            <div *ngIf="user_pagination?.meta?.total"
+                class="rounded-xl bg-primary-50 py-1 px-2 text-xs font-semibold text-primary-700">
+                {{user_pagination?.meta?.total}} total users
             </div>
         </div>
         <div class="flex items-center justify-end space-x-3">
@@ -25,17 +26,19 @@
 
 <div class="grid grid-cols-1 rounded-b-lg border-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
     <div class="flex items-center justify-between space-x-3">
-        <button type="button" [disabled]="!user_pagination?.prev_page_url"
+        <button type="button" [disabled]="!user_pagination?.links?.prev"
             class="relative selection:flex justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
             Previous
         </button>
 
-        <div
-            class="relative justify-center rounded-md py-2 px-4 text-sm font-medium text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-50">
-            1
+        <div *ngIf="isMultiPage">
+            <div *ngFor="let page of pageMaxCount()"
+                class="relative justify-center rounded-md py-2 px-4 text-sm font-medium text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-50">
+                1
+            </div>
         </div>
 
-        <button type="button" [disabled]="!user_pagination?.next_page_url"
+        <button type="button" [disabled]="!user_pagination?.links?.next"
             class="relative selection:flex justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
             Next
         </button>
