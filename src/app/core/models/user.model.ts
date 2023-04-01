@@ -1,3 +1,5 @@
+import { ICollectionResponse } from "./response.model";
+
 export interface IUser {
     id: number;
     profile_img?: string;
@@ -20,30 +22,12 @@ export interface IUserTypes {
 }
 
 export interface IUserResponse {
-    message: string;
-    paginate?: IUserPaginate;
-    user?: IUser;
+    message?: string;
     error?: string;
     deleted?: string;
     restore?: string;
 }
 
-export interface IUserPaginate {
-    current_page: number;
-    data: IUser[];
-    first_page_url: string;
-    from: number;
-    last_page: number;
-    last_page_url?: string;
-    links: {
-        url?: string;
-        label?: string;
-        active: boolean;
-    }[];
-    next_page_url?: string;
-    path: string;
-    per_page: number;
-    prev_page_url?: string;
-    to: number;
-    total: number;
+export interface IUserCollectionResponse extends ICollectionResponse {
+    data: IUser[] | IUser;
 }

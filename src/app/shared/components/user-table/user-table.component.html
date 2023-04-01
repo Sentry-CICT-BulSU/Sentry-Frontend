@@ -16,8 +16,7 @@
         <!--end Table head-->
         <!--Table body-->
         <tbody>
-            <tr *ngFor="let user of pagination?.data"
-                class="hover:bg-gray-100 dark:border-night-500 dark:hover:bg-night-600">
+            <tr *ngFor="let user of data" class="hover:bg-gray-100 dark:border-night-500 dark:hover:bg-night-600">
                 <td class="py-2 px-2">
                     <div class="flex items-center">
                         <img [src]="user.profile_img

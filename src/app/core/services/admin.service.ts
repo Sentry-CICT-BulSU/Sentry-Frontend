@@ -1,4 +1,4 @@
-import { IUser, IUserResponse } from './../models/user.model';
+import { IUser, IUserResponse, IUserCollectionResponse } from './../models/user.model';
 import { environment as env } from './../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -20,14 +20,14 @@ export class AdminService {
     constructor(private http: HttpClient) { }
 
     getUsers$() {
-        return this.http.get<IUserResponse>(
+        return this.http.get<IUserCollectionResponse>(
             this.adminApiRoute + '/users',
             { headers: this.options.headers }
         );
     }
 
     getUser$(user: IUser) {
-        return this.http.get<IUserResponse>(
+        return this.http.get<IUserCollectionResponse>(
             this.adminApiRoute + '/users' + user.id,
             { headers: this.options.headers }
         );
@@ -41,7 +41,7 @@ export class AdminService {
     }
 
     editUser$(updatedUser: IUserConfig) {
-        return this.http.patch<IUserResponse>(
+        return this.http.patch<IUserCollectionResponse>(
             this.adminApiRoute + '/users/' + updatedUser.id,
             updatedUser, { headers: this.options.headers }
         );
