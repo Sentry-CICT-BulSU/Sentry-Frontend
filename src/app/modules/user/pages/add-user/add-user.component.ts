@@ -2,7 +2,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { IUserConfig } from 'src/app/core/models/admin.model';
-import { IUserResponse } from 'src/app/core/models/user.model';
 import { AdminService } from 'src/app/core/services/admin.service';
 
 @Component({
