@@ -9,7 +9,11 @@
     </div>
 </div>
 
-<form class="grid grid-cols-1">
+<pre>
+    {{newScheduleForm.value|json}}
+</pre>
+
+<form class="grid grid-cols-1" [formGroup]="newScheduleForm" (ngSubmit)="onSubmit()" novalidate>
     <!-- Separator -->
     <div class="py-6">
         <hr class="border-solid border-gray-200 dark:border-night-500" />
@@ -21,7 +25,7 @@
         </div>
 
         <div class="relative col-span-2">
-            <select name="faculty" id="faculty" class="peer block">
+            <select formControlName="faculty" name="faculty" id="faculty" class="peer block">
                 <option>
                     Gabriel Galang
                 </option>
@@ -33,7 +37,7 @@
         </div>
 
         <div class="relative col-span-2">
-            <select name="room" id="room" class="peer block">
+            <select formControlName="room" name="room" id="room" class="peer block">
                 <option>
                     IT1
                 </option>
@@ -49,7 +53,7 @@
         </div>
 
         <div class="relative col-span-2">
-            <select name="faculty" id="faculty" class="peer block">
+            <select formControlName="subject" name="subject" id="subject" class="peer block">
                 <option>
                     Elective 5
                 </option>
@@ -61,7 +65,7 @@
         </div>
 
         <div class="relative col-span-2">
-            <select name="room" id="room" class="peer block">
+            <select formControlName="section" name="section" id="section" class="peer block">
                 <option>
                     BSIT 4K
                 </option>
@@ -77,17 +81,13 @@
         </div>
 
         <div class="relative col-span-2">
-            <select name="faculty" id="faculty" class="peer block">
+            <select formControlName="semester" name="semester" id="semester" class="peer block">
                 <option>
                     1st Semester
                 </option>
             </select>
         </div>
-
-
-
     </div>
-
 
     <div class="grid grid-cols-8 gap-8 pb-6">
         <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
@@ -95,79 +95,18 @@
         </div>
 
         <div class="relative col-span-3">
-
-
-    <!-- tabs -->
-    <div
-      class="grid w-full grid-cols-7 rounded-md border border-gray-300 text-xs">
-      <div>
-        <input type="radio" name="option" id="1" class="peer hidden" checked />
-        <label for="1" class="rounded-l-md border-r border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200"
-          >Mon</label
-        >
-      </div>
-
-      <div>
-        <input type="radio" name="option" id="2" class="peer hidden" />
-        <label
-          for="2"
-          class="border-r border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200"
-          >Tue</label
-        >
-      </div>
-
-      <div>
-        <input type="radio" name="option" id="3" class="peer hidden" />
-        <label
-          for="3"
-          class="border-r border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200"
-          >Wed</label
-        >
-      </div>
-
-      <div>
-        <input type="radio" name="option" id="4" class="peer hidden" />
-        <label
-          for="4"
-          class="border-r border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200"
-          >Thu</label
-        >
-      </div>
-
-      <div>
-        <input type="radio" name="option" id="5" class="peer hidden" />
-        <label
-          for="5"
-          class="border-r border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200"
-          >Fri</label
-        >
-      </div>
-
-      <div>
-        <input type="radio" name="option" id="6" class="peer hidden" />
-        <label
-          for="6"
-          class="border-r border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200"
-          >Sat</label
-        >
-      </div>
-
-      <div>
-        <input type="radio" name="option" id="7" class="peer hidden" />
-        <label
-          for="7"
-          class="rounded-r-md border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200"
-          >Sun</label
-        >
-      </div>
-
-    </div>
-
-
+            <!-- tabs -->
+            <div formGroupName="active_days" class="grid w-full grid-cols-7 rounded-md border border-gray-300 text-xs">
+                <div *ngFor="let day of activeDaysArray; let i = index">
+                    <input [formControlName]="day" type="checkbox" [name]="day" [id]="day" [value]="day"
+                        class="peer hidden" />
+                    <label [for]="day" [ngClass]="{'rounded-l-md':i===0,'rounded-r-md':i===activeDaysArray.length-1}"
+                        class="border-r border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200">
+                        {{day}}
+                    </label>
+                </div>
+            </div>
         </div>
-
-
-
     </div>
 
 
@@ -197,7 +136,6 @@
         </div>
 
     </div>
-
 
     <!-- Separator -->
     <div class="py-6">
