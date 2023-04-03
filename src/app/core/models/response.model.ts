@@ -1,5 +1,3 @@
-import { IUser } from "./user.model";
-
 export interface ICollectionResponse {
     // pagination
     links?: {
@@ -22,4 +20,11 @@ export interface ICollectionResponse {
         to: number;
         total: number;
     };
+}
+
+export interface IResponse {
+    message?: string;
+    error?: string;
+    deleted?: string;
+    restore?: string;
 }

@@ -1,6 +1,7 @@
-import { ICollectionResponse } from "./response.model";
+import { IMetaData } from './meta-data.model';
+import { ICollectionResponse } from './response.model';
 
-export interface IUser {
+export interface IUser extends IMetaData {
     id: number;
     profile_img?: string;
     first_name: string;
@@ -12,22 +13,12 @@ export interface IUser {
     status: string;
     email: string;
     email_verified_at?: string;
-    created_at: string;
-    updated_at: string;
-    deleted_at?: string;
 }
 
 export interface IUserTypes {
     cast: string[];
 }
 
-export interface IUserResponse {
-    message?: string;
-    error?: string;
-    deleted?: string;
-    restore?: string;
-}
-
-export interface IUserCollectionResponse extends ICollectionResponse {
+export interface IUserCollection extends ICollectionResponse {
     data: IUser[] | IUser;
 }
