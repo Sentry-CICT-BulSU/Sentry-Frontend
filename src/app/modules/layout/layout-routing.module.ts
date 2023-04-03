@@ -19,6 +19,17 @@ const routes: Routes = [
         component: LayoutComponent,
         loadChildren: () => import('../user/user.module').then((m) => m.UserModule),
     },
+    {
+        path: 'schedule',
+        component: LayoutComponent,
+        loadChildren: () => import('../schedule/schedule.module').then((m) => m.ScheduleModule),
+    },
+
+    {
+        path: 'room-key',
+        component: LayoutComponent,
+        loadChildren: () => import('../room-key/room-key.module').then((m) => m.RoomKeyModule),
+    },
 
     // A route definition that redirects the root path to the dashboard path.
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },

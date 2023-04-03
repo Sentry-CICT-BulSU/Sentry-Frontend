@@ -26,7 +26,7 @@ export class Menu {
           {
             icon: 'fa-solid fa-chart-simple',
             label: 'Faculty and Schedule',
-            route: '/schedule',
+            route: '/faculty-and-schedule',
             children: [
                 { label: 'Faculty Management', route: '/faculty' },
                 { label: 'Schedule Management', route: '/schedule' },
@@ -54,7 +54,7 @@ export class Menu {
         {
           icon: 'fa-solid fa-key',
           label: 'Room Key Monitoring',
-          route: '/key',
+          route: '/room-key',
         },
         {
             icon: 'fa-solid fa-file',

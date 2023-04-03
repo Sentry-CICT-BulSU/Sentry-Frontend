@@ -1,0 +1,56 @@
+<div class="grid grid-cols-1 rounded-t-lg border-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
+    <div class="flex justify-between">
+        <div class="flex items-center justify-start">
+
+            <button type="button" [routerLink]="['/schedule/faculty-list']"
+                class="relative selection:flex justify-center rounded-l-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+                Faculty
+            </button>
+
+            <button type="button" [routerLink]="['/schedule/room-list']"
+                class="relative selection:flex justify-center border-y border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+                Room
+            </button>
+
+            <button type="button" [routerLink]="['/schedule/section-list']"
+                class="relative flex justify-center rounded-r-md border border-transparent bg-primary-700 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-primary-600">
+                Section
+            </button>
+
+        </div>
+
+
+            <button type="button" [routerLink]="['/schedule/add-schedule']"
+                class="relative selection:flex justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+                Add Schedule
+            </button>
+
+
+    </div>
+</div>
+
+<div class="grid grid-cols-1 border-x-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
+    <app-schedule-section-table></app-schedule-section-table>
+</div>
+
+
+<div class="grid grid-cols-1 rounded-b-lg border-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
+    <div class="flex items-center justify-between space-x-3">
+        <button type="button"
+            class="relative selection:flex justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+            Previous
+        </button>
+
+        <div>
+            <div
+                class="relative justify-center rounded-md py-2 px-4 text-sm font-medium text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-50">
+                1
+            </div>
+        </div>
+
+        <button type="button"
+            class="relative selection:flex justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+            Next
+        </button>
+    </div>
+</div>
