@@ -25,8 +25,8 @@ export class AuthService {
     refresh_token: any;
 
     current_user!: IUser;
-    current_user_type: any;
-    user_types!: IUserTypes;
+    current_user_type?: string;
+    user_types: string[] = ['Faculty', 'Admin', 'Attendance Checker'];
 
     current_user_subject$?: BehaviorSubject<IUser | undefined> =
         new BehaviorSubject<IUser | undefined>(undefined);
@@ -58,14 +58,12 @@ export class AuthService {
     }
 
     loadUser$() {
-        const obs$ = forkJoin([this.getUserTypes$(), this.getUser$()]);
+        const obs$ = forkJoin([this.getUser$()]);
 
         return obs$.pipe(
-            tap(([types, user]: [IUserTypes, IUser]): void => {
+            tap(([user]: [IUser]): void => {
                 this.current_user = user;
-                this.user_types = types;
-                this.current_user_type =
-                    this.user_types.cast[+this.current_user.type];
+                this.current_user_type = user.type;
                 this.current_user_subject$?.next(user);
             })
         );

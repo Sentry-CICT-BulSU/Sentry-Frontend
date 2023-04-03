@@ -1,4 +1,5 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IUser } from 'src/app/core/models/user.model';
 import { AuthService } from 'src/app/core/services/auth.service';
 
@@ -14,12 +15,10 @@ export class ProfileMenuComponent implements OnChanges {
     public isMenuOpen = false;
     user?: IUser;
 
-    constructor(private authService: AuthService) {}
+    constructor(private activatedRoute: ActivatedRoute) {}
 
     ngOnChanges(): void {
-        this.authService.current_user_subject$?.subscribe(
-            (user) => (this.user = user)
-        );
+        this.user = this.activatedRoute.snapshot.data['user'];
     }
 
     public toggleMenu(): void {
