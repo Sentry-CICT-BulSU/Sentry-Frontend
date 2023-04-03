@@ -25,6 +25,12 @@ const routes: Routes = [
         loadChildren: () => import('../schedule/schedule.module').then((m) => m.ScheduleModule),
     },
 
+    {
+        path: 'room-key',
+        component: LayoutComponent,
+        loadChildren: () => import('../room-key/room-key.module').then((m) => m.RoomKeyModule),
+    },
+
     // A route definition that redirects the root path to the dashboard path.
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     // A route definition that redirects any undefined path to the error/404 path.
