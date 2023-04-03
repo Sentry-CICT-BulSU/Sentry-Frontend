@@ -19,6 +19,11 @@ const routes: Routes = [
         component: LayoutComponent,
         loadChildren: () => import('../user/user.module').then((m) => m.UserModule),
     },
+    {
+        path: 'schedule',
+        component: LayoutComponent,
+        loadChildren: () => import('../schedule/schedule.module').then((m) => m.ScheduleModule),
+    },
 
     // A route definition that redirects the root path to the dashboard path.
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },

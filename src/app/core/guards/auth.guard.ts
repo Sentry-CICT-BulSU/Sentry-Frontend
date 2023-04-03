@@ -21,16 +21,16 @@ export class AuthGuard implements CanActivate {
     ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
         //   restrict access to un-authenticated users
-        if (
-            this.oauthService.hasValidAccessToken()
-        ) {
-            return true;
-        }
-        this.router.navigate(['/auth/sign-in']);
-        return false;
+        // if (
+        //     this.oauthService.hasValidAccessToken()
+        // ) {
+        //     return true;
+        // }
+        // this.router.navigate(['/auth/sign-in']);
+        // return false;
 
 
         // Dev mode: uncomment below, comment above
-        // return true;
+        return true;
     }
 }
