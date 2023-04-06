@@ -3,26 +3,43 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout.component';
 
-// Declaring a constant named routes that is of type Routes, which is an array of route definitions.
-
 const routes: Routes = [
     {
-
-        // A route definition for the dashboard path, which loads the DashboardModule lazily and displays it using the LayoutComponent.
-
         path: 'dashboard', canActivate: [AuthGuard],
         component: LayoutComponent,
         loadChildren: () => import('../dashboard/dashboard.module').then((m) => m.DashboardModule),
     },
+
     {
-        path: 'user',
+        path: 'faculty',
         component: LayoutComponent,
-        loadChildren: () => import('../user/user.module').then((m) => m.UserModule),
+        loadChildren: () => import('../faculty/faculty.module').then((m) => m.FacultyModule),
     },
     {
         path: 'schedule',
         component: LayoutComponent,
         loadChildren: () => import('../schedule/schedule.module').then((m) => m.ScheduleModule),
+    },
+    {
+        path: 'attendance',
+        component: LayoutComponent,
+        loadChildren: () => import('../attendance/attendance.module').then((m) => m.AttendanceModule),
+    },
+
+    {
+        path: 'semester',
+        component: LayoutComponent,
+        loadChildren: () => import('../semester/semester.module').then((m) => m.SemesterModule),
+    },
+    {
+        path: 'subject',
+        component: LayoutComponent,
+        loadChildren: () => import('../subject/subject.module').then((m) => m.SubjectModule),
+    },
+    {
+        path: 'room',
+        component: LayoutComponent,
+        loadChildren: () => import('../room/room.module').then((m) => m.RoomModule),
     },
 
     {
@@ -30,16 +47,29 @@ const routes: Routes = [
         component: LayoutComponent,
         loadChildren: () => import('../room-key/room-key.module').then((m) => m.RoomKeyModule),
     },
+    {
+        path: 'reports',
+        component: LayoutComponent,
+        loadChildren: () => import('../reports/reports.module').then((m) => m.ReportsModule),
+    },
+    {
+        path: 'user',
+        component: LayoutComponent,
+        loadChildren: () => import('../user/user.module').then((m) => m.UserModule),
+    },
+    {
+        path: 'settings',
+        component: LayoutComponent,
+        loadChildren: () => import('../settings/settings.module').then((m) => m.SettingsModule),
+    },
 
-    // A route definition that redirects the root path to the dashboard path.
+
+
+
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     // A route definition that redirects any undefined path to the error/404 path.
     { path: '**', redirectTo: 'error/404' },
 ];
-
-// Declaring an NgModule named LayoutRoutingModule with the following configuration:
-// imports: [RouterModule.forChild(routes)], - importing the RouterModule and calling its forChild method to configure the routes defined in routes.
-// exports: [RouterModule], - exporting the configured RouterModule so that it can be imported by other modules.
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

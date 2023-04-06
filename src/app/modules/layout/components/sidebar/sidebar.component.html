@@ -63,12 +63,12 @@ If the observable value is falsy (i.e.,showSideBar$emitsfalse), the class "w-[70
 
     <div class="mx-4 my-4 space-y-1">
 
-        <div
+        <div [routerLink]="['/settings']" routerLinkActive="bg-primary-800"
             class="group flex h-9 cursor-pointer items-center justify-start rounded p-2 hover:bg-primary-600 dark:hover:bg-night-600">
 
             <i class="fa-solid fa-cog text-gray-100 text-center w-5"></i>
 
-            <a class="ml-3 truncate text-sm font-medium tracking-wide text-gray-100 focus:outline-none">
+            <a routerLinkActive="text-gray-100" class="ml-3 truncate text-sm font-medium tracking-wide text-gray-100 focus:outline-none">
                 Settings
             </a>
 
