@@ -1,0 +1,18 @@
+/* Tab content hide */
+.tab-content {
+    display: none;
+  }
+
+  /* Tab link styles */
+  .tab-link {
+    cursor: pointer;
+  }
+
+  /* Active tab styles */
+  .tab-link.active {
+    font-weight: bold;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
