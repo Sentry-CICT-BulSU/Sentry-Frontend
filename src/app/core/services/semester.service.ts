@@ -1,11 +1,9 @@
-import { IUserTypes } from './../models/user.model';
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { ISemester } from '../models/semester.model';
-import { IUser } from '../models/user.model';
+import { IUser } from '../models';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
 import { PropertiesService } from './properties.service';
 
 @Injectable({

@@ -1,6 +1,6 @@
 // Importing necessary modules from @angular
 import { Component, OnInit } from '@angular/core';
-import { IUserCollection } from 'src/app/core/models/user.model';
+import { IUserCollection } from 'src/app/core/models';
 import { AdminService } from 'src/app/core/services/admin.service';
 
 // Defining a new component with the selector 'app-dashboard' and the template URL 'dashboard.component.html'

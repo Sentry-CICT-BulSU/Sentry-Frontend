@@ -1,11 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { MenuItem } from 'src/app/core/models/menu.model';
 import { ThemeService } from 'src/app/core/services/theme.service';
 import packageJson from '../../../../../../package.json';
 import { MenuService } from '../../services/menu.service';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { IUser } from 'src/app/core/models/user.model';
+import { IUser, MenuItem } from 'src/app/core/models';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

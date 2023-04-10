@@ -1,7 +1,6 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IUser } from 'src/app/core/models/user.model';
-import { AuthService } from 'src/app/core/services/auth.service';
+import { IUser } from 'src/app/core/models';
 
 @Component({
     selector: 'app-profile-menu',

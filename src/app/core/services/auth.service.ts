@@ -1,10 +1,9 @@
-import { IUserTypes } from './../models/user.model';
 import { Router } from '@angular/router';
 import { environment as env } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { IUser } from '../models/user.model';
-import { BehaviorSubject, forkJoin, map, pipe, tap } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { IUser, IUserTypes } from '../models';
+import { BehaviorSubject, forkJoin, tap } from 'rxjs';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { LocalStorageService } from './local-storage.service';
 import { OAuthService } from 'angular-oauth2-oidc';

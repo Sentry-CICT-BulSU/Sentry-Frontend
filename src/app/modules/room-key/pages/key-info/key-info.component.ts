@@ -2,13 +2,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { IRoomKeyLog } from 'src/app/core/models/room-key-log.model';
 import {
+    IUser,
     IRoomKey,
+    ISchedule,
     IRoomKeyCollection,
-} from 'src/app/core/models/room-key.model';
-import { ISchedule } from 'src/app/core/models/schedule.model';
-import { IUser } from 'src/app/core/models/user.model';
+    IRoomKeyLog,
+} from 'src/app/core/models';
 import { RoomKeyService } from 'src/app/core/services/roomkey.service';
 
 // Defining a new component with the selector 'app-dashboard' and the template URL 'dashboard.component.html'

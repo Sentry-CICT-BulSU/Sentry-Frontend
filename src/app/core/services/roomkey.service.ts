@@ -1,10 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IRoomKey, IRoomKeyCollection } from '../models/room-key.model';
-import { IUser } from '../models/user.model';
+import { IUser, IRoomKeyLog, IRoomKeyCollection } from '../models';
 import { environment as env } from 'src/environments/environment';
 import { AuthService } from './auth.service';
-import { IRoomKeyLog } from '../models/room-key-log.model';
 import { PropertiesService } from './properties.service';
 
 @Injectable({

@@ -1,5 +1,5 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import { IUser, IUserCollection } from 'src/app/core/models/user.model';
+import { Component, Input, OnChanges } from '@angular/core';
+import { IUser, IUserCollection } from 'src/app/core/models';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -7,7 +7,6 @@ import { environment } from 'src/environments/environment';
     templateUrl: './user-table.component.html',
 })
 export class UserTableComponent implements OnChanges {
-
     @Input() pagination?: IUserCollection;
 
     data!: IUser[];
