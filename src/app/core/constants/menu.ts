@@ -59,18 +59,14 @@ export class Menu {
         {
             icon: 'fa-solid fa-file',
             label: 'Reports',
-            route: '/report',
+            route: '/reports',
           },
         {
           icon: 'fa-solid fa-users',
           label: 'User Management',
           route: '/user',
         },
-        {
-          icon: 'fa-solid fa-cog',
-          label: 'Settings',
-          route: '/settings',
-        },
+
       ],
     },
 

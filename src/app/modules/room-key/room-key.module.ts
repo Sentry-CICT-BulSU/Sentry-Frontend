@@ -8,8 +8,9 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 import { RoomKeyComponent } from './room-key.component';
-import { RoomKeyContentComponent } from './pages/room-key-content/room-key-content.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { KeyInfoComponent } from './pages/key-info/key-info.component';
+import { RoomKeyContentComponent } from './pages/room-key-content/room-key-content.component';
 
 
 
@@ -17,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     declarations: [
         RoomKeyComponent,
         RoomKeyContentComponent,
+        KeyInfoComponent,
     ],
 
 
