@@ -59,7 +59,8 @@
             </div>
         </div>
 
-        <form class="grid grid-cols-1 border-x-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
+        <form [formGroup]="borrowRoomKeyForm!" novalidate
+            class="grid grid-cols-1 border-x-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
 
             <div class="grid grid-cols-10 gap-8 pb-6">
                 <div class="col-span-2 space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
@@ -67,7 +68,7 @@
                 </div>
 
                 <div class="relative col-span-3">
-                    <input type="text" class="peer block" placeholder=" " />
+                    <input formControlName="faculty" readonly type="text" readonly class="peer block" placeholder=" ">
                 </div>
 
                 <div class="col-span-2 space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
@@ -75,7 +76,7 @@
                 </div>
 
                 <div class="relative col-span-3">
-                    <input type="text" class="peer block" placeholder=" " />
+                    <input formControlName="time" readonly type="text" class="peer block" placeholder=" " />
                 </div>
 
                 <div class="col-span-2 space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
@@ -83,7 +84,7 @@
                 </div>
 
                 <div class="relative col-span-3">
-                    <input type="text" class="peer block" placeholder=" " />
+                    <input formControlName="subject_code" readonly type="text" class="peer block" placeholder=" " />
                 </div>
 
                 <div class="col-span-2 space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
@@ -91,18 +92,18 @@
                 </div>
 
                 <div class="relative col-span-3">
-                    <input type="text" class="peer block" placeholder=" " />
+                    <input formControlName="subject_name" readonly type="text" class="peer block" placeholder=" " />
                 </div>
             </div>
         </form>
 
         <div class="grid grid-cols-1 rounded-b-lg border-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
             <div class="flex items-center justify-end space-x-3">
-                <button type="button"
+                <button type="button" (click)="loadFromSchedule()"
                     class="relative selection:flex justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
                     Load data from schedule
                 </button>
-                <button type="submit"
+                <button form="" type="button" (click)="borrowRoomKey()"
                     class="relative flex justify-center rounded-md border border-transparent bg-primary-700 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-primary-600">
                     Lend Key
                 </button>

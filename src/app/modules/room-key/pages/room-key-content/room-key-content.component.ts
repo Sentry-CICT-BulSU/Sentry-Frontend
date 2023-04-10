@@ -4,6 +4,7 @@ import {
     IRoomKey,
     IRoomKeyCollection,
 } from 'src/app/core/models/room-key.model';
+import { ISchedule } from 'src/app/core/models/schedule.model';
 import { RoomKeyService } from 'src/app/core/services/roomkey.service';
 
 // Defining a new component with the selector 'app-dashboard' and the template URL 'dashboard.component.html'
@@ -20,7 +21,7 @@ export class RoomKeyContentComponent implements OnInit {
 
     ngOnInit(): void {
         // comment below for frontend
-        this.roomKeySerivce.getRoomKeys().subscribe((roomKeys) => {
+        this.roomKeySerivce.getRoomKeys$().subscribe((roomKeys) => {
             this.roomKeyCollection = roomKeys as IRoomKeyCollection;
             this.roomKeys = this.roomKeyCollection.data as IRoomKey[];
             console.log(roomKeys);

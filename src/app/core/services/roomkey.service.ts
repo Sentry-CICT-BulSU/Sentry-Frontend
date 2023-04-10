@@ -4,6 +4,7 @@ import { IRoomKey, IRoomKeyCollection } from '../models/room-key.model';
 import { IUser } from '../models/user.model';
 import { environment as env } from 'src/environments/environment';
 import { AuthService } from './auth.service';
+import { IRoomKeyLog } from '../models/room-key-log.model';
 
 @Injectable({
     providedIn: 'root',
@@ -35,13 +36,24 @@ export class RoomKeyService {
         }
     }
 
-    getRoomKeys() {
+    getRoomKeys$() {
         return this.http.get<IRoomKeyCollection>(this.url, {
             headers: this.options.headers,
         });
     }
-    getRoomKey(id: number) {
+    getRoomKey$(id: number) {
         return this.http.get<IRoomKeyCollection>(this.url + '/' + id, {
+            headers: this.options.headers,
+        });
+    }
+    borrowRoomKey$(value: any) {
+        console.log(value);
+        const body = {
+            room_key_id: value.room_key_id,
+            faculty_id: value.faculty_id,
+            subject_id: value.subject_id,
+        };
+        return this.http.post<IRoomKeyLog>(this.url, body, {
             headers: this.options.headers,
         });
     }

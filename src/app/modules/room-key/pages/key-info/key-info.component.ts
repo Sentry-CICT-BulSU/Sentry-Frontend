@@ -1,11 +1,14 @@
 // Importing necessary modules from @angular
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { IRoomKeyLog } from 'src/app/core/models/room-key-log.model';
 import {
     IRoomKey,
     IRoomKeyCollection,
 } from 'src/app/core/models/room-key.model';
+import { ISchedule } from 'src/app/core/models/schedule.model';
+import { IUser } from 'src/app/core/models/user.model';
 import { RoomKeyService } from 'src/app/core/services/roomkey.service';
 
 // Defining a new component with the selector 'app-dashboard' and the template URL 'dashboard.component.html'
@@ -18,25 +21,78 @@ import { RoomKeyService } from 'src/app/core/services/roomkey.service';
 export class KeyInfoComponent implements OnInit {
     roomKey?: IRoomKey;
     logs?: IRoomKeyLog[];
+    schedules?: ISchedule[];
+    facultyToBorrow?: IUser;
+    borrowRoomKeyForm?: FormGroup;
     constructor(
         private route: ActivatedRoute,
-        private roomKeyService: RoomKeyService
+        private roomKeyService: RoomKeyService,
+        private fb: FormBuilder
     ) {}
 
     ngOnInit(): void {
+        this.borrowRoomKeyForm = this.fb.group({
+            room_key_id: ['', [Validators.required]],
+            faculty: ['', [Validators.required]],
+            faculty_id: ['', [Validators.required]],
+            time: ['', [Validators.required]],
+            subject_id: ['', [Validators.required]],
+            subject_code: ['', [Validators.required]],
+            subject_name: ['', [Validators.required]],
+        });
+
         // comment below for frontend
         this.roomKeyService
-            .getRoomKey(this.route.snapshot.params['id'])
+            .getRoomKey$(this.route.snapshot.params['id'])
             .subscribe((roomKey) => {
                 this.roomKey = roomKey.data as IRoomKey;
                 this.logs = this.roomKey.logs as IRoomKeyLog[];
-                console.log(roomKey);
-                console.log(this.logs);
+                this.schedules = this.roomKey.schedules as ISchedule[];
+                this.facultyToBorrow = this.schedules[0].adviser as IUser;
+                this.loadFromSchedule();
             });
+        // ---------------------------------------------------------------------
 
         // uncomment below for frontend
         // this.roomKey = SAMPLE_DATA.data as IRoomKey;
-        // this.logs = SAMPLE_DATA.data.logs as IRoomKeyLog[];
+        // this.logs = this.roomKey.logs as IRoomKeyLog[];
+        // this.schedules = this.roomKey.schedules as ISchedule[];
+        // this.facultyToBorrow = this.schedules[0].adviser as IUser;
+    }
+
+    loadFromSchedule(): void {
+        const sched: ISchedule = (
+            this.schedules as ISchedule[]
+        )[0] as ISchedule;
+        const user: IUser = this.facultyToBorrow as IUser;
+        const roomKey: IRoomKey = this.roomKey as IRoomKey;
+        this.borrowRoomKeyForm?.controls['room_key_id'].setValue(roomKey.id);
+        this.borrowRoomKeyForm?.controls['faculty_id'].setValue(user.id);
+        this.borrowRoomKeyForm?.controls['subject_id'].setValue(
+            sched.subject?.id
+        );
+        this.borrowRoomKeyForm?.controls['faculty'].setValue(
+            user.first_name + ' ' + user.first_name
+        );
+        this.borrowRoomKeyForm?.controls['subject_code'].setValue(
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            sched.subject?.code
+        );
+        this.borrowRoomKeyForm?.controls['subject_name'].setValue(
+            sched.subject?.title
+        );
+        this.borrowRoomKeyForm?.controls['time'].setValue(
+            sched.time_start + ' - ' + sched.time_end
+        );
+    }
+
+    borrowRoomKey(): void {
+        this.roomKeyService
+            .borrowRoomKey$(this.borrowRoomKeyForm?.value)
+            .subscribe({
+                next: (response: IRoomKeyLog) => console.log(response),
+                error: (err) => alert(err.error.message),
+            });
     }
 }
 
