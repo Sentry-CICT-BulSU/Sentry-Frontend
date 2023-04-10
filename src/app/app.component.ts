@@ -34,6 +34,7 @@ export const authConfig: AuthConfig = {
     customQueryParams: {
         // Your API's name
         audience: env.apiRootRoute + '/api',
+        prompt: 'none',
     },
     // dummyClientSecret: 'test',
 };
@@ -60,7 +61,7 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.authService.loadUser$().subscribe();
+        // this.authService.loadUser$().subscribe();
     }
 
     private configureWithNewConfigApi() {
