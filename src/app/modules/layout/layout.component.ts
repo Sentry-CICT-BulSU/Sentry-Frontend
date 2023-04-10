@@ -11,6 +11,7 @@ export class LayoutComponent {
 
     signOut(event: boolean) {
         if (event) {
+            console.log(event);
             this.authService.logout();
         }
     }

@@ -64,6 +64,7 @@ export class SidebarComponent implements OnInit {
     }
 
     onSignOut() {
+        console.log('hit');
         this.signOut.emit(true);
     }
 }

@@ -71,7 +71,8 @@ If the observable value is falsy (i.e.,showSideBar$emitsfalse), the class "w-[70
 
             <i class="fa-solid fa-cog text-gray-100 text-center w-5"></i>
 
-            <a routerLinkActive="text-gray-100" class="ml-3 truncate text-sm font-medium tracking-wide text-gray-100 focus:outline-none">
+            <a routerLinkActive="text-gray-100"
+                class="ml-3 truncate text-sm font-medium tracking-wide text-gray-100 focus:outline-none">
                 Settings
             </a>
 
@@ -144,9 +145,10 @@ If the observable value is falsy (i.e.,showSideBar$emitsfalse), the class "w-[70
                 </div>
             </div>
 
-            <i class="truncate ml-auto fa-solid fa-arrow-right-from-bracket text-gray-100 text-center w-5"></i>
+            <i (click)="onSignOut()"
+                class="truncate ml-auto fa-solid fa-arrow-right-from-bracket text-gray-100 text-center w-5"></i>
 
-            <div class="fixed w-full" *ngIf="!(showSideBar$ | async)">
+            <div class="fixed w-full" *ngIf="!(showSideBar$ | async)" (click)="onSignOut()">
                 <span
                     class="absolute left-12 -top-4 w-auto min-w-max origin-left scale-0 rounded-md bg-black p-2 text-xs font-bold text-white shadow-md transition-all duration-200 group-hover:scale-100 dark:bg-white dark:text-night-900">
                     Sign out
