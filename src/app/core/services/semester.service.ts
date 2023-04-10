@@ -6,19 +6,15 @@ import { ISemester } from '../models/semester.model';
 import { IUser } from '../models/user.model';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { PropertiesService } from './properties.service';
 
 @Injectable({
     providedIn: 'root',
 })
-export class SemesterService {
-    options = {
-        headers: new HttpHeaders({
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-        }),
-    };
+export class SemesterService extends PropertiesService {
     user?: IUser;
     constructor(private authService: AuthService, private http: HttpClient) {
+        super();
         this.authService.current_user_subject$?.subscribe(
             (user: IUser | undefined) => (this.user = user)
         );

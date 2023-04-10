@@ -4,27 +4,22 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IUserConfig } from '../models/admin.model';
 import { IResponse } from '../models/response.model';
+import { PropertiesService } from './properties.service';
 
 @Injectable({
     providedIn: 'root',
 })
-export class AdminService {
+export class AdminService extends PropertiesService {
     adminApiRoute = env.apiRootRoute + '/api/admin';
-    options = {
-        headers: new HttpHeaders({
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Headers': '*',
-        }),
-    };
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {
+        super();
+    }
 
     getUsers$() {
-        return this.http.get<IUserCollection>(
-            this.adminApiRoute + '/users',
-            { headers: this.options.headers }
-        );
+        return this.http.get<IUserCollection>(this.adminApiRoute + '/users', {
+            headers: this.options.headers,
+        });
     }
 
     getUser$(user: IUser) {

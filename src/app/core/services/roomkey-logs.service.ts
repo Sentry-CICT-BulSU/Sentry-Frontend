@@ -3,20 +3,19 @@ import { Injectable } from '@angular/core';
 import { IUser } from '../models/user.model';
 import { environment as env } from 'src/environments/environment';
 import { AuthService } from './auth.service';
-import { IRoomKeyLog, IRoomKeyLogCollection } from '../models/room-key-log.model';
+import {
+    IRoomKeyLog,
+    IRoomKeyLogCollection,
+} from '../models/room-key-log.model';
+import { PropertiesService } from './properties.service';
 
 @Injectable({
     providedIn: 'root',
 })
-export class RoomKeyLogsService {
-    options = {
-        headers: new HttpHeaders({
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-        }),
-    };
+export class RoomKeyLogsService extends PropertiesService {
     user?: IUser;
     constructor(private http: HttpClient, private authService: AuthService) {
+        super();
         this.authService.current_user_subject$?.subscribe(
             (user: IUser | undefined) => (this.user = user)
         );

@@ -8,18 +8,12 @@ import { BehaviorSubject, forkJoin, map, pipe, tap } from 'rxjs';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { LocalStorageService } from './local-storage.service';
 import { OAuthService } from 'angular-oauth2-oidc';
+import { PropertiesService } from './properties.service';
 
 @Injectable()
-export class AuthService {
+export class AuthService extends PropertiesService {
     deviceInfo?: any;
     deviceName?: string;
-    options?: any = {
-        headers: new HttpHeaders({
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Headers': '*',
-        }),
-    };
 
     access_token: any;
     refresh_token: any;
@@ -38,6 +32,7 @@ export class AuthService {
         private router: Router,
         private oauthService: OAuthService
     ) {
+        super();
         this.initDevice();
     }
 

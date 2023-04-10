@@ -5,19 +5,15 @@ import { IUser } from '../models/user.model';
 import { environment as env } from 'src/environments/environment';
 import { AuthService } from './auth.service';
 import { IRoomKeyLog } from '../models/room-key-log.model';
+import { PropertiesService } from './properties.service';
 
 @Injectable({
     providedIn: 'root',
 })
-export class RoomKeyService {
-    options = {
-        headers: new HttpHeaders({
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-        }),
-    };
+export class RoomKeyService extends PropertiesService {
     user?: IUser;
     constructor(private http: HttpClient, private authService: AuthService) {
+        super();
         this.authService.current_user_subject$?.subscribe(
             (user: IUser | undefined) => (this.user = user)
         );

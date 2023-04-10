@@ -5,19 +5,15 @@ import { ISchedule, IScheduleCollection } from '../models/schedule.model';
 import { IUser } from '../models/user.model';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { PropertiesService } from './properties.service';
 
 @Injectable({
     providedIn: 'root',
 })
-export class ScheduleService {
-    options = {
-        headers: new HttpHeaders({
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-        }),
-    };
+export class ScheduleService extends PropertiesService {
     user?: IUser;
     constructor(private authService: AuthService, private http: HttpClient) {
+        super();
         this.authService.current_user_subject$?.subscribe(
             (user: IUser | undefined) => (this.user = user)
         );
