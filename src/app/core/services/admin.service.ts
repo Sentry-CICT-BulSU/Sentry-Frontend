@@ -1,8 +1,7 @@
-import { IUser, IUserCollection } from './../models/user.model';
 import { environment as env } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IUserConfig, IResponse } from '../models';
+import { IUserConfig, IResponse, IUser, IUserCollection } from '../models';
 import { PropertiesService } from './properties.service';
 
 @Injectable({

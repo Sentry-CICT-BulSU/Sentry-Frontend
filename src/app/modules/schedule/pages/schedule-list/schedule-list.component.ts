@@ -1,10 +1,6 @@
 // Importing necessary modules from @angular
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import {
-    ISchedule,
-    IScheduleCollection,
-} from 'src/app/core/models/schedule.model';
+import { IScheduleCollection } from 'src/app/core/models/schedule.model';
 import { ScheduleService } from 'src/app/core/services/schedule.service';
 
 // Defining a new component with the selector 'app-dashboard' and the template URL 'dashboard.component.html'

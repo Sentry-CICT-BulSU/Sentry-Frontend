@@ -1,14 +1,12 @@
 import {
     IRoomKeyLog,
     IRoomKeyLogCollection,
-} from 'src/app/core/models/room-key-log.model';
+    IRoomKey,
+    IRoomKeyCollection,
+} from 'src/app/core/models';
 import { RoomKeyLogsService } from './../../../../core/services/roomkey-logs.service';
 // Importing necessary modules from @angular
 import { Component, OnInit } from '@angular/core';
-import {
-    IRoomKey,
-    IRoomKeyCollection,
-} from 'src/app/core/models/room-key.model';
 import { RoomKeyService } from 'src/app/core/services/roomkey.service';
 
 // Defining a new component with the selector 'app-dashboard' and the template URL 'dashboard.component.html'

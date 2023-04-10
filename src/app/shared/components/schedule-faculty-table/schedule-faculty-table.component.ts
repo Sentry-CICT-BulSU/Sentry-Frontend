@@ -2,7 +2,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 import {
     ISchedule,
     IScheduleCollection,
-} from 'src/app/core/models/schedule.model';
+} from 'src/app/core/models';
 
 @Component({
     selector: 'app-schedule-faculty-table',
