@@ -10,25 +10,27 @@ export interface ISchedule extends IMetaData {
     id: number;
 
     adviser_id: IUser['id'];
-    adviser?: IUser;
+    adviser?: IUser | null;
 
     subject_id: ISubject['id'];
-    subject?: ISubject;
+    subject?: ISubject | null;
 
     semester_id: ISemester['id'];
-    semester?: ISemester;
+    semester?: ISemester | null;
 
     room_id: IRoom['id'];
-    room?: IRoom;
+    room?: IRoom | null;
 
     section_id: ISection['id'];
-    section?: ISection;
+    section?: ISection | null;
 
     date_start: string;
     date_end: string;
     time_start: string;
     time_end: string;
     active_days: string[];
+
+    laravel_through_key?: number;
 }
 
 export interface IScheduleCollection extends ICollectionResponse {

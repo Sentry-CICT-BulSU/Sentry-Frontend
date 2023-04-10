@@ -6,25 +6,20 @@ import { RoomKeyContentComponent } from './pages/room-key-content/room-key-conte
 import { KeyInfoComponent } from './pages/key-info/key-info.component';
 
 const routes: Routes = [
-  {
-
-    path: '',
-    component: RoomKeyComponent,
-    children: [
-
-        { path: '', redirectTo: 'content', pathMatch: 'full' },
-        { path: 'content', component: RoomKeyContentComponent },
-        { path: 'key-info', component: KeyInfoComponent },
-        { path: '**', redirectTo: 'content', pathMatch: 'full' },
-    ],
-},
-
+    {
+        path: '',
+        component: RoomKeyComponent,
+        children: [
+            { path: '', component: RoomKeyContentComponent },
+            { path: ':id', component: KeyInfoComponent },
+            // { path: 'key-info', component: KeyInfoComponent },
+            { path: '**', redirectTo: '', pathMatch: 'full' },
+        ],
+    },
 ];
 
-
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule],
 })
-
 export class RoomKeyRoutingModule {}

@@ -3,7 +3,7 @@ import { ICollectionResponse } from './response.model';
 
 export interface IUser extends IMetaData {
     id: number;
-    profile_img?: string;
+    profile_img?: string | null;
     first_name: string;
     last_name: string;
     type: string;
@@ -12,7 +12,7 @@ export interface IUser extends IMetaData {
     contact: string;
     status: string;
     email: string;
-    email_verified_at?: string;
+    email_verified_at?: string | null;
 }
 
 export interface IUserTypes {
