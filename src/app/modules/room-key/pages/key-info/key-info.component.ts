@@ -42,15 +42,7 @@ export class KeyInfoComponent implements OnInit {
         });
 
         // comment below for frontend
-        this.roomKeyService
-            .getRoomKey$(this.route.snapshot.params['id'])
-            .subscribe((roomKey) => {
-                this.roomKey = roomKey.data as IRoomKey;
-                this.logs = this.roomKey.logs as IRoomKeyLog[];
-                this.schedules = this.roomKey.schedules as ISchedule[];
-                this.facultyToBorrow = this.schedules[0].adviser as IUser;
-                this.loadFromSchedule();
-            });
+        this.loadSubs();
         // ---------------------------------------------------------------------
 
         // uncomment below for frontend
@@ -60,7 +52,18 @@ export class KeyInfoComponent implements OnInit {
         // this.facultyToBorrow = this.schedules[0].adviser as IUser;
     }
 
-    loadFromSchedule(): void {
+    loadSubs() {
+        return this.roomKeyService
+            .getRoomKey$(this.route.snapshot.params['id'])
+            .subscribe((roomKey) => {
+                this.roomKey = roomKey.data as IRoomKey;
+                this.logs = this.roomKey.logs as IRoomKeyLog[];
+                this.schedules = this.roomKey.schedules as ISchedule[];
+                this.facultyToBorrow = this.schedules[0].adviser as IUser;
+                this.loadFormControls();
+            });
+    }
+    loadFormControls() {
         const sched: ISchedule = (
             this.schedules as ISchedule[]
         )[0] as ISchedule;
@@ -84,6 +87,10 @@ export class KeyInfoComponent implements OnInit {
         this.borrowRoomKeyForm?.controls['time'].setValue(
             sched.time_start + ' - ' + sched.time_end
         );
+    }
+
+    loadFromSchedule(): void {
+        this.loadSubs();
     }
 
     borrowRoomKey(): void {
