@@ -74,9 +74,7 @@ export class KeyInfoComponent implements OnInit {
         this.borrowRoomKeyForm?.controls['subject_id'].setValue(
             sched.subject?.id
         );
-        this.borrowRoomKeyForm?.controls['faculty'].setValue(
-            user.first_name + ' ' + user.first_name
-        );
+        this.borrowRoomKeyForm?.controls['faculty'].setValue(user.full_name);
         this.borrowRoomKeyForm?.controls['subject_code'].setValue(
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             sched.subject?.code
@@ -165,6 +163,7 @@ const SAMPLE_DATA: IRoomKeyCollection = {
                     deleted_at: null,
                     first_name: 'Vreiln',
                     last_name: 'Faculty 3',
+                    full_name: 'Vreiln Faculty 3',
                     position: 'Instructor III',
                     college:
                         'College of Information and Communications Technology',
@@ -217,6 +216,7 @@ const SAMPLE_DATA: IRoomKeyCollection = {
                     deleted_at: null,
                     first_name: 'Vreiln',
                     last_name: 'Faculty 3',
+                    full_name: 'Vreiln Faculty 3',
                     position: 'Instructor III',
                     college:
                         'College of Information and Communications Technology',
@@ -271,6 +271,7 @@ const SAMPLE_DATA: IRoomKeyCollection = {
                     deleted_at: null,
                     first_name: 'Vreiln',
                     last_name: 'Faculty 3',
+                    full_name: 'Vreiln Faculty 3',
                     position: 'Instructor III',
                     college:
                         'College of Information and Communications Technology',
@@ -325,6 +326,7 @@ const SAMPLE_DATA: IRoomKeyCollection = {
                     deleted_at: null,
                     first_name: 'Vreiln',
                     last_name: 'Faculty 3',
+                    full_name: 'Vreiln Faculty 3',
                     position: 'Instructor III',
                     college:
                         'College of Information and Communications Technology',
@@ -379,6 +381,7 @@ const SAMPLE_DATA: IRoomKeyCollection = {
                     deleted_at: null,
                     first_name: 'Vreiln',
                     last_name: 'Faculty 3',
+                    full_name: 'Vreiln Faculty 3',
                     position: 'Instructor III',
                     college:
                         'College of Information and Communications Technology',
