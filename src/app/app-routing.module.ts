@@ -3,13 +3,15 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthResolver } from './core/resolvers/auth.resolver';
+import { AccessTokenResolver } from './core/resolvers/access-token.resolver';
 
 // Define an array of route objects using the Routes interface.
 const routes: Routes = [
     {
         path: '', // If the path is empty, load the LayoutModule.
-        // canActivate: [AuthGuard],
+        canActivate: [AuthGuard],
         resolve: {
+            // tokens: AccessTokenResolver,
             user: AuthResolver,
         },
         loadChildren: () =>

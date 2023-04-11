@@ -33,7 +33,7 @@ export class AuthGuard implements CanActivate {
         // TODO: https://niceprogrammer.com/laravel-api-and-angular-client-tutorial-part-2-client-oauth-login/
         // if (!this.oauthService.hasValidAccessToken()) {
         if (!this.authService.isAuthenticated) {
-            this.router.navigate(['/auth/sign-in']);
+            this.authService.logout();
             return false;
         }
         return true;

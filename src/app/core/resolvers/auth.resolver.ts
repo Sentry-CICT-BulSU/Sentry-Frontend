@@ -12,12 +12,12 @@ import { IUser } from '../models';
 @Injectable({
     providedIn: 'root',
 })
-export class AuthResolver implements Resolve<IUser> {
+export class AuthResolver implements Resolve<IUser | null> {
     constructor(private authService: AuthService) {}
     resolve(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
-    ): Observable<IUser> {
+    ): Observable<IUser | null> {
         return this.authService.getUser$();
     }
 }

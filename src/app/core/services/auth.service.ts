@@ -3,7 +3,15 @@ import { environment as env } from './../../../environments/environment';
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { IUser, IUserTypes } from '../models';
-import { BehaviorSubject, Observable, forkJoin, map, tap } from 'rxjs';
+import {
+    BehaviorSubject,
+    Observable,
+    catchError,
+    forkJoin,
+    map,
+    of,
+    tap,
+} from 'rxjs';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { LocalStorageService } from './local-storage.service';
 import { OAuthService } from 'angular-oauth2-oidc';
@@ -61,6 +69,11 @@ export class AuthService extends PropertiesService {
                     this.current_user = user;
                     this.current_user_type = user.type;
                     this.current_user_subject$?.next(user);
+                }),
+                catchError((err) => {
+                    // TODO: flash error to login page that user is logout and need to relogin
+                    this.logout();
+                    return of(null);
                 })
             );
     }
@@ -69,10 +82,10 @@ export class AuthService extends PropertiesService {
         const obs$ = forkJoin([this.getUser$()]);
 
         return obs$.pipe(
-            tap(([user]: [IUser]): void => {
-                this.current_user = user;
-                this.current_user_type = user.type;
-                this.current_user_subject$?.next(user);
+            tap(([user]: [IUser | null]): void => {
+                this.current_user = user as IUser;
+                this.current_user_type = this.current_user.type;
+                this.current_user_subject$?.next(this.current_user);
             })
         );
     }
