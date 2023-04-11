@@ -1,5 +1,9 @@
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+    HttpClient,
+    HttpClientModule,
+    HTTP_INTERCEPTORS,
+} from '@angular/common/http';
 import { AuthGuard } from './core/guards/auth.guard';
 import { AuthService } from 'src/app/core/services/auth.service';
 // Import the required modules.
@@ -13,7 +17,6 @@ import { CredentialsInterceptor } from './core/interceptor/credentials.intercept
 import { AuthInterceptor } from './core/interceptor/auth.interceptor';
 import { OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 export function storageFactory(): OAuthStorage {
     return localStorage;
 }
@@ -26,17 +29,16 @@ export function storageFactory(): OAuthStorage {
     imports: [
         BrowserModule,
         AppRoutingModule,
-        SharedModule,
+        SharedModule.forRoot(),
         ReactiveFormsModule,
         HttpClientModule,
-
-        OAuthModule.forRoot({
-            resourceServer: {
-                allowedUrls: [environment.apiRootRoute],
-                sendAccessToken: true
-            }
-        }),
-         BrowserAnimationsModule
+        // OAuthModule.forRoot({
+        //     resourceServer: {
+        //         allowedUrls: [environment.apiRootRoute],
+        //         sendAccessToken: true
+        //     }
+        // }),
+        BrowserAnimationsModule,
     ],
 
     // No providers are needed for this module. The providers array can be used to specify services that should be available
@@ -44,17 +46,7 @@ export function storageFactory(): OAuthStorage {
     providers: [
         AuthService,
         AuthGuard,
-        { provide: OAuthStorage, useFactory: storageFactory }
-        // {
-        //     provide: HTTP_INTERCEPTORS,
-        //     useClass: CredentialsInterceptor,
-        //     multi: true
-        // },
-        // {
-        //     provide: HTTP_INTERCEPTORS,
-        //     useClass: AuthInterceptor,
-        //     multi: true
-        // }
+        { provide: OAuthStorage, useFactory: storageFactory },
     ],
 
     // Bootstrap the AppComponent when the module is loaded.
@@ -63,4 +55,4 @@ export function storageFactory(): OAuthStorage {
 })
 
 // Export the AppModule class for use in other parts of the application.
-export class AppModule { }
+export class AppModule {}

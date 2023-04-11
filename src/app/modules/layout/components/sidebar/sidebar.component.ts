@@ -1,11 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { MenuItem } from 'src/app/core/models/menu.model';
 import { ThemeService } from 'src/app/core/services/theme.service';
 import packageJson from '../../../../../../package.json';
 import { MenuService } from '../../services/menu.service';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { IUser } from 'src/app/core/models/user.model';
+import { IUser, MenuItem } from 'src/app/core/models';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-sidebar',
@@ -34,7 +34,8 @@ export class SidebarComponent implements OnInit {
     constructor(
         public themeService: ThemeService,
         private menuService: MenuService,
-        private authService: AuthService
+        private authService: AuthService,
+        private activatedRoute: ActivatedRoute
     ) {
         // Subscribing to the showSideBar$ and pagesMenu$ observables and storing their state in the class variables.
 
@@ -43,9 +44,10 @@ export class SidebarComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.authService.current_user_subject$?.subscribe(
-            (user: IUser | undefined) => (this.user = user)
-        );
+        // this.authService.current_user_subject$?.subscribe(
+        //     (user: IUser | undefined) => (this.user = user)
+        // );
+        this.user = this.activatedRoute.snapshot.data['user'];
     }
 
     // A method to toggle the sidebar on and off.
@@ -61,6 +63,7 @@ export class SidebarComponent implements OnInit {
     }
 
     onSignOut() {
+        console.log('hit');
         this.signOut.emit(true);
     }
 }

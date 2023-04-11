@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { ThemeService } from './core/services/theme.service';
 import { OAuthService, AuthConfig, ReceivedTokens } from 'angular-oauth2-oidc';
 import { AuthService } from './core/services/auth.service';
+import { ActivatedRoute } from '@angular/router';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 export function randomString(length: any, chars: any) {
     let result = '';
@@ -34,6 +36,7 @@ export const authConfig: AuthConfig = {
     customQueryParams: {
         // Your API's name
         audience: env.apiRootRoute + '/api',
+        prompt: 'none',
     },
     // dummyClientSecret: 'test',
 };
@@ -53,29 +56,40 @@ export class AppComponent implements OnInit {
     //when a new instance of a class is created
     constructor(
         public themeService: ThemeService,
-        private oauthService: OAuthService,
-        private authService: AuthService
+        // private oauthService: OAuthService,
+        private authService: AuthService,
+        private activatedRoute: ActivatedRoute,
+        // private http: HttpClient
     ) {
-        this.configureWithNewConfigApi();
+        // this.configureWithNewConfigApi();
     }
 
     ngOnInit(): void {
-        this.authService.loadUser$().subscribe();
+        // this.configureWithNewConfigApi();
+        // this.authService.loadUser$().subscribe();
     }
 
     private configureWithNewConfigApi() {
-        this.oauthService.configure(authConfig);
-        // this.oauthService.tokenValidationHandler = new JwksValidationHandler();
-        this.oauthService.setupAutomaticSilentRefresh();
-        this.oauthService.tryLoginCodeFlow({
-            onLoginError: (err: object) => {
-                console.debug(err);
-            },
-            onTokenReceived: (info: ReceivedTokens) => {
-                console.debug(info);
-                console.debug(info.state); //state
-            },
-        });
+        // this.oauthService.configure(authConfig);
+        // // this.oauthService.tokenValidationHandler = new JwksValidationHandler();
+        // this.oauthService.setupAutomaticSilentRefresh();
+        // this.oauthService.tryLoginCodeFlow({
+        //     onLoginError: (err: object) => {
+        //         console.debug(err);
+        //     },
+        //     onTokenReceived: (info: ReceivedTokens) => {
+        //         console.debug(info);
+        //         console.debug(info.state); //state
+        //     },
+        // });
+        // this.activatedRoute.queryParams.subscribe((params) => {
+        //     if (params['code']) {
+        //         this.authService.getAccessToken$(
+        //             params['code'],
+        //             params['state']
+        //         );
+        //     }
+        // });
     }
 }
 

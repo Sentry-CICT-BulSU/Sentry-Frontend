@@ -1,29 +1,53 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResponsiveHelperComponent } from './components/responsive-helper/responsive-helper.component';
 import { UserTableComponent } from './components/user-table/user-table.component';
+import { ScheduleFacultyComponent } from './components/schedule-faculty-table/schedule-faculty-table.component';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
+import { ScheduleRoomComponent } from './components/schedule-room-table/schedule-room-table.component';
+import { ScheduleSectionComponent } from './components/schedule-section-table/schedule-section-table.component';
 
 // Angular Material
 import { MatIconModule } from '@angular/material/icon';
+import { AuthInterceptor } from '../core/interceptor/auth.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
     declarations: [
         ResponsiveHelperComponent,
         UserTableComponent,
+        ScheduleFacultyComponent,
+        ScheduleRoomComponent,
+        ScheduleSectionComponent,
         ClickOutsideDirective,
     ],
     imports: [
         CommonModule,
 
         // angular material
-        MatIconModule
+        MatIconModule,
     ],
     exports: [
         ResponsiveHelperComponent,
         UserTableComponent,
         ClickOutsideDirective,
-        MatIconModule
+        ScheduleFacultyComponent,
+        ScheduleRoomComponent,
+        ScheduleSectionComponent,
+        MatIconModule,
     ],
 })
-export class SharedModule { }
+export class SharedModule {
+    static forRoot(): ModuleWithProviders<any> {
+        return {
+            ngModule: SharedModule,
+            providers: [
+                {
+                    provide: HTTP_INTERCEPTORS,
+                    useClass: AuthInterceptor,
+                    multi: true,
+                },
+            ],
+        };
+    }
+}

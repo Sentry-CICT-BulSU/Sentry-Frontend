@@ -1,23 +1,26 @@
-import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { OAuthService } from 'angular-oauth2-oidc';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { catchError, map, of } from 'rxjs';
 
 @Component({
     templateUrl: './auth-callback.component.html',
-    styleUrls: ['./auth-callback.component.scss']
+    styleUrls: ['./auth-callback.component.scss'],
 })
 export class AuthCallbackComponent implements OnInit {
-
     constructor(
-        private oauthService: OAuthService,
+        private authService: AuthService,
         private router: Router,
-        private authService: AuthService
-    ) { }
+        private route: ActivatedRoute
+    ) {}
     ngOnInit(): void {
-        this.authService.handleCallback$();
-
-        this.router.navigate(['/dashboard']);
+        if (this.route.snapshot.data['response']) {
+            console.log('callback');
+            this.router.navigate(['/dashboard']);
+        } else {
+            console.log('unable to login, please try again');
+            localStorage.clear();
+            this.router.navigate(['/auth/sign-in']);
+        }
     }
 }

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -15,20 +15,27 @@ import { SidebarSubmenuComponent } from './components/sidebar/sidebar-submenu/si
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
+import { AuthInterceptor } from 'src/app/core/interceptor/auth.interceptor';
 @NgModule({
-  declarations: [
-    LayoutComponent,
-    SidebarComponent,
-    NavbarComponent,
-    SidebarMenuComponent,
-    ProfileMenuComponent,
-    SidebarSubmenuComponent,
-    NavbarSubmenuComponent,
-    NavbarMenuComponent,
-    NavbarMobileComponent,
-    NavbarMobileMenuComponent,
-    NavbarMobileSubmenuComponent,
-  ],
-  imports: [CommonModule, LayoutRoutingModule, HttpClientModule, AngularSvgIconModule.forRoot(), SharedModule],
+    declarations: [
+        LayoutComponent,
+        SidebarComponent,
+        NavbarComponent,
+        SidebarMenuComponent,
+        ProfileMenuComponent,
+        SidebarSubmenuComponent,
+        NavbarSubmenuComponent,
+        NavbarMenuComponent,
+        NavbarMobileComponent,
+        NavbarMobileMenuComponent,
+        NavbarMobileSubmenuComponent,
+    ],
+    imports: [
+        CommonModule,
+        LayoutRoutingModule,
+        HttpClientModule,
+        AngularSvgIconModule.forRoot(),
+        SharedModule.forRoot(),
+    ],
 })
 export class LayoutModule {}
