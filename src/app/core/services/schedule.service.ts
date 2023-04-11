@@ -19,11 +19,12 @@ export class ScheduleService extends PropertiesService {
     }
 
     get url() {
-        if (this.user?.type === 'Admin') {
+        if (!this.user) throw new Error('User is not defined');
+        if (this.user.type === 'Admin') {
             return environment.apiRootRoute + '/api/admin/schedules';
         } else if (
-            this.user?.type === 'Attendance Checker' ||
-            this.user?.type === 'Faculty'
+            this.user.type === 'Attendance Checker' ||
+            this.user.type === 'Faculty'
         ) {
             return environment.apiRootRoute + '/api/schedules';
         } else {
