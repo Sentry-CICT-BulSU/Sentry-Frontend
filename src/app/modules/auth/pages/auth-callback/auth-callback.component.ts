@@ -14,29 +14,13 @@ export class AuthCallbackComponent implements OnInit {
         private route: ActivatedRoute
     ) {}
     ngOnInit(): void {
-        this.route.queryParams.subscribe((tokens) => {
-            if (tokens['code']) {
-                this.authService
-                    .getAccessToken$(tokens['code'], tokens['state'])
-                    .pipe(
-                        map((tokens) => tokens),
-                        catchError((err) => {
-                            console.error(err);
-                            return of({ tokens: null, error: err });
-                        })
-                    );
-            } else {
-                // localStorage.clear();
-                console.log('unable to login, please try again');
-            }
-        });
-        // if (this.route.snapshot.data['response']) {
-        //     console.log('callback');
-        //     this.router.navigate(['/dashboard']);
-        // } else {
-        //     console.log('unable to login, please try again');
-        //     localStorage.clear();
-        //     this.router.navigate(['/auth/sign-in']);
-        // }
+        if (this.route.snapshot.data['response']) {
+            console.log('callback');
+            this.router.navigate(['/dashboard']);
+        } else {
+            console.log('unable to login, please try again');
+            localStorage.clear();
+            this.router.navigate(['/auth/sign-in']);
+        }
     }
 }
