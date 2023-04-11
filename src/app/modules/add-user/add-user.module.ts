@@ -20,7 +20,7 @@ import { AddUserComponent } from './add-user.component';
   imports: [
     CommonModule,
     AddUserRoutingModule,
-    SharedModule,
+    SharedModule.forRoot(),
     HttpClientModule,
   ],
 })

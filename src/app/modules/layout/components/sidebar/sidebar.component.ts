@@ -48,7 +48,6 @@ export class SidebarComponent implements OnInit {
         //     (user: IUser | undefined) => (this.user = user)
         // );
         this.user = this.activatedRoute.snapshot.data['user'];
-        console.log(this.user);
     }
 
     // A method to toggle the sidebar on and off.

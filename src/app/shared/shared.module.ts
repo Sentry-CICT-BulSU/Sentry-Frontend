@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResponsiveHelperComponent } from './components/responsive-helper/responsive-helper.component';
 import { UserTableComponent } from './components/user-table/user-table.component';
@@ -9,8 +9,8 @@ import { ScheduleSectionComponent } from './components/schedule-section-table/sc
 
 // Angular Material
 import { MatIconModule } from '@angular/material/icon';
-
-
+import { AuthInterceptor } from '../core/interceptor/auth.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -25,7 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
         CommonModule,
 
         // angular material
-        MatIconModule
+        MatIconModule,
     ],
     exports: [
         ResponsiveHelperComponent,
@@ -34,7 +34,20 @@ import { MatIconModule } from '@angular/material/icon';
         ScheduleFacultyComponent,
         ScheduleRoomComponent,
         ScheduleSectionComponent,
-        MatIconModule
+        MatIconModule,
     ],
 })
-export class SharedModule { }
+export class SharedModule {
+    static forRoot(): ModuleWithProviders<any> {
+        return {
+            ngModule: SharedModule,
+            providers: [
+                {
+                    provide: HTTP_INTERCEPTORS,
+                    useClass: AuthInterceptor,
+                    multi: true,
+                },
+            ],
+        };
+    }
+}

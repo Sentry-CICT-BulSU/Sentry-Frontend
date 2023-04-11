@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     SemesterRoutingModule,
-    SharedModule,
+    SharedModule.forRoot(),
     HttpClientModule,
   ],
   declarations: [SemesterComponent]

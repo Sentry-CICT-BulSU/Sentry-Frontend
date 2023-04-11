@@ -25,7 +25,7 @@ import { RoomKeyContentComponent } from './pages/room-key-content/room-key-conte
     imports: [
         CommonModule,
         RoomKeyRoutingModule,
-        SharedModule,
+        SharedModule.forRoot(),
         HttpClientModule,
         NgApexchartsModule,
         ReactiveFormsModule

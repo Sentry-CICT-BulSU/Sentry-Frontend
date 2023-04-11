@@ -8,7 +8,7 @@ import { AuthResolver } from './core/resolvers/auth.resolver';
 const routes: Routes = [
     {
         path: '', // If the path is empty, load the LayoutModule.
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
         resolve: {
             user: AuthResolver,
         },

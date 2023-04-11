@@ -16,7 +16,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthGuard implements CanActivate {
     constructor(
-        private oauthService: OAuthService,
+        // private oauthService: OAuthService,
         private authService: AuthService,
         private router: Router,
         private localStorage: LocalStorageService
@@ -31,7 +31,8 @@ export class AuthGuard implements CanActivate {
         | UrlTree {
         //   restrict access to un-authenticated users
         // TODO: https://niceprogrammer.com/laravel-api-and-angular-client-tutorial-part-2-client-oauth-login/
-        if (!this.oauthService.hasValidAccessToken()) {
+        // if (!this.oauthService.hasValidAccessToken()) {
+        if (!this.authService.isAuthenticated) {
             this.router.navigate(['/auth/sign-in']);
             return false;
         }

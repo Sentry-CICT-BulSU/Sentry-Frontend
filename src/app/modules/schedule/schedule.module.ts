@@ -28,7 +28,7 @@ import { AddScheduleComponent } from './pages/add-schedule/add-schedule.componen
     imports: [
         CommonModule,
         ScheduleRoutingModule,
-        SharedModule,
+        SharedModule.forRoot(),
         HttpClientModule,
         ReactiveFormsModule
     ],

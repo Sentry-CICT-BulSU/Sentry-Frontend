@@ -8,6 +8,11 @@ export const environment = {
     clientRoot: 'http://app.la-passport.test:4200',
     clientId: '2',
     clientSecret: 'M14ZncSPP7dTzXjXpYzuaQImjBUvJOd3QfYsg7TJ',
+
+    oauthClientId: '1',
+    oauthLoginUrl: 'http://la-passport.test/oauth/authorize',
+    oauthTokenUrl: 'http://la-passport.test/oauth/token',
+    oauthCallbackUrl: 'http://app.la-passport.test:4200/auth/callback',
 };
 
 /*
