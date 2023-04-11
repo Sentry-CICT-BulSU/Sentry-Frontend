@@ -24,9 +24,6 @@ export class AuthService extends PropertiesService {
     deviceInfo?: any;
     deviceName?: string;
 
-    access_token: any;
-    refresh_token: any;
-
     current_user!: IUser;
     current_user_type?: string;
     user_types: string[] = ['Faculty', 'Admin', 'Attendance Checker'];
@@ -147,21 +144,51 @@ export class AuthService extends PropertiesService {
                 },
             })
             .pipe(
-                map((response: any) => {
-                    localStorage.setItem('tokenType', response.token_type);
-                    localStorage.setItem('expiresIn', response.expires_in);
-                    localStorage.setItem('accessToken', response.access_token);
-                    localStorage.setItem(
-                        'refreshToken',
-                        response.refresh_token
-                    );
+                map((tokens: any) => {
+                    localStorage.setItem('tokenType', tokens.token_type);
+                    localStorage.setItem('expiresIn', tokens.expires_in);
+                    localStorage.setItem('accessToken', tokens.access_token);
+                    localStorage.setItem('refreshToken', tokens.refresh_token);
                     this.isAuth = true;
                     this.onLogin.emit(true);
-                    return response;
+                    return tokens;
                 })
             );
     }
 
+    refreshAccesstoken$() {
+        if (!this.refreshToken) {
+            return new Observable((o) => {
+                o.next(false);
+            });
+        }
+        const payload = new HttpParams()
+            .append('grant_type', 'refresh_token')
+            .append('refresh_token', this.refreshToken)
+            .append('client_id', env.oauthClientId)
+            .append('scope', '');
+        return this.http
+            .post(env.oauthTokenUrl, payload, {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            })
+            .pipe(
+                map((tokens: any) => {
+                    localStorage.setItem('tokenType', tokens.token_type);
+                    localStorage.setItem('expiresIn', tokens.expires_in);
+                    localStorage.setItem('accessToken', tokens.access_token);
+                    localStorage.setItem('refreshToken', tokens.refresh_token);
+                    this.isAuth = true;
+                    this.onLogin.emit(true);
+                    return tokens;
+                })
+            );
+    }
+
+    get state() {
+        return localStorage.getItem('state');
+    }
     get accessToken() {
         return localStorage.getItem('accessToken');
     }
