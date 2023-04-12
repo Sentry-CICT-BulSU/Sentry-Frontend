@@ -1,7 +1,7 @@
 // Importing necessary modules from @angular
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
     IUser,
     IRoomKey,
@@ -19,19 +19,21 @@ import { RoomKeyService } from 'src/app/core/services/roomkey.service';
 
 // Exporting the DashboardComponent class and implementing the OnInit interface
 export class KeyInfoComponent implements OnInit {
+    roomKeyId: number = this.route.snapshot.params['id'];
     roomKey?: IRoomKey;
     logs?: IRoomKeyLog[];
     schedules?: ISchedule[];
     facultyToBorrow?: IUser;
-    borrowRoomKeyForm?: FormGroup;
+    roomKeyForm?: FormGroup;
     constructor(
         private route: ActivatedRoute,
         private roomKeyService: RoomKeyService,
-        private fb: FormBuilder
+        private fb: FormBuilder,
+        private router: Router
     ) {}
 
     ngOnInit(): void {
-        this.borrowRoomKeyForm = this.fb.group({
+        this.roomKeyForm = this.fb.group({
             room_key_id: ['', [Validators.required]],
             faculty: ['', [Validators.required]],
             faculty_id: ['', [Validators.required]],
@@ -54,13 +56,15 @@ export class KeyInfoComponent implements OnInit {
 
     loadSubs() {
         return this.roomKeyService
-            .getRoomKey$(this.route.snapshot.params['id'])
+            .getRoomKey$(this.roomKeyId)
             .subscribe((roomKey) => {
-                this.roomKey = roomKey.data as IRoomKey;
-                this.logs = this.roomKey.logs as IRoomKeyLog[];
-                this.schedules = this.roomKey.schedules as ISchedule[];
-                this.facultyToBorrow = this.schedules[0].adviser as IUser;
-                this.loadFormControls();
+                if (roomKey.data) {
+                    this.roomKey = roomKey.data as IRoomKey;
+                    this.logs = this.roomKey.logs as IRoomKeyLog[];
+                    this.schedules = this.roomKey.schedules as ISchedule[];
+                    this.facultyToBorrow = this.schedules[0].adviser as IUser;
+                    this.loadFormControls();
+                }
             });
     }
     loadFormControls() {
@@ -69,22 +73,42 @@ export class KeyInfoComponent implements OnInit {
         )[0] as ISchedule;
         const user: IUser = this.facultyToBorrow as IUser;
         const roomKey: IRoomKey = this.roomKey as IRoomKey;
-        this.borrowRoomKeyForm?.controls['room_key_id'].setValue(roomKey.id);
-        this.borrowRoomKeyForm?.controls['faculty_id'].setValue(user.id);
-        this.borrowRoomKeyForm?.controls['subject_id'].setValue(
-            sched.subject?.id
+        const log: IRoomKeyLog = (this.logs as IRoomKeyLog[])[0] as IRoomKeyLog;
+        let roomKeyForm;
+        if (roomKey.status === 'Available') {
+            roomKeyForm = {
+                id: roomKey.id,
+                user_id: user.id,
+                subject_id: sched.subject?.id,
+                faculty: user.full_name,
+                subject_code: sched.subject?.code,
+                subject_name: sched.subject?.title,
+                time: sched.time_start + ' - ' + sched.time_end,
+            };
+        } else {
+            roomKeyForm = {
+                id: log.room_key?.id,
+                user_id: log.faculty?.id,
+                subject_id: log.subject?.id,
+                faculty: log.faculty?.full_name,
+                subject_code: log.subject?.code,
+                subject_name: log.subject?.title,
+                time: log.time_block,
+            };
+        }
+        this.roomKeyForm?.controls['room_key_id'].setValue(roomKeyForm.id);
+        this.roomKeyForm?.controls['faculty_id'].setValue(roomKeyForm.user_id);
+        this.roomKeyForm?.controls['subject_id'].setValue(
+            roomKeyForm.subject_id
         );
-        this.borrowRoomKeyForm?.controls['faculty'].setValue(user.full_name);
-        this.borrowRoomKeyForm?.controls['subject_code'].setValue(
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            sched.subject?.code
+        this.roomKeyForm?.controls['faculty'].setValue(roomKeyForm.faculty);
+        this.roomKeyForm?.controls['subject_code'].setValue(
+            roomKeyForm.subject_code
         );
-        this.borrowRoomKeyForm?.controls['subject_name'].setValue(
-            sched.subject?.title
+        this.roomKeyForm?.controls['subject_name'].setValue(
+            roomKeyForm.subject_name
         );
-        this.borrowRoomKeyForm?.controls['time'].setValue(
-            sched.time_start + ' - ' + sched.time_end
-        );
+        this.roomKeyForm?.controls['time'].setValue(roomKeyForm.time);
     }
 
     loadFromSchedule(): void {
@@ -93,11 +117,28 @@ export class KeyInfoComponent implements OnInit {
 
     borrowRoomKey(): void {
         this.roomKeyService
-            .borrowRoomKey$(this.borrowRoomKeyForm?.value)
-            .subscribe({
-                next: (response: IRoomKeyLog) => console.log(response),
-                error: (err) => alert(err.error.message),
-            });
+            .borrowRoomKey$(this.roomKeyForm?.value)
+            .subscribe(this.handleSubs);
+    }
+    returnRoomKey() {
+        this.roomKeyService
+            .returnRoomKey$(this.roomKeyId)
+            .subscribe(this.handleSubs);
+    }
+    lostRoomKey() {
+        this.roomKeyService
+            .lostRoomKey$(this.roomKeyId)
+            .subscribe(this.handleSubs);
+    }
+
+    get handleSubs() {
+        return {
+            next: (resp: unknown) => {
+                console.log(resp);
+                this.router.navigate(['/room-key']);
+            },
+            error: (err: unknown) => console.debug(err),
+        };
     }
 }
 
@@ -118,6 +159,7 @@ const SAMPLE_DATA: IRoomKeyCollection = {
             updated_at: '2023-04-01T12:18:55.000000Z',
             deleted_at: null,
         },
+
         schedules: [
             {
                 id: 2,
@@ -163,13 +205,13 @@ const SAMPLE_DATA: IRoomKeyCollection = {
                     deleted_at: null,
                     first_name: 'Vreiln',
                     last_name: 'Faculty 3',
-                    full_name: 'Vreiln Faculty 3',
                     position: 'Instructor III',
                     college:
                         'College of Information and Communications Technology',
                     contact: '09998887777',
                     status: 'active',
                     profile_img: null,
+                    full_name: 'Vreiln Faculty 3',
                 },
                 subject: {
                     id: 1,
@@ -198,14 +240,15 @@ const SAMPLE_DATA: IRoomKeyCollection = {
         ],
         logs: [
             {
-                id: 8,
+                id: 12,
                 room_key_id: 1,
                 faculty_id: 6,
                 status: 'Borrowed',
-                created_at: '2023-04-03T06:57:29.000000Z',
-                updated_at: '2023-04-03T06:57:29.000000Z',
+                created_at: '2023-04-10T09:57:29.000000Z',
+                updated_at: '2023-04-10T09:57:29.000000Z',
                 deleted_at: null,
                 subject_id: 1,
+                time_block: '2:00pm - 4:00pm',
                 faculty: {
                     id: 6,
                     email: 'faculty32@test.com',
@@ -216,13 +259,13 @@ const SAMPLE_DATA: IRoomKeyCollection = {
                     deleted_at: null,
                     first_name: 'Vreiln',
                     last_name: 'Faculty 3',
-                    full_name: 'Vreiln Faculty 3',
                     position: 'Instructor III',
                     college:
                         'College of Information and Communications Technology',
                     contact: '09998887777',
                     status: 'active',
                     profile_img: null,
+                    full_name: 'Vreiln Faculty 3',
                 },
                 room_key: {
                     id: 1,
@@ -261,6 +304,7 @@ const SAMPLE_DATA: IRoomKeyCollection = {
                 updated_at: '2023-04-03T06:57:23.000000Z',
                 deleted_at: null,
                 subject_id: 1,
+                time_block: '2:00pm - 4:00pm',
                 faculty: {
                     id: 6,
                     email: 'faculty32@test.com',
@@ -271,13 +315,13 @@ const SAMPLE_DATA: IRoomKeyCollection = {
                     deleted_at: null,
                     first_name: 'Vreiln',
                     last_name: 'Faculty 3',
-                    full_name: 'Vreiln Faculty 3',
                     position: 'Instructor III',
                     college:
                         'College of Information and Communications Technology',
                     contact: '09998887777',
                     status: 'active',
                     profile_img: null,
+                    full_name: 'Vreiln Faculty 3',
                 },
                 room_key: {
                     id: 1,
@@ -316,6 +360,7 @@ const SAMPLE_DATA: IRoomKeyCollection = {
                 updated_at: '2023-04-03T06:57:14.000000Z',
                 deleted_at: null,
                 subject_id: 1,
+                time_block: '2:00pm - 4:00pm',
                 faculty: {
                     id: 6,
                     email: 'faculty32@test.com',
@@ -326,13 +371,13 @@ const SAMPLE_DATA: IRoomKeyCollection = {
                     deleted_at: null,
                     first_name: 'Vreiln',
                     last_name: 'Faculty 3',
-                    full_name: 'Vreiln Faculty 3',
                     position: 'Instructor III',
                     college:
                         'College of Information and Communications Technology',
                     contact: '09998887777',
                     status: 'active',
                     profile_img: null,
+                    full_name: 'Vreiln Faculty 3',
                 },
                 room_key: {
                     id: 1,
@@ -371,6 +416,7 @@ const SAMPLE_DATA: IRoomKeyCollection = {
                 updated_at: '2023-04-03T06:49:26.000000Z',
                 deleted_at: null,
                 subject_id: 1,
+                time_block: '2:00pm - 4:00pm',
                 faculty: {
                     id: 6,
                     email: 'faculty32@test.com',
@@ -381,13 +427,13 @@ const SAMPLE_DATA: IRoomKeyCollection = {
                     deleted_at: null,
                     first_name: 'Vreiln',
                     last_name: 'Faculty 3',
-                    full_name: 'Vreiln Faculty 3',
                     position: 'Instructor III',
                     college:
                         'College of Information and Communications Technology',
                     contact: '09998887777',
                     status: 'active',
                     profile_img: null,
+                    full_name: 'Vreiln Faculty 3',
                 },
                 room_key: {
                     id: 1,

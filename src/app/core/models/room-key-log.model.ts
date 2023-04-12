@@ -13,6 +13,7 @@ export interface IRoomKeyLog extends IMetaData {
     subject_id?: number;
     subject?: ISubject | null;
     status: string;
+    time_block: string;
 }
 
 export interface IRoomKeyLogCollection extends ICollectionResponse {

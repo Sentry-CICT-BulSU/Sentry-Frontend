@@ -59,7 +59,7 @@
             </div>
         </div>
 
-        <form [formGroup]="borrowRoomKeyForm!" novalidate
+        <form [formGroup]="roomKeyForm!" novalidate
             class="grid grid-cols-1 border-x-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
 
             <div class="grid grid-cols-10 gap-8 pb-6">
@@ -97,13 +97,24 @@
             </div>
         </form>
 
-        <div class="grid grid-cols-1 rounded-b-lg border-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
-            <div class="flex items-center justify-end space-x-3">
+        <div *ngIf="roomKey"
+            class="grid grid-cols-1 rounded-b-lg border-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
+            <div *ngIf="roomKey.status !== 'Available'" class="flex items-center justify-end space-x-3">
+                <button *ngIf="roomKey.status !== 'Lost'" type="button" (click)="lostRoomKey()"
+                    class="relative flex justify-center rounded-md border border-transparent bg-primary-700 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-primary-600">
+                    Lost Key
+                </button>
+                <button type="button" (click)="returnRoomKey()"
+                    class="relative flex justify-center rounded-md border border-transparent bg-primary-700 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-primary-600">
+                    Return Key
+                </button>
+            </div>
+            <div *ngIf="roomKey.status === 'Available'" class="flex items-center justify-end space-x-3">
                 <button type="button" (click)="loadFromSchedule()"
                     class="relative selection:flex justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
                     Load data from schedule
                 </button>
-                <button form="" type="button" (click)="borrowRoomKey()"
+                <button type="button" (click)="borrowRoomKey()"
                     class="relative flex justify-center rounded-md border border-transparent bg-primary-700 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-primary-600">
                     Lend Key
                 </button>
@@ -174,7 +185,7 @@
                             <td class="p-2">
                                 <div
                                     class="inline-block rounded-xl bg-[#ECFDF3] py-1 px-2 text-xs font-semibold text-[#027A48]">
-                                    {{log.faculty?.status}}
+                                    {{log.status}}
                                 </div>
                             </td>
                             <td class="py-2 pl-2">

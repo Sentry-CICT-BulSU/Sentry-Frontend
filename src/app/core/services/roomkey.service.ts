@@ -4,6 +4,7 @@ import { IUser, IRoomKeyLog, IRoomKeyCollection } from '../models';
 import { environment as env } from 'src/environments/environment';
 import { AuthService } from './auth.service';
 import { PropertiesService } from './properties.service';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
@@ -46,8 +47,23 @@ export class RoomKeyService extends PropertiesService {
             room_key_id: value.room_key_id,
             faculty_id: value.faculty_id,
             subject_id: value.subject_id,
+            time_block: value.time,
         };
         return this.http.post<IRoomKeyLog>(this.url, body, {
+            headers: this.options.headers,
+        });
+    }
+    returnRoomKey$(id: number) {
+        return this.updateRoomKey$(id, 'Returned');
+    }
+    lostRoomKey$(id: number) {
+        return this.updateRoomKey$(id, 'Lost');
+    }
+    updateRoomKey$(id: number, status: string) {
+        const body = {
+            status: status,
+        };
+        return this.http.patch<IRoomKeyLog>(`${this.url}/${id}`, body, {
             headers: this.options.headers,
         });
     }

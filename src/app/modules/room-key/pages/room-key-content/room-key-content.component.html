@@ -62,15 +62,23 @@
             </div>
 
 
-            <div class="mx-auto radial-progress text-primary-700" style="--value:70; --size:12rem;"><span
-                    class="text-4xl font-bold text-gray-700">25</span></div>
+            <div class="mx-auto radial-progress text-primary-700"
+                style="--value:{{availableKeys.availabe_percentage}}; --size:12rem;">
+                <span class="text-4xl font-bold text-gray-700">
+                    {{availableKeys.availabe_percentage}}
+                </span>
+            </div>
 
             <div>
                 <div>
-                    <p class="text-md font-bold text-gray-900 dark:text-night-50">There are still available keys left.
+                    <p class="text-md font-bold text-gray-900 dark:text-night-50">
+                        There are still available keys left.
                     </p>
                     <div class="space-x-1 text-sm font-medium text-gray-400 dark:text-night-300">
-                        <p class="hover:text-primary-800">The faculty members are currently using 80% of the rooms..</p>
+                        <p class="hover:text-primary-800">
+                            The faculty members are currently using {{availableKeys.unavailable_percentage}}% of the
+                            rooms..
+                        </p>
                     </div>
                 </div>
 
@@ -180,7 +188,7 @@
         <div
             class="grid grid-cols-1 col-span-4  rounded-b-lg border-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
             <div class="flex items-center justify-between space-x-3">
-                <button type="button" [disabled]="RoomKeyLogCollection?.links?.prev"
+                <button type="button" [disabled]="roomKeyLogCollection?.links?.prev"
                     class="relative selection:flex justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
                     Previous
                 </button>
@@ -192,7 +200,7 @@
                     </div>
                 </div>
 
-                <button type="button" [disabled]="RoomKeyLogCollection?.links?.next"
+                <button type="button" [disabled]="roomKeyLogCollection?.links?.next"
                     class="relative selection:flex justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
                     Next
                 </button>

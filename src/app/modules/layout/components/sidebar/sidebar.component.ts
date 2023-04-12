@@ -47,7 +47,11 @@ export class SidebarComponent implements OnInit {
         // this.authService.current_user_subject$?.subscribe(
         //     (user: IUser | undefined) => (this.user = user)
         // );
+        // comment below for frontend
         this.user = this.activatedRoute.snapshot.data['user'];
+
+        // uncomment below for frontend
+        // this.user = SAMPLE_USER;
     }
 
     // A method to toggle the sidebar on and off.
@@ -67,3 +71,21 @@ export class SidebarComponent implements OnInit {
         this.signOut.emit(true);
     }
 }
+
+const SAMPLE_USER: IUser = {
+    id: 1,
+    email: 'rhondytioco@gmail.com',
+    email_verified_at: '2023-03-29T19:38:10.000000Z',
+    type: 'Admin',
+    created_at: '2023-03-29T19:38:10.000000Z',
+    updated_at: '2023-04-01T11:59:05.000000Z',
+    deleted_at: null,
+    first_name: 'Rhon',
+    last_name: 'Stratos',
+    position: 'Instructor I',
+    college: 'College of Information and Communications Technology',
+    contact: '09660783023',
+    status: 'active',
+    profile_img: null,
+    full_name: 'Rhon Stratos',
+};
