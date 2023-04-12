@@ -20,7 +20,8 @@ export class RoomKeyContentComponent implements OnInit {
     roomKeyCollection?: IRoomKeyCollection;
     roomKeys?: IRoomKey[];
     roomKeyLogs?: IRoomKeyLog[];
-    RoomKeyLogCollection?: IRoomKeyLogCollection;
+    roomKeyLogCollection?: IRoomKeyLogCollection;
+    availableKeys?: any;
     constructor(
         private roomKeySerivce: RoomKeyService,
         private roomKeyLogsService: RoomKeyLogsService
@@ -34,10 +35,13 @@ export class RoomKeyContentComponent implements OnInit {
             console.log(roomKeys);
         });
         this.roomKeyLogsService.getRoomKeyLogs$().subscribe((roomKeyLogs) => {
-            this.RoomKeyLogCollection = roomKeyLogs;
+            this.roomKeyLogCollection = roomKeyLogs;
             this.roomKeyLogs = roomKeyLogs.data as IRoomKeyLog[];
             console.log(roomKeyLogs);
         });
+        this.roomKeyLogsService
+            .getAvailableRoomKeys$()
+            .subscribe((response) => (this.availableKeys = response));
 
         // uncomment below for frontend
         // this.roomKeyCollection = SAMPLE_DATA;

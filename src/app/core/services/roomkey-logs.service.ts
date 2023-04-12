@@ -34,4 +34,17 @@ export class RoomKeyLogsService extends PropertiesService {
             headers: this.options.headers,
         });
     }
+    getAvailableRoomKeys$() {
+        type IAvailableKeys = {
+            available: number;
+            available_percentage: number;
+            unavailable: number;
+            unavailable_percentage: number;
+            total_keys: number;
+        };
+
+        return this.http.get<IAvailableKeys>(this.url + '/available', {
+            headers: this.options.headers,
+        });
+    }
 }
