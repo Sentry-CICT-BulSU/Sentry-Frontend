@@ -1,9 +1,9 @@
 <!-- This whole code is inside a div. The *ngFor directive iterates over the pagesMenu$ observable to create a menu for each item.
   This is in the sidebar-menu.component.ts -->
 
-<div class="pt-4" *ngFor="let menu of pagesMenu$ | async">
+<div class="pt-2" *ngFor="let menu of pagesMenu$ | async">
 
-  <ul class="flex flex-col space-y-1">
+  <ul class="flex flex-col space-y-2">
 
     <!-- The code below creates a li element for each item in the menu.items array using the *ngFor directive. -->
 
@@ -64,7 +64,7 @@
         <button
           *ngIf="item.children"
           [ngClass]="{ hidden: !(showSideBar$ | async), 'rotate-180': item.expanded }"
-          class="pointer-events-none absolute top-1 right-0 flex items-center p-1 text-gray-100 transition-all duration-500 dark:text-night-400">
+          class="pointer-events-none absolute top-1 right-2 flex items-center p-1 text-gray-100 transition-all duration-500 dark:text-night-400">
           <i class="fa-solid fa-chevron-down text-gray-100 text-center text-xs"></i>
         </button>
 
