@@ -1,6 +1,16 @@
-<div class="relative bg-white dark:bg-night-700">
+<div class="relative bg-white dark:bg-night-700 md:border-gray-200 md:dark:border-night-500 md:border-none border-b">
   <div class="md:hidden mx-auto px-5">
     <div class="flex items-center justify-between py-3.5 md:justify-start">
+
+
+      <!-- Logo -->
+      <div class="flex items-center justify-start sm:order-2 md:mr-10 lg:hidden">
+        <a class="flex items-center justify-center rounded bg-primary-700 p-2 focus:outline-none focus:ring-1">
+          <img src="assets/icons/BulSU Logo.png" alt="Logo" class="h-5 w-5">
+        </a>
+        <b class="pl-3 text-base font-bold text-gray-900 dark:text-night-50 sm:block"> CICT Sentry </b>
+      </div>
+
       <!-- Mobile Navigation Menu Button-->
       <div class="sm:order-1 md:hidden">
         <button
@@ -12,14 +22,6 @@
           <!-- Heroicon name: outline/menu -->
           <svg-icon src="assets/icons/outline/menu.svg" [svgClass]="'h-6 w-6'"> </svg-icon>
         </button>
-      </div>
-
-      <!-- Logo -->
-      <div class="flex items-center justify-start sm:order-2 md:mr-10 lg:hidden">
-        <a class="flex items-center justify-center rounded bg-primary-700 p-2 focus:outline-none focus:ring-1">
-          <img src="assets/icons/BulSU Logo.png" alt="Logo" class="h-5 w-5">
-        </a>
-        <b class="hidden pl-3 text-sm font-bold dark:text-night-50 sm:block"> Team 404 </b>
       </div>
 
       <!-- Desktop Menu -->
