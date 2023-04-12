@@ -1,8 +1,8 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-const app_url = 'https://sentry-frontend.up.railway.app';
-const api_url = 'https://sentry-backend.up.railway.app';
+const app_url = 'http://app.cict-sentry.test:4200';
+const api_url = 'http://cict-sentry.test';
 export const environment = {
     production: false,
     apiRootRoute: api_url,
