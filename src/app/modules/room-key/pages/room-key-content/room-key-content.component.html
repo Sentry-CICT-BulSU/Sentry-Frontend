@@ -71,8 +71,11 @@
 
             <div>
                 <div>
-                    <p class="text-md font-bold text-gray-900 dark:text-night-50">
+                    <p *ngIf="availableKeys.availabe > 0" class="text-md font-bold text-gray-900 dark:text-night-50">
                         There are still available keys left.
+                    </p>
+                    <p *ngIf="availableKeys.availabe === 0" class="text-md font-bold text-gray-900 dark:text-night-50">
+                        There are no available keys left.
                     </p>
                     <div class="space-x-1 text-sm font-medium text-gray-400 dark:text-night-300">
                         <p class="hover:text-primary-800">
