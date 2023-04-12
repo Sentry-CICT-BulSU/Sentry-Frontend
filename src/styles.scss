@@ -79,6 +79,9 @@ $sentry-frontend-theme: mat.define-light-theme(
     .dropdown:hover > .dropdown-content {
         @apply pointer-events-auto block scale-100 animate-fade-in-up opacity-100 duration-200;
     }
+    .border-light-dark {
+        @apply border border-gray-200 dark:border-night-500;
+    }
 }
 
 /** Scroll bar **/

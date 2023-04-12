@@ -2,7 +2,7 @@
 <!-- replace the violet if not satisfied. use this #feb07f  #9c5aa9-->
 
 <nav [ngClass]="(showSideBar$ | async) ? 'w-52 xl:w-[312px]' : 'w-[70px]'"
-    class="scrollbar-thumb-rounded scrollbar-track-rounded hidden h-full flex-col justify-between overflow-auto bg-primary-700 pt-3 transition-all duration-300 scrollbar-thin scrollbar-track-primary-700 scrollbar-thumb-primary-700 dark:bg-night-700 lg:flex">
+    class="scrollbar-thumb-rounded scrollbar-track-rounded hidden h-full flex-col justify-between overflow-auto bg-primary-700 pt-3 transition-all duration-300 scrollbar-thin scrollbar-track-primary-700 scrollbar-thumb-primary-700 dark:scrollbar-thumb-night-700 dark:scrollbar-track-night-700 dark:bg-night-700 lg:flex">
     <div class="px-4">
         <!-- Logo -->
         <div class="relative h-10">
@@ -27,7 +27,7 @@
         <!-- Menu Items -->
 
         <div
-            class="mt-6 group flex h-9 cursor-pointer items-center justify-start rounded p-2 bg-primary-600 dark:hover:bg-night-600">
+            class="mt-6 group flex h-9 cursor-pointer items-center justify-start rounded p-2 bg-primary-600 dark:bg-night-500 dark:hover:bg-night-600">
 
             <i class="fa-solid fa-search text-gray-100 text-center w-5"></i>
 
