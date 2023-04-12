@@ -1,12 +1,15 @@
+// const app_url = 'http://sentry-cict-bulsu.github.io/Sentry-Frontend';
+const app_url = 'https://sentry-frontend.up.railway.app';
+const api_url = 'https://sentry-backend.up.railway.app';
 export const environment = {
-    production: true,
-    apiRootRoute: 'http://sentry-backend.up.railway.app',
-    clientRoot: 'http://sentry-frontend.up.railway.app:4200',
+    production: false,
+    apiRootRoute: api_url,
+    clientRoot: app_url,
     clientId: '2',
     clientSecret: 'M14ZncSPP7dTzXjXpYzuaQImjBUvJOd3QfYsg7TJ',
 
     oauthClientId: '1',
-    oauthLoginUrl: 'http://sentry-backend.up.railway.app/oauth/authorize',
-    oauthTokenUrl: 'http://sentry-backend.up.railway.app/oauth/token',
-    oauthCallbackUrl: 'http://sentry-frontend.up.railway.app:4200/auth/callback',
+    oauthLoginUrl: api_url + '/oauth/authorize',
+    oauthTokenUrl: api_url + '/oauth/token',
+    oauthCallbackUrl: app_url + '/auth/callback',
 };
