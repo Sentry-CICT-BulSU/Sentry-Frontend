@@ -24,10 +24,7 @@
                         "polyfills": ["zone.js"],
                         "tsConfig": "tsconfig.app.json",
                         "inlineStyleLanguage": "scss",
-                        "assets": [
-                            "src/favicon.ico",
-                            "src/assets"
-                        ],
+                        "assets": ["src/favicon.ico", "src/assets"],
                         "styles": [
                             "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
                             "src/styles.scss"
@@ -37,6 +34,11 @@
                     "configurations": {
                         "production": {
                             "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "500kb",
+                                    "maximumError": "1mb"
+                                },
                                 {
                                     "type": "anyComponentStyle",
                                     "maximumWarning": "2kb",
