@@ -17,6 +17,7 @@ import { CredentialsInterceptor } from './core/interceptor/credentials.intercept
 import { AuthInterceptor } from './core/interceptor/auth.interceptor';
 import { OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthModule } from './modules/auth/auth.module';
 export function storageFactory(): OAuthStorage {
     return localStorage;
 }
@@ -29,6 +30,7 @@ export function storageFactory(): OAuthStorage {
     imports: [
         BrowserModule,
         AppRoutingModule,
+        AuthModule,
         SharedModule.forRoot(),
         ReactiveFormsModule,
         HttpClientModule,

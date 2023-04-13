@@ -19,11 +19,11 @@ const routes: Routes = [
                 (m) => m.LayoutModule
             ),
     },
-    {
-        path: 'auth', // If the path is 'auth', load the AuthModule.
-        loadChildren: () =>
-            import('./modules/auth/auth.module').then((m) => m.AuthModule),
-    },
+    // {
+    //     path: 'auth', // If the path is 'auth', load the AuthModule.
+    //     loadChildren: () =>
+    //         import('./modules/auth/auth.module').then((m) => m.AuthModule),
+    // },
     { path: '**', redirectTo: 'error/404' }, // If the path is anything else, redirect to the 404 error page.
 ];
 
