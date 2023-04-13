@@ -12,10 +12,10 @@ const routes: Routes = [
     component: ScheduleComponent,
     children: [
 
-        { path: '', redirectTo: 'faculty-list', pathMatch: 'full' },
-        { path: 'faculty-list', component: ScheduleListComponent },
+        { path: '', redirectTo: 'schedule-list', pathMatch: 'full' },
+        { path: 'schedule-list', component: ScheduleListComponent },
         { path: 'add-schedule', component: AddScheduleComponent },
-        { path: '**', redirectTo: 'faculty-list', pathMatch: 'full' },
+        { path: '**', redirectTo: 'schedule-list', pathMatch: 'full' },
     ],
 },
 
