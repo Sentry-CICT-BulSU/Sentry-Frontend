@@ -17,6 +17,7 @@ import { CredentialsInterceptor } from './core/interceptor/credentials.intercept
 import { AuthInterceptor } from './core/interceptor/auth.interceptor';
 import { OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { ServiceWorkerModule } from '@angular/service-worker';
 export function storageFactory(): OAuthStorage {
     return localStorage;
 }
@@ -27,7 +28,7 @@ export function storageFactory(): OAuthStorage {
 
     // Import the BrowserModule, AppRoutingModule, and SharedModule.
     imports: [
-        BrowserModule,
+        BrowserModule.withServerTransition({ appId: 'sentry-frontend' }),
         AppRoutingModule,
         SharedModule.forRoot(),
         ReactiveFormsModule,
@@ -39,6 +40,12 @@ export function storageFactory(): OAuthStorage {
         //     }
         // }),
         BrowserAnimationsModule,
+        // ServiceWorkerModule.register('ngsw-worker.js', {
+        //     enabled: !isDevMode(),
+        //     // Register the ServiceWorker as soon as the application is stable
+        //     // or after 30 seconds (whichever comes first).
+        //     registrationStrategy: 'registerWhenStable:30000',
+        // }),
     ],
 
     // No providers are needed for this module. The providers array can be used to specify services that should be available

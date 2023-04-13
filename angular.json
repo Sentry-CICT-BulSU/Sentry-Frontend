@@ -17,8 +17,12 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "allowedCommonJsDependencies": ["apexcharts"],
-                        "outputPath": "dist",
+                        "allowedCommonJsDependencies": [
+                            "apexcharts",
+                            "crypto-js",
+                            "crypto-js/sha256"
+                        ],
+                        "outputPath": "dist/sentry-frontend",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": ["zone.js"],
@@ -43,6 +47,12 @@
                                     "type": "anyComponentStyle",
                                     "maximumWarning": "2kb",
                                     "maximumError": "4kb"
+                                }
+                            ],
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.prod.ts"
                                 }
                             ],
                             "outputHashing": "all"
@@ -86,6 +96,62 @@
                         "styles": ["src/styles.scss"],
                         "scripts": []
                     }
+                },
+                "server": {
+                    "builder": "@angular-devkit/build-angular:server",
+                    "options": {
+                        "outputPath": "dist/sentry-frontend/server",
+                        "main": "server.ts",
+                        "tsConfig": "tsconfig.server.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "outputHashing": "media",
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.prod.ts"
+                                }
+                            ]
+                        },
+                        "development": {
+                            "optimization": false,
+                            "sourceMap": true,
+                            "extractLicenses": false
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "serve-ssr": {
+                    "builder": "@nguniversal/builders:ssr-dev-server",
+                    "configurations": {
+                        "development": {
+                            "browserTarget": "sentry-frontend:build:development",
+                            "serverTarget": "sentry-frontend:server:development"
+                        },
+                        "production": {
+                            "browserTarget": "sentry-frontend:build:production",
+                            "serverTarget": "sentry-frontend:server:production"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "prerender": {
+                    "builder": "@nguniversal/builders:prerender",
+                    "options": {
+                        "routes": ["/"]
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "sentry-frontend:build:production",
+                            "serverTarget": "sentry-frontend:server:production"
+                        },
+                        "development": {
+                            "browserTarget": "sentry-frontend:build:development",
+                            "serverTarget": "sentry-frontend:server:development"
+                        }
+                    },
+                    "defaultConfiguration": "production"
                 }
             }
         }
