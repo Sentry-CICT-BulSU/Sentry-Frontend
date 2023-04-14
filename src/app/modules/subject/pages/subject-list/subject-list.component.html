@@ -2,14 +2,14 @@
     <!-- Header -->
     <div class="mb-8 flex justify-between ">
         <div class="inline-block">
-            <h3 class="font-medium text-gray-900 text-3xl dark:text-white">Semester Management</h3>
+            <h3 class="font-medium text-gray-900 text-3xl dark:text-white">Subject Management</h3>
             <div class="space-x-1 text-base font-medium text-gray-400 dark:text-night-300">
-                <p class="hover:text-primary-800">Manage the college semester here.</p>
+                <p class="hover:text-primary-800">Manage the college’s offered course.</p>
             </div>
         </div>
-        <button type="button" [routerLink]="['/semester/add-semester']"
+        <button type="button" [routerLink]="['/subject/add-subject']"
                 class="my-auto flex-none button-colored">
-                Add Semester
+                Add Subject
         </button>
     </div>
     <!-- end Header -->
@@ -17,10 +17,10 @@
 
     <div class="grid grid-cols-1 rounded-t-lg border-light-dark bg-white p-5 dark:bg-night-700">
             <div class="inline-block">
-                <h3 class="text-lg font-medium text-gray-900 dark:text-white mr-3">Semester Management</h3>
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white mr-3">Subject Management</h3>
                 <div class="space-x-1 text-sm font-medium text-gray-400 dark:text-night-300">
                     <p class="hover:text-primary-800">
-                        Keep track of the college semester
+                        Manage the college’s offered course.
                     </p>
                 </div>
             </div>
@@ -70,9 +70,8 @@
         <!--Table head-->
         <thead class="text-xs text-gray-400 dark:text-night-300">
             <tr>
-                <th class="py-3 px-2 text-left font-medium w-1/4">Semester Name</th>
+                <th class="py-3 px-2 text-left font-medium w-1/2">Subject Name</th>
                 <th class="py-3 px-2 text-left font-medium">Status</th>
-                <th class="py-3 px-2 text-left font-medium w-1/4">Duration</th>
                 <th class="py-3 px-2 text-left font-medium w-1/4">Last Modified</th>
                 <th class="py-3 px-2 text-right font-medium w-1/10"></th>
             </tr>
@@ -86,10 +85,10 @@
                         <div class="flex flex-col justify-items-start">
                             <a href="#"
                                 class="mb-1 text-sm font-medium text-gray-900 dark:text-night-100 dark:hover:text-primary-500">
-                                2nd Semester
+                                IT 301
                             </a>
                             <span class="text-sm font-medium text-gray-400 dark:text-night-200">
-                                Academic Year 2022 - 2023
+                                Application Development and Emerging Technologies
                             </span>
                         </div>
                     </div>
@@ -98,11 +97,6 @@
                     <div class="inline-block rounded-xl bg-green-500/25 py-1 px-2 text-xs font-medium text-green-500">
                         Active
                     </div>
-                </td>
-                <td class="py-2 pl-2">
-                    <span class="text-sm font-medium text-gray-400 dark:text-night-200">
-                        Jan 11, 2023 - Jun 01, 2023
-                    </span>
                 </td>
                 <td class="py-2 pl-2">
                     <span class="text-sm font-medium text-gray-400 dark:text-night-200">
