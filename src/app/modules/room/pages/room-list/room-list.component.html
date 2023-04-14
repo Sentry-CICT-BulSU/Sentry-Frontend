@@ -2,22 +2,25 @@
     <!-- Header -->
     <div class="mb-8 flex justify-between ">
         <div class="inline-block">
-            <h3 class="font-medium text-gray-900 text-3xl dark:text-white">Subject Management</h3>
+            <h3 class="font-medium text-gray-900 text-3xl dark:text-white">Room Management</h3>
             <div class="space-x-1 text-base font-medium text-gray-400 dark:text-night-300">
-                <p class="hover:text-primary-800">Manage the college’s offered course.</p>
+                <p class="hover:text-primary-800">Manage the college’s available rooms.</p>
             </div>
         </div>
-
+        <button type="button" [routerLink]="['/room/add-room']"
+                class="my-auto flex-none button-colored">
+                Add Room
+        </button>
     </div>
     <!-- end Header -->
     <!-- <router-outlet></router-outlet> -->
 
     <div class="grid grid-cols-1 rounded-t-lg border-light-dark bg-white p-5 dark:bg-night-700">
             <div class="inline-block">
-                <h3 class="text-lg font-medium text-gray-900 dark:text-white mr-3">Subject Management</h3>
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white mr-3">Room Management</h3>
                 <div class="space-x-1 text-sm font-medium text-gray-400 dark:text-night-300">
                     <p class="hover:text-primary-800">
-                        Manage the college’s offered course.
+                        Add or modify the college’s rooms.
                     </p>
                 </div>
             </div>
@@ -82,10 +85,10 @@
                         <div class="flex flex-col justify-items-start">
                             <a href="#"
                                 class="mb-1 text-sm font-medium text-gray-900 dark:text-night-100 dark:hover:text-primary-500">
-                                IT 301
+                                IT 1
                             </a>
                             <span class="text-sm font-medium text-gray-400 dark:text-night-200">
-                                Application Development and Emerging Technologies
+                                3rd floor - Pimentel Hall
                             </span>
                         </div>
                     </div>
