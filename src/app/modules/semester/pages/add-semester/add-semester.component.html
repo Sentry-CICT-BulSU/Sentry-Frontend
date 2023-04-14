@@ -1,0 +1,157 @@
+<div class="mx-auto px-4 pb-4 pt-8 sm:px-8 lg:container">
+    <!-- Header -->
+    <div class="mb-8 flex justify-between ">
+        <div class="inline-block">
+            <h3 class="font-medium text-gray-900 text-3xl dark:text-white">Semester Management</h3>
+            <div class="space-x-1 text-base font-medium text-gray-400 dark:text-night-300">
+                <p class="hover:text-primary-800">Manage the college semester here.</p>
+            </div>
+        </div>
+
+    </div>
+    <!-- end Header -->
+
+    <div class="inline-block mb-4">
+        <h3 class="font-medium text-gray-900 text-2xl dark:text-white">
+            Add Semester information
+        </h3>
+        <div class="space-x-1 text-sm font-medium text-gray-400 dark:text-night-300">
+            <p class="hover:text-primary-800">
+                Add necessary details needed here.
+            </p>
+        </div>
+    </div>
+
+    <form class="grid grid-cols-1">
+        <!-- Separator -->
+        <div class="py-6">
+            <hr class="border-solid border-gray-200 dark:border-night-500" />
+        </div>
+
+        <div class="grid grid-cols-8 gap-8 pb-6">
+            <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
+                <p>Semester</p>
+            </div>
+
+            <div class="relative col-span-2">
+                <select name="semester" id="semester" class="peer block">
+                    <option>
+                        1st Semester
+                    </option>
+                    <option>
+                        2nd Semester
+                    </option>
+                </select>
+            </div>
+
+
+
+        </div>
+
+
+        <div class="grid grid-cols-8 gap-8 pb-6">
+            <div class="space-x-1 text-sm font-medium text-gray-600 dark:text-night-300">
+                <p>Academic Year</p>
+            </div>
+
+            <div class="relative col-span-2">
+                <input name="academic-year" type="text" id="academic-year" class="peer block" placeholder=" " />
+                <!-- <label for="email"
+                    class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary-700 dark:bg-night-700 dark:text-night-200">
+                    XXXX-XXXX in Number format
+                </label> -->
+                <p class="text-sm text-gray-500 mt-1.5"> XXXX-XXXX in Number format</p>
+            </div>
+
+
+        </div>
+
+
+
+
+        <div class="grid grid-cols-8 gap-8 pb-6">
+            <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
+                <p>Status</p>
+            </div>
+
+            <div class="relative col-span-2">
+
+
+        <!-- tabs -->
+        <div
+          class="grid w-full grid-cols-2 rounded-md border border-gray-300 text-xs">
+          <div>
+            <input type="radio" name="option" id="1" class="peer hidden" checked />
+            <label for="1" class="rounded-l-md border-r border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200"
+              >Active</label
+            >
+          </div>
+
+
+          <div>
+            <input type="radio" name="option" id="2" class="peer hidden" />
+            <label
+              for="2"
+              class="rounded-r-md border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200"
+              >Inactive</label
+            >
+          </div>
+
+        </div>
+
+
+            </div>
+
+
+
+        </div>
+
+
+        <div class="grid grid-cols-8 gap-8 pb-6">
+            <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
+                <p>Duration</p>
+            </div>
+
+            <mat-form-field appearance="fill" class="relative leading-5 font-normal col-span-2 bg-white rounded-md border-light-dark text-xs">
+                <!-- <mat-label>Enter a date range</mat-label> -->
+                <mat-date-range-input [rangePicker]="picker" class="w-full rounded-md border border-gray-300 px-3 py-3 text-xs placeholder-gray-400 focus:z-10  focus:border-primary-700 focus:outline-none focus:ring-primary-700 dark:border-night-500 dark:bg-night-700 dark:text-night-400 dark:placeholder-night-200">
+                  <input matStartDate placeholder="Start date" class="date-field">
+                  <input matEndDate placeholder="End date" class="date-field">
+                </mat-date-range-input>
+                <!-- <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> -->
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
+
+
+
+
+        </div>
+
+
+
+
+        <!-- Separator -->
+        <div class="py-6">
+            <hr class="border-solid border-gray-200 dark:border-night-500" />
+        </div>
+
+        <div class="flex items-center justify-end space-x-3">
+            <button type="reset"
+                class="relative mb-10 flex w-20 justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+                Cancel
+            </button>
+            <button type="submit"
+                class="relative mb-10 flex w-20 justify-center rounded-md border border-transparent bg-primary-700 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-primary-600">
+                Save
+            </button>
+        </div>
+    </form>
+
+
+
+
+
+
+
+</div>

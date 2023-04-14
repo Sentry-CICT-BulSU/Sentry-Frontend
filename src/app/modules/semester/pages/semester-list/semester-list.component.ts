@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-semester',
-    templateUrl: './semester.component.html',
+    selector: 'app-semester-list',
+    templateUrl: './semester-list.component.html',
 })
-export class SemesterComponent implements OnInit {
+export class SemesterListComponent implements OnInit {
 
   constructor() { }
 
@@ -32,3 +32,4 @@ export class SemesterComponent implements OnInit {
   }
 
 }
+
