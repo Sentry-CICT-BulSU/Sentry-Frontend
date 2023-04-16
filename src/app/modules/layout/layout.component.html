@@ -1,8 +1,8 @@
-<div class="flex h-screen w-full overflow-hidden bg-primary-700 dark:bg-night-700">
+<div class="flex h-screen w-full overflow-hidden md:bg-primary-700 bg-transparent transition-all duration-300 dark:bg-night-700">
     <!-- Sidebar -->
     <app-sidebar (signOut)="signOut($event)"></app-sidebar>
 
-    <div class="grid flex-grow content-start rounded-tl-[2rem] border-t-[12px] mt-3 border-white dark:border-night-800 bg-white dark:bg-night-800">
+    <div class="grid flex-grow content-start rounded-tl-[2rem] border-none md:border-t-[12px] md:mt-3 mt-0 md:border-white dark:border-night-800 bg-white dark:bg-night-800">
         <!-- Header -->
         <app-navbar></app-navbar>
         <!-- main content -->

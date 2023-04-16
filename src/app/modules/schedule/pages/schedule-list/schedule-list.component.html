@@ -1,47 +1,110 @@
-<div class="grid grid-cols-1 rounded-t-lg border-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
+<div class="grid grid-cols-1 rounded-t-lg border-light-dark bg-white p-5 dark:bg-night-700">
     <div class="flex justify-between">
         <div class="flex items-center justify-start">
-            <button type="button" [routerLink]="['/schedule/schedule-list']"
-                class="relative flex justify-center rounded-l-md border border-transparent bg-primary-700 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-primary-600">
+            <a href="#faculty"
+                class="tab-link active relative selection:flex justify-center rounded-l-md border border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
                 Faculty
-            </button>
-            <button type="button" [routerLink]="['/schedule/room-list']"
-                class="relative selection:flex justify-center border-y border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+            </a>
+            <a href="#room"
+                class="tab-link relative selection:flex justify-center border-y border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
                 Room
-            </button>
-            <button type="button" [routerLink]="['/schedule/section-list']"
-                class="relative selection:flex justify-center rounded-r-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+            </a>
+            <a href="#section"
+                class="tab-link relative selection:flex justify-center rounded-r-md border border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
                 Section
-            </button>
+            </a>
         </div>
         <button type="button" [routerLink]="['/schedule/add-schedule']"
-            class="relative selection:flex justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+            class="relative selection:flex justify-center rounded-md border border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
             Add Schedule
         </button>
     </div>
 </div>
 
-<div class="grid grid-cols-1 border-x-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
-    <app-schedule-faculty-table [data]="schedules"></app-schedule-faculty-table>
+
+<div id="faculty" class="tab-content">
+
+    <div class="grid grid-cols-1 border-x border-gray-200 dark:border-night-500 bg-white p-5 dark:bg-night-700">
+        <app-schedule-faculty-table [data]="schedules"></app-schedule-faculty-table>
+    </div>
+
+
+    <div class="grid grid-cols-1 rounded-b-lg border-light-dark bg-white p-5 dark:bg-night-700">
+        <div class="flex items-center justify-between space-x-3">
+            <button type="button"
+                class="relative selection:flex justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+                Previous
+            </button>
+            <div *ngIf="isMultiPage">
+                <div *ngFor="let page of pageMaxCount()"
+                    class="relative justify-center rounded-md py-2 px-4 text-sm font-medium text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-50">
+                    1
+                </div>
+            </div>
+
+            <button type="button"
+                class="relative selection:flex justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+                Next
+            </button>
+        </div>
+    </div>
+
 </div>
 
 
-<div class="grid grid-cols-1 rounded-b-lg border-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
-    <div class="flex items-center justify-between space-x-3">
-        <button type="button" [disabled]="!schedules?.links?.prev"
-            class="relative selection:flex justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
-            Previous
-        </button>
-        <div *ngIf="isMultiPage">
-            <div *ngFor="let page of pageMaxCount()"
-                class="relative justify-center rounded-md py-2 px-4 text-sm font-medium text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-50">
-                1
-            </div>
-        </div>
-
-        <button type="button" [disabled]="!schedules?.links?.next"
-            class="relative selection:flex justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
-            Next
-        </button>
+<div id="room" class="tab-content">
+    <div class="grid grid-cols-1 border-x border-gray-200 dark:border-night-500 bg-white p-5 dark:bg-night-700">
+        <app-schedule-room-table></app-schedule-room-table>
     </div>
+
+
+    <div class="grid grid-cols-1 rounded-b-lg border-light-dark bg-white p-5 dark:bg-night-700">
+        <div class="flex items-center justify-between space-x-3">
+            <button type="button"
+                class="relative selection:flex justify-center rounded-md border border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+                Previous
+            </button>
+
+            <div>
+                <div
+                    class="relative justify-center rounded-md py-2 px-4 text-sm font-medium text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-50">
+                    1
+                </div>
+            </div>
+
+            <button type="button"
+                class="relative selection:flex justify-center rounded-md border border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+                Next
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="section" class="tab-content">
+    <div class="grid grid-cols-1 border-x border-gray-200 dark:border-night-500 bg-white p-5 dark:bg-night-700">
+        <app-schedule-section-table></app-schedule-section-table>
+    </div>
+
+
+    <div class="grid grid-cols-1 rounded-b-lg border-light-dark bg-white p-5 dark:bg-night-700">
+        <div class="flex items-center justify-between space-x-3">
+            <button type="button"
+                class="relative selection:flex justify-center rounded-md border border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+                Previous
+            </button>
+
+            <div>
+                <div
+                    class="relative justify-center rounded-md py-2 px-4 text-sm font-medium text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-50">
+                    1
+                </div>
+            </div>
+
+            <button type="button"
+                class="relative selection:flex justify-center rounded-md border border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+                Next
+            </button>
+        </div>
+    </div>
+
 </div>

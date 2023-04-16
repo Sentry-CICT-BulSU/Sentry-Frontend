@@ -6,9 +6,8 @@ import { ScheduleFacultyComponent } from './components/schedule-faculty-table/sc
 import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { ScheduleRoomComponent } from './components/schedule-room-table/schedule-room-table.component';
 import { ScheduleSectionComponent } from './components/schedule-section-table/schedule-section-table.component';
-
-// Angular Material
 import { MatIconModule } from '@angular/material/icon';
+import { RoomKeysComponent } from './components/room-keys/room-keys.component';
 import { AuthInterceptor } from '../core/interceptor/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -19,6 +18,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
         ScheduleFacultyComponent,
         ScheduleRoomComponent,
         ScheduleSectionComponent,
+        RoomKeysComponent,
         ClickOutsideDirective,
     ],
     imports: [
@@ -34,6 +34,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
         ScheduleFacultyComponent,
         ScheduleRoomComponent,
         ScheduleSectionComponent,
+        RoomKeysComponent,
         MatIconModule,
     ],
 })
