@@ -1,0 +1,37 @@
+<div class="flex-col rounded-lg bg-white py-2 dark:bg-night-700 sm:flex-row">
+  <!-- Card Header -->
+  <div class="mb-2 flex items-center justify-between">
+
+
+  </div>
+  <!-- end Card Header -->
+
+  <!-- Card Body -->
+  <apx-chart
+  [class]="chartClass"
+  [series]="chartOptions.series!"
+  [chart]="chartOptions.chart!"
+  [legend]="chartOptions.legend!"
+  [dataLabels]="chartOptions.dataLabels!"
+  [fill]="chartOptions.fill!"
+  [stroke]="chartOptions.stroke!"
+  [xaxis]="chartOptions.xaxis!"
+  [yaxis]="chartOptions.yaxis!"
+  [states]="chartOptions.states!"
+  [tooltip]="chartOptions.tooltip!"
+  [colors]="chartOptions.colors!"
+  [grid]="chartOptions.grid!"
+  [title]="chartOptions.title!">
+</apx-chart>
+
+  <!-- end Chart -->
+
+  <!--months-->
+
+    <div
+      class="cursor-pointer text-center rounded-md px-4 py-2 text-sm text-gray-400  dark:text-night-300">
+      Month
+    </div>
+
+  <!--end months-->
+</div>

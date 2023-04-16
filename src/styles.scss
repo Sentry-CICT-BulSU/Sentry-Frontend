@@ -1,11 +1,5 @@
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
 @use "@angular/material" as mat;
-// Plus imports for other components in your app.
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
 @include mat.core();
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
@@ -34,12 +28,8 @@ $sentry-frontend-theme: mat.define-light-theme(
     )
 );
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
 @include mat.all-component-themes($sentry-frontend-theme);
 
-/* You can add global styles to this file, and also import other style files */
 
 @import "./assets/fonts/Inter/stylesheet";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
@@ -75,9 +65,29 @@ $sentry-frontend-theme: mat.define-light-theme(
     .dropdown-content {
         @apply pointer-events-none scale-95 opacity-0 duration-100 ease-in;
     }
-
     .dropdown:hover > .dropdown-content {
         @apply pointer-events-auto block scale-100 animate-fade-in-up opacity-100 duration-200;
+    }
+    .border-light-dark {
+        @apply border border-gray-300 dark:border-night-500;
+    }
+    .tab-content {
+        @apply hidden;
+    }
+    .tab-link.active {
+        @apply border-primary-700 bg-primary-700 text-white hover:bg-primary-600;
+    }
+    .tab-link {
+        @apply cursor-pointer;
+    }
+    .tab-content.active {
+        @apply block;
+    }
+    .button-plain {
+        @apply border border-gray-200 dark:border-night-500 rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-night-200 dark:hover:bg-night-500
+    }
+    .button-colored {
+        @apply border border-primary-700 hover:bg-primary-600 bg-primary-700 text-white rounded-md px-4 py-2 text-sm font-medium;
     }
 }
 
@@ -94,7 +104,7 @@ body {
 }
 body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: Inter, Roboto, sans-serif;
 }
 
 input[type="search"]::-webkit-search-decoration,
@@ -103,4 +113,43 @@ input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
   -webkit-appearance:none;
 }
+
+.mdc-text-field--no-label:not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mat-mdc-form-field-infix {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.mat-mdc-form-field-infix {
+    min-height: 0;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: transparent;
+}
+
+.mat-mdc-form-field-subscript-wrapper {
+    height: 0px;
+}
+
+.mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper {
+    border-radius: 0.375rem;
+}
+
+.mdc-line-ripple {
+    display: none;
+}
+
+.date-field:focus {
+    --tw-ring-opacity: 0;
+}
+
+.chart-container .apexcharts-bar {
+    border-radius: 5px;
+  }
+
 

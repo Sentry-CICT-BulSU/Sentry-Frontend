@@ -4,6 +4,8 @@ import { FacultyComponent } from './faculty.component';
 import { FacultyRoutingModule } from './faculty-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FacultyListComponent } from './pages/faculty-list/faculty-list.component';
+import { EditFacultyComponent } from './pages/edit-faculty/edit-faculty.component';
 
 @NgModule({
   imports: [
@@ -12,6 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule.forRoot(),
     HttpClientModule,
   ],
-  declarations: [FacultyComponent]
+  declarations: [
+    FacultyComponent,
+    FacultyListComponent,
+    EditFacultyComponent,]
 })
 export class FacultyModule { }
