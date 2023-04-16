@@ -46,7 +46,7 @@ const routes: Routes = [
             {
                 path: 'sign-in',
                 component: SignInComponent,
-                data: { returnUrl: window.location.pathname },
+                // data: { returnUrl: window.location.pathname },
             },
             { path: 'sign-up', component: SignUpComponent },
             { path: 'forgot-password', component: ForgotPasswordComponent },
