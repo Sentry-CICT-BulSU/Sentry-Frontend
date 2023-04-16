@@ -29,7 +29,11 @@ const routes: Routes = [
 
 // Declare the AppRoutingModule as an NgModule.
 @NgModule({
-    imports: [RouterModule.forRoot(routes)], // Use the RouterModule to configure the routes.
+    imports: [
+        RouterModule.forRoot(routes, {
+            initialNavigation: 'enabledBlocking',
+        }),
+    ], // Use the RouterModule to configure the routes.
     exports: [RouterModule], // Export the RouterModule for use in other parts of the application.
 })
 export class AppRoutingModule {} // Export the AppRoutingModule class for use in other parts of the application.

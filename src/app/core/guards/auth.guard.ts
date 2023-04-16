@@ -1,5 +1,4 @@
 import { OAuthService } from 'angular-oauth2-oidc';
-import { LocalStorageService } from './../services/local-storage.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Injectable } from '@angular/core';
 import {
@@ -18,8 +17,7 @@ export class AuthGuard implements CanActivate {
     constructor(
         // private oauthService: OAuthService,
         private authService: AuthService,
-        private router: Router,
-        private localStorage: LocalStorageService
+        private router: Router
     ) {}
     canActivate(
         route: ActivatedRouteSnapshot,

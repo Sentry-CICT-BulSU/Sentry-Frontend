@@ -1,0 +1,34 @@
+{
+    "providers": [],
+    "buildImage": "ghcr.io/railwayapp/nixpacks:ubuntu-1680566572",
+    "variables": {
+        "CI": "true",
+        "NIXPACKS_METADATA": "node",
+        "NODE_ENV": "production",
+        "NPM_CONFIG_PRODUCTION": "false"
+    },
+    "phases": {
+        "build": {
+            "dependsOn": ["install"],
+            "cmds": ["npm run build:ssr"],
+            "cacheDirectories": ["node_modules/.cache"]
+        },
+        "install": {
+            "dependsOn": ["setup"],
+            "cmds": ["npm ci"],
+            "cacheDirectories": ["/root/.npm"],
+            "paths": ["/app/node_modules/.bin"]
+        },
+        "setup": {
+            "nixPkgs": ["nodejs-16_x", "npm-8_x"],
+            "nixLibs": ["libuuid", "libGL"],
+            "nixOverlays": [
+                "https://github.com/railwayapp/nix-npm-overlay/archive/main.tar.gz"
+            ],
+            "nixpkgsArchive": "293a28df6d7ff3dec1e61e37cc4ee6e6c0fb0847"
+        }
+    },
+    "start": {
+        "cmd": "npm run start"
+    }
+}

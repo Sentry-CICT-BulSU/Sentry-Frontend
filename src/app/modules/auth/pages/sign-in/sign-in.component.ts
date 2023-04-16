@@ -1,8 +1,12 @@
 import { Router } from '@angular/router';
-import { LocalStorageService } from './../../../../core/services/local-storage.service';
 // Import necessary modules from '@angular/core'
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+    FormBuilder,
+    FormControl,
+    FormGroup,
+    Validators,
+} from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 // Use the '@Component' decorator to define the metadata for the component
@@ -24,14 +28,26 @@ export class SignInComponent implements OnInit {
     constructor(
         private fBuilder: FormBuilder,
         private authService: AuthService,
-        private localStorage: LocalStorageService,
-        private router: Router) { }
+        private router: Router
+    ) {}
 
     // Define the method that is called when this component is initialized
     ngOnInit(): void {
         this.signinForm = this.fBuilder.group({
-            email: ['', [/* Validators.required, Validators.email */], []],
-            password: ['', [/* Validators.required */], []],
+            email: [
+                '',
+                [
+                    /* Validators.required, Validators.email */
+                ],
+                [],
+            ],
+            password: [
+                '',
+                [
+                    /* Validators.required */
+                ],
+                [],
+            ],
         });
     }
 

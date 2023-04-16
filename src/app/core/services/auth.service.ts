@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { environment as env } from './../../../environments/environment';
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { IUser, IUserTypes } from '../models';
+import { IUser } from '../models';
 import {
     BehaviorSubject,
     Observable,
@@ -13,8 +13,6 @@ import {
     tap,
 } from 'rxjs';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { LocalStorageService } from './local-storage.service';
-import { OAuthService } from 'angular-oauth2-oidc';
 import { PropertiesService } from './properties.service';
 import CryptoJS from 'crypto-js';
 import sha256 from 'crypto-js/sha256';
