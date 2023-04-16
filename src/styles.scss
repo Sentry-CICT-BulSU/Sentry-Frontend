@@ -75,7 +75,7 @@ $sentry-frontend-theme: mat.define-light-theme(
         @apply hidden;
     }
     .tab-link.active {
-        @apply border-primary-700 bg-primary-700 text-white hover:bg-primary-600;
+        @apply border-primary-700 bg-primary-700 text-white dark:text-white hover:bg-primary-600;
     }
     .tab-link {
         @apply cursor-pointer;
