@@ -1,7 +1,6 @@
 import {
     IRoomKeyLog,
     IRoomKeyLogCollection,
-    IRoomKeyCollection,
 } from 'src/app/core/models';
 import { RoomKeyLogsService } from './../../../../core/services/roomkey-logs.service';
 // Importing necessary modules from @angular
