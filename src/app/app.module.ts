@@ -22,7 +22,7 @@ import { AuthModule } from './modules/auth/auth.module';
     imports: [
         BrowserModule.withServerTransition({ appId: 'sentry-frontend' }),
         AppRoutingModule,
-        AuthModule,
+        // AuthModule,
         SharedModule.forRoot(),
         ReactiveFormsModule,
         HttpClientModule,
