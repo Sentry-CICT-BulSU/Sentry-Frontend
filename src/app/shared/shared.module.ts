@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { RoomKeysComponent } from './components/room-keys/room-keys.component';
 import { AuthInterceptor } from '../core/interceptor/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     ],
     imports: [
         CommonModule,
+        RouterModule,
 
         // angular material
         MatIconModule,
