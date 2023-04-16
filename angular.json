@@ -130,6 +130,12 @@
                             "serverTarget": "sentry-frontend:server:development"
                         },
                         "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.prod.ts"
+                                }
+                            ],
                             "browserTarget": "sentry-frontend:build:production",
                             "serverTarget": "sentry-frontend:server:production"
                         }
@@ -143,6 +149,12 @@
                     },
                     "configurations": {
                         "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.prod.ts"
+                                }
+                            ],
                             "browserTarget": "sentry-frontend:build:production",
                             "serverTarget": "sentry-frontend:server:production"
                         },
