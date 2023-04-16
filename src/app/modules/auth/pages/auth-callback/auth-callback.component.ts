@@ -19,7 +19,7 @@ export class AuthCallbackComponent implements OnInit {
             this.router.navigate(['/dashboard']);
         } else {
             console.log('unable to login, please try again');
-            localStorage.clear();
+            // localStorage.clear();
             this.router.navigate(['/auth/sign-in']);
         }
     }
