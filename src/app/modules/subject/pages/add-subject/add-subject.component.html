@@ -1,6 +1,6 @@
 <div class="mx-auto px-4 pb-4 pt-8 sm:px-8 lg:container">
-     <!-- Header -->
-     <div class="mb-8 flex justify-between ">
+    <!-- Header -->
+    <div class="mb-8 flex justify-between ">
         <div class="inline-block">
             <h3 class="font-medium text-gray-900 text-3xl dark:text-white">Subject Management</h3>
             <div class="space-x-1 text-base font-medium text-gray-400 dark:text-night-300">
@@ -22,7 +22,12 @@
         </div>
     </div>
 
-    <form class="grid grid-cols-1">
+    <pre *ngIf="newSubjectForm">
+        {{ newSubjectForm.value | json }}
+    </pre>
+
+    <form class="grid grid-cols-1" *ngIf="newSubjectForm" (ngSubmit)="onSubmit()" [formGroup]="newSubjectForm"
+          novalidate>
         <!-- Separator -->
         <div class="py-6">
             <hr class="border-solid border-gray-200 dark:border-night-500" />
@@ -34,11 +39,9 @@
             </div>
 
             <div class="relative col-span-4">
-                <input name="subject-code" type="text" id="subject-code" class="peer block" placeholder=" " />
-
+                <input formControlName="code" name="code" type="text" id="code" class="peer block"
+                       placeholder=" " />
             </div>
-
-
         </div>
 
         <div class="grid grid-cols-8 gap-8 pb-6">
@@ -47,20 +50,10 @@
             </div>
 
             <div class="relative col-span-4">
-                <input name="subject-title" type="text" id="subject-title" class="peer block" placeholder=" " />
-
+                <input formControlName="title" name="title" type="text" id="title" class="peer block"
+                       placeholder=" " />
             </div>
-
-
         </div>
-
-
-
-
-
-
-
-
 
         <div class="grid grid-cols-8 gap-8 pb-6">
             <div class="col-span-2 space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
@@ -68,43 +61,26 @@
             </div>
 
             <div class="relative col-span-2">
+                <!-- tabs -->
+                <div
+                     class="grid w-full grid-cols-2 rounded-md border border-gray-300 text-xs">
+                    <div>
+                        <input formControlName="status" type="radio" name="status" id="status-active" value="active"
+                               class="peer hidden" checked />
+                        <label for="status-active"
+                               class="rounded-l-md border-r border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200">Active</label>
+                    </div>
+                    <div>
+                        <input formControlName="status" type="radio" name="status" id="status-inactive" value="inactive"
+                               class="peer hidden" />
+                        <label
+                               for="status-inactive"
+                               class="rounded-r-md border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200">Inactive</label>
+                    </div>
 
-
-        <!-- tabs -->
-        <div
-          class="grid w-full grid-cols-2 rounded-md border border-gray-300 text-xs">
-          <div>
-            <input type="radio" name="option" id="1" class="peer hidden" checked />
-            <label for="1" class="rounded-l-md border-r border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200"
-              >Active</label
-            >
-          </div>
-
-
-          <div>
-            <input type="radio" name="option" id="2" class="peer hidden" />
-            <label
-              for="2"
-              class="rounded-r-md border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200"
-              >Inactive</label
-            >
-          </div>
-
-        </div>
-
-
+                </div>
             </div>
-
-
-
         </div>
-
-
-
-
-
-
-
         <!-- Separator -->
         <div class="py-6">
             <hr class="border-solid border-gray-200 dark:border-night-500" />
@@ -112,20 +88,13 @@
 
         <div class="flex items-center justify-end space-x-3">
             <button type="reset"
-                class="relative mb-10 flex w-20 justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+                    class="relative mb-10 flex w-20 justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
                 Cancel
             </button>
             <button type="submit"
-                class="relative mb-10 flex w-20 justify-center rounded-md border border-transparent bg-primary-700 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-primary-600">
+                    class="relative mb-10 flex w-20 justify-center rounded-md border border-transparent bg-primary-700 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-primary-600">
                 Save
             </button>
         </div>
     </form>
-
-
-
-
-
-
-
 </div>

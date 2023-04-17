@@ -1,35 +1,49 @@
 import { Component, OnInit } from '@angular/core';
+import { ISubjectCollection } from 'src/app/core/models';
+import { SubjectService } from 'src/app/core/services/subject.service';
 
 @Component({
     selector: 'app-subject-list',
     templateUrl: './subject-list.component.html',
 })
 export class SubjectListComponent implements OnInit {
+    subjectCollection?: ISubjectCollection;
+    constructor(private subjectService: SubjectService) {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-    const tabLinks = document.querySelectorAll('.tab-link') as NodeListOf<HTMLAnchorElement>;
-    const tabContents = document.querySelectorAll('.tab-content') as NodeListOf<HTMLElement>;
-
-    tabLinks[0].classList.add('active');
-    tabContents[0].classList.add('active');
-
-    tabLinks.forEach((link: HTMLAnchorElement) => {
-      link.addEventListener('click', (event: Event) => {
-        event.preventDefault();
-        const selectedTab = link.hash;
-        tabLinks.forEach((link) => {
-          link.classList.remove('active');
+    ngOnInit(): void {
+        this.initComponent();
+        this.subjectService.loadSubjects$().subscribe((subject) => {
+            this.subjectCollection = subject;
+            console.log(subject);
         });
-        tabContents.forEach((content) => {
-          content.classList.remove('active');
-        });
-        link.classList.add('active');
-        (document.querySelector(selectedTab) as HTMLElement).classList.add('active');
-      });
-    });
-  }
+    }
 
+    initComponent() {
+        const tabLinks = document.querySelectorAll(
+            '.tab-link'
+        ) as NodeListOf<HTMLAnchorElement>;
+        const tabContents = document.querySelectorAll(
+            '.tab-content'
+        ) as NodeListOf<HTMLElement>;
+
+        tabLinks[0].classList.add('active');
+        tabContents[0].classList.add('active');
+
+        tabLinks.forEach((link: HTMLAnchorElement) => {
+            link.addEventListener('click', (event: Event) => {
+                event.preventDefault();
+                const selectedTab = link.hash;
+                tabLinks.forEach((link) => {
+                    link.classList.remove('active');
+                });
+                tabContents.forEach((content) => {
+                    content.classList.remove('active');
+                });
+                link.classList.add('active');
+                (
+                    document.querySelector(selectedTab) as HTMLElement
+                ).classList.add('active');
+            });
+        });
+    }
 }
-
