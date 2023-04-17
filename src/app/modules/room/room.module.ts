@@ -6,17 +6,16 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RoomListComponent } from './pages/room-list/room-list.component';
 import { AddRoomComponent } from './pages/add-room/add-room.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RoomRoutingModule,
-    SharedModule.forRoot(),
-    HttpClientModule,
-  ],
-  declarations: [
-    RoomComponent,
-    RoomListComponent,
-    AddRoomComponent,]
+    imports: [
+        CommonModule,
+        RoomRoutingModule,
+        SharedModule.forRoot(),
+        HttpClientModule,
+        ReactiveFormsModule,
+    ],
+    declarations: [RoomComponent, RoomListComponent, AddRoomComponent],
 })
-export class RoomModule { }
+export class RoomModule {}
