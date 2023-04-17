@@ -18,35 +18,34 @@ export class SemesterService extends PropertiesService {
         );
     }
 
-    loadSemesters$() {
-        let url;
+    get url() {
         if (this.user?.type === 'Admin') {
-            url = environment.apiRootRoute + '/api/admin/semesters';
+            return environment.apiRootRoute + '/api/admin/semesters';
         } else if (
             this.user?.type === 'Attendance Checker' ||
             this.user?.type === 'Faculty'
         ) {
-            url = environment.apiRootRoute + '/api/semesters';
+            return environment.apiRootRoute + '/api/semesters';
         } else {
             throw new Error('User is not an admin');
         }
-        return this.http.get<ISemesterCollection>(url, {
+    }
+
+    loadSemesters$() {
+        return this.http.get<ISemesterCollection>(this.url, {
             headers: this.options.headers,
         });
     }
 
     loadSemester$(id: ISemester['id']) {
-        let url;
-        if (this.user?.type === 'Admin') {
-            url = environment.apiRootRoute + '/api/admin/semesters/' + id;
-        } else if (
-            this.user?.type === 'Attendance Checker' ||
-            this.user?.type === 'Faculty'
-        ) {
-            url = environment.apiRootRoute + '/api/semesters/' + id;
-        } else {
-            throw new Error('User is anonymous');
-        }
-        return this.http.get<ISemesterCollection>(url, { headers: this.options.headers });
+        return this.http.get<ISemesterCollection>(this.url + '/' + id, {
+            headers: this.options.headers,
+        });
+    }
+
+    addSemester$(semester: any) {
+        return this.http.post<ISemesterCollection>(this.url, semester, {
+            headers: this.options.headers,
+        });
     }
 }
