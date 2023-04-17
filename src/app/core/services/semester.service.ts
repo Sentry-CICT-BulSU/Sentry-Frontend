@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { HttpClient } from '@angular/common/http';
-import { ISemester } from '../models/semester.model';
+import { ISemester, ISemesterCollection } from '../models/semester.model';
 import { IUser } from '../models';
 import { environment } from 'src/environments/environment';
 import { PropertiesService } from './properties.service';
@@ -18,7 +18,7 @@ export class SemesterService extends PropertiesService {
         );
     }
 
-    get loadSemesters() {
+    loadSemesters$() {
         let url;
         if (this.user?.type === 'Admin') {
             url = environment.apiRootRoute + '/api/admin/semesters';
@@ -30,10 +30,12 @@ export class SemesterService extends PropertiesService {
         } else {
             throw new Error('User is not an admin');
         }
-        return this.http.get<ISemester>(url, { headers: this.options.headers });
+        return this.http.get<ISemesterCollection>(url, {
+            headers: this.options.headers,
+        });
     }
 
-    loadSemester(id: ISemester['id']) {
+    loadSemester$(id: ISemester['id']) {
         let url;
         if (this.user?.type === 'Admin') {
             url = environment.apiRootRoute + '/api/admin/semesters/' + id;
@@ -45,6 +47,6 @@ export class SemesterService extends PropertiesService {
         } else {
             throw new Error('User is anonymous');
         }
-        return this.http.get<ISemester>(url, { headers: this.options.headers });
+        return this.http.get<ISemesterCollection>(url, { headers: this.options.headers });
     }
 }
