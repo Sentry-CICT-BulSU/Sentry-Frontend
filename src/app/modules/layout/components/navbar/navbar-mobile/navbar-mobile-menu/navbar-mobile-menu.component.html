@@ -9,8 +9,13 @@
         <div
           [ngClass]="item.active && !(showSideBar$ | async) ? 'text-primary-700' : ''"
           class="pointer-events-none absolute m-2">
-          <!-- <svg-icon src="{{ item.icon }}" [svgClass]="'h-5 w-5'"> </svg-icon> -->
-          <i [ngClass]="item.active ? '!text-primary-700' : ''" class="{{ item.icon }} text-gray-600 text-center h-5 w-5"></i>
+
+          <!-- <i [ngClass]="item.active ? '!text-primary-700' : ''" class="{{ item.icon }} text-gray-600 text-center h-5 w-5"></i> -->
+
+          <span [ngClass]="item.active ? '!text-primary-700' : ''" class="material-symbols-rounded text-gray-600 text-center h-5 w-5">
+            {{ item.icon }}
+        </span>
+
         </div>
 
         <!-- Condition -->

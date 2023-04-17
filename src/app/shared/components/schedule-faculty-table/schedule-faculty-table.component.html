@@ -3,7 +3,7 @@
 <div class="relative overflow-x-auto">
     <table *ngIf="schedules;else elseSchedulesBlock" class="w-full table-fixed">
         <!--Table head-->
-        <thead class="text-xs text-gray-400 dark:text-night-300">
+        <thead class="text-xs text-gray-500 dark:text-night-300">
             <tr>
                 <th class="font-medium py-3 px-2 text-left w-1/3">Name</th>
                 <th class="font-medium py-3 px-2 text-left">Status</th>
@@ -16,7 +16,7 @@
         <tbody>
             <tr *ngFor="let schedule of schedules"
                 class="hover:bg-gray-100 dark:border-night-500 dark:hover:bg-night-600">
-                <td class="py-2 px-2">
+                <td class="py-4 px-2">
                     <div class="flex items-center">
                         <img src='assets/avatars/avt-01.jpg' class="mr-2 h-10 w-10 flex-none rounded-full" alt="" />
                         <div class="flex flex-col justify-items-start">
@@ -28,17 +28,17 @@
                     </div>
                 </td>
                 <td class="p-2">
-                    <div class="cursor-pointer inline-block rounded-xl bg-[#ECFDF3] py-1 px-2 text-xs font-medium text-[#027A48]">
+                    <div class="cursor-pointer inline-block rounded-xl bg-green-300/25 py-1 px-2 text-xs font-medium text-green-500">
                         View Schedule
                     </div>
                 </td>
                 <td class="py-2 pl-2">
-                    <span class="text-sm font-medium text-gray-400 dark:text-night-200">
+                    <span class="text-sm font-normal text-gray-500 dark:text-night-200">
                         {{schedule.adviser?.email}}
                     </span>
                 </td>
                 <td class="py-2 pl-2">
-                    <div class="inline-block rounded-xl bg-primary-50 py-1 px-2 text-xs font-medium text-primary-700">
+                    <div class="inline-block rounded-xl bg-primary-300/25 py-1 px-2 text-xs font-medium text-primary-700 dark:text-primary-300">
                         {{schedule.adviser?.position}}
                     </div>
                 </td>

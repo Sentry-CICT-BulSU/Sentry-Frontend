@@ -29,7 +29,10 @@ export class DashboardComponent implements OnInit {
                     this.roomKeyLogs = this.roomKeyLogsCollection.data;
                 }
                 console.debug('Room Key Logs', this.roomKeyLogs);
-                console.debug('Room Key Logs Collection', this.roomKeyLogsCollection);
+                console.debug(
+                    'Room Key Logs Collection',
+                    this.roomKeyLogsCollection
+                );
             });
     }
 }

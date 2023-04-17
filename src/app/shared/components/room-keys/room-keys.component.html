@@ -16,14 +16,17 @@
 
             <!-- start key card -->
             <div *ngFor="let key of roomKeys" [routerLink]="['/room-key/',key.id]"
-                 class="border-gray-200 dark:border-night-500 border flex min-h-[120px] flex-col rounded-lg bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-1">
+                 class="cursor-pointer border-gray-200 dark:border-night-500 border flex min-h-[120px] flex-col rounded-lg bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-1">
                 <div class="mt-4 flex items-center flex-1 flex-col justify-between space-y-1 md:mt-0">
 
                     <div class="flex items-center rounded-full bg-primary-700 w-20 h-20 text-xs font-medium text-white">
-                        <i class="fa-solid fa-key text-4xl mx-auto"></i>
+                        <!-- <i class="fa-solid fa-key text-4xl mx-auto"></i> -->
+                        <span class="material-symbols-rounded text-4xl mx-auto -rotate-45">
+                            vpn_key
+                        </span>
                     </div>
 
-                    <span class="text-xl font-medium text-gray-900 dark:text-white">
+                    <span class="text-lg font-medium text-gray-900 dark:text-white">
                         {{key.room?.name}}
                     </span>
                     <div

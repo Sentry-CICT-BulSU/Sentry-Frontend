@@ -11,7 +11,7 @@ export class Menu {
         separator: true,
         items: [
           {
-            icon: 'fa-solid fa-house',
+            icon: 'home',
             label: 'Dashboard',
             route: '/dashboard',
           },
@@ -24,7 +24,7 @@ export class Menu {
         separator: false,
         items: [
           {
-            icon: 'fa-solid fa-chart-simple',
+            icon: 'bar_chart',
             label: 'Faculty and Schedule',
             route: '/faculty-and-schedule',
             children: [
@@ -34,7 +34,7 @@ export class Menu {
             ],
           },
           {
-            icon: 'fa-solid fa-layer-group',
+            icon: 'layers',
             label: 'Content Management',
             route: '/cms',
             children: [
@@ -52,17 +52,17 @@ export class Menu {
       items: [
 
         {
-          icon: 'fa-solid fa-key',
+          icon: 'vpn_key',
           label: 'Room Key Monitoring',
           route: '/room-key',
         },
         {
-            icon: 'fa-solid fa-file',
+            icon: 'lab_profile',
             label: 'Reports',
             route: '/reports',
           },
         {
-          icon: 'fa-solid fa-users',
+          icon: 'group',
           label: 'User Management',
           route: '/user',
         },
