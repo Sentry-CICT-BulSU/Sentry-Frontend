@@ -17,11 +17,6 @@ export class Menu {
                 },
             ],
         },
-        {
-            icon: 'bar_chart',
-            label: 'Attendance Management - AC',
-            route: '/attendance-check',
-          },
 
         // Admin
         {
