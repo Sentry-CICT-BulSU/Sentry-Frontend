@@ -71,6 +71,11 @@ export class Menu {
             label: 'Attendance Management - AC',
             route: '/attendance-check',
           },
+          {
+            icon: 'vpn_key',
+            label: 'keys - AC',
+            route: '/keys',
+          },
 
       ],
     },

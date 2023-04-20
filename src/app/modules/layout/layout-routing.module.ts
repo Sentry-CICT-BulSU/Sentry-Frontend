@@ -63,6 +63,11 @@ const routes: Routes = [
         loadChildren: () => import('../attendance-check/attendance-check.module').then((m) => m.AttendanceCheckModule),
     },
     {
+        path: 'keys',
+        component: LayoutComponent,
+        loadChildren: () => import('../keys/keys.module').then((m) => m.KeysModule),
+    },
+    {
         path: 'settings',
         component: LayoutComponent,
         loadChildren: () => import('../settings/settings.module').then((m) => m.SettingsModule),
