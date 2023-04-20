@@ -1,0 +1,22 @@
+<pre *ngIf="tableConfig && data">
+{{ tableConfig | json }}
+
+{{ data | json }}
+</pre>
+
+<table *ngIf="tableConfig">
+    <thead>
+        <tr>
+            <th *ngFor="let head of tableConfig.headers" [class]="head.class">
+                {{head.label}}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of room">
+            <td [class]="tableConfig.td.class" class="py-2 text-black">{{item.name}}</td>
+            <td class="py-2 text-black">{{item.status}}</td>
+            <td class="py-2 text-black">{{item.created_at}}</td>
+        </tr>
+    </tbody>
+</table>

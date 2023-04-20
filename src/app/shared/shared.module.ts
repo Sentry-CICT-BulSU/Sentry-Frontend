@@ -11,6 +11,7 @@ import { RoomKeysComponent } from './components/room-keys/room-keys.component';
 import { AuthInterceptor } from '../core/interceptor/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { CmsTableComponent } from './components/cms-table/cms-table.component';
 
 @NgModule({
     declarations: [
@@ -21,6 +22,7 @@ import { RouterModule } from '@angular/router';
         ScheduleSectionComponent,
         RoomKeysComponent,
         ClickOutsideDirective,
+        CmsTableComponent,
     ],
     imports: [
         CommonModule,

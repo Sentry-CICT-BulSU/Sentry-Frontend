@@ -6,17 +6,16 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SubjectListComponent } from './pages/subject-list/subject-list.component';
 import { AddSubjectComponent } from './pages/add-subject/add-subject.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SubjectRoutingModule,
-    SharedModule.forRoot(),
-    HttpClientModule,
-  ],
-  declarations: [
-    SubjectComponent,
-    SubjectListComponent,
-    AddSubjectComponent,]
+    imports: [
+        CommonModule,
+        SubjectRoutingModule,
+        SharedModule.forRoot(),
+        HttpClientModule,
+        ReactiveFormsModule,
+    ],
+    declarations: [SubjectComponent, SubjectListComponent, AddSubjectComponent],
 })
-export class SubjectModule { }
+export class SubjectModule {}

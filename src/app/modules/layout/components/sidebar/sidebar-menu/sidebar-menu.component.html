@@ -21,7 +21,11 @@
         <div
           class="pointer-events-none absolute m-2">
 
-            <i [ngClass]="item.active ? 'text-gray-100' : ''" class="{{ item.icon }} text-gray-100 text-center h-5 w-5"></i>
+            <!-- <i [ngClass]="item.active ? 'text-gray-100' : ''" class="{{ item.icon }} text-gray-100 text-center h-5 w-5"></i> -->
+
+            <span [ngClass]="item.active ? 'text-gray-100' : ''" class="material-symbols-rounded text-gray-100 text-center h-5 w-5">
+                {{ item.icon }}
+            </span>
 
         </div>
 

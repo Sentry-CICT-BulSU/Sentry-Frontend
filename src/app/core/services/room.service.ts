@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
+import { PropertiesService } from './properties.service';
+import { environment as env } from 'src/environments/environment';
+import { IRoomCollection, IRoomKeyCollection, IUser } from '../models';
 import { AuthService } from './auth.service';
 import { HttpClient } from '@angular/common/http';
-import { ISemester, ISemesterCollection } from '../models/semester.model';
-import { IUser } from '../models';
-import { environment } from 'src/environments/environment';
-import { PropertiesService } from './properties.service';
 
 @Injectable({
     providedIn: 'root',
 })
-export class SemesterService extends PropertiesService {
+export class RoomService extends PropertiesService {
     user?: IUser;
     constructor(private authService: AuthService, private http: HttpClient) {
         super();
@@ -20,31 +19,31 @@ export class SemesterService extends PropertiesService {
 
     get url() {
         if (this.user?.type === 'Admin') {
-            return environment.apiRootRoute + '/api/admin/semesters';
+            return env.apiRootRoute + '/api/admin/rooms';
         } else if (
             this.user?.type === 'Attendance Checker' ||
             this.user?.type === 'Faculty'
         ) {
-            return environment.apiRootRoute + '/api/semesters';
+            return env.apiRootRoute + '/api/rooms';
         } else {
             throw new Error('User is not an admin');
         }
     }
 
-    loadSemesters$() {
-        return this.http.get<ISemesterCollection>(this.url, {
+    loadRooms$() {
+        return this.http.get<IRoomCollection>(this.url, {
             headers: this.options.headers,
         });
     }
 
-    loadSemester$(id: ISemester['id']) {
-        return this.http.get<ISemesterCollection>(this.url + '/' + id, {
+    loadRoom$(id: number) {
+        return this.http.get<IRoomCollection>(this.url + '' + id, {
             headers: this.options.headers,
         });
     }
 
-    addSemester$(semester: any) {
-        return this.http.post<ISemesterCollection>(this.url, semester, {
+    addRoom$(body: { name: string; location: string; status: string }) {
+        return this.http.post<IRoomKeyCollection>(this.url, body, {
             headers: this.options.headers,
         });
     }
