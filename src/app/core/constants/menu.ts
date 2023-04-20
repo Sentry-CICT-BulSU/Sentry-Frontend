@@ -73,7 +73,7 @@ export class Menu {
           },
           {
             icon: 'vpn_key',
-            label: 'keys - AC',
+            label: 'Keys - AC',
             route: '/keys',
           },
 
