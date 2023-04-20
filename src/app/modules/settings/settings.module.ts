@@ -4,14 +4,24 @@ import { SettingsComponent } from './settings.component';
 import { SettingsRoutingModule } from './settings-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PersonalInformationComponent } from './pages/personal-information/personal-information.component';
+import { PasswordAndSecurityComponent } from './pages/password-and-security/password-and-security.component';
+import { SystemSettingsComponent } from './pages/system-settings/system-settings.component';
 
 @NgModule({
   imports: [
     CommonModule,
     SettingsRoutingModule,
-    SharedModule.forRoot(),
+    SharedModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
-  declarations: [SettingsComponent]
+  declarations: [
+    SettingsComponent,
+    PersonalInformationComponent,
+    PasswordAndSecurityComponent,
+    SystemSettingsComponent,
+]
 })
 export class SettingsModule { }

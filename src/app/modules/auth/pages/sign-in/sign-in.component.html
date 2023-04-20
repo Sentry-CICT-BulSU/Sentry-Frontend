@@ -2,12 +2,12 @@
 <form class="my-10 space-y-6" #signin="ngForm" [formGroup]="signinForm" (submit)="submit()">
     <div class="text-center">
         <h2 class="mb-1 text-3xl font-medium text-gray-700 dark:text-white">
-            Hello <span class="text-[#e73c35]">!</span>
+            Hello <span class="text-primary-700">!</span>
         </h2>
         <p class="text-sm text-gray-400 dark:text-night-200">Enter your credential to access your account.</p>
     </div>
     <button type="button" routerLink="/dashboard"
-        class="flex w-full items-center justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#e73c35] focus:ring-offset-2 hover:bg-gray-50 dark:border-night-500 dark:bg-night-700 dark:text-night-200 dark:hover:bg-night-600">
+        class="flex w-full items-center justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-50 dark:border-night-500 dark:bg-night-700 dark:text-night-200 dark:hover:bg-night-600">
         <svg-icon src="assets/icons/google-logo.svg" [svgClass]="'h-6 w-6 mr-2'"> </svg-icon>
         Log in with Google
     </button>
@@ -21,14 +21,14 @@
         <div class="relative">
             <input formControlName="email" type="text" id="email" class="peer block" placeholder=" " />
             <label for="email"
-                class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-[#e73c35] dark:bg-night-700 dark:text-night-200">
+                class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary-700 dark:bg-night-700 dark:text-night-200">
                 Email address
             </label>
         </div>
         <div class="relative">
             <input formControlName="password" type="password" id="password" class="peer block" placeholder=" " />
             <label for="password"
-                class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-[#e73c35] dark:bg-night-700 dark:text-night-200">
+                class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary-700 dark:bg-night-700 dark:text-night-200">
                 Password
             </label>
             <!-- <span class="absolute top-2.5 right-5 cursor-pointer text-gray-400 dark:text-night-300">
@@ -45,7 +45,7 @@
         </div>
 
         <div class="text-sm">
-            <a routerLink="/auth/forgot-password" class="font-medium text-[#e73c35] hover:text-[#feb07f]">
+            <a routerLink="/auth/forgot-password" class="font-medium text-primary-700 hover:text-primary-600">
                 Forgot your password?
             </a>
         </div>
@@ -53,15 +53,14 @@
 
     <!-- Submit Button -->
     <button type="submit" [disabled]="!signinForm.valid"
-        class="group relative mb-10 flex w-full justify-center rounded-md border border-transparent bg-gradient-to-r from-[#e73c35] to-[#feb07f] py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-[#e73c35] focus:ring-offset-2 hover:bg-[#feb07f]">
+        class="group relative mb-10 flex w-full justify-center rounded-md border border-transparent bg-primary-700 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-primary-600">
         Sign in
     </button>
 
     <!-- Sign-up -->
     <div class="text-sm text-gray-400 dark:text-night-200">
-        Not registered yet? Sign Up as a <a routerLink="/auth/sign-up"
-            class="text-[#e73c35] hover:text-[#feb07f]">Student</a> or
-        <a routerLink="/auth/sign-up" class="text-[#e73c35] hover:text-[#feb07f]">HTE</a> or
-        <a routerLink="/auth/sign-up" class="text-[#e73c35] hover:text-[#feb07f]">Faculty</a>
+        Not an admin? Sign in as an <a routerLink="/auth/sign-up"
+            class="text-primary-700 hover:text-primary-600">Attendance Checker</a> or
+        <a routerLink="/auth/sign-up" class="text-primary-700 hover:text-primary-600">Faculty</a>
     </div>
 </form>
