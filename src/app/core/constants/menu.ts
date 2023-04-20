@@ -66,6 +66,11 @@ export class Menu {
           label: 'User Management',
           route: '/user',
         },
+        {
+            icon: 'bar_chart',
+            label: 'Attendance Management - AC',
+            route: '/attendance-check',
+          },
 
       ],
     },
