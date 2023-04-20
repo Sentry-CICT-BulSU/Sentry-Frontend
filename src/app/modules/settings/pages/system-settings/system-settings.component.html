@@ -1,3 +1,154 @@
-<p>
-  system-settings works!
-</p>
+<form class="grid grid-cols-1">
+    <div class="flex justify-between">
+
+        <div class="flex-col items-center justify-between">
+        <h3 class="font-medium text-gray-900 text-lg dark:text-white">
+            System Settings
+        </h3>
+
+        <div class="space-x-1 text-sm font-medium text-gray-400 dark:text-night-300">
+            <p>
+                Update the system’s content and interface here.
+            </p>
+        </div>
+        </div>
+
+        <div class="flex items-center justify-between space-x-3">
+            <button type="reset"
+                class="relative flex w-20 justify-center button-plain">
+                Cancel
+            </button>
+            <button type="submit"
+                class="relative flex w-20 justify-center button-colored">
+                Save
+            </button>
+        </div>
+    </div>
+
+
+
+        <!-- Separator -->
+        <div class="py-6">
+            <hr class="border-solid border-gray-200 dark:border-night-500" />
+        </div>
+
+        <div class="grid grid-cols-4 gap-6">
+            <div class="space-x-1 text-sm font-medium text-gray-600 dark:text-night-300">
+                <p>System Name</p>
+            </div>
+
+            <div class="relative col-span-2">
+                <input name="system_name" type="text" id="system_name" class="peer block"
+                    placeholder=" " />
+                <label for="systemname"
+                    class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary-700 dark:bg-night-800 dark:text-night-200">
+                    System Name
+                </label>
+            </div>
+
+
+        </div>
+
+        <!-- Separator -->
+        <div class="py-6">
+            <hr class="border-solid border-gray-200 dark:border-night-500" />
+        </div>
+
+        <div class="grid grid-cols-4 gap-6">
+            <div class="space-x-1 text-sm font-medium text-gray-600 dark:text-night-300">
+                <p>About</p>
+            </div>
+
+            <div class="relative col-span-2">
+                <textarea name="about" type="text" id="about" class="peer block resize-none" rows="4" placeholder=" "></textarea>
+                <label for="about"
+                    class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary-700 dark:bg-night-800 dark:text-night-200">
+                    About
+                </label>
+            </div>
+        </div>
+
+        <!-- Separator -->
+        <div class="py-6">
+            <hr class="border-solid border-gray-200 dark:border-night-500" />
+        </div>
+
+        <div class="grid grid-cols-8 gap-6">
+            <div class="col-span-2 text-sm font-medium text-gray-600 dark:text-night-300">
+                <p>System Icon</p>
+                <p class="text-gray-400">This will be displayed throughout the system.</p>
+            </div>
+
+            <img class="rounded-full w-10" src="assets/icons/CICT Logo.png" alt="" />
+
+            <div class="relative col-span-3">
+                <input type="file" class="file-input w-full rounded-md border text-sm border-light-dark " />
+            </div>
+
+        </div>
+
+
+        <!-- Separator -->
+        <div class="py-6">
+            <hr class="border-solid border-gray-200 dark:border-night-500" />
+        </div>
+
+        <div class="grid grid-cols-4 gap-6">
+            <div class="space-x-1 text-sm font-medium text-gray-600 dark:text-night-300">
+                <p>System Color</p>
+            </div>
+
+            <div class="relative col-span-2">
+
+
+
+    <div
+    class="grid w-full grid-cols-7 text-xs">
+    <div>
+      <input type="radio" name="option" id="1" class="peer hidden" checked />
+      <label for="1" class="rounded-full bg-primary-700 w-8 h-8 block cursor-pointer select-none text-center peer-checked:border-8 peer-checked:border-primary-50 peer-checked:scale-150 hover:scale-150 transition delay-150 duration-300 ease-in-out"></label>
+    </div>
+
+    <div>
+        <input type="radio" name="option" id="2" class="peer hidden" checked />
+        <label for="2" class="rounded-full bg-blue-700 w-8 h-8 block cursor-pointer select-none text-center peer-checked:border-8 peer-checked:border-primary-50 peer-checked:scale-150 hover:scale-150 transition delay-150 duration-300 ease-in-out"></label>
+      </div>
+
+      <div>
+        <input type="radio" name="option" id="3" class="peer hidden" checked />
+        <label for="3" class="rounded-full bg-yellow-700 w-8 h-8 block cursor-pointer select-none text-center peer-checked:border-8 peer-checked:border-primary-50 peer-checked:scale-150 hover:scale-150 transition delay-150 duration-300 ease-in-out"></label>
+      </div>
+
+      <div>
+        <input type="radio" name="option" id="4" class="peer hidden" checked />
+        <label for="4" class="rounded-full bg-pink-700 w-8 h-8 block cursor-pointer select-none text-center peer-checked:border-8 peer-checked:border-primary-50 peer-checked:scale-150 hover:scale-150 transition delay-150 duration-300 ease-in-out"></label>
+      </div>
+
+      <div>
+        <input type="radio" name="option" id="5" class="peer hidden" checked />
+        <label for="5" class="rounded-full bg-green-700 w-8 h-8 block cursor-pointer select-none text-center peer-checked:border-8 peer-checked:border-primary-50 peer-checked:scale-150 hover:scale-150 transition delay-150 duration-300 ease-in-out"></label>
+      </div>
+
+      <div>
+        <input type="radio" name="option" id="6" class="peer hidden" checked />
+        <label for="6" class="rounded-full bg-orange-700 w-8 h-8 block cursor-pointer select-none text-center peer-checked:border-8 peer-checked:border-primary-50 peer-checked:scale-150 hover:scale-150 transition delay-150 duration-300 ease-in-out"></label>
+      </div>
+
+      <div>
+        <input type="radio" name="option" id="7" class="peer hidden" checked />
+        <label for="7" class="rounded-full bg-red-700 w-8 h-8 block cursor-pointer select-none text-center peer-checked:border-8 peer-checked:border-primary-50 peer-checked:scale-150 hover:scale-150 transition delay-150 duration-300 ease-in-out"></label>
+      </div>
+
+  </div>
+
+            </div>
+        </div>
+
+        <!-- Separator -->
+        <div class="py-6">
+            <hr class="border-solid border-gray-200 dark:border-night-500" />
+        </div>
+
+
+    </form>
+
