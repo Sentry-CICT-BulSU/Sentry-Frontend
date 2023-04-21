@@ -25,7 +25,7 @@
     <div class="flex justify-between">
 
         <div class="flex items-center justify-start space-x-3">
-                <select name="report" id="report" class="peer border-light-dark block w-64 py-2 px-4 text-sm">
+                <select name="report" id="report" class="peer font-medium border-light-dark block w-64 py-2 px-4 text-sm dark:bg-night-700 dark:text-night-200">
                     <option>
                         Attendance Report
                     </option>
@@ -33,12 +33,19 @@
                         Keys Log Report
                     </option>
                 </select>
-            <button type="button"
+            <!-- <button type="button"
                 class="relative selection:flex justify-center rounded-md border border-light-dark py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
                Filters
+            </button> -->
+            <button type="button"
+                class="flex items-center justify-center rounded-md button-plain">
+                <span class="material-symbols-rounded h-6 w-6 mr-2">
+                    filter_list
+                </span>
+                Filters
             </button>
             <button type="button"
-                class="relative selection:flex justify-center rounded-md border border-light-dark py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+                class="relative selection:flex justify-center button-plain">
                Preview
             </button>
             <button type="button"
@@ -102,11 +109,11 @@
 
                     <td class="p-2">
                         <div class="flex items-center justify-end gap-4">
-                            <div class="inline-block rounded-xl bg-blue-500/25 py-1 px-2 text-xs font-medium text-blue-500">
+                            <div class="cursor-pointer inline-block rounded-xl bg-blue-500/25 py-1 px-2 text-xs font-medium text-blue-500">
                                 View
                             </div>
-                            <div class="inline-block rounded-xl bg-green-500/25 py-1 px-2 text-xs font-medium text-green-500">
-                                Active
+                            <div class="cursor-pointer inline-block rounded-xl bg-green-500/25 py-1 px-2 text-xs font-medium text-green-500">
+                                Download
                             </div>
                         </div>
                     </td>
