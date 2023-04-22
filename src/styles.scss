@@ -183,4 +183,17 @@ input[type="search"]::-webkit-search-results-decoration {
     border-radius: 5px;
   }
 
+  .floating-icon{
 
+    position: relative;
+    animation: mymove 2.5s infinite;
+  }
+
+  @keyframes mymove {
+    33%   {top: 0px;}
+    66%  {top: 20px;}
+    100%  {top: 0px}
+
+
+
+  }
