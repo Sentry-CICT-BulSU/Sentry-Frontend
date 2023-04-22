@@ -101,6 +101,12 @@ $sentry-frontend-theme: mat.define-light-theme(
     .tab-button-3{
         @apply relative selection:flex justify-center rounded-r-md border border-gray-300 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-100 dark:text-night-200 dark:hover:bg-night-500;
     }
+    .text-heading{
+        @apply font-medium text-gray-900 md:text-3xl text-2xl dark:text-white;
+    }
+    .text-subheading{
+        @apply space-x-1 md:text-base text-sm font-medium text-gray-400 dark:text-night-300;
+    }
 }
 
 /** Scroll bar **/
