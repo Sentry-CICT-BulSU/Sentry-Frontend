@@ -170,36 +170,41 @@
             <div class="flex items-center justify-between space-x-3">
 
 
-                <button type="button" [disabled]="roomKeyLogCollection?.links?.prev"
-                        class="flex items-center justify-center rounded-md button-plain">
-                        <span class="material-symbols-rounded h-6 w-6 mr-2">
-                            arrow_back
-                        </span>
-                        Previous
-                </button>
+                <button type="button"
+                class="flex items-center justify-center rounded-md button-plain">
+                <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
+                    arrow_back
+                </span>
+                <span class="md:inline-block hidden">
+                    Previous
+                </span>
+        </button>
 
-                <div class="flex gap-1">
-                    <div
-                        class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium dark:text-primary-300 text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-300/25">
-                        1
-                    </div>
-                    <div
-                        class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
-                        2
-                    </div>
-                    <div
-                        class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
-                        3
-                    </div>
-                </div>
+        <div class="flex gap-1">
+            <div
+                class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium dark:text-primary-300 text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-300/25">
+                1
+            </div>
+            <div
+                class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
+                2
+            </div>
+            <div
+                class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
+                3
+            </div>
+        </div>
 
-              <button type="button" [disabled]="roomKeyLogCollection?.links?.next"
-                        class="flex items-center justify-center rounded-md button-plain">
-                        Next
-                        <span class="material-symbols-rounded h-6 w-6 ml-2">
-                            arrow_forward
-                        </span>
-                </button>
+      <button type="button"
+                class="flex items-center justify-center rounded-md button-plain">
+                <span class="md:inline-block hidden">
+                    Next
+                </span>
+
+                <span class="material-symbols-rounded h-6 w-6 md:ml-2 ml-0">
+                    arrow_forward
+                </span>
+        </button>
 
             </div>
 

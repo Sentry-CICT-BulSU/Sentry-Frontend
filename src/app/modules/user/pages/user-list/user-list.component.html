@@ -37,11 +37,13 @@
 
 
         <button type="button" [disabled]="!user_pagination?.links?.prev"
-                class="flex items-center justify-center rounded-md button-plain">
-                <span class="material-symbols-rounded h-6 w-6 mr-2">
-                    arrow_back
-                </span>
-                Previous
+        class="flex items-center justify-center rounded-md button-plain">
+        <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
+            arrow_back
+        </span>
+        <span class="md:inline-block hidden">
+            Previous
+        </span>
         </button>
 
         <div class="flex gap-1" *ngIf="isMultiPage">
@@ -60,11 +62,14 @@
         </div>
 
       <button type="button" [disabled]="!user_pagination?.links?.next"
-                class="flex items-center justify-center rounded-md button-plain">
-                Next
-                <span class="material-symbols-rounded h-6 w-6 ml-2">
-                    arrow_forward
-                </span>
+      class="flex items-center justify-center rounded-md button-plain">
+      <span class="md:inline-block hidden">
+          Next
+      </span>
+
+      <span class="material-symbols-rounded h-6 w-6 md:ml-2 ml-0">
+          arrow_forward
+      </span>
         </button>
 
     </div>
