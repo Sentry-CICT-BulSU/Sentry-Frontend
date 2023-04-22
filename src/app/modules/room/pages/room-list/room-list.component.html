@@ -30,32 +30,46 @@
         <div class="flex justify-between">
             <div class="flex items-center justify-start">
                 <a href="#view-all"
-                    class="tab-link active relative selection:flex justify-center rounded-l-md border border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+                    class="tab-link active tab-button-1">
                     View All
                 </a>
                 <a href="#active-sem"
-                    class="tab-link relative selection:flex justify-center border-y border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+                    class="tab-link tab-button-2">
                     Active
                 </a>
                 <a href="#inactive-sem"
-                    class="tab-link relative selection:flex justify-center rounded-r-md border border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+                    class="tab-link tab-button-3">
                     Inactive
                 </a>
             </div>
 
 
             <div class="flex items-center justify-end space-x-3">
-                <input type="search"
-                    class="relative justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 "
-                    placeholder="Search"/>
-                    <button type="button"
-                    class="flex items-center justify-center rounded-md button-plain">
-                    <span class="material-symbols-rounded h-6 w-6 mr-2">
-                        filter_list
-                    </span>
-                    Filters
-                </button>
-            </div>
+
+                <div class='max-w-md mx-auto'>
+                    <div class="relative flex items-center w-full rounded-lg border-light-dark overflow-hidden">
+                        <div class="grid place-items-center h-full w-12 text-gray-700 dark:text-night-200">
+                            <span class="material-symbols-rounded h-6 w-6">
+                                search
+                            </span>
+                        </div>
+
+                        <input
+                        class="search-bar"
+                        type="text"
+                        id="search"
+                        placeholder="Search something.." />
+                    </div>
+                </div>
+
+                <button type="button"
+                class="flex items-center justify-center rounded-md button-plain">
+                <span class="material-symbols-rounded h-6 w-6 mr-2">
+                    filter_list
+                </span>
+                Filters
+            </button>
+        </div>
 
 
         </div>
@@ -107,14 +121,16 @@
                     </span>
                 </td>
 
-                <td class="py-2 pl-2">
+                <td class="py-2 pr-2">
                     <div class="flex justify-end">
-                        <i
-                            class="cursor-pointer fa-solid fa-trash-can mr-6 justify-center rounded-md text-gray-400 hover:text-red-500 dark:text-night-300">
-                        </i>
-                        <i
-                            class="cursor-pointer fa-solid fa-pen justify-center rounded-md text-gray-400 hover:text-primary-700 dark:text-night-300">
-                        </i>
+
+                        <span class="material-symbols-rounded font-medium cursor-pointer mr-6 justify-center rounded-md text-gray-500 hover:text-red-500 dark:text-night-300">
+                            delete
+                        </span>
+
+                        <span [routerLink]="['/faculty/edit-faculty']" class="material-symbols-rounded font-medium cursor-pointer justify-center rounded-md text-gray-500 hover:text-primary-700 dark:text-night-300">
+                            edit
+                        </span>
                     </div>
                 </td>
             </tr>
@@ -130,22 +146,39 @@
 
     <div class="grid grid-cols-1 rounded-b-lg border-light-dark bg-white p-5 dark:bg-night-700">
         <div class="flex items-center justify-between space-x-3">
+
+
             <button type="button"
-                class="relative selection:flex justify-center rounded-md border border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
-                Previous
+                    class="flex items-center justify-center rounded-md button-plain">
+                    <span class="material-symbols-rounded h-6 w-6 mr-2">
+                        arrow_back
+                    </span>
+                    Previous
             </button>
 
-            <div>
+            <div class="flex gap-1">
                 <div
-                    class="relative justify-center rounded-md py-2 px-4 text-sm font-medium text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-50">
+                    class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium dark:text-primary-300 text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-300/25">
                     1
+                </div>
+                <div
+                    class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
+                    2
+                </div>
+                <div
+                    class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
+                    3
                 </div>
             </div>
 
-            <button type="button"
-                class="relative selection:flex justify-center rounded-md border border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
-                Next
+          <button type="button"
+                    class="flex items-center justify-center rounded-md button-plain">
+                    Next
+                    <span class="material-symbols-rounded h-6 w-6 ml-2">
+                        arrow_forward
+                    </span>
             </button>
+
         </div>
     </div>
 
@@ -160,22 +193,39 @@
 
         <div class="grid grid-cols-1 rounded-b-lg border-light-dark bg-white p-5 dark:bg-night-700">
             <div class="flex items-center justify-between space-x-3">
+
+
                 <button type="button"
-                    class="relative selection:flex justify-center rounded-md border border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
-                    Previous
+                        class="flex items-center justify-center rounded-md button-plain">
+                        <span class="material-symbols-rounded h-6 w-6 mr-2">
+                            arrow_back
+                        </span>
+                        Previous
                 </button>
 
-                <div>
+                <div class="flex gap-1">
                     <div
-                        class="relative justify-center rounded-md py-2 px-4 text-sm font-medium text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-50">
+                        class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium dark:text-primary-300 text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-300/25">
                         1
+                    </div>
+                    <div
+                        class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
+                        2
+                    </div>
+                    <div
+                        class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
+                        3
                     </div>
                 </div>
 
-                <button type="button"
-                    class="relative selection:flex justify-center rounded-md border border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
-                    Next
+              <button type="button"
+                        class="flex items-center justify-center rounded-md button-plain">
+                        Next
+                        <span class="material-symbols-rounded h-6 w-6 ml-2">
+                            arrow_forward
+                        </span>
                 </button>
+
             </div>
         </div>
     </div>
@@ -188,22 +238,39 @@
 
         <div class="grid grid-cols-1 rounded-b-lg border-light-dark bg-white p-5 dark:bg-night-700">
             <div class="flex items-center justify-between space-x-3">
+
+
                 <button type="button"
-                    class="relative selection:flex justify-center rounded-md border border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
-                    Previous
+                        class="flex items-center justify-center rounded-md button-plain">
+                        <span class="material-symbols-rounded h-6 w-6 mr-2">
+                            arrow_back
+                        </span>
+                        Previous
                 </button>
 
-                <div>
+                <div class="flex gap-1">
                     <div
-                        class="relative justify-center rounded-md py-2 px-4 text-sm font-medium text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-50">
+                        class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium dark:text-primary-300 text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-300/25">
                         1
+                    </div>
+                    <div
+                        class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
+                        2
+                    </div>
+                    <div
+                        class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
+                        3
                     </div>
                 </div>
 
-                <button type="button"
-                    class="relative selection:flex justify-center rounded-md border border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
-                    Next
+              <button type="button"
+                        class="flex items-center justify-center rounded-md button-plain">
+                        Next
+                        <span class="material-symbols-rounded h-6 w-6 ml-2">
+                            arrow_forward
+                        </span>
                 </button>
+
             </div>
         </div>
 
