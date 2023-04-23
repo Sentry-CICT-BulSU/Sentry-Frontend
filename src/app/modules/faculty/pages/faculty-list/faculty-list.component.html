@@ -1,7 +1,7 @@
 <div class="grid grid-cols-1 rounded-t-lg border-light-dark p-5 dark:bg-night-700">
     <div class="flex justify-between">
-        <div class="flex items-center justify-between">
-            <h3 class="text-lg font-medium text-gray-900 dark:text-white mr-3">Faculty Members</h3>
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between">
+            <h3 class="text-lg font-medium text-gray-900 dark:text-white md:mr-3 mr-0">Faculty Members</h3>
             <div class="rounded-xl bg-primary-300/25 py-1 px-2 text-xs font-medium dark:text-primary-300 text-primary-700">
                48 faculty members
             </div>
@@ -10,10 +10,12 @@
 
             <button type="button"
                 class="flex w-full items-center justify-center rounded-md button-plain">
-                <span class="material-symbols-rounded h-6 w-6 mr-2">
+                <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
                     cloud_download
                 </span>
-                Download CSV
+                <span class="hidden md:inline-block">
+                    Download CSV
+                </span>
             </button>
 
         </div>
@@ -33,11 +35,11 @@
         <!--Table head-->
         <thead class="text-xs text-gray-500 dark:text-night-200">
             <tr>
-                <th class="font-medium py-3 px-2 text-left w-1/3">Name</th>
-                <th class="font-medium py-3 px-2 text-left">Status</th>
-                <th class="font-medium py-3 px-2 text-left w-1/4">Email Address</th>
-                <th class="font-medium py-3 px-2 text-left">Position</th>
-                <th class="py-3 px-2 text-right"></th>
+                <th class="font-medium py-3 px-2 text-left md:w-1/3 w-56">Name</th>
+                <th class="font-medium py-3 px-2 text-left md:w-auto w-28">Status</th>
+                <th class="font-medium py-3 px-2 text-left md:w-1/4 w-56">Email Address</th>
+                <th class="font-medium py-3 px-2 text-left md:w-auto w-28">Position</th>
+                <th class="py-3 px-2 text-right md:w-auto w-28"></th>
             </tr>
         </thead>
         <!--end Table head-->
@@ -104,10 +106,12 @@
 
         <button type="button"
                 class="flex items-center justify-center rounded-md button-plain">
-                <span class="material-symbols-rounded h-6 w-6 mr-2">
+                <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
                     arrow_back
                 </span>
-                Previous
+                <span class="md:inline-block hidden">
+                    Previous
+                </span>
         </button>
 
         <div class="flex gap-1">
@@ -127,12 +131,14 @@
 
       <button type="button"
                 class="flex items-center justify-center rounded-md button-plain">
-                Next
-                <span class="material-symbols-rounded h-6 w-6 ml-2">
+                <span class="md:inline-block hidden">
+                    Next
+                </span>
+
+                <span class="material-symbols-rounded h-6 w-6 md:ml-2 ml-0">
                     arrow_forward
                 </span>
         </button>
-
     </div>
 </div>
 

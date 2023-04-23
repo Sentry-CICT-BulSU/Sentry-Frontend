@@ -89,6 +89,24 @@ $sentry-frontend-theme: mat.define-light-theme(
     .button-colored {
         @apply border border-primary-700 hover:bg-primary-600 bg-primary-700 text-white rounded-md px-4 py-2 text-sm font-medium;
     }
+    .search-bar {
+        @apply h-full w-full outline-none bg-transparent focus:border-none focus:ring-0 dark:bg-transparent text-sm text-gray-700 pr-2 border-none;
+    }
+    .tab-button-1{
+        @apply relative selection:flex justify-center rounded-l-md border border-gray-300 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-100 dark:text-night-200 dark:hover:bg-night-500;
+    }
+    .tab-button-2{
+        @apply relative selection:flex justify-center border-y border-gray-300 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-100 dark:text-night-200 dark:hover:bg-night-500;
+    }
+    .tab-button-3{
+        @apply relative selection:flex justify-center rounded-r-md border border-gray-300 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-100 dark:text-night-200 dark:hover:bg-night-500;
+    }
+    .text-heading{
+        @apply font-medium text-gray-900 md:text-3xl text-2xl dark:text-white;
+    }
+    .text-subheading{
+        @apply space-x-1 md:text-base text-sm font-medium text-gray-400 dark:text-night-300;
+    }
 }
 
 /** Scroll bar **/
@@ -165,4 +183,17 @@ input[type="search"]::-webkit-search-results-decoration {
     border-radius: 5px;
   }
 
+  .floating-icon{
 
+    position: relative;
+    animation: mymove 2.5s infinite;
+  }
+
+  @keyframes mymove {
+    33%   {top: 0px;}
+    66%  {top: 20px;}
+    100%  {top: 0px}
+
+
+
+  }

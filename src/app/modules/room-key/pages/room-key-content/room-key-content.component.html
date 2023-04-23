@@ -4,7 +4,7 @@
 
         <!-- start of room keys, [routerLink]="['/room-key/key-info']" -->
 
-        <app-room-keys class="md:col-span-3"></app-room-keys>
+        <app-room-keys class="md:col-span-3 min-h-[120px]"></app-room-keys>
 
         <!-- end of room keys -->
 
@@ -13,7 +13,7 @@
     <!-- start of available keys -->
 
     <div
-         class="flex min-h-[120px] flex-col rounded-lg border-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-1">
+         class="flex min-h-[120px] flex-col rounded-lg border-light-dark bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-1">
         <div class="mt-4 flex flex-1 flex-col justify-between space-y-1 md:mt-0">
 
             <div>
@@ -34,7 +34,7 @@
 
             <div class="mx-auto radial-progress text-primary-700"
                  style="--value:{{availableKeys.availabe_percentage}}; --size:12rem;">
-                <span class="text-4xl font-medium text-gray-700">
+                <span class="text-4xl font-medium text-gray-700 dark:text-night-200">
                     {{availableKeys.availabe_percentage}}
                 </span>
             </div>
@@ -67,7 +67,7 @@
     <!-- end of available keys -->
 
     <div *ngIf="roomKeyLogs" class="col-span-4">
-        <div class="grid grid-cols-1 rounded-t-lg border-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
+        <div class="grid grid-cols-1 rounded-t-lg border-light-dark bg-white p-5 dark:bg-night-700">
             <div class="flex justify-between">
                 <div class="inline-block">
                     <h3 class="text-lg font-medium text-gray-900 dark:text-white mr-3">Key Monitoring Log</h3>
@@ -78,18 +78,35 @@
                     </div>
                 </div>
                 <div class="flex items-center justify-end space-x-3">
-                    <input type="search"
-                           class="relative justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 "
-                           placeholder="Search" />
+
+                    <div class='max-w-md mx-auto'>
+                        <div class="relative flex items-center w-full rounded-lg border-light-dark overflow-hidden">
+                            <div class="grid place-items-center h-full w-12 text-gray-700 dark:text-night-200">
+                                <span class="material-symbols-rounded h-6 w-6">
+                                    search
+                                </span>
+                            </div>
+
+                            <input
+                            class="search-bar"
+                            type="text"
+                            id="search"
+                            placeholder="Search something.." />
+                        </div>
+                    </div>
+
                     <button type="button"
-                            class="relative selection:flex justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
-                        Filters
-                    </button>
-                </div>
+                    class="flex items-center justify-center rounded-md button-plain">
+                    <span class="material-symbols-rounded h-6 w-6 mr-2">
+                        filter_list
+                    </span>
+                    Filters
+                </button>
+            </div>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 col-span-4  border-x-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
+        <div class="grid grid-cols-1 col-span-4  border-x border-gray-300 dark:border-night-500 bg-white p-5 dark:bg-night-700">
             <!-- start of table -->
 
             <div class="relative overflow-x-auto">
@@ -124,7 +141,7 @@
                             </td>
                             <td class="p-2">
                                 <div
-                                     class="inline-block rounded-xl bg-[#ECFDF3] py-1 px-2 text-xs font-medium text-[#027A48]">
+                                     class="inline-block rounded-xl bg-green-500/25 py-1 px-2 text-xs font-medium text-green-500">
                                     Returned
                                 </div>
                             </td>
@@ -148,25 +165,49 @@
         <!-- end of table -->
 
         <div
-             class="grid grid-cols-1 col-span-4  rounded-b-lg border-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
+             class="grid grid-cols-1 col-span-4  rounded-b-lg border-light-dark bg-white p-5 dark:bg-night-700">
+
             <div class="flex items-center justify-between space-x-3">
-                <button type="button" [disabled]="roomKeyLogCollection?.links?.prev"
-                        class="relative selection:flex justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+
+
+                <button type="button"
+                class="flex items-center justify-center rounded-md button-plain">
+                <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
+                    arrow_back
+                </span>
+                <span class="md:inline-block hidden">
                     Previous
-                </button>
+                </span>
+        </button>
 
-                <div>
-                    <div
-                         class="relative justify-center rounded-md py-2 px-4 text-sm font-medium text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-50">
-                        1
-                    </div>
-                </div>
-
-                <button type="button" [disabled]="roomKeyLogCollection?.links?.next"
-                        class="relative selection:flex justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
-                    Next
-                </button>
+        <div class="flex gap-1">
+            <div
+                class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium dark:text-primary-300 text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-300/25">
+                1
             </div>
+            <div
+                class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
+                2
+            </div>
+            <div
+                class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
+                3
+            </div>
+        </div>
+
+      <button type="button"
+                class="flex items-center justify-center rounded-md button-plain">
+                <span class="md:inline-block hidden">
+                    Next
+                </span>
+
+                <span class="material-symbols-rounded h-6 w-6 md:ml-2 ml-0">
+                    arrow_forward
+                </span>
+        </button>
+
+            </div>
+
         </div>
 
     </div>
