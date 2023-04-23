@@ -22,7 +22,7 @@
 </div>
 
 <div class="grid grid-cols-1 border-x border-b border-gray-300 dark:border-night-500 bg-white p-5 dark:bg-night-700">
-    <div class="flex justify-between">
+    <div class="flex justify-start gap-3 md:flex-row flex-col">
 
         <div class="flex items-center justify-start space-x-3">
                 <select name="report" id="report" class="peer font-medium border-light-dark block w-64 py-2 px-4 text-sm dark:bg-night-700 dark:text-night-200">
@@ -40,15 +40,23 @@
                 </span>
                 Filters
             </button>
-            <button type="button"
-                class="relative selection:flex justify-center button-plain">
-               Preview
-            </button>
-            <button type="button"
-            class="my-auto flex-none button-colored">
-            Generate Report
-            </button>
+
         </div>
+
+
+
+        <div class="flex items-center justify-start space-x-3">
+
+
+        <button type="button"
+            class="relative selection:flex justify-center button-plain">
+           Preview
+        </button>
+        <button type="button"
+        class="my-auto flex-none button-colored">
+        Generate Report
+        </button>
+    </div>
 
 
     </div>
@@ -74,9 +82,9 @@
             <!--Table head-->
             <thead class="text-xs text-gray-400 dark:text-night-300">
                 <tr>
-                    <th class="py-3 px-2 text-left font-medium w-1/2">Name</th>
-                    <th class="py-3 px-2 text-left font-medium">Date and Time Generated</th>
-                    <th class="py-3 px-2 text-right font-medium">Action</th>
+                    <th class="py-3 px-2 text-left font-medium md:w-1/2 w-72">Name</th>
+                    <th class="py-3 px-2 text-left font-medium md:w-auto w-60">Date and Time Generated</th>
+                    <th class="py-3 px-2 text-right font-medium md:w-auto w-28">Action</th>
                 </tr>
             </thead>
             <!--end Table head-->
