@@ -82,12 +82,12 @@
 
                 <!-- tabs -->
                 <div
-                     class="grid w-full grid-cols-2 rounded-md border border-gray-300 text-xs">
+                     class="grid w-full grid-cols-2 rounded-md border-light-dark text-xs">
                     <div>
                         <input formControlName="status" type="radio" name="status" id="1" value="active"
                                class="peer hidden" checked />
                         <label for="1"
-                               class="rounded-l-md border-r border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200">Active</label>
+                               class="rounded-l-md border-r border-gray-300 text-gray-700 dark:text-night-200 dark:border-night-500 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200">Active</label>
                     </div>
 
 
@@ -96,7 +96,7 @@
                                class="peer hidden" />
                         <label
                                for="2"
-                               class="rounded-r-md border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200">Inactive</label>
+                               class="rounded-r-md border-gray-300 text-gray-700 dark:text-night-200 dark:border-night-500 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200">Inactive</label>
                     </div>
 
                 </div>
@@ -111,16 +111,16 @@
             </div>
 
             <mat-form-field appearance="fill"
-                            class="relative leading-5 font-normal col-span-4 bg-white rounded-md border-light-dark text-xs">
+                            class="relative leading-5 font-normal col-span-4 bg-transparent rounded-md border-light-dark text-xs">
                 <!-- <mat-label>Enter a date range</mat-label> -->
                 <mat-date-range-input [rangePicker]="picker"
-                                      class="w-full rounded-md border border-gray-300 px-3 py-3 text-xs placeholder-gray-400 focus:z-10  focus:border-primary-700 focus:outline-none focus:ring-primary-700 dark:border-night-500 dark:bg-night-700 dark:text-night-400 dark:placeholder-night-200">
-                    <input formControlName="duration_start" matStartDate placeholder="Start date" class="date-field">
-                    <input formControlName="duration_end" matEndDate placeholder="End date" class="date-field">
+                                      class="w-full rounded-md bg-transparent border-light-dark px-3 py-3 text-xs placeholder-gray-400 focus:z-10  focus:border-primary-700 focus:outline-none focus:ring-primary-700 dark:border-night-500 dark:text-night-400 dark:placeholder-night-200">
+                    <input formControlName="duration_start" matStartDate placeholder="Start date" class="date-field bg-transparent">
+                    <input formControlName="duration_end" matEndDate placeholder="End date" class="date-field bg-transparent">
                 </mat-date-range-input>
                 <!-- <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> -->
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-date-range-picker #picker></mat-date-range-picker>
+                <mat-datepicker-toggle matIconSuffix [for]="picker" class="bg-transparent"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker class="bg-transparent"></mat-date-range-picker>
             </mat-form-field>
 
         </div>
@@ -132,11 +132,11 @@
 
         <div class="flex items-center justify-end space-x-3">
             <button type="reset"
-                    class="relative mb-10 flex w-20 justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+                    class="relative mb-10 button-plain">
                 Cancel
             </button>
             <button type="submit"
-                    class="relative mb-10 flex w-20 justify-center rounded-md border border-transparent bg-primary-700 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-primary-600">
+                    class="relative mb-10 button-colored">
                 Save
             </button>
         </div>
