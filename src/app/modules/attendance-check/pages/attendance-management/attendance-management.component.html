@@ -1,7 +1,7 @@
 <div class="flex flex-col">
   <!-- title bar -->
   <div class="flex flex-col gap-4 px-4 py-8">
-    <span class="text-[24px] text-gray-900 font-medium">Attendance Management</span>
+    <span class="text-[24px] text-gray-900 font-medium dark:text-white">Attendance Management</span>
     <button type="button" [routerLink]="['/attendance-check/attendance-monitoring']" class="button-plain w-fit">Attendance Monitoring</button>
   </div>
 
@@ -9,9 +9,9 @@
 
   <div class="flex flex-col gap-4">
     <!-- attendance breakdown -->
-    <div class="border rounded-lg mx-4">
+    <div class="border-light-dark rounded-lg mx-4">
       <!-- card-title -->
-      <div class="flex flex-row gap-4 p-4 justify-between border-b">
+      <div class="flex flex-row gap-4 p-4 justify-between border-b border-gray-300 dark:border-night-500">
         <!-- icon -->
         <span class="shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[32px] text-white">
           <i class="fa-solid fa-chart-simple"></i>
@@ -19,7 +19,7 @@
   
         <!-- title and description -->
         <div class="grow flex flex-col gap-0">
-          <span class="text-gray-700 text-[16px] font-bold">Attendance breakdown</span>
+          <span class="text-gray-700 text-[16px] font-bold dark:text-white">Attendance breakdown</span>
           <span class="text-gray-500 text-[14px]">Keep track the attendance of faculty if present or absent.</span>
         </div>
   
@@ -30,7 +30,7 @@
       </div>
   
       <!-- place chart here -->
-      <div class="border-b">
+      <div class="border-b border-gray-300 dark:border-night-500">
         chart here :>
       </div>
   
@@ -43,12 +43,12 @@
   
   
     <!-- attendance monitored -->
-    <div class="border rounded-lg mx-4">
+    <div class="border-light-dark rounded-lg mx-4">
       <!-- card-title -->
-      <div class="flex flex-row gap-4 p-4 justify-between border-b">
+      <div class="flex flex-row gap-4 p-4 justify-between border-b border-gray-300 dark:border-night-500">
         <!-- title and description -->
         <div class="grow flex flex-col gap-0">
-          <span class="text-gray-700 text-[16px] font-bold">Attendance monitored</span>
+          <span class="text-gray-700 text-[16px] font-bold dark:text-white">Attendance monitored</span>
           <span class="text-gray-500 text-[14px]">You’re able to monitor 80% of the attendance</span>
         </div>
   
@@ -59,14 +59,14 @@
       </div>
   
       <!-- place chart here -->
-      <div class="flex flex-col gap-4 p-6 border-b">
+      <div class="flex flex-col gap-4 p-6 border-b border-gray-300 dark:border-night-500">
         <div class="flex flex-row justify-center items-end">
-          <div class="radial-progress text-green-400" style="--value:70; --size:12rem;"><span class="text-black text-[30px]">51</span></div>
+          <div class="radial-progress text-green-400" style="--value:70; --size:12rem;"><span class="text-black text-[30px] dark:text-night-200">51</span></div>
           <div class="shrink-0 badge badge-accent">+12%</div>
         </div>
 
         <div class="">
-          <div class="text-gray-900 text-[16px]">You are almost done with the monitoring!</div>
+          <div class="text-gray-900 text-[16px] dark:text-white">You are almost done with the monitoring!</div>
           <div class="text-gray-500 text-[14px]">You have already monitored 80% of the faculty keep going!</div>
         </div>
       </div>
@@ -90,7 +90,7 @@
   <div class="flex flex-col gap-4 py-8 justify-between">
     <!-- title and description -->
     <div class="grow flex flex-col mx-4 gap-0">
-      <span class="text-gray-700 text-[16px] font-bold">Faculty Members</span>
+      <span class="text-gray-700 text-[16px] font-bold dark:text-white">Faculty Members</span>
       <span class="text-gray-500 text-[14px]">Keep track the attendance of the faculty.</span>
     </div>
 
@@ -100,8 +100,8 @@
     <div class="flex flex-col mx-4 gap-2">
       <!-- search bar row -->
       <div class="flex flex-row gap-2 mb-2">
-        <div class="grow border rounded-lg flex flex-row justify-start items-center px-2">
-          <i class="fa-solid fa-magnifying-glass"></i>
+        <div class="grow border-light-dark rounded-lg flex flex-row justify-start items-center px-2">
+          <i class="fa-solid fa-magnifying-glass dark:text-night-200"></i>
           <input class="border-none" type="text" name="faculty-member-search" id="faculty-member-search" placeholder="Search">
         </div>
 
@@ -121,22 +121,22 @@
         <button class="btn border-gray-400 bg-transparent text-gray-700">Unmonitored</button>
       </div> -->
 
-      <div class="flex flex-row gap-0 items-center">
-        <button class="shrink-0 bg-primary-700 border-l border-y border-gray-300 px-[16px] py-[10px] w-fit rounded-l-lg text-white text-[14px]">
+      <div class="flex flex-row gap-2 items-center">
+        <button class="shrink-0 button-colored">
           View All
         </button>
-        <button class="shrink-0 border border-gray-300 px-[16px] py-[10px] w-fit text-gray-700 text-[14px]">
+        <button class="shrink-0 button-plain">
           Monitored
         </button>
-        <button class="shrink-0 border-r border-y border-gray-300 px-[16px] py-[10px] w-fit rounded-r-lg text-gray-700 text-[14px]">
+        <button class="shrink-0 button-plain">
           Unmonitored
         </button>
       </div>
     </div>
 
-    <ul class="flex flex-col border max-h-[500px] overflow-y-scroll">
+    <ul class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
       <!-- list header -->
-      <div class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white">
+      <div class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
         <div class="basis-2/5">
           <button class="w-fit flex flex-row items-center justify-start gap-2">
             <span>A-Z</span> 
@@ -162,7 +162,7 @@
 
           <!-- name and email -->
           <div class="text-[14px] min-w-0">
-            <div class="text-gray-900 min-w-0 truncate">First_name Last_name</div>
+            <div class="text-gray-900 min-w-0 truncate dark:text-white">First_name Last_name</div>
             <div class="text-gray-500 min-w-0 truncate">name@email.com</div>
           </div>
         </div>
@@ -179,12 +179,12 @@
 
 
           <!-- no action taken -->
-          <div class="shrink-0 badge badge-outline">No action taken</div>
+          <div class="shrink-0 badge badge-outline dark:border-night-200 dark:text-night-200">No action taken</div>
         </div>
 
 
         <!-- actions -->
-        <div class="shrink-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500">
+        <div class="shrink-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
           <button>
             <i class="fa-solid fa-trash"></i>
           </button>
@@ -195,14 +195,15 @@
       </li>
 
       <!-- pagination -->
-      <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t">
+      <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300 
+        dark:border-night-500 dark:bg-night-700">
         <button class="btn-square shrink-0 button-plain w-fit">
           <span class="material-icons">
             chevron_left
           </span>
         </button>
 
-        <span class="text-center">Page 1 out of 10</span>
+        <span class="text-center dark:text-night-200">Page 1 out of 10</span>
 
         <button class="btn-square shrink-0 button-plain w-fit">
           <span class="material-icons">
