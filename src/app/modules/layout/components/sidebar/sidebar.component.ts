@@ -6,6 +6,7 @@ import { MenuService } from '../../services/menu.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { IUser, MenuItem } from 'src/app/core/models';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-sidebar',
@@ -67,8 +68,21 @@ export class SidebarComponent implements OnInit {
     }
 
     onSignOut() {
-        console.log('hit');
-        this.signOut.emit(true);
+        // Show confirmation dialog using Swiperalert2
+        Swal.fire({
+            title: 'Confirmation',
+            text: 'Are you sure you want to sign out?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, sign out',
+            cancelButtonText: 'Cancel',
+        }).then((result: { isConfirmed: any; }) => {
+            // If user confirms, emit signOut event
+            if (result.isConfirmed) {
+                console.log('Sign out confirmed');
+                this.signOut.emit(true);
+            }
+        });
     }
 }
 
