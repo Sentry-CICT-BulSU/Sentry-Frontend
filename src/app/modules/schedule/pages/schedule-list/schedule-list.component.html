@@ -16,10 +16,12 @@
         </div>
         <button type="button" [routerLink]="['/schedule/add-schedule']"
                 class="flex items-center justify-center rounded-md button-plain">
-            <span class="material-symbols-rounded h-6 w-6 mr-2">
+            <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
                 add
             </span>
-            Add Schedule
+            <span class="hidden md:inline-block">
+                Add Schedule
+            </span>
         </button>
     </div>
 </div>
