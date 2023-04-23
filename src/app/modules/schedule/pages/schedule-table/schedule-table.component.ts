@@ -13,11 +13,11 @@ interface ScheduleData {
   templateUrl: './schedule-table.component.html',
 })
 export class ScheduleTableComponent implements OnInit {
-  daysOfWeek: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday',];
-  timeslots: string[] = ['7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm'];
+  daysOfWeek: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  timeslots: string[] = ['7:00 am', '8:00 am', '9:00 am', '10:00 am', '11:00 am', '12:00 pm', '1:00 pm', '2:00 pm', '3:00 pm', '4:00 pm', '5:00 pm', '6:00 pm'];
   scheduleData: ScheduleData[] = [
-    { day: 'Wednesday', timeStart: '9am', timeEnd: '11am', subject: 'Capstone 2', room: 'IT1' },
-    { day: 'Monday', timeStart: '7am', timeEnd: '10am', subject: 'Networking 2', room: 'IT2' },
+    { day: 'Wednesday', timeStart: '9:00 am', timeEnd: '11:00 am', subject: 'Capstone 2', room: 'IT1' },
+    { day: 'Monday', timeStart: '7:00 am', timeEnd: '10:00 am', subject: 'Networking 2', room: 'IT2' },
   ];
 
   constructor() { }

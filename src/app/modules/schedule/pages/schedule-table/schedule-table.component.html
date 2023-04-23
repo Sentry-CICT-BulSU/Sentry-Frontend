@@ -33,26 +33,26 @@
   </div>
 
   <div class="grid grid-cols-1 rounded-b-lg border-x border-b border-gray-300 dark:border-night-500 bg-white p-5 dark:bg-night-700">
-    <table class="table-fixed w-full">
+    <table class="table-fixed w-full dark:text-night-200">
       <thead>
         <tr>
-          <th class="w-1/4">&nbsp;</th>
+          <th class="w-2/4">&nbsp;</th>
           <ng-container *ngFor="let day of daysOfWeek">
-            <th class="w-3/4">{{ day }}</th>
+            <th class="w-2/4 text-gray-500 text-sm font-medium pb-4">{{ day }}</th>
           </ng-container>
         </tr>
       </thead>
       <tbody>
         <ng-container *ngFor="let time of timeslots; let i = index">
           <tr>
-            <td class="border px-4 py-2">{{ time }}</td>
+            <td class="border-light-dark px-4 py-2 h-24 text-center">{{ time }}</td>
             <ng-container *ngFor="let day of daysOfWeek">
-              <td class="border px-4 py-2" [ngClass]="{'bg-green-200': isSlotFilled(day, time)}">
+              <td class="border-light-dark px-4 py-2" [ngClass]="{'bg-primary-300 dark:bg-night-500': isSlotFilled(day, time)}">
                 <ng-container *ngIf="isSlotFilled(day, time) as slot">
                   <div class="flex flex-col justify-center items-center"
                     *ngIf="time === slot.timeStart; else blankSlot">
                     <div>{{ slot.subject }}</div>
-                    <div class="text-gray-600">{{ slot.room }}</div>
+                    <div class="text-gray-600 dark:text-night-200">{{ slot.room }}</div>
                   </div>
                   <ng-template #blankSlot>
                     &nbsp;
