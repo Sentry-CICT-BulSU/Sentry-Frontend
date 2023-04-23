@@ -14,13 +14,13 @@
     <!-- start key card -->
     <div class="flex flex-col justify-between">
 
-        <div class="grid grid-cols-1 rounded-t-lg border-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
+        <div class="grid grid-cols-1 rounded-t-lg border-light-dark bg-white p-5 dark:bg-night-700">
             <h3 class="text-lg font-medium text-gray-900 dark:text-white mr-3">Room Status</h3>
         </div>
 
 
         <div
-            class="flex h-full flex-col border-[#E4E7EC] border-x bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-1">
+            class="flex h-full flex-col border-gray-300 dark:border-night-500 border-x bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-1">
             <div class="mt-4 flex items-center flex-1 flex-col justify-between space-y-1 md:mt-0">
 
 
@@ -38,10 +38,10 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 rounded-b-lg border-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
+        <div class="grid grid-cols-1 rounded-b-lg border-light-dark bg-white p-5 dark:bg-night-700">
             <div class="flex items-center space-x-3">
                 <button type="button"
-                    class="relative selection:flex justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+                    class="button-plain">
                     View Full Schedule
                 </button>
             </div>
@@ -50,7 +50,7 @@
     <!-- end key card -->
     <div class="col-span-3">
 
-        <div class="grid grid-cols-1 rounded-t-lg border-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
+        <div class="grid grid-cols-1 rounded-t-lg border-light-dark bg-white p-5 dark:bg-night-700">
                     <h3 class="text-lg font-medium text-gray-900 dark:text-white mr-3">Faculty Information</h3>
                     <div class="space-x-1 text-sm font-medium text-gray-400 dark:text-night-300">
                         <p>
@@ -60,7 +60,7 @@
         </div>
 
         <form [formGroup]="roomKeyForm!" novalidate
-            class="grid grid-cols-1 border-x-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
+            class="grid grid-cols-1 border-x-[1px] border-gray-300 dark:border-night-500 bg-white p-5 dark:bg-night-700">
 
             <div class="grid grid-cols-10 gap-8 pb-6">
                 <div class="col-span-2 space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
@@ -98,24 +98,24 @@
         </form>
 
         <div *ngIf="roomKey"
-            class="grid grid-cols-1 rounded-b-lg border-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
+            class="grid grid-cols-1 rounded-b-lg border-light-dark bg-white p-5 dark:bg-night-700">
             <div *ngIf="roomKey.status !== 'Available'" class="flex items-center justify-end space-x-3">
                 <button *ngIf="roomKey.status !== 'Lost'" type="button" (click)="lostRoomKey()"
-                    class="relative flex justify-center rounded-md border border-transparent bg-primary-700 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-primary-600">
+                    class="button-colored">
                     Lost Key
                 </button>
                 <button type="button" (click)="returnRoomKey()"
-                    class="relative flex justify-center rounded-md border border-transparent bg-primary-700 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-primary-600">
+                    class="button-colored">
                     Return Key
                 </button>
             </div>
             <div *ngIf="roomKey.status === 'Available'" class="flex items-center justify-end space-x-3">
                 <button type="button" (click)="loadFromSchedule()"
-                    class="relative selection:flex justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+                    class="button-plain">
                     Load data from schedule
                 </button>
                 <button type="button" (click)="borrowRoomKey()"
-                    class="relative flex justify-center rounded-md border border-transparent bg-primary-700 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-primary-600">
+                    class="button-colored">
                     Lend Key
                 </button>
             </div>
@@ -124,7 +124,7 @@
 
     <!-- Key Logs -->
     <div class="col-span-4">
-        <div class="grid grid-cols-1 rounded-t-lg border-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
+        <div class="grid grid-cols-1 rounded-t-lg border-light-dark bg-white p-5 dark:bg-night-700">
             <div class="flex justify-between">
                 <div class="inline-block">
                     <h3 class="text-lg font-medium text-gray-900 dark:text-white mr-3">IT1 Key Log</h3>
@@ -135,22 +135,36 @@
                     </div>
                 </div>
                 <div class="flex items-center justify-end space-x-3">
-                    <input type="search"
-                        class="relative justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 "
-                        placeholder="Search" />
-                        <button type="button"
-                        class="flex items-center justify-center rounded-md button-plain">
-                        <span class="material-symbols-rounded h-6 w-6 mr-2">
-                            filter_list
-                        </span>
-                        Filters
-                    </button>
-                </div>
+
+                    <div class='max-w-md mx-auto'>
+                        <div class="relative flex items-center w-full rounded-lg border-light-dark overflow-hidden">
+                            <div class="grid place-items-center h-full w-12 text-gray-700 dark:text-night-200">
+                                <span class="material-symbols-rounded h-6 w-6">
+                                    search
+                                </span>
+                            </div>
+
+                            <input
+                            class="search-bar"
+                            type="text"
+                            id="search"
+                            placeholder="Search something.." />
+                        </div>
+                    </div>
+
+                    <button type="button"
+                    class="flex items-center justify-center rounded-md button-plain">
+                    <span class="material-symbols-rounded h-6 w-6 mr-2">
+                        filter_list
+                    </span>
+                    Filters
+                </button>
+            </div>
             </div>
         </div>
 
         <div *ngIf="logs"
-            class="grid grid-cols-1 col-span-4  border-x-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
+            class="grid grid-cols-1 col-span-4  border-x-[1px] border-gray-300 dark:border-night-500 bg-white p-5 dark:bg-night-700">
             <!-- start of table -->
 
             <div class="relative overflow-x-auto">
@@ -214,23 +228,44 @@
         <!-- end of table -->
 
         <div
-            class="grid grid-cols-1 col-span-4  rounded-b-lg border-[1px] border-[#E4E7EC] bg-white p-5 dark:bg-night-700">
+            class="grid grid-cols-1 col-span-4  rounded-b-lg border-light-dark bg-white p-5 dark:bg-night-700">
             <div class="flex items-center justify-between space-x-3">
+
+
                 <button type="button"
-                    class="relative selection:flex justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
-                    Previous
+                        class="flex items-center justify-center rounded-md button-plain">
+                        <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
+                            arrow_back
+                        </span>
+                        <span class="md:inline-block hidden">
+                            Previous
+                        </span>
                 </button>
 
-                <div>
+                <div class="flex gap-1">
                     <div
-                        class="relative justify-center rounded-md py-2 px-4 text-sm font-medium text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-50">
+                        class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium dark:text-primary-300 text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-300/25">
                         1
+                    </div>
+                    <div
+                        class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
+                        2
+                    </div>
+                    <div
+                        class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
+                        3
                     </div>
                 </div>
 
-                <button type="button"
-                    class="relative selection:flex justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
-                    Next
+              <button type="button"
+                        class="flex items-center justify-center rounded-md button-plain">
+                        <span class="md:inline-block hidden">
+                            Next
+                        </span>
+
+                        <span class="material-symbols-rounded h-6 w-6 md:ml-2 ml-0">
+                            arrow_forward
+                        </span>
                 </button>
             </div>
         </div>
