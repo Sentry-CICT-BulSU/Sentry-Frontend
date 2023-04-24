@@ -58,11 +58,19 @@ export class KeyInfoComponent implements OnInit {
         return this.roomKeyService
             .getRoomKey$(this.roomKeyId)
             .subscribe((roomKey) => {
-                if (roomKey.data) {
+                if (
+                    (roomKey.data as IRoomKey) &&
+                    (roomKey.data as IRoomKey).logs &&
+                    ((roomKey.data as IRoomKey).schedules as ISchedule[])
+                        .length > 0
+                ) {
                     this.roomKey = roomKey.data as IRoomKey;
                     this.logs = this.roomKey.logs as IRoomKeyLog[];
                     this.schedules = this.roomKey.schedules as ISchedule[];
-                    this.facultyToBorrow = this.schedules[0].adviser as IUser;
+                    this.facultyToBorrow =
+                        this.schedules.length > 0
+                            ? (this.schedules[0].adviser as IUser)
+                            : undefined;
                     this.loadFormControls();
                 }
             });
