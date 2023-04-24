@@ -2,24 +2,26 @@
     <div class="flex justify-between">
         <div class="flex items-center justify-start">
             <a href="#faculty"
-               class="tab-link active relative selection:flex justify-center rounded-l-md border border-gray-300 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-100 dark:text-night-200 dark:hover:bg-night-500">
+               class="tab-link tab-button-1">
                 Faculty
             </a>
             <a href="#room"
-               class="tab-link relative selection:flex justify-center border-y border-gray-300 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-100 dark:text-night-200 dark:hover:bg-night-500">
+               class="tab-link tab-button-2">
                 Room
             </a>
             <a href="#section"
-               class="tab-link relative selection:flex justify-center rounded-r-md border border-gray-300 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-100 dark:text-night-200 dark:hover:bg-night-500">
+               class="tab-link tab-button-3">
                 Section
             </a>
         </div>
         <button type="button" [routerLink]="['/schedule/add-schedule']"
                 class="flex items-center justify-center rounded-md button-plain">
-            <span class="material-symbols-rounded h-6 w-6 mr-2">
+            <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
                 add
             </span>
-            Add Schedule
+            <span class="hidden md:inline-block">
+                Add Schedule
+            </span>
         </button>
     </div>
 </div>
@@ -35,12 +37,14 @@
     <div class="grid grid-cols-1 rounded-b-lg border-light-dark bg-white p-5 dark:bg-night-700">
         <div class="flex items-center justify-between space-x-3">
             <button type="button"
-                    class="flex items-center justify-center rounded-md button-plain">
-                <span class="material-symbols-rounded h-6 w-6 mr-2">
+                class="flex items-center justify-center rounded-md button-plain">
+                <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
                     arrow_back
                 </span>
-                Previous
-            </button>
+                <span class="md:inline-block hidden">
+                    Previous
+                </span>
+        </button>
             <div class="flex gap-1" *ngIf="isMultiPage">
                 <div *ngFor="let page of pageMaxCount()"
                      class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium dark:text-primary-300 text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-50">
@@ -50,8 +54,11 @@
 
             <button type="button"
                 class="flex items-center justify-center rounded-md button-plain">
-                Next
-                <span class="material-symbols-rounded h-6 w-6 ml-2">
+                <span class="md:inline-block hidden">
+                    Next
+                </span>
+
+                <span class="material-symbols-rounded h-6 w-6 md:ml-2 ml-0">
                     arrow_forward
                 </span>
         </button>
@@ -71,36 +78,41 @@
         <div class="flex items-center justify-between space-x-3">
 
 
-            <button type="button"
-                    class="flex items-center justify-center rounded-md button-plain">
-                <span class="material-symbols-rounded h-6 w-6 mr-2">
+           <button type="button"
+                class="flex items-center justify-center rounded-md button-plain">
+                <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
                     arrow_back
                 </span>
-                Previous
-            </button>
+                <span class="md:inline-block hidden">
+                    Previous
+                </span>
+        </button>
 
-            <div class="flex gap-1">
-                <div
-                     class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium dark:text-primary-300 text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-300/25">
-                    1
-                </div>
-                <div
-                     class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
-                    2
-                </div>
-                <div
-                     class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
-                    3
-                </div>
+        <div class="flex gap-1">
+            <div
+                class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium dark:text-primary-300 text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-300/25">
+                1
             </div>
+            <div
+                class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
+                2
+            </div>
+            <div
+                class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
+                3
+            </div>
+        </div>
 
-            <button type="button"
-                    class="flex items-center justify-center rounded-md button-plain">
-                Next
-                <span class="material-symbols-rounded h-6 w-6 ml-2">
+      <button type="button"
+                class="flex items-center justify-center rounded-md button-plain">
+                <span class="md:inline-block hidden">
+                    Next
+                </span>
+
+                <span class="material-symbols-rounded h-6 w-6 md:ml-2 ml-0">
                     arrow_forward
                 </span>
-            </button>
+        </button>
 
         </div>
     </div>
@@ -116,36 +128,41 @@
         <div class="flex items-center justify-between space-x-3">
 
 
-            <button type="button"
-                    class="flex items-center justify-center rounded-md button-plain">
-                <span class="material-symbols-rounded h-6 w-6 mr-2">
+           <button type="button"
+                class="flex items-center justify-center rounded-md button-plain">
+                <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
                     arrow_back
                 </span>
-                Previous
-            </button>
+                <span class="md:inline-block hidden">
+                    Previous
+                </span>
+        </button>
 
-            <div class="flex gap-1">
-                <div
-                     class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium dark:text-primary-300 text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-300/25">
-                    1
-                </div>
-                <div
-                     class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
-                    2
-                </div>
-                <div
-                     class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
-                    3
-                </div>
+        <div class="flex gap-1">
+            <div
+                class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium dark:text-primary-300 text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-300/25">
+                1
             </div>
+            <div
+                class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
+                2
+            </div>
+            <div
+                class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
+                3
+            </div>
+        </div>
 
-            <button type="button"
-                    class="flex items-center justify-center rounded-md button-plain">
-                Next
-                <span class="material-symbols-rounded h-6 w-6 ml-2">
+      <button type="button"
+                class="flex items-center justify-center rounded-md button-plain">
+                <span class="md:inline-block hidden">
+                    Next
+                </span>
+
+                <span class="material-symbols-rounded h-6 w-6 md:ml-2 ml-0">
                     arrow_forward
                 </span>
-            </button>
+        </button>
 
         </div>
     </div>

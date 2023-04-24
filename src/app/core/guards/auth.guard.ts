@@ -30,14 +30,14 @@ export class AuthGuard implements CanActivate {
         //   restrict access to un-authenticated users
         // TODO: https://niceprogrammer.com/laravel-api-and-angular-client-tutorial-part-2-client-oauth-login/
         // if (!this.oauthService.hasValidAccessToken()) {
-        if (!this.authService.isAuthenticated) {
-            this.authService.logout();
-            return false;
-        }
-        return true;
+        // if (!this.authService.isAuthenticated) {
+        //     this.authService.logout();
+        //     return false;
+        // }
+        // return true;
         //
 
         // Dev mode: uncomment below, comment above
-        // return true;
+        return true;
     }
 }

@@ -2,153 +2,32 @@
     <!-- Header -->
     <div class="mb-8 flex justify-between">
         <div class="inline-block">
-            <h3 class="font-medium text-gray-900 text-3xl dark:text-white">Settings</h3>
+            <h3 class="text-heading">Settings</h3>
 
         </div>
     </div>
+
+    <div class="flex items-center justify-start">
+        <div [routerLink]="['/settings/personal-information']" routerLinkActive="border-b-2 text-primary-700 border-primary-700"
+            class="cursor-pointer relative justify-center py-4 mr-4 text-sm font-medium text-gray-700 dark:text-night-200">
+            Personal Information
+        </div>
+        <div [routerLink]="['/settings/password-and-security']" routerLinkActive="border-b-2 text-primary-700 border-primary-700"
+            class="cursor-pointer relative justify-center py-4 mx-4 text-sm font-medium text-gray-700  dark:text-night-200">
+            Password and Security
+        </div>
+        <div [routerLink]="['/settings/system-settings']" routerLinkActive="border-b-2 text-primary-700 border-primary-700"
+            class="cursor-pointer relative justify-center py-4 mx-4 text-sm font-medium text-gray-700 dark:text-night-200">
+            System Settings
+        </div>
+    </div>
+
+    <div class="pb-6">
+        <hr class="border-solid border-gray-200 dark:border-night-500" />
+    </div>
+
     <!-- end Header -->
-    <!-- <router-outlet></router-outlet> -->
-
-
-
-
-
-    <div class="flex justify-between px-4 py-2 bg-gray-200">
-        <a href="#personal-info" class="tab-link active">Personal Information</a>
-        <a href="#password-security" class="tab-link">Password and Security</a>
-        <a href="#system-settings" class="tab-link">System Settings</a>
-      </div>
-
-      <div id="personal-info" class="tab-content">
-        <form>
-          <div>
-            <label for="first-name">First Name:</label>
-            <input type="text" id="first-name" name="first-name">
-          </div>
-          <div>
-            <label for="last-name">Last Name:</label>
-            <input type="text" id="last-name" name="last-name">
-          </div>
-          <div>
-            <label for="email">Email Address:</label>
-            <input type="email" id="email" name="email">
-          </div>
-          <div>
-            <label for="photo">Photo:</label>
-            <img src='assets/avatars/avt-01.jpg' class="mr-2 h-10 w-10 flex-none rounded-full" alt="" />
-            <input type="file" id="photo" name="photo">
-          </div>
-          <div>
-            <label for="role">Role:</label>
-            <select id="role" name="role">
-              <option value="admin">Admin</option>
-              <option value="user">User</option>
-            </select>
-          </div>
-          <div>
-            <button type="button">Cancel</button>
-            <button type="submit">Save</button>
-          </div>
-        </form>
-      </div>
-
-      <div id="password-security" class="tab-content">
-        <!-- Password and Security content goes here -->
-        <div>
-            <h2>Two Factor Authentication</h2>
-            <form>
-              <div class="mb-4">
-                <label class="inline-flex items-center">
-                  <input type="checkbox" class="form-checkbox" name="two-factor-auth" value="enabled">
-                  <span class="ml-2">Enable two-factor authentication</span>
-                </label>
-              </div>
-            </form>
-            <div class="mt-6">
-              <h2>Reset Password</h2>
-              <form>
-                <div class="mb-4">
-                  <label class="block" for="password">
-                    New Password
-                  </label>
-                  <input id="password" type="password" placeholder="********">
-                </div>
-                <div class="mb-4">
-                  <label class="block" for="confirm-password">
-                    Confirm Password
-                  </label>
-                  <input id="confirm-password" type="password" placeholder="********">
-                </div>
-                <button type="button">
-                  Reset Password
-                </button>
-              </form>
-            </div>
-          </div>
-
-
-
-      </div>
-
-      <div id="system-settings" class="tab-content">
-        <!-- System Settings content goes here -->
-        <form>
-            <div class="mb-4">
-              <label class="block" for="systemName">
-                System Name
-              </label>
-              <input class="appearance-none" id="systemName" type="text" placeholder="Enter system name">
-            </div>
-            <div class="mb-4">
-              <label class="block" for="about">
-                About
-              </label>
-              <textarea class="appearance-none" id="about" rows="3" placeholder="Enter description"></textarea>
-            </div>
-            <div class="mb-4">
-              <label class="block " for="imageUpload">
-                Upload Image
-              </label>
-              <input type="file" id="imageUpload">
-            </div>
-            <div class="mb-4">
-              <label class="block" for="systemColor">
-                System Color
-              </label>
-              <div class="flex items-center">
-                <input class="mr-2 leading-tight" type="radio" name="systemColor" value="color1" checked>
-                <div class="w-4 h-4 rounded-full bg-blue-500"></div>
-                <input class="ml-4 mr-2 leading-tight" type="radio" name="systemColor" value="color2">
-                <div class="w-4 h-4 rounded-full bg-red-500"></div>
-                <input class="ml-4 mr-2 leading-tight" type="radio" name="systemColor" value="color3">
-                <div class="w-4 h-4 rounded-full bg-green-500"></div>
-                <input class="ml-4 mr-2 leading-tight" type="radio" name="systemColor" value="color4">
-                <div class="w-4 h-4 rounded-full bg-yellow-500"></div>
-                <input class="ml-4 mr-2 leading-tight" type="radio" name="systemColor" value="color5">
-                <div class="w-4 h-4 rounded-full bg-purple-500"></div>
-                <input class="ml-4 mr-2 leading-tight" type="radio" name="systemColor" value="color6">
-                <div class="w-4 h-4 rounded-full bg-pink-500"></div>
-              </div>
-            </div>
-            <div class="flex justify-end">
-              <button type="button">
-                Cancel
-              </button>
-              <button type="submit">
-                Save
-              </button>
-            </div>
-          </form>
-
-
-      </div>
-
-
-
-
-
-
-
+    <router-outlet></router-outlet>
 
 
 </div>
