@@ -1,6 +1,6 @@
 <div class="mx-auto px-4 pb-4 pt-8 sm:px-8 lg:container">
     <!-- Header -->
-    <div class="mb-8 flex justify-between ">
+    <div class="mb-8 flex items-center justify-between ">
         <div class="inline-block">
             <h3 class="text-heading">Room Management</h3>
             <div class="text-subheading">
@@ -8,8 +8,11 @@
             </div>
         </div>
         <button type="button" [routerLink]="['/room/add-room']"
-                class="my-auto flex-none button-colored">
-                Add Room
+                class="flex items-center justify-center button-colored">
+            <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
+                add
+            </span>
+            <span class="hidden md:inline-block">Add Room</span>
         </button>
     </div>
     <!-- end Header -->
@@ -27,11 +30,13 @@
     </div>
 
     <div class="grid grid-cols-1 border-x border-b border-gray-200 dark:border-night-500 bg-white p-5 dark:bg-night-700">
-        <div class="flex justify-between">
+        <div class="flex flex-col md:flex-row gap-4 justify-between">
             <div class="flex items-center justify-start">
                 <a href="#view-all"
                     class="tab-link active tab-button-1">
-                    View All
+                    <span class="md:inline-block">
+                        View
+                        </span> All
                 </a>
                 <a href="#active-sem"
                     class="tab-link tab-button-2">
@@ -58,7 +63,7 @@
                         class="search-bar"
                         type="text"
                         id="search"
-                        placeholder="Search something.." />
+                        placeholder="Search.." />
                     </div>
                 </div>
 
@@ -87,17 +92,17 @@
         <!--Table head-->
         <thead class="text-xs text-gray-400 dark:text-night-300">
             <tr>
-                <th class="py-3 px-2 text-left font-medium w-1/2">Subject Name</th>
-                <th class="py-3 px-2 text-left font-medium">Status</th>
-                <th class="py-3 px-2 text-left font-medium w-1/4">Last Modified</th>
-                <th class="py-3 px-2 text-right font-medium w-1/10"></th>
+                <th class="py-3 px-2 text-left font-medium md:w-1/2 w-56">Subject Name</th>
+                <th class="py-3 px-2 text-left font-medium md:w-auto w-28">Status</th>
+                <th class="py-3 px-2 text-left font-medium md:w-1/4 w-56">Last Modified</th>
+                <th class="py-3 px-2 text-right font-medium md:w-1/10 w-28"></th>
             </tr>
         </thead>
         <!--end Table head-->
         <!--Table body-->
         <tbody>
             <tr class="hover:bg-gray-100 dark:border-night-500 dark:hover:bg-night-600">
-                <td class="py-2 px-2">
+                <td class="py-4 px-2">
                     <div class="flex items-center">
                         <div class="flex flex-col justify-items-start">
                             <a href="#"

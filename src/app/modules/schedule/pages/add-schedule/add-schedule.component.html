@@ -19,7 +19,7 @@
         <hr class="border-solid border-gray-200 dark:border-night-500" />
     </div>
 
-    <div class="grid grid-cols-8 gap-8 pb-6">
+    <div class="grid md:grid-cols-8 gap-8 pb-6">
         <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
             <p>Faculty</p>
         </div>
@@ -47,7 +47,7 @@
     </div>
 
 
-    <div class="grid grid-cols-8 gap-8 pb-6">
+    <div class="grid md:grid-cols-8 gap-8 pb-6">
         <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
             <p>Subject</p>
         </div>
@@ -75,7 +75,7 @@
     </div>
 
 
-    <div class="grid grid-cols-8 gap-8 pb-6">
+    <div class="grid md:grid-cols-8 gap-8 pb-6">
         <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
             <p>Semester</p>
         </div>
@@ -89,12 +89,12 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-8 gap-8 pb-6">
+    <div class="grid md:grid-cols-8 gap-8 pb-6">
         <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
             <p>Schedule</p>
         </div>
 
-        <div class="relative col-span-4">
+        <div class="relative md:col-span-4 col-span-3">
             <!-- tabs -->
             <div formGroupName="active_days" class="grid w-full grid-cols-7 rounded-md border border-gray-300 text-xs">
                 <div *ngFor="let day of activeDaysArray; let i = index">
@@ -110,7 +110,7 @@
     </div>
 
 
-    <div class="grid grid-cols-8 gap-8 pb-6">
+    <div class="grid md:grid-cols-8 gap-8 pb-6">
         <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
             <p>Start Time</p>
         </div>

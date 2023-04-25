@@ -9,10 +9,10 @@
     </div>
 </div>
 
-<div class="grid grid-cols-4 gap-6">
+<div class="grid md:grid-cols-4 gap-6">
 
     <!-- start key card -->
-    <div class="flex flex-col justify-between">
+    <div class="flex flex-col col-span-4 md:col-span-1 justify-between">
 
         <div class="grid grid-cols-1 rounded-t-lg border-light-dark bg-white p-5 dark:bg-night-700">
             <h3 class="text-lg font-medium text-gray-900 dark:text-white mr-3">Room Status</h3>
@@ -25,7 +25,9 @@
 
 
                 <div class="flex items-center rounded-full bg-primary-700 w-20 h-20 text-xs font-medium text-white">
-                    <i class="fa-solid fa-key text-4xl mx-auto"></i>
+                    <span class="material-symbols-rounded text-4xl mx-auto -rotate-45">
+                        vpn_key
+                    </span>
                 </div>
 
                 <span class="text-xl font-medium text-gray-900 dark:text-white">
@@ -48,7 +50,7 @@
         </div>
     </div>
     <!-- end key card -->
-    <div class="col-span-3">
+    <div class="md:col-span-3 col-span-4">
 
         <div class="grid grid-cols-1 rounded-t-lg border-light-dark bg-white p-5 dark:bg-night-700">
                     <h3 class="text-lg font-medium text-gray-900 dark:text-white mr-3">Faculty Information</h3>
@@ -62,7 +64,7 @@
         <form [formGroup]="roomKeyForm!" novalidate
             class="grid grid-cols-1 border-x-[1px] border-gray-300 dark:border-night-500 bg-white p-5 dark:bg-night-700">
 
-            <div class="grid grid-cols-10 gap-8 pb-6">
+            <div class="grid md:grid-cols-10 gap-8 pb-6">
                 <div class="col-span-2 space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
                     <p>Name</p>
                 </div>
@@ -125,7 +127,7 @@
     <!-- Key Logs -->
     <div class="col-span-4">
         <div class="grid grid-cols-1 rounded-t-lg border-light-dark bg-white p-5 dark:bg-night-700">
-            <div class="flex justify-between">
+            <div class="flex flex-col md:flex-row gap-4 justify-between">
                 <div class="inline-block">
                     <h3 class="text-lg font-medium text-gray-900 dark:text-white mr-3">IT1 Key Log</h3>
                     <div class="space-x-1 text-sm font-medium text-gray-400 dark:text-night-300">
@@ -148,7 +150,7 @@
                             class="search-bar"
                             type="text"
                             id="search"
-                            placeholder="Search something.." />
+                            placeholder="Search.." />
                         </div>
                     </div>
 
@@ -170,13 +172,13 @@
             <div class="relative overflow-x-auto">
                 <table class="w-full table-fixed">
                     <!--Table head-->
-                    <thead class="text-xs text-gray-400 dark:text-night-300">
+                    <thead class="text-xs font-medium text-gray-400 dark:text-night-300">
                         <tr>
-                            <th class="py-3 px-2 text-left w-1/3">Faculty Name</th>
-                            <th class="py-3 px-2 text-left">Key Status</th>
-                            <th class="py-3 px-2 text-left">Subject Code</th>
-                            <th class="py-3 px-2 text-left">Room</th>
-                            <th class="py-3 px-2 text-left w-1/4">Time</th>
+                            <th class="py-3 px-2 text-left md:w-1/3 w-56">Faculty Name</th>
+                            <th class="py-3 px-2 text-left md:w-auto w-28">Key Status</th>
+                            <th class="py-3 px-2 text-left md:w-auto w-28">Subject Code</th>
+                            <th class="py-3 px-2 text-left md:w-auto w-28">Room</th>
+                            <th class="py-3 px-2 text-left md:w-1/4 w-56">Time</th>
                         </tr>
                     </thead>
                     <!--end Table head-->
@@ -184,7 +186,7 @@
                     <tbody>
                         <tr *ngFor="let log of logs"
                             class="hover:bg-gray-100 dark:border-night-500 dark:hover:bg-night-600">
-                            <td class="py-2 px-2">
+                            <td class="py-4 px-2">
                                 <div class="flex items-center">
                                     <img src="assets/avatars/user-profile.png" class="mr-2 h-10 w-10 flex-none rounded-full"
                                         alt="" />

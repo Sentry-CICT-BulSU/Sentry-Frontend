@@ -5,12 +5,12 @@
         <!--Table head-->
         <thead class="text-xs text-gray-400 dark:text-night-300">
             <tr>
-                <th class="font-medium py-3 px-2 text-left w-72">Name</th>
-                <th class="font-medium py-3 px-2 text-left">Status</th>
-                <th class="font-medium py-3 px-2 text-left w-72">Email Address</th>
-                <th class="font-medium py-3 px-2 text-left w-52">Position</th>
-                <th class="font-medium py-3 px-2 text-left">Account Type</th>
-                <th class="font-medium py-3 px-2 text-right"></th>
+                <th class="font-medium py-3 px-2 text-left w-72 md:w-1/4">Name</th>
+                <th class="font-medium py-3 px-2 text-left md:w-auto w-28">Status</th>
+                <th class="font-medium py-3 px-2 text-left w-72 md:w-1/4">Email Address</th>
+                <th class="font-medium py-3 px-2 text-left w-52 md:w-auto">Position</th>
+                <th class="font-medium py-3 px-2 text-left md:w-auto w-28">Account Type</th>
+                <th class="font-medium py-3 px-2 text-right md:w-auto w-28"></th>
             </tr>
         </thead>
         <!--end Table head-->
@@ -25,7 +25,7 @@
                         <div class="flex flex-col justify-items-start">
                             <a href="#"
                                 class="mb-1 text-sm font-medium text-gray-900 dark:text-night-100 dark:hover:text-primary-500">
-                                {{ user.email }}
+                                {{ user.first_name + ' ' + user.last_name }}
                             </a>
                         </div>
                     </div>
