@@ -1,3 +1,4 @@
+import { FacultyKeysComponent } from './pages/faculty-keys/faculty-keys.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: 'keys-overview', component: KeysOverviewComponent },
       { path: 'classroom-keys', component: ClassroomKeysComponent },
       { path: 'key-logs', component: KeyLogsComponent },
+      { path: 'faculty-keys', component: FacultyKeysComponent },
       { path: '**', redirectTo: 'keys-overview', pathMatch: 'full' },
 
     ],

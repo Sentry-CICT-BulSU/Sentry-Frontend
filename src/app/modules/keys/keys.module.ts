@@ -1,3 +1,4 @@
+import { FacultyKeysComponent } from './pages/faculty-keys/faculty-keys.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { KeysComponent } from './keys.component';
@@ -21,7 +22,8 @@ import { KeyLogsComponent } from './pages/key-logs/key-logs.component';
     KeysComponent,
     KeysOverviewComponent,
     ClassroomKeysComponent,
-    KeyLogsComponent
+    KeyLogsComponent,
+    FacultyKeysComponent
   ]
 })
 export class KeysModule { }
