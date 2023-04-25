@@ -6,6 +6,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FacultyListComponent } from './pages/faculty-list/faculty-list.component';
 import { EditFacultyComponent } from './pages/edit-faculty/edit-faculty.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -13,10 +14,8 @@ import { EditFacultyComponent } from './pages/edit-faculty/edit-faculty.componen
     FacultyRoutingModule,
     SharedModule.forRoot(),
     HttpClientModule,
+    ReactiveFormsModule,
   ],
-  declarations: [
-    FacultyComponent,
-    FacultyListComponent,
-    EditFacultyComponent,]
+  declarations: [FacultyComponent, FacultyListComponent, EditFacultyComponent],
 })
-export class FacultyModule { }
+export class FacultyModule {}
