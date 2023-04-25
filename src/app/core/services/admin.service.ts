@@ -43,9 +43,9 @@ export class AdminService extends PropertiesService {
         );
     }
 
-    softDeleteUser$(deleteUser: IUserConfig) {
+    softDeleteUser$(id: number) {
         return this.http.delete<IResponse>(
-            this.adminApiRoute + '/users/' + deleteUser.id,
+            this.adminApiRoute + '/users/' + id,
             { headers: this.options.headers }
         );
     }
