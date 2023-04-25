@@ -1,3 +1,4 @@
+import { FacultyModeModule } from './../faculty-mode/faculty-mode.module';
 import { AuthGuard } from './../../core/guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -71,6 +72,16 @@ const routes: Routes = [
         path: 'settings',
         component: LayoutComponent,
         loadChildren: () => import('../settings/settings.module').then((m) => m.SettingsModule),
+    },
+    {
+        path: 'faculty-profile',
+        component: LayoutComponent,
+        loadChildren: () => import('../settings/settings.module').then((m) => m.SettingsModule),
+    },
+    {
+        path: 'faculty-mode',
+        component: LayoutComponent,
+        loadChildren: () => import('../faculty-mode/faculty-mode.module').then((m) => m.FacultyModeModule),
     },
 
 
