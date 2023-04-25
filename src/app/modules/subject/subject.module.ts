@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SubjectListComponent } from './pages/subject-list/subject-list.component';
 import { AddSubjectComponent } from './pages/add-subject/add-subject.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditSubjectComponent } from './pages/edit-subject/edit-subject.component';
 
 @NgModule({
     imports: [
@@ -16,6 +17,6 @@ import { ReactiveFormsModule } from '@angular/forms';
         HttpClientModule,
         ReactiveFormsModule,
     ],
-    declarations: [SubjectComponent, SubjectListComponent, AddSubjectComponent],
+    declarations: [SubjectComponent, SubjectListComponent, AddSubjectComponent, EditSubjectComponent],
 })
 export class SubjectModule {}
