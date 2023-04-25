@@ -12,6 +12,7 @@ import { AddUserComponent } from './pages/add-user/add-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditUserComponent } from './pages/edit-user/edit-user.component';
 import { EditFacultyComponent } from './pages/edit-faculty/edit-faculty.component';
+import { DeletedUserComponent } from './pages/deleted-user/deleted-user.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { EditFacultyComponent } from './pages/edit-faculty/edit-faculty.componen
         AddUserComponent,
         EditUserComponent,
         EditFacultyComponent,
+        DeletedUserComponent,
     ],
 
 

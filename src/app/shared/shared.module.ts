@@ -14,11 +14,13 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { CmsTableComponent } from './components/cms-table/cms-table.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { DeletedUserTableComponent } from './components/deleted-user-table/deleted-user-table.component';
 
 @NgModule({
     declarations: [
         ResponsiveHelperComponent,
         UserTableComponent,
+        DeletedUserTableComponent,
         ScheduleFacultyComponent,
         ScheduleRoomComponent,
         ScheduleSectionComponent,
@@ -38,6 +40,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     exports: [
         ResponsiveHelperComponent,
         UserTableComponent,
+        DeletedUserTableComponent,
         ClickOutsideDirective,
         ScheduleFacultyComponent,
         ScheduleRoomComponent,
