@@ -1,95 +1,174 @@
-<div class="flex flex-col pb-4">
+<div class="flex flex-col">
   <!-- title bar -->
   <div class="sticky top-0 flex flex-col gap-4 px-4 py-8 bg-white dark:bg-night-800">
     <span class="text-[24px] text-gray-900 font-medium dark:text-white">Attendance Monitoring</span>
     <div class="flex flex-row gap-2 items-center justify-start">
-      <button class="button-colored">Active Schedule</button>
-      <button class="button-plain">AM</button>
-      <button class="button-plain">PM</button>
+      <a href="#active-schedule" class="button-plain tab-link active">Active Schedule</a>
+      <a href="#am" class="button-plain tab-link">AM</a>
+      <a href="#pm" class="button-plain tab-link">PM</a>
     </div>
   </div>
 
 
-
-  <ul class="flex flex-col gap-4 items-center px-4">
-    <!-- before clicking present or absent -->
-    <li [routerLink]="['/attendance-check/room-information']" class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4">
-      <!-- card-title -->
-      <div class="flex flex-row gap-4 p-4 justify-between border-b dark:border-night-500">
-        <!-- icon -->
-        <div class="shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[32px] text-white">
-          <span class="material-icons">
-            meeting_room
-          </span>
+  <div id="active-schedule" class="tab-content active">
+    <ul class="grid grid-cols-1 gap-4 place-items-center px-4 xl:grid-cols-2 xl:pb-4">
+      <!-- before clicking present or absent -->
+      <li *ngFor="let loop2 of '01234567890123123123'.split('')" [routerLink]="['/attendance-check/room-information']" class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4 xl:last:mb-0">
+        <!-- card-title -->
+        <div class="flex flex-row gap-4 p-4 justify-between border-b dark:border-night-500">
+          <!-- icon -->
+          <div class="shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[32px] text-white">
+            <span class="material-icons">
+              meeting_room
+            </span>
+          </div>
+    
+          <div class="grow flex flex-col gap-0">
+            <span class="text-gray-700 text-[16px] font-bold dark:text-white">IT 1</span>
+            <span class="text-gray-500 text-[14px]">Subject: IT 319 (Mobile Game Development)</span>
+            <span class="text-gray-500 text-[14px]">Faculty Assigned:  Gabriel Galang</span>
+            <span class="text-gray-500 text-[14px]">Schedule: 10:00 am - 1:00 pm</span>
+          </div>
         </div>
+    
+        <!-- card-footer -->
+        <div class="flex justify-between items-center p-4">
+          <span class="text-gray-500 text-[14px]">Is the assigned faculty present?</span>
+          <!-- <span class="text-gray-500 text-[14px]">Marked as present (Apr 3, 2023 - 10:46 am)</span> --> <!-- use this when the user clicks present/absent -->
+          <div class="flex flex-row items-center justify-end gap-4">
+            <button class="button-plain w-fit">Absent</button>
+            <button class="button-plain w-fit">Present</button>
+          </div>
   
-        <div class="grow flex flex-col gap-0">
-          <span class="text-gray-700 text-[16px] font-bold dark:text-white">IT 1</span>
-          <span class="text-gray-500 text-[14px]">Subject: IT 319 (Mobile Game Development)</span>
-          <span class="text-gray-500 text-[14px]">Faculty Assigned:  Gabriel Galang</span>
-          <span class="text-gray-500 text-[14px]">Schedule: 10:00 am - 1:00 pm</span>
+          <!-- <button class="button-plain w-fit">Undo Attendance</button> -->
         </div>
-      </div>
+      </li>
+    </ul>
   
-      <!-- card-footer -->
-      <div class="flex justify-between items-center p-4">
-        <span class="text-gray-500 text-[14px]">Is the assigned faculty present?</span>
-        <div class="flex flex-row items-center justify-end gap-4">
-          <button class="button-plain w-fit">Absent</button>
-          <button class="button-plain w-fit">Present</button>
-        </div>
-
-        <!-- <button class="button-plain w-fit">Undo Attendance</button> -->
-      </div>
-    </li>
-
-    <!-- after clicking present or absent -->
-    <li [routerLink]="['/attendance-check/room-information']" class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4">
-      <!-- card-title -->
-      <div class="flex flex-row gap-4 p-4 justify-between border-b dark:border-night-500">
-        <!-- icon -->
-        <div class="shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[32px] text-white">
-          <span class="material-icons">
-            meeting_room
-          </span>
-        </div>
   
-        <div class="grow flex flex-col gap-0">
-          <span class="text-gray-700 text-[16px] font-bold dark:text-white">IT 1</span>
-          <span class="text-gray-500 text-[14px]">Subject: IT 319 (Mobile Game Development)</span>
-          <span class="text-gray-500 text-[14px]">Faculty Assigned:  Gabriel Galang</span>
-          <span class="text-gray-500 text-[14px]">Schedule: 10:00 am - 1:00 pm</span>
-        </div>
-      </div>
+    <!-- pagination -->
+    <div class="sticky bottom-0 flex items-center justify-between bg-white p-4 border-t dark:bg-night-700 dark:border-night-500">
+      <button class="btn-square shrink-0 button-plain w-fit">
+        <span class="material-icons">
+          chevron_left
+        </span>
+      </button>
   
-      <!-- card-footer -->
-      <div class="flex justify-between items-center p-4">
-        <span class="text-gray-500 text-[14px]">Marked as present (Apr 3, 2023 - 10:46 am)</span>
-        <!-- <div class="flex flex-row items-center justify-end gap-4">
-          <button class="button-plain w-fit">Absent</button>
-          <button class="button-plain w-fit">Present</button>
-        </div> -->
-
-        <button class="button-plain w-fit">Undo Attendance</button>
-      </div>
-    </li>
-  </ul>
-
-
-  <!-- pagination -->
-  <div class="sticky bottom-0 flex items-center justify-between bg-white p-4 border-t dark:bg-night-700 dark:border-night-500">
-    <button class="btn-square shrink-0 button-plain w-fit">
-      <span class="material-icons">
-        chevron_left
-      </span>
-    </button>
-
-    <span class="text-center dark:text-white">Page 1 out of 10</span>
-
-    <button class="btn-square shrink-0 button-plain w-fit">
-      <span class="material-icons">
-        chevron_right
-      </span>
-    </button>
+      <span class="text-center dark:text-white">Page 1 out of 10</span>
+  
+      <button class="btn-square shrink-0 button-plain w-fit">
+        <span class="material-icons">
+          chevron_right
+        </span>
+      </button>
+    </div>
+  </div>
+  
+  <div id="am" class="tab-content">
+    <ul class="grid grid-cols-1 gap-4 place-items-center px-4 xl:grid-cols-2 xl:pb-4">
+      <!-- before clicking present or absent -->
+      <li *ngFor="let loop2 of '01234567890123123123'.split('')" [routerLink]="['/attendance-check/room-information']" class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4 xl:last:mb-0">
+        <!-- card-title -->
+        <div class="flex flex-row gap-4 p-4 justify-between border-b dark:border-night-500">
+          <!-- icon -->
+          <div class="shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[32px] text-white">
+            <span class="material-icons">
+              meeting_room
+            </span>
+          </div>
+    
+          <div class="grow flex flex-col gap-0">
+            <span class="text-gray-700 text-[16px] font-bold dark:text-white">IT 1</span>
+            <span class="text-gray-500 text-[14px]">Subject: IT 319 (Mobile Game Development)</span>
+            <span class="text-gray-500 text-[14px]">Faculty Assigned:  Gabriel Galang</span>
+            <span class="text-gray-500 text-[14px]">Schedule: 10:00 am - 1:00 pm</span>
+          </div>
+        </div>
+    
+        <!-- card-footer -->
+        <div class="flex justify-between items-center p-4">
+          <span class="text-gray-500 text-[14px]">Is the assigned faculty present?</span>
+          <!-- <span class="text-gray-500 text-[14px]">Marked as present (Apr 3, 2023 - 10:46 am)</span> --> <!-- use this when the user clicks present/absent -->
+          <div class="flex flex-row items-center justify-end gap-4">
+            <button class="button-plain w-fit">Absent</button>
+            <button class="button-plain w-fit">Present</button>
+          </div>
+  
+          <!-- <button class="button-plain w-fit">Undo Attendance</button> -->
+        </div>
+      </li>
+    </ul>
+  
+  
+    <!-- pagination -->
+    <div class="sticky bottom-0 flex items-center justify-between bg-white p-4 border-t dark:bg-night-700 dark:border-night-500">
+      <button class="btn-square shrink-0 button-plain w-fit">
+        <span class="material-icons">
+          chevron_left
+        </span>
+      </button>
+  
+      <span class="text-center dark:text-white">Page 1 out of 10</span>
+  
+      <button class="btn-square shrink-0 button-plain w-fit">
+        <span class="material-icons">
+          chevron_right
+        </span>
+      </button>
+    </div>
+  </div>
+  
+  <div id="pm" class="tab-content">
+    <ul class="grid grid-cols-1 gap-4 place-items-center px-4 xl:grid-cols-2 xl:pb-4">
+      <!-- before clicking present or absent -->
+      <li *ngFor="let loop2 of '01234567890123123123'.split('')" [routerLink]="['/attendance-check/room-information']" class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4 xl:last:mb-0">
+        <!-- card-title -->
+        <div class="flex flex-row gap-4 p-4 justify-between border-b dark:border-night-500">
+          <!-- icon -->
+          <div class="shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[32px] text-white">
+            <span class="material-icons">
+              meeting_room
+            </span>
+          </div>
+    
+          <div class="grow flex flex-col gap-0">
+            <span class="text-gray-700 text-[16px] font-bold dark:text-white">IT 1</span>
+            <span class="text-gray-500 text-[14px]">Subject: IT 319 (Mobile Game Development)</span>
+            <span class="text-gray-500 text-[14px]">Faculty Assigned:  Gabriel Galang</span>
+            <span class="text-gray-500 text-[14px]">Schedule: 10:00 am - 1:00 pm</span>
+          </div>
+        </div>
+    
+        <!-- card-footer -->
+        <div class="flex justify-between items-center p-4">
+          <span class="text-gray-500 text-[14px]">Is the assigned faculty present?</span>
+          <!-- <span class="text-gray-500 text-[14px]">Marked as present (Apr 3, 2023 - 10:46 am)</span> --> <!-- use this when the user clicks present/absent -->
+          <div class="flex flex-row items-center justify-end gap-4">
+            <button class="button-plain w-fit">Absent</button>
+            <button class="button-plain w-fit">Present</button>
+          </div>
+  
+          <!-- <button class="button-plain w-fit">Undo Attendance</button> -->
+        </div>
+      </li>
+    </ul>
+  
+  
+    <!-- pagination -->
+    <div class="sticky bottom-0 flex items-center justify-between bg-white p-4 border-t dark:bg-night-700 dark:border-night-500">
+      <button class="btn-square shrink-0 button-plain w-fit">
+        <span class="material-icons">
+          chevron_left
+        </span>
+      </button>
+  
+      <span class="text-center dark:text-white">Page 1 out of 10</span>
+  
+      <button class="btn-square shrink-0 button-plain w-fit">
+        <span class="material-icons">
+          chevron_right
+        </span>
+      </button>
+    </div>
   </div>
 </div>
