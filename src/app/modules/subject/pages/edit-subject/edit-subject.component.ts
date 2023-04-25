@@ -6,8 +6,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditSubjectComponent implements OnInit {
 
-    ngOnInit(): void {
+  constructor() { }
 
-    }
+    ngOnInit() {
+  }
 
 }

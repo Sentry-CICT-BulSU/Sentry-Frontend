@@ -2,9 +2,9 @@
     <!-- Header -->
     <div class="mb-8 flex justify-between ">
         <div class="inline-block">
-            <h3 class="text-heading">Subject Management</h3>
+            <h3 class="text-heading">Room Management</h3>
             <div class="text-subheading">
-                <p>Manage the college’s offered course.</p>
+                <p>Contains the information needed for a Room.</p>
             </div>
         </div>
 
@@ -13,7 +13,7 @@
 
     <div class="inline-block mb-4">
         <h3 class="font-medium text-gray-900 text-2xl dark:text-white">
-            Edit Subject information
+            Edit Room Information
         </h3>
         <div class="space-x-1 text-sm font-medium text-gray-400 dark:text-night-300">
             <p>
@@ -23,8 +23,7 @@
     </div>
 
 
-    <form class="grid grid-cols-1"
-          novalidate>
+    <form class="grid grid-cols-1" novalidate>
         <!-- Separator -->
         <div class="py-6">
             <hr class="border-solid border-gray-200 dark:border-night-500" />
@@ -32,26 +31,24 @@
 
         <div class="grid md:grid-cols-8 gap-8 pb-6">
             <div class="col-span-2 space-x-1 text-sm font-medium text-gray-600 dark:text-night-300">
-                <p>Subject Code</p>
+                <p>Room</p>
             </div>
 
             <div class="relative col-span-4">
-                <input formControlName="code" name="code" type="text" id="code" class="peer block"
-                       placeholder=" " />
+                <input formControlName="name" name="name" type="text" id="name" class="peer block" placeholder=" " />
             </div>
         </div>
 
         <div class="grid md:grid-cols-8 gap-8 pb-6">
             <div class="col-span-2 space-x-1 text-sm font-medium text-gray-600 dark:text-night-300">
-                <p>Subject Title</p>
+                <p>Floor</p>
             </div>
 
             <div class="relative col-span-4">
-                <input formControlName="title" name="title" type="text" id="title" class="peer block"
+                <input formControlName="location" name="location" type="text" id="location" class="peer block"
                        placeholder=" " />
             </div>
         </div>
-
         <div class="grid md:grid-cols-8 gap-8 pb-6">
             <div class="col-span-2 space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
                 <p>Status</p>
@@ -65,19 +62,23 @@
                         <input formControlName="status" type="radio" name="status" id="status-active" value="active"
                                class="peer hidden" checked />
                         <label for="status-active"
-                               class="rounded-l-md border-r border-gray-300 text-gray-700 dark:text-night-200 dark:border-night-500 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200">Active</label>
+                               class="rounded-l-md border-r border-gray-300 text-gray-700 dark:text-night-200 dark:border-night-500 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200">
+                            Active
+                        </label>
                     </div>
+
                     <div>
                         <input formControlName="status" type="radio" name="status" id="status-inactive" value="inactive"
                                class="peer hidden" />
-                        <label
-                               for="status-inactive"
-                               class="rounded-r-md border-gray-300 text-gray-700 dark:text-night-200 dark:border-night-500 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200">Inactive</label>
+                        <label for="status-inactive"
+                               class="rounded-r-md border-gray-300 text-gray-700 dark:text-night-200 dark:border-night-500 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200">
+                            Inactive
+                        </label>
                     </div>
-
                 </div>
             </div>
         </div>
+
         <!-- Separator -->
         <div class="py-6">
             <hr class="border-solid border-gray-200 dark:border-night-500" />
