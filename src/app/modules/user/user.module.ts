@@ -11,6 +11,7 @@ import { UserListComponent } from './pages/user-list/user-list.component';
 import { AddUserComponent } from './pages/add-user/add-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditUserComponent } from './pages/edit-user/edit-user.component';
+import { EditFacultyComponent } from './pages/edit-faculty/edit-faculty.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { EditUserComponent } from './pages/edit-user/edit-user.component';
         UserListComponent,
         AddUserComponent,
         EditUserComponent,
+        EditFacultyComponent,
     ],
 
 
