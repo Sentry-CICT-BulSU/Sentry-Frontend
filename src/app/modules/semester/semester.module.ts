@@ -12,6 +12,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { EditSemesterComponent } from './pages/edit-semester/edit-semester.component';
 
 
 
@@ -20,6 +21,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
         SemesterComponent,
         SemesterListComponent,
         AddSemesterComponent,
+        EditSemesterComponent,
     ],
 
 

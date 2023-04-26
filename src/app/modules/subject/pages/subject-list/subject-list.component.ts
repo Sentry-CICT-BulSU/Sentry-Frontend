@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ISubject, ISubjectCollection } from 'src/app/core/models';
 import { SubjectService } from 'src/app/core/services/subject.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-subject-list',
@@ -27,14 +28,38 @@ export class SubjectListComponent implements OnInit {
   onEdit(id: number) {
     console.log('edit subject');
   }
+  // onDelete(id: number) {
+  //   this.subjectService.deleteSubject$(id).subscribe({
+  //     next: (resp) => {
+  //       console.log(resp);
+  //       this.router.navigate(['/subject']);
+  //     },
+  //   });
+  // }
+
   onDelete(id: number) {
-    this.subjectService.deleteSubject$(id).subscribe({
-      next: (resp) => {
-        console.log(resp);
-        this.router.navigate(['/subject']);
-      },
+    Swal.fire({
+      title: 'Confirm Delete',
+      text: 'Are you sure you want to delete this subject?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#6941C6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        this.subjectService.deleteSubject$(id).subscribe({
+          next: (resp) => {
+            console.log(resp);
+            this.router.navigate(['/subject']);
+          },
+        });
+        Swal.fire('Deleted!', 'Subject has been deleted.', 'success');
+      }
     });
   }
+
 
   loadSubjects() {
     this.subjectService.loadSubjects$().subscribe((subject) => {

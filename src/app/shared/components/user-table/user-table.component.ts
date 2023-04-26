@@ -42,20 +42,6 @@ export class UserTableComponent implements OnChanges {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        // Delete the user data here
-        // Replace this block with your actual backend logic to delete the user data
-        // For example:
-        // this.userService.deleteUser(user.id).subscribe(() => {
-        //   // Success message
-        //   Swal.fire('Deleted!', 'User has been deleted.', 'success');
-        //   // Update the data array after successful deletion
-        //   this.data = this.data.filter(u => u.id !== user.id);
-        // }, (error) => {
-        //   // Error message
-        //   Swal.fire('Error!', 'Failed to delete user.', 'error');
-        // });
-        // For now, just remove the user from the data array for demonstration purposes
-        // this.data = this.data.filter((u) => u.id !== user.id);
         this.adminService.softDeleteUser$(user.id).subscribe({
           next: (resp) => {
             console.log(resp);

@@ -59,6 +59,7 @@ export class AddUserComponent {
             // TODO: make custom validator to check if college is in this.colleges
             college: ['', [Validators.required]],
         });
+        this.newUserForm.controls['college'].setValue(this.colleges[0]);
     }
 
     onSubmit() {
