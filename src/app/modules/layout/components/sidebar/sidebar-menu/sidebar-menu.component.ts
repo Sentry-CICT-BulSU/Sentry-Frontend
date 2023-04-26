@@ -23,12 +23,6 @@ export class SidebarMenuComponent implements OnInit {
 
   public pagesMenu$: Observable<MenuItem[]> = new Observable<MenuItem[]>();
   public showSideBar$: Observable<boolean> = new Observable<boolean>();
-  user?: IUser;
-  apiLogItem: SubMenuItem = {
-    icon: 'bug_report',
-    label: 'API Debug Logs',
-    route: env.apiRootRoute + '/telescope',
-  };
 
   // Initializing the constructor with the MenuService.
 
@@ -47,11 +41,5 @@ export class SidebarMenuComponent implements OnInit {
     // Subscribing to the showSideBar$ and pagesMenu$ observables and storing their state in the class variables.
     this.showSideBar$ = this.menuService.showSideBar$;
     this.pagesMenu$ = this.menuService.pagesMenu$;
-    this.user = this.activatedRoute.snapshot.data['user'];
-  }
-
-  apiLogs() {
-    // window.location.href = this.apiLogItem.route as string;
-    window.open(this.apiLogItem.route as string, '_blank');
   }
 }
