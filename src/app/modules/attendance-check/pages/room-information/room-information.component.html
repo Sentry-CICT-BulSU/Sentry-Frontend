@@ -1,0 +1,102 @@
+<div class="flex flex-col">
+  <!-- title bar -->
+  <div class="sticky top-0 flex flex-col gap-4 px-4 py-8 bg-white dark:bg-night-800">
+    <span class="text-[24px] text-gray-900 font-medium dark:text-white">Room Information for IT 1</span>
+    <div class="flex flex-row gap-2 items-center justify-start">
+      <a href="#room-schedule" class="button-plain tab-link active">Room Schedule</a>
+      <a href="#assigned-faculty" class="button-plain tab-link">Assigned Faculty</a>
+    </div>
+  </div>
+
+
+
+  <div id="room-schedule" class="tab-content active">
+    <ul class="grid grid-cols-1 gap-4 items-center px-4 place-items-center xl:grid-cols-2 xl:pb-4">
+      <div class="flex flex-col gap-4 items-center w-full xl:col-span-2">
+        <div class="p-4 border-light-dark w-full dark:text-white">
+          <span>Room Schedule for IT 1</span>
+        </div>
+  
+        <div class="flex flex-row justify-around p-4 w-full max-w-xl dark:text-white">
+          <button class="button-colored">Mon</button>
+          <button class="">Tue</button>
+          <button class="">Wed</button>
+          <button class="">Thu</button>
+          <button class="">Fri</button>
+          <button class="">Sat</button>
+          <button class="">Sun</button>
+        </div>
+      </div>
+
+      <li *ngFor="let loop2 of '01234567890123123123'.split('')" [routerLink]="['/attendance-check/check-attendance']"
+        class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4 xl:last:mb-0">
+        <!-- card-title -->
+        <div class="flex flex-row gap-4 p-4 justify-between border-b dark:border-night-500">
+          <!-- icon -->
+          <div class="shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[32px] text-white">
+            <span class="material-icons">
+              meeting_room
+            </span>
+          </div>
+    
+          <div class="grow flex flex-col gap-0">
+            <span class="text-gray-700 text-[16px] font-bold dark:text-white">IT 319 (Mobile Game Development)</span>
+            <span class="text-gray-500 text-[14px]">Faculty Assigned:  Gabriel Galang</span>
+            <span class="text-gray-500 text-[14px]">Schedule: 10:00 am - 1:00 pm</span>
+          </div>
+        </div>
+    
+        <!-- card-footer -->
+        <div class="flex justify-between items-center p-4">
+          <span class="text-gray-500 text-[14px]">Is the assigned faculty present?</span>
+          <div class="flex flex-row items-center justify-end gap-4">
+            <button class="button-plain w-fit">Absent</button>
+            <button class="button-plain w-fit">Present</button>
+          </div>
+  
+          <!-- <button class="button-plain w-fit">Undo Attendance</button> -->
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div id="assigned-faculty" class="tab-content">
+    <ul class="grid grid-cols-1 gap-4 items-center px-4 place-items-center xl:grid-cols-2">
+      <li *ngFor="let loop2 of '01234567890123123123'.split('')" [routerLink]="['/attendance-check/check-attendance']"class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4">
+        <!-- card-title -->
+        <div class="flex flex-row gap-4 p-4 justify-between border-b dark:border-night-500">
+          <!-- icon -->
+          <div class="shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[32px] text-white">
+            <span class="material-icons">
+              person
+            </span>
+          </div>
+    
+          <div class="grow flex flex-col gap-0">
+            <span class="text-gray-700 text-[16px] font-bold dark:text-white">Gabriel Galang</span>
+            <span class="text-gray-500 text-[14px]">Subject: IT 319 (Mobile Game Development)</span>
+            <span class="text-gray-500 text-[14px]">Schedule: 10:00 am - 1:00 pm</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+
+  <!-- pagination -->
+  <div class="sticky bottom-0 flex items-center justify-between bg-white p-4 border-t dark:border-night-500 dark:bg-night-800">
+    <button class="btn-square shrink-0 button-plain w-fit">
+      <span class="material-icons">
+        chevron_left
+      </span>
+    </button>
+
+    <span class="text-center dark:text-white">Page 1 out of 10</span>
+
+    <button class="btn-square shrink-0 button-plain w-fit">
+      <span class="material-icons">
+        chevron_right
+      </span>
+    </button>
+  </div>
+</div>

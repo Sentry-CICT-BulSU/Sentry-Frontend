@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 // Importing necessary components from the current directory
 import { DashboardComponent } from './dashboard.component';
+import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
+import { FacultyDashboardComponent } from './pages/faculty-dashboard/faculty-dashboard.component';
 
 // Defining the routes of the dashboard module
 const routes: Routes = [
@@ -12,6 +14,12 @@ const routes: Routes = [
     path: '',
     // The component to be loaded for the base path
     component: DashboardComponent,
+    children: [
+      // { path: '', redirectTo: 'admin-dashboard', pathMatch: 'full' },
+      { path: 'admin-dashboard', component: AdminDashboardComponent },
+      { path: 'faculty-dashboard', component: FacultyDashboardComponent },
+      { path: '**', redirectTo: 'faculty-dashboard', pathMatch: 'full' },
+    ],
   },
 ];
 
@@ -25,7 +33,6 @@ const routes: Routes = [
 
 // Exporting the NgModule class for the dashboard module routing
 export class DashboardRoutingModule {}
-
 
 /* This code defines the routing configuration for the DashboardModule in an Angular application. It imports the necessary modules
 from the @angular package and the required components from the current directory.
