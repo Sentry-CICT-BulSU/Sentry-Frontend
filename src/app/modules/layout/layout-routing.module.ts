@@ -101,7 +101,8 @@ const routes: Routes = [
   },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   // A route definition that redirects any undefined path to the error/404 path.
-  { path: '**', redirectTo: 'error/404' },
+  { path: 'error-404', component: Error404Component },
+  // { path: '**', redirectTo: 'error-404' },
 ];
 
 @NgModule({
