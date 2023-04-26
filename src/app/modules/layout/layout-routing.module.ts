@@ -2,6 +2,7 @@ import { AuthGuard } from './../../core/guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout.component';
+import { Error404Component } from '../error-404/error-404.component';
 
 const routes: Routes = [
     {
@@ -75,10 +76,10 @@ const routes: Routes = [
 
 
 
-
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+    { path: 'error-404', component: Error404Component },
     // A route definition that redirects any undefined path to the error/404 path.
-    { path: '**', redirectTo: 'error/404' },
+    { path: '**', redirectTo: 'error-404' },
 ];
 
 @NgModule({
