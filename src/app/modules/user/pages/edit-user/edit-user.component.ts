@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IUser, IUserCollection } from 'src/app/core/models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 // Defining a new component with the selector 'app-dashboard' and the template URL 'dashboard.component.html'
 @Component({
@@ -106,6 +107,13 @@ export class EditUserComponent implements OnInit {
         next: (res) => {
           console.log(res);
           this.router.navigate(['/user']);
+
+          Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'User edited successfully!',
+          });
+
         },
         error: (err) => console.debug(err),
       });
