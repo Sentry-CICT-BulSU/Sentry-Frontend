@@ -20,7 +20,7 @@ export class Menu {
 
         // Admin
         {
-            group: 'Drop Down',
+            group: 'Admin Management',
             separator: false,
             type: 'Admin',
             items: [
@@ -49,7 +49,7 @@ export class Menu {
         },
         // Attendance Checker
         {
-            group: 'Drop Down',
+            group: 'Attendance Checker Management',
             separator: false,
             type: 'Attendance Checker',
             items: [
@@ -78,7 +78,7 @@ export class Menu {
         },
         // Faculty
         {
-            group: 'Drop Down',
+            group: 'Faculty Management',
             separator: false,
             type: 'Faculty',
             items: [
@@ -107,7 +107,7 @@ export class Menu {
         },
 
         {
-            group: 'Plain',
+            group: 'Others',
             separator: true,
             type: '*',
             items: [

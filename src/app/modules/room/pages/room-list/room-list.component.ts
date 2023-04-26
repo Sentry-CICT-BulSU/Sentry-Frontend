@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IRoom, IRoomCollection } from 'src/app/core/models';
 import { RoomService } from 'src/app/core/services/room.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-room-list',
@@ -28,15 +29,41 @@ export class RoomListComponent implements OnInit {
   onEdit(id: number) {
     console.log('edit room');
   }
+  // onDelete(id: number) {
+  //   console.log('delete room');
+  //   this.roomService.deleteRoom$(id).subscribe({
+  //     next: (resp) => {
+  //       console.log(resp);
+  //       this.router.navigate(['/room']);
+  //     },
+  //   });
+  // }
+
+
   onDelete(id: number) {
-    console.log('delete room');
+    Swal.fire({
+      title: 'Confirm Delete',
+      text: 'Are you sure you want to delete this room?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#6941C6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        console.log('delete room');
     this.roomService.deleteRoom$(id).subscribe({
       next: (resp) => {
         console.log(resp);
         this.router.navigate(['/room']);
       },
     });
+        Swal.fire('Deleted!', 'Room has been deleted.', 'success');
+      }
+    });
   }
+
 
   loadAll() {
     this.roomService.loadRooms$().subscribe((rooms) => {
