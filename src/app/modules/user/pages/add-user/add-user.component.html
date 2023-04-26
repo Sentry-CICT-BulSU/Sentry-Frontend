@@ -152,8 +152,8 @@
         </div>
 
         <div class="relative col-span-2">
-            <select formControlName="college" name="college" id="college" class="peer block">
-                <option *ngFor="let option of colleges" [value]="option">
+            <select name="college" id="college" class="peer block" disabled>
+                <option *ngFor="let option of colleges" [value]="option" selected>
                     {{ option }}
                 </option>
             </select>
