@@ -35,6 +35,9 @@ export class KeyInfoComponent implements OnInit {
   ngOnInit(): void {
     this.route.data.subscribe((data) => {
       this.roomKeyId = data['id'];
+      if (typeof this.roomKeyId !== 'number') {
+        this.router.navigate(['/error-404']);
+      }
       this.roomKeyForm = this.fb.group({
         room_key_id: ['', [Validators.required]],
         faculty: ['', [Validators.required]],
