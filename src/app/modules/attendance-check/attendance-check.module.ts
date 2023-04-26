@@ -4,6 +4,10 @@ import { AttendanceCheckComponent } from './attendance-check.component';
 import { AttendanceCheckRoutingModule } from './attendance-check-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { AttendanceManagementComponent } from './pages/attendance-management/attendance-management.component';
+import { AttendanceMonitoringComponent } from './pages/attendance-monitoring/attendance-monitoring.component';
+import { RoomInformationComponent } from './pages/room-information/room-information.component';
+import { CheckAttendanceComponent } from './pages/check-attendance/check-attendance.component';
 
 @NgModule({
   imports: [
@@ -12,6 +16,12 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule.forRoot(),
     HttpClientModule,
   ],
-  declarations: [AttendanceCheckComponent]
+  declarations: [
+    AttendanceCheckComponent, 
+    AttendanceManagementComponent, 
+    AttendanceMonitoringComponent,
+    RoomInformationComponent,
+    CheckAttendanceComponent
+  ]
 })
 export class AttendanceCheckModule { }

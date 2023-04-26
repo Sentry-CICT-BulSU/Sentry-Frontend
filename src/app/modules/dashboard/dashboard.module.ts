@@ -13,9 +13,12 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { DashboardComponent } from './dashboard.component';
 import { AuthInterceptor } from 'src/app/core/interceptor/auth.interceptor';
 
+import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
+import { FacultyDashboardComponent } from './pages/faculty-dashboard/faculty-dashboard.component';
+
 // Defining the NgModule for the Dashboard feature module
 @NgModule({
-    declarations: [DashboardComponent, ChartCardComponent],
+    declarations: [DashboardComponent, ChartCardComponent, AdminDashboardComponent, FacultyDashboardComponent],
 
     // Importing necessary modules to be used in this module
     imports: [
@@ -25,7 +28,7 @@ import { AuthInterceptor } from 'src/app/core/interceptor/auth.interceptor';
         HttpClientModule,
         NgApexchartsModule,
         AngularSvgIconModule.forRoot(),
-    ],
+    ]
 })
 
 // Exporting the DashboardModule class

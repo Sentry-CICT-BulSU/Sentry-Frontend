@@ -1,0 +1,130 @@
+<div class="h-[510px] flex flex-col border-b dark:border-night-500">
+  <!-- cover photo and profile -->
+  <div style="background-image: url('assets/bg/bulsu-bg.jpg');"
+    class="basis-1/2 bg-cover relative w-full h-full">
+    <div style="background-image: url('assets/bg/bulsu-bg.jpg');"
+      class="rounded-full h-[200px] w-[200px] bg-cover relative left-[calc(50%-100px)] top-[calc(100%-100px)] border-4 border-white">
+  
+    </div>
+  </div>
+
+  <!-- bottom half -->
+  <div class="basis-1/2 flex flex-col">
+    <div class="inline-block text-center w-full mt-[116px] basis-fit">
+      <div class="text-[30px] font-medium dark:text-white">Gabriel Galang</div>
+      <div class="text-[16px] text-subheading">gabgalang@bulsu.edu.ph</div>
+    </div>
+
+    <!-- button group -->
+    <div class="grow w-full flex flex-row justify-center items-end text-[16px] text-subheading">
+      <a href="#fm-my-details" class="tab-link grp-active border-b-4 border-transparent p-4">
+        My details
+      </a>
+      <a href="#fm-account-details" class="tab-link border-b-4 border-transparent p-4">
+        Account settings
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- fm-my-details -->
+<div id="fm-my-details" class="tab-content">
+  <form action="">
+    <div class="flex flex-col">
+      <!-- name -->
+      <div class="flex flex-row justify-center items-center p-2">
+        <span class="basis-[30%] dark:text-white">Name</span>
+        <div class="flex flex-row gap-2 basis-[50%]">
+          <input type="text" placeholder="First Name" class="input input-bordered w-full dark:text-white" />
+          <input type="text" placeholder="Last Name" class="input input-bordered w-full dark:text-white" />
+        </div>
+      </div>
+    
+      <!-- contact number -->
+      <div class="flex flex-row justify-center items-center p-2">
+        <span class="basis-[30%] dark:text-white">Contact number</span>
+        <div class="flex flex-row gap-2 basis-[50%]">
+          <label class="input-group">
+            <span class="material-icons">
+              call
+            </span>
+            <input type="tel" placeholder="ex. +63 995 021 3021" class="input input-bordered w-full dark:text-white" />
+          </label>
+        </div>
+      </div>
+    
+      <!-- position -->
+      <div class="flex flex-row justify-center items-center p-2">
+        <span class="basis-[30%] dark:text-white">Occupation</span>
+        <div class="flex flex-row gap-2 basis-[50%]">
+          <select class="select select-bordered w-full dark:text-white">
+            <option disabled selected>Occupation</option>
+            <option>Instructor I</option>
+            <option>Instructor II</option>
+          </select>
+        </div>
+      </div>
+    
+      <!-- college -->
+      <div class="flex flex-row justify-center items-center p-2">
+        <span class="basis-[30%] dark:text-white">College</span>
+        <div class="flex flex-row gap-2 basis-[50%]">
+          <select disabled class="select select-bordered w-full dark:text-black">
+            <option selected>College of Information and Communications Technology</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  
+    <div class="flex flex-row gap-2 absolute bottom-4 right-4">
+      <button class="btn btn-primary bg-primary-700" type="submit">
+        Save
+      </button>
+    </div>
+  </form>
+</div>
+
+<!-- fm-account-details -->
+<div id="fm-account-details" class="tab-content">
+  <form action="">
+    <div class="flex flex-col">
+      <!-- Email -->
+      <div class="flex flex-row justify-center items-center p-2">
+        <span class="basis-[30%] dark:text-white">Email</span>
+        <div class="flex flex-row gap-2 basis-[50%]">
+          <label class="input-group">
+            <span class="material-icons">
+              email
+            </span>
+            <input type="email" placeholder="Email" class="input input-bordered w-full dark:text-white" />
+          </label>
+        </div>
+      </div>
+    
+      <!-- password -->
+      <div class="flex flex-row justify-center items-center p-2">
+        <span class="basis-[30%] dark:text-white">Password</span>
+        <div class="flex flex-row gap-2 basis-[50%]">
+          <input type="password" placeholder="Password" class="input input-bordered w-full dark:text-white" />
+        </div>
+      </div>
+    
+      <!-- confirm password -->
+      <div class="flex flex-row justify-center items-center p-2">
+        <span class="basis-[30%] dark:text-white">Confirm Password</span>
+        <div class="flex flex-row gap-2 basis-[50%]">
+          <input type="password" placeholder="Confirm Password" class="input input-bordered w-full" />
+          <a href="#" class="btn btn-primary bg-primary-700">
+            Reset password
+          </a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="flex flex-row gap-2 absolute bottom-4 right-4">
+      <button class="btn btn-primary bg-primary-700" type="submit">
+        Save
+      </button>
+    </div>
+  </form>
+</div>
