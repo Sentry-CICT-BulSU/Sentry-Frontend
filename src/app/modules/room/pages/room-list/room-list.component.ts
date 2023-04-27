@@ -10,6 +10,8 @@ import Swal from 'sweetalert2';
 })
 export class RoomListComponent implements OnInit {
 
+  public searchTerm = '';
+
   p = 1;
 
   roomCollection?: IRoomCollection;
@@ -19,6 +21,38 @@ export class RoomListComponent implements OnInit {
   rooms?: IRoom[];
   activeRooms?: IRoom[];
   inactiveRooms?: IRoom[];
+
+  get filteredSearchRooms() {
+    if (!this.rooms) {
+      return [];
+    }
+    return this.rooms.filter(room => {
+      return room.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+             room.location.toLowerCase().includes(this.searchTerm.toLowerCase());
+    });
+  }
+
+  get filteredSearchActiveRooms() {
+    if (!this.activeRooms) {
+      return [];
+    }
+    return this.activeRooms.filter(room => {
+      return room.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+             room.location.toLowerCase().includes(this.searchTerm.toLowerCase());
+    });
+  }
+
+
+  get filteredSearchInactiveRooms() {
+    if (!this.inactiveRooms) {
+      return [];
+    }
+    return this.inactiveRooms.filter(room => {
+      return room.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+             room.location.toLowerCase().includes(this.searchTerm.toLowerCase());
+    });
+  }
+
 
   constructor(private roomService: RoomService, private router: Router) {}
 
