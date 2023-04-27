@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SemesterComponent } from './semester.component';
 import { AddSemesterComponent } from './pages/add-semester/add-semester.component';
 import { SemesterListComponent } from './pages/semester-list/semester-list.component';
+import { EditSemesterComponent } from './pages/edit-semester/edit-semester.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
         { path: '', redirectTo: 'semester-list', pathMatch: 'full' },
         { path: 'semester-list', component: SemesterListComponent },
         { path: 'add-semester', component: AddSemesterComponent },
+        { path: 'edit-semester', component: EditSemesterComponent },
         { path: '**', redirectTo: 'semester-list', pathMatch: 'full' },
     ],
 },

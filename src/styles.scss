@@ -196,7 +196,8 @@ input[type="search"]::-webkit-search-results-decoration {
     33%   {top: 0px;}
     66%  {top: 20px;}
     100%  {top: 0px}
-
-
-
   }
+
+  .mat-mdc-progress-spinner {
+    --mdc-circular-progress-active-indicator-color: #6941C6;
+}

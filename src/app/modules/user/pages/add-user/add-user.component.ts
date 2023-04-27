@@ -6,6 +6,7 @@ import {
     FormGroup,
     Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { IUserConfig } from 'src/app/core/models';
 import { AdminService } from 'src/app/core/services/admin.service';
 
@@ -38,7 +39,11 @@ export class AddUserComponent {
         college: FormControl<string | null>;
     }>;
 
-    constructor(private adminService: AdminService, private fb: FormBuilder) {
+    constructor(
+        private adminService: AdminService,
+        private fb: FormBuilder,
+        private router: Router
+    ) {
         this.newUserForm = this.fb.group({
             first_name: ['', [Validators.required]],
             last_name: ['', [Validators.required]],
@@ -54,6 +59,7 @@ export class AddUserComponent {
             // TODO: make custom validator to check if college is in this.colleges
             college: ['', [Validators.required]],
         });
+        this.newUserForm.controls['college'].setValue(this.colleges[0]);
     }
 
     onSubmit() {
@@ -62,6 +68,7 @@ export class AddUserComponent {
             .subscribe({
                 next: (response) => {
                     console.log(response);
+                    this.router.navigate(['/user']);
                 },
                 error: (error) => {
                     console.debug(error);

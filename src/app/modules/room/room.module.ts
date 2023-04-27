@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RoomListComponent } from './pages/room-list/room-list.component';
 import { AddRoomComponent } from './pages/add-room/add-room.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditRoomComponent } from './pages/edit-room/edit-room.component';
 
 @NgModule({
     imports: [
@@ -16,6 +17,6 @@ import { ReactiveFormsModule } from '@angular/forms';
         HttpClientModule,
         ReactiveFormsModule,
     ],
-    declarations: [RoomComponent, RoomListComponent, AddRoomComponent],
+    declarations: [RoomComponent, RoomListComponent, AddRoomComponent, EditRoomComponent],
 })
 export class RoomModule {}
