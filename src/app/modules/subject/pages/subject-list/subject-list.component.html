@@ -101,7 +101,7 @@
           <!--end Table head-->
           <!--Table body-->
           <tbody>
-            <tr *ngFor="let subject of subjects"
+            <tr *ngFor="let subject of subjects | paginate: { itemsPerPage: 15, currentPage: p }"
                 class="hover:bg-gray-100 dark:border-night-500 dark:hover:bg-night-600">
               <td class="py-4 px-2">
                 <div class="flex items-center">
@@ -117,7 +117,7 @@
                 </div>
               </td>
               <td class="p-2">
-                <div class="inline-block rounded-xl bg-green-500/25 py-1 px-2 text-xs font-medium text-green-500">
+                <div class="inline-block rounded-xl py-1 px-2 text-xs font-medium {{ getStatusClass(subject.status) }}">
                   {{subject.status}}
                 </div>
               </td>
@@ -173,46 +173,14 @@
 
 
     <div class="grid grid-cols-1 rounded-b-lg border-light-dark bg-white p-5 dark:bg-night-700">
-      <div class="flex items-center justify-between space-x-3">
+      <div class="flex items-center justify-center space-x-3">
 
 
-        <button type="button"
-                class="flex items-center justify-center rounded-md button-plain">
-          <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
-            arrow_back
-          </span>
-          <span class="md:inline-block hidden">
-            Previous
-          </span>
-        </button>
-
-        <div class="flex gap-1">
-          <div
-               class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium dark:text-primary-300 text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-300/25">
-            1
-          </div>
-          <div
-               class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
-            2
-          </div>
-          <div
-               class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
-            3
-          </div>
-        </div>
-
-        <button type="button"
-                class="flex items-center justify-center rounded-md button-plain">
-          <span class="md:inline-block hidden">
-            Next
-          </span>
-
-          <span class="material-symbols-rounded h-6 w-6 md:ml-2 ml-0">
-            arrow_forward
-          </span>
-        </button>
+        <pagination-controls (pageChange)="p = $event" ></pagination-controls>
 
       </div>
+
+
     </div>
 
   </div>
@@ -235,7 +203,7 @@
           <!--end Table head-->
           <!--Table body-->
           <tbody>
-            <tr *ngFor="let subject of activeSubjects"
+            <tr *ngFor="let subject of activeSubjects | paginate: { itemsPerPage: 15, currentPage: p }"
                 class="hover:bg-gray-100 dark:border-night-500 dark:hover:bg-night-600">
               <td class="py-4 px-2">
                 <div class="flex items-center">
@@ -251,7 +219,7 @@
                 </div>
               </td>
               <td class="p-2">
-                <div class="inline-block rounded-xl bg-green-500/25 py-1 px-2 text-xs font-medium text-green-500">
+                <div class="inline-block rounded-xl py-1 px-2 text-xs font-medium {{ getStatusClass(subject.status) }}">
                   {{subject.status}}
                 </div>
               </td>
@@ -306,46 +274,14 @@
 
 
     <div class="grid grid-cols-1 rounded-b-lg border-light-dark bg-white p-5 dark:bg-night-700">
-      <div class="flex items-center justify-between space-x-3">
+      <div class="flex items-center justify-center space-x-3">
 
 
-        <button type="button"
-                class="flex items-center justify-center rounded-md button-plain">
-          <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
-            arrow_back
-          </span>
-          <span class="md:inline-block hidden">
-            Previous
-          </span>
-        </button>
-
-        <div class="flex gap-1">
-          <div
-               class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium dark:text-primary-300 text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-300/25">
-            1
-          </div>
-          <div
-               class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
-            2
-          </div>
-          <div
-               class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
-            3
-          </div>
-        </div>
-
-        <button type="button"
-                class="flex items-center justify-center rounded-md button-plain">
-          <span class="md:inline-block hidden">
-            Next
-          </span>
-
-          <span class="material-symbols-rounded h-6 w-6 md:ml-2 ml-0">
-            arrow_forward
-          </span>
-        </button>
+        <pagination-controls (pageChange)="p = $event" ></pagination-controls>
 
       </div>
+
+
     </div>
   </div>
 
@@ -367,7 +303,7 @@
           <!--end Table head-->
           <!--Table body-->
           <tbody>
-            <tr *ngFor="let subject of inactiveSubjects"
+            <tr *ngFor="let subject of inactiveSubjects | paginate: { itemsPerPage: 15, currentPage: p }"
                 class="hover:bg-gray-100 dark:border-night-500 dark:hover:bg-night-600">
               <td class="py-4 px-2">
                 <div class="flex items-center">
@@ -383,7 +319,7 @@
                 </div>
               </td>
               <td class="p-2">
-                <div class="inline-block rounded-xl bg-green-500/25 py-1 px-2 text-xs font-medium text-green-500">
+                <div class="inline-block rounded-xl py-1 px-2 text-xs font-medium {{ getStatusClass(subject.status) }}">
                   {{subject.status}}
                 </div>
               </td>
@@ -438,46 +374,14 @@
 
 
     <div class="grid grid-cols-1 rounded-b-lg border-light-dark bg-white p-5 dark:bg-night-700">
-      <div class="flex items-center justify-between space-x-3">
+      <div class="flex items-center justify-center space-x-3">
 
 
-        <button type="button"
-                class="flex items-center justify-center rounded-md button-plain">
-          <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
-            arrow_back
-          </span>
-          <span class="md:inline-block hidden">
-            Previous
-          </span>
-        </button>
-
-        <div class="flex gap-1">
-          <div
-               class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium dark:text-primary-300 text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-300/25">
-            1
-          </div>
-          <div
-               class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
-            2
-          </div>
-          <div
-               class="cursor-pointer relative justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 hover:bg-gray-100">
-            3
-          </div>
-        </div>
-
-        <button type="button"
-                class="flex items-center justify-center rounded-md button-plain">
-          <span class="md:inline-block hidden">
-            Next
-          </span>
-
-          <span class="material-symbols-rounded h-6 w-6 md:ml-2 ml-0">
-            arrow_forward
-          </span>
-        </button>
+        <pagination-controls (pageChange)="p = $event" ></pagination-controls>
 
       </div>
+
+
     </div>
 
   </div>

@@ -8,6 +8,7 @@ import { SubjectListComponent } from './pages/subject-list/subject-list.componen
 import { AddSubjectComponent } from './pages/add-subject/add-subject.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditSubjectComponent } from './pages/edit-subject/edit-subject.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
     imports: [
@@ -16,6 +17,7 @@ import { EditSubjectComponent } from './pages/edit-subject/edit-subject.componen
         SharedModule.forRoot(),
         HttpClientModule,
         ReactiveFormsModule,
+        NgxPaginationModule,
     ],
     declarations: [SubjectComponent, SubjectListComponent, AddSubjectComponent, EditSubjectComponent],
 })

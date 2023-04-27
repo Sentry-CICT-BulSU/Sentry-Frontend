@@ -110,6 +110,15 @@ $sentry-frontend-theme: mat.define-light-theme(
     .text-subheading{
         @apply space-x-1 md:text-base text-sm font-medium text-gray-400 dark:text-night-300;
     }
+    .ngx-pagination .current {
+        @apply bg-primary-700 rounded-md #{!important};
+    }
+    .ngx-pagination {
+        @apply  px-4 py-2 text-sm font-medium text-gray-700  dark:text-night-200 mb-0 #{!important};
+    }
+    .ngx-pagination a{
+        @apply  rounded-md text-sm font-medium text-gray-700  dark:text-night-200 #{!important};
+    }
 }
 
 /** Scroll bar **/
@@ -201,3 +210,4 @@ input[type="search"]::-webkit-search-results-decoration {
   .mat-mdc-progress-spinner {
     --mdc-circular-progress-active-indicator-color: #6941C6;
 }
+

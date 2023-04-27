@@ -9,6 +9,9 @@ import Swal from 'sweetalert2';
   templateUrl: './subject-list.component.html',
 })
 export class SubjectListComponent implements OnInit {
+
+  p = 1;
+
   subjectCollection?: ISubjectCollection;
   activeSubjectCollection?: ISubjectCollection;
   inactiveSubjectCollection?: ISubjectCollection;
@@ -23,6 +26,10 @@ export class SubjectListComponent implements OnInit {
     this.loadSubjects();
     this.loadActiveSubjects();
     this.loadInactiveSubjects();
+  }
+
+  getStatusClass(status: string): string {
+    return status === 'active' ? 'bg-green-500/25 text-green-500' : 'bg-gray-300/25 text-gray-500 dark:text-gray-300';
   }
 
   onEdit(id: number) {

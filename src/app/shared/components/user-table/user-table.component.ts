@@ -12,6 +12,8 @@ import Swal from 'sweetalert2';
 export class UserTableComponent implements OnChanges {
   @Input() pagination?: IUserCollection;
 
+  p = 1;
+
   data?: IUser[];
   links?: IUserCollection['links'];
   meta?: IUserCollection['meta'];

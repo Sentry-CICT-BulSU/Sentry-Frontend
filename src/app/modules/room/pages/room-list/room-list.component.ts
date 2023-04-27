@@ -9,6 +9,9 @@ import Swal from 'sweetalert2';
   templateUrl: './room-list.component.html',
 })
 export class RoomListComponent implements OnInit {
+
+  p = 1;
+
   roomCollection?: IRoomCollection;
   roomActiveCollection?: IRoomCollection;
   roomInactiveCollection?: IRoomCollection;
@@ -29,15 +32,6 @@ export class RoomListComponent implements OnInit {
   onEdit(id: number) {
     console.log('edit room');
   }
-  // onDelete(id: number) {
-  //   console.log('delete room');
-  //   this.roomService.deleteRoom$(id).subscribe({
-  //     next: (resp) => {
-  //       console.log(resp);
-  //       this.router.navigate(['/room']);
-  //     },
-  //   });
-  // }
 
 
   onDelete(id: number) {
@@ -88,6 +82,11 @@ export class RoomListComponent implements OnInit {
       console.debug('inactive rooms', rooms);
     });
   }
+
+  getRoomStatusClass(status: string): string {
+    return status === 'active' ? 'bg-green-500/25 text-green-500' : 'bg-gray-300/25 text-gray-500 dark:text-gray-300';
+  }
+
 
   initComponent() {
     const tabLinks = document.querySelectorAll(
