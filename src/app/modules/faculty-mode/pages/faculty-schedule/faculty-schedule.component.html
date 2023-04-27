@@ -1,0 +1,79 @@
+<div class="m-4">
+  <!-- Header -->
+  <div class="mb-8 flex justify-between">
+    <div class="inline-block">
+        <h3 class="text-heading">Schedule of Gabriel Galang</h3>
+        <div class="text-subheading">
+            <p>Print or view your personal schedule here.</p>
+        </div>
+    </div>
+  </div>
+  
+  <div class="grid grid-cols-1 rounded-t-lg border-light-dark bg-white p-5 dark:bg-night-700">
+    <div class="flex justify-start gap-4">
+      <button type="button" [routerLink]="['/schedule/add-schedule']"
+              class="flex items-center justify-center rounded-md button-plain">
+        <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
+          add
+        </span>
+        <span class="hidden md:inline-block">
+          Add Schedule
+        </span>
+      </button>
+  
+      <button type="button"
+              class="flex items-center justify-center rounded-md button-plain">
+        <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
+          edit
+        </span>
+        <span class="hidden md:inline-block">
+          Edit Schedule
+        </span>
+      </button>
+  
+      <button type="button"
+              class="flex items-center justify-center rounded-md button-plain">
+        <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
+          print
+        </span>
+        <span class="hidden md:inline-block">
+          Print
+        </span>
+      </button>
+    </div>
+  </div>
+  
+  <div class="grid grid-cols-1 rounded-b-lg border-x border-b border-gray-300 dark:border-night-500 bg-white p-5 dark:bg-night-700">
+    <table class="table-fixed w-full dark:text-night-200">
+      <thead>
+        <tr>
+          <th class="w-2/4">&nbsp;</th>
+          <ng-container *ngFor="let day of daysOfWeek">
+            <th class="w-2/4 text-gray-500 text-sm font-medium pb-4">{{ day }}</th>
+          </ng-container>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let time of timeslots; let i = index">
+          <tr>
+            <td class="border-light-dark px-4 py-2 h-24 text-center">{{ time }}</td>
+            <ng-container *ngFor="let day of daysOfWeek">
+              <td class="border-light-dark px-4 py-2" [ngClass]="{'bg-primary-300 dark:bg-night-500': isSlotFilled(day, time)}">
+                <ng-container *ngIf="isSlotFilled(day, time) as slot">
+                  <div class="flex flex-col justify-center items-center"
+                    *ngIf="time === slot.timeStart; else blankSlot">
+                    <div>{{ slot.subject }}</div>
+                    <div class="text-gray-600 dark:text-night-200">{{ slot.room }}</div>
+                  </div>
+                  <ng-template #blankSlot>
+                    &nbsp;
+                  </ng-template>
+                </ng-container>
+              </td>
+            </ng-container>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>  
+</div>
