@@ -1,3 +1,5 @@
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { ChartCardColumnComponent } from './chart-card-column/chart-card-column.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AttendanceCheckComponent } from './attendance-check.component';
@@ -13,6 +15,7 @@ import { CheckAttendanceComponent } from './pages/check-attendance/check-attenda
   imports: [
     CommonModule,
     AttendanceCheckRoutingModule,
+    NgApexchartsModule,
     SharedModule.forRoot(),
     HttpClientModule,
   ],
@@ -21,7 +24,8 @@ import { CheckAttendanceComponent } from './pages/check-attendance/check-attenda
     AttendanceManagementComponent, 
     AttendanceMonitoringComponent,
     RoomInformationComponent,
-    CheckAttendanceComponent
+    CheckAttendanceComponent,
+    ChartCardColumnComponent
   ]
 })
 export class AttendanceCheckModule { }
