@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-edit-room',
@@ -6,6 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditRoomComponent implements OnInit {
   constructor() { }
+
+  onSubmit() {
+
+    //add code here
+
+          Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'Room edited successfully!',
+          });
+  }
 
   ngOnInit() {
 }
