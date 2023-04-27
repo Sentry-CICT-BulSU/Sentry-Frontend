@@ -15,10 +15,10 @@ const routes: Routes = [
     // The component to be loaded for the base path
     component: DashboardComponent,
     children: [
-      // { path: '', redirectTo: 'admin-dashboard', pathMatch: 'full' },
+      { path: '', redirectTo: 'admin-dashboard', pathMatch: 'full' },
       { path: 'admin-dashboard', component: AdminDashboardComponent },
       { path: 'faculty-dashboard', component: FacultyDashboardComponent },
-      { path: '**', redirectTo: 'faculty-dashboard', pathMatch: 'full' },
+      { path: '**', redirectTo: 'admin-dashboard', pathMatch: 'full' },
     ],
   },
 ];

@@ -13,8 +13,13 @@ export class Menu {
                 {
                     icon: 'home',
                     label: 'Dashboard',
-                    route: '/dashboard',
+                    route: '/dashboard/admin-dashboard',
                 },
+                {
+                  icon: 'home',
+                  label: 'Dashboard - F',
+                  route: '/dashboard/faculty-dashboard',
+              },
             ],
         },
 
