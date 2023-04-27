@@ -60,7 +60,7 @@
               </span>
             </div>
 
-            <input
+            <input [(ngModel)]="searchTerm"
                    class="search-bar"
                    type="text"
                    id="search"
@@ -101,7 +101,7 @@
           <!--end Table head-->
           <!--Table body-->
           <tbody>
-            <tr *ngFor="let subject of subjects | paginate: { itemsPerPage: 15, currentPage: p }"
+            <tr *ngFor="let subject of filteredSearchSubjects | paginate: { itemsPerPage: 15, currentPage: p }"
                 class="hover:bg-gray-100 dark:border-night-500 dark:hover:bg-night-600">
               <td class="py-4 px-2">
                 <div class="flex items-center">
@@ -203,7 +203,7 @@
           <!--end Table head-->
           <!--Table body-->
           <tbody>
-            <tr *ngFor="let subject of activeSubjects | paginate: { itemsPerPage: 15, currentPage: p }"
+            <tr *ngFor="let subject of filteredSearchActiveSubjects | paginate: { itemsPerPage: 15, currentPage: p }"
                 class="hover:bg-gray-100 dark:border-night-500 dark:hover:bg-night-600">
               <td class="py-4 px-2">
                 <div class="flex items-center">
@@ -303,7 +303,7 @@
           <!--end Table head-->
           <!--Table body-->
           <tbody>
-            <tr *ngFor="let subject of inactiveSubjects | paginate: { itemsPerPage: 15, currentPage: p }"
+            <tr *ngFor="let subject of filteredSearchInactiveSubjects | paginate: { itemsPerPage: 15, currentPage: p }"
                 class="hover:bg-gray-100 dark:border-night-500 dark:hover:bg-night-600">
               <td class="py-4 px-2">
                 <div class="flex items-center">

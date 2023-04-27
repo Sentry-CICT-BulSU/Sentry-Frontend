@@ -119,6 +119,9 @@ $sentry-frontend-theme: mat.define-light-theme(
     .ngx-pagination a{
         @apply  rounded-md text-sm font-medium text-gray-700  dark:text-night-200 #{!important};
     }
+    select option {
+        @apply bg-white dark:bg-night-700 font-normal text-gray-700 dark:text-night-200 px-4 py-4 rounded-md #{!important};
+    }
 }
 
 /** Scroll bar **/
@@ -136,6 +139,14 @@ body {
     margin: 0;
     font-family: Inter, Roboto, sans-serif;
 }
+
+select option {
+  background-color: #f2f2f2;
+  color: #333;
+  font-size: 16px;
+  padding: 10px;
+}
+
 
 // tr:nth-child(even) {
 //     background-color: #f2f2f2;

@@ -14,6 +14,10 @@ export class RoomListComponent implements OnInit {
 
   p = 1;
 
+  selectedSort = 'latest';
+
+  currentSortType!: string;
+
   roomCollection?: IRoomCollection;
   roomActiveCollection?: IRoomCollection;
   roomInactiveCollection?: IRoomCollection;
@@ -52,6 +56,41 @@ export class RoomListComponent implements OnInit {
              room.location.toLowerCase().includes(this.searchTerm.toLowerCase());
     });
   }
+
+
+  // sortRooms(rooms: any[], sortParam: string): any[] {
+  //   return rooms.sort((a, b) => {
+  //     if (sortParam === 'name') {
+  //       return a.name.localeCompare(b.name);
+  //     } else if (sortParam === 'date') {
+  //       return new Date(b.modified_at).getTime() - new Date(a.modified_at).getTime();
+  //     } else {
+  //       return 0;
+  //     }
+  //   });
+  // }
+
+  sortRooms(rooms: any[], sortParam: string): any[] {
+    return rooms.sort((a, b) => {
+      if (sortParam === 'name') {
+        return a.name.localeCompare(b.name);
+      } else if (sortParam === 'latest') {
+        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+      } else if (sortParam === 'oldest') {
+        return new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+      } else {
+        return 0;
+      }
+    });
+  }
+
+
+
+
+
+
+
+
 
 
   constructor(private roomService: RoomService, private router: Router) {}

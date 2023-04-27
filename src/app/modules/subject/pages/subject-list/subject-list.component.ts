@@ -12,6 +12,8 @@ export class SubjectListComponent implements OnInit {
 
   p = 1;
 
+  public searchTerm = '';
+
   subjectCollection?: ISubjectCollection;
   activeSubjectCollection?: ISubjectCollection;
   inactiveSubjectCollection?: ISubjectCollection;
@@ -20,6 +22,36 @@ export class SubjectListComponent implements OnInit {
   activeSubjects?: ISubject[];
   inactiveSubjects?: ISubject[];
   constructor(private subjectService: SubjectService, private router: Router) {}
+
+  get filteredSearchSubjects() {
+    if (!this.subjects) {
+      return [];
+    }
+    return this.subjects.filter(subject => {
+      return subject.code.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+             subject.title.toLowerCase().includes(this.searchTerm.toLowerCase());
+    });
+  }
+
+  get filteredSearchActiveSubjects() {
+    if (!this.activeSubjects) {
+      return [];
+    }
+    return this.activeSubjects.filter(subject => {
+      return subject.code.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+             subject.title.toLowerCase().includes(this.searchTerm.toLowerCase());
+    });
+  }
+
+  get filteredSearchInactiveSubjects() {
+    if (!this.inactiveSubjects) {
+      return [];
+    }
+    return this.inactiveSubjects.filter(subject => {
+      return subject.code.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+             subject.title.toLowerCase().includes(this.searchTerm.toLowerCase());
+    });
+  }
 
   ngOnInit(): void {
     this.initComponent();
