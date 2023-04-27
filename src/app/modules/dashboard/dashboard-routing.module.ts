@@ -18,7 +18,7 @@ const routes: Routes = [
       // { path: '', redirectTo: 'admin-dashboard', pathMatch: 'full' },
       { path: 'admin-dashboard', component: AdminDashboardComponent },
       { path: 'faculty-dashboard', component: FacultyDashboardComponent },
-      { path: '**', redirectTo: 'faculty-dashboard', pathMatch: 'full' },
+      // { path: '**', redirectTo: 'admin-dashboard', pathMatch: 'full' },
     ],
   },
 ];

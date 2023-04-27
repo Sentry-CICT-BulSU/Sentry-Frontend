@@ -9,6 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { IUserConfig } from 'src/app/core/models';
 import { AdminService } from 'src/app/core/services/admin.service';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-add-user',
@@ -69,6 +70,12 @@ export class AddUserComponent {
                 next: (response) => {
                     console.log(response);
                     this.router.navigate(['/user']);
+
+                    Swal.fire({
+                      icon: 'success',
+                      title: 'Success',
+                      text: 'User added successfully!',
+                    });
                 },
                 error: (error) => {
                     console.debug(error);
