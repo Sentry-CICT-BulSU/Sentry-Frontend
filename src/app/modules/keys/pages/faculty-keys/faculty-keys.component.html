@@ -15,7 +15,7 @@
     <!-- search bar and filter buttons-->
     <div class="flex flex-row mx-4 gap-2">
       <div class="flex flex-row gap-2 items-center">
-        <a href="#keys-all" class="btn btn-outline text-night-200 tab-link">All</a>
+        <a href="#keys-all" class="btn btn-outline text-night-200 tab-link active">All</a>
         <a href="#keys-available" class="btn btn-outline text-night-200 tab-link">Available</a>
         <a href="#keys-in-use" class="btn btn-outline text-night-200 tab-link">In use</a>
       </div>
@@ -36,7 +36,7 @@
     </div>
 
       
-    <div id="keys-all" class="tab-content overflow-y-auto mx-4 my-4 max-h-[calc(100vh-68px-36px-38px-81px-48px)]">
+    <div id="keys-all" class="tab-content active overflow-y-auto mx-4 my-4 max-h-[calc(100vh-68px-36px-38px-81px-48px)]">
       <ul class="rounded-lg border-light-dark grid grid-cols-4 gap-4 p-2 place-items-center">
         <li *ngFor="let loop2 of '01234567890123123123'.split('')" class="rounded-lg border-light-dark flex flex-col gap-2 justify-center items-center shadow-lg p-4 w-full max-w-[150px] dark:bg-night-700">
           <div class="rounded-full w-[54px] h-[54px] bg-primary-700 flex items-center justify-center">
