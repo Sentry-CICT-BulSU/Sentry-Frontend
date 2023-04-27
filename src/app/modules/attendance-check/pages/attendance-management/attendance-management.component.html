@@ -170,11 +170,16 @@
   
           <!-- actions -->
           <div class="shrink-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
+            <!-- The button to open modal -->
+            <label for="delete-modal" class="cursor-pointer">
+              <span class="material-icons">
+                delete
+              </span>
+            </label>
             <button>
-              <i class="fa-solid fa-trash"></i>
-            </button>
-            <button>
-              <i class="fa-solid fa-pen"></i>
+              <span class="material-icons">
+                edit
+              </span>
             </button>
           </div>
         </li>
@@ -251,11 +256,16 @@
   
           <!-- actions -->
           <div class="shrink-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
+            <!-- The button to open modal -->
+            <label for="delete-modal" class="cursor-pointer">
+              <span class="material-icons">
+                delete
+              </span>
+            </label>
             <button>
-              <i class="fa-solid fa-trash"></i>
-            </button>
-            <button>
-              <i class="fa-solid fa-pen"></i>
+              <span class="material-icons">
+                edit
+              </span>
             </button>
           </div>
         </li>
@@ -332,11 +342,16 @@
   
           <!-- actions -->
           <div class="shrink-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
+            <!-- The button to open modal -->
+            <label for="delete-modal" class="cursor-pointer">
+              <span class="material-icons">
+                delete
+              </span>
+            </label>
             <button>
-              <i class="fa-solid fa-trash"></i>
-            </button>
-            <button>
-              <i class="fa-solid fa-pen"></i>
+              <span class="material-icons">
+                edit
+              </span>
             </button>
           </div>
         </li>
@@ -359,6 +374,23 @@
           </button>
         </div>
       </ul>
+    </div>
+  </div>
+</div>
+
+<!-- delete modal  -->
+<input type="checkbox" id="delete-modal" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box dark:bg-night-400 dark:text-white">
+    <h3 class="font-bold text-lg">Delete faculty member</h3>
+    <p class="py-4">Do you want to delete <b>this_name?</b></p>
+    <div class="modal-action">
+      <label for="delete-modal" class="btn btn-outline dark:text-white">
+          cancel
+      </label>
+      <button class="btn btn-error text-white">
+        Delete
+      </button>
     </div>
   </div>
 </div>
