@@ -1,0 +1,91 @@
+<div class="flex flex-col">
+  <!-- title bar -->
+  <div class="flex flex-col px-4 pt-8">
+    <span class="text-[24px] text-gray-900 font-medium dark:text-white">Key Request</span>
+    <span class="text-gray-500 text-[14px]">You can proceed to request the Room you require here</span>
+  </div>
+
+  <!-- Key logs -->
+  <div class="flex flex-col gap-4 py-8 justify-between">
+    <!-- title and description -->
+    <div class="grow flex flex-col mx-4 gap-0">
+      <span class="text-gray-700 text-[16px] font-bold dark:text-white">Classroom Keys</span>
+    </div>
+
+    <!-- search bar and filter buttons-->
+    <div class="flex flex-row mx-4 gap-2">
+      <div class="flex flex-row gap-2 items-center">
+        <a href="#keys-all" class="btn btn-outline text-night-200 tab-link active">All</a>
+        <a href="#keys-available" class="btn btn-outline text-night-200 tab-link">Available</a>
+        <a href="#keys-in-use" class="btn btn-outline text-night-200 tab-link">In use</a>
+      </div>
+
+      <!-- search bar row -->
+      <div class="grow flex flex-row gap-2 items-center">
+        <label class="input-group grow">
+          <span class="material-icons">
+            search
+          </span>
+          <input type="text" placeholder="Search" class="input input-bordered" />
+        </label>
+
+        <button class="shrink-0 btn btn-square btn-outline text-night-200">
+          <i class="fa-solid fa-filter"></i>
+        </button>
+      </div>
+    </div>
+
+      
+    <div id="keys-all" class="tab-content active overflow-y-auto mx-4 my-4 max-h-[calc(100vh-68px-36px-38px-81px-48px)]">
+      <ul class="rounded-lg border-light-dark grid grid-cols-3 gap-4 p-2 place-items-center md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+        <li *ngFor="let loop2 of '01234567890123123123'.split('')" class="rounded-lg border-light-dark flex flex-col gap-2 justify-center items-center shadow-lg p-4 w-full max-w-[150px] dark:bg-night-700">
+          <div class="rounded-full w-[54px] h-[54px] bg-primary-700 flex items-center justify-center">
+            <span class="material-icons text-white">
+              vpn_key
+            </span>
+          </div>
+          <span class="dark:text-white">IT 1</span>
+          <div class="badge badge-secondary">In use</div>
+        </li>
+    
+        <li *ngFor="let loop2 of '01234567890123123123'.split('')" class="rounded-lg border-light-dark flex flex-col gap-2 justify-center items-center shadow-lg p-4 w-full max-w-[150px] dark:bg-night-700">
+          <div class="rounded-full w-[54px] h-[54px] bg-primary-700 flex items-center justify-center">
+            <span class="material-icons text-white">
+              vpn_key
+            </span>
+          </div>
+          <span class="dark:text-white">IT 1</span>
+          <div class="badge badge-accent">Available</div>
+        </li>
+      </ul>
+    </div>
+    
+    <div id="keys-in-use" class="tab-content overflow-y-auto mx-4 my-4 max-h-[calc(100vh-68px-36px-38px-81px-48px)]">
+      <ul class="rounded-lg border-light-dark grid grid-cols-3 gap-4 p-2 place-items-center md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+        <li *ngFor="let loop2 of '01234567890123123123'.split('')" class="rounded-lg border-light-dark flex flex-col gap-2 justify-center items-center shadow-lg p-4 w-full max-w-[150px] dark:bg-night-700">
+          <div class="rounded-full w-[54px] h-[54px] bg-primary-700 flex items-center justify-center">
+            <span class="material-icons text-white">
+              vpn_key
+            </span>
+          </div>
+          <span class="dark:text-white">IT 1</span>
+          <div class="badge badge-secondary">In use</div>
+        </li>
+      </ul>
+    </div>
+    
+    <div id="keys-available" class="tab-content overflow-y-auto mx-4 my-4 max-h-[calc(100vh-68px-36px-38px-81px-48px)]">
+      <ul class="rounded-lg border-light-dark grid grid-cols-3 gap-4 p-2 place-items-center md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+        <li *ngFor="let loop2 of '01234567890123123123'.split('')" class="rounded-lg border-light-dark flex flex-col gap-2 justify-center items-center shadow-lg p-4 w-full max-w-[150px] dark:bg-night-700">
+          <div class="rounded-full w-[54px] h-[54px] bg-primary-700 flex items-center justify-center">
+            <span class="material-icons text-white">
+              vpn_key
+            </span>
+          </div>
+          <span class="dark:text-white">IT 1</span>
+          <div class="badge badge-accent">Available</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -11,9 +11,9 @@
     <!-- end Header -->
 
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-2 xl:grid-cols-6">
+    <div class="grid gap-6 grid-cols-6">
 
-    <div class="col-span-4">
+    <div class="md:col-span-4 col-span-6">
 
     <div class="grid grid-cols-1 rounded-t-lg border-light-dark bg-white p-5 dark:bg-night-700">
         <div class="flex justify-between">
@@ -50,7 +50,7 @@
     </div>
 </div>
 
-<div class="col-span-2 flex flex-col">
+<div class="md:col-span-2 col-span-6 flex flex-col">
 
     <div class="rounded-t-lg border-light-dark bg-white p-5 dark:bg-night-700">
         <div class="flex justify-between">
@@ -111,14 +111,14 @@
         <div class="inline-block">
 
 
-            <div class="flex items-center justify-start">
-                <h3 class="text-lg font-medium text-gray-900 dark:text-white mr-3">Faculty Monitoring</h3>
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-start">
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white md:mr-3 mr-0">Faculty Monitoring</h3>
                 <div class="rounded-xl bg-primary-300/25 py-1 px-2 text-xs font-medium text-primary-700 dark:text-primary-300">
                     40 faculty members
                 </div>
             </div>
 
-            <div class="space-x-1 text-sm font-medium text-gray-400 dark:text-night-300">
+            <div class="md:space-x-1 mt-2 md:mt-0 text-sm font-medium text-gray-400 dark:text-night-300">
                 <p>
                     Keep track of vendor and their security ratings.
                 </p>
@@ -127,11 +127,13 @@
 </div>
 
 <div class="grid grid-cols-1 border-x border-b border-gray-200 dark:border-night-500 bg-white p-5 dark:bg-night-700">
-    <div class="flex justify-between">
+    <div class="flex flex-col md:flex-row gap-4 justify-between">
         <div class="flex items-center justify-start">
             <a href="#view-all"
                 class="tab-link active tab-button-1">
-                View All
+                <span class="hidden md:inline-block">
+                View
+                </span> All
             </a>
             <a href="#monitored"
                 class="tab-link tab-button-2">
@@ -158,7 +160,7 @@
                         class="search-bar"
                         type="text"
                         id="search"
-                        placeholder="Search something.." />
+                        placeholder="Search.." />
                     </div>
                 </div>
 
@@ -187,19 +189,19 @@
     <!--Table head-->
     <thead class="text-xs text-gray-400 dark:text-night-300">
         <tr>
-            <th class="py-3 px-2 text-left font-medium w-1/4">Faculty Name</th>
-            <th class="py-3 px-2 text-left font-medium">Attendance</th>
-            <th class="py-3 px-2 text-left font-medium">Room</th>
-            <th class="py-3 px-2 text-left font-medium">Subject</th>
-            <th class="py-3 px-2 text-left font-medium w-1/4">Last Modified</th>
-            <th class="py-3 px-2 text-right font-medium w-1/10"></th>
+            <th class="py-3 px-2 text-left font-medium md:w-1/4 w-56">Faculty Name</th>
+            <th class="py-3 px-2 text-left font-medium md:w-auto w-28">Attendance</th>
+            <th class="py-3 px-2 text-left font-medium md:w-auto w-28">Room</th>
+            <th class="py-3 px-2 text-left font-medium md:w-auto w-28">Subject</th>
+            <th class="py-3 px-2 text-left font-medium md:w-1/4 w-56">Last Modified</th>
+            <th class="py-3 px-2 text-right font-medium md:w-1/10 w-28"></th>
         </tr>
     </thead>
     <!--end Table head-->
     <!--Table body-->
     <tbody>
         <tr class="hover:bg-gray-100 dark:border-night-500 dark:hover:bg-night-600">
-            <td class="py-2 px-2">
+            <td class="py-4 px-2">
                 <div class="flex items-center">
                     <img src='assets/avatars/user-profile.png' class="mr-2 h-10 w-10 flex-none rounded-full" alt="" />
                     <div class="flex flex-col justify-items-start">

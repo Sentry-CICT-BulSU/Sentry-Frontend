@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SubjectService } from 'src/app/core/services/subject.service';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-add-subject',
@@ -28,6 +29,12 @@ export class AddSubjectComponent implements OnInit {
             next: (subject) => {
                 console.log(subject);
                 this.router.navigate(['/subject']);
+
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Success',
+                  text: 'Subject added successfully!',
+                });
             },
             error: (err) => console.debug(err),
         });

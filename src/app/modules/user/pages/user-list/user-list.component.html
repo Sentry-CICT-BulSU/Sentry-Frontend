@@ -1,6 +1,6 @@
 <div class="grid grid-cols-1 rounded-t-lg border-light-dark bg-white p-5 dark:bg-night-700">
     <div class="flex justify-between">
-        <div class="flex items-center justify-between">
+        <div class="flex md:items-center items-start flex-col md:flex-row justify-between">
             <h3 class="text-lg font-medium text-gray-900 dark:text-white mr-3">Users</h3>
             <div *ngIf="user_pagination?.meta?.total"
                 class="rounded-xl bg-primary-300/25 py-1 px-2 text-xs font-medium text-primary-700 dark:text-primary-300">
@@ -10,18 +10,31 @@
         <div class="flex items-center space-x-3">
             <button type="button"
                 class="flex items-center justify-center rounded-md button-plain">
-                <span class="material-symbols-rounded h-6 w-6 mr-2">
+                <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
                     cloud_download
                 </span>
-                Download CSV
+                <span class="hidden md:inline-block">
+                    Download CSV
+                </span>
+
             </button>
             <button type="button" [routerLink]="['/user/add-user']"
                 class="flex items-center justify-center rounded-md button-colored">
-                <span class="material-symbols-rounded h-6 w-6 mr-2">
+                <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
                     add
                 </span>
-                Add User
+                <span class="hidden md:inline-block">
+                    Add User
+                </span>
             </button>
+
+            <button type="button" [routerLink]="['/user/deleted-user']"
+                class="flex items-center justify-center rounded-md button-plain">
+                <span class="material-symbols-rounded h-6 w-6">
+                  auto_delete
+                </span>
+            </button>
+
         </div>
     </div>
 </div>

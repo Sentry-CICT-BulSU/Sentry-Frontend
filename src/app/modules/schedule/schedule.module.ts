@@ -10,6 +10,7 @@ import { ScheduleComponent } from './schedule.component';
 import { ScheduleListComponent } from './pages/schedule-list/schedule-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddScheduleComponent } from './pages/add-schedule/add-schedule.component';
+import { ScheduleTableComponent } from './pages/schedule-table/schedule-table.component';
 
 
 
@@ -18,6 +19,7 @@ import { AddScheduleComponent } from './pages/add-schedule/add-schedule.componen
         ScheduleComponent,
         ScheduleListComponent,
         AddScheduleComponent,
+        ScheduleTableComponent,
     ],
 
 

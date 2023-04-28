@@ -14,7 +14,7 @@ const routes: Routes = [
 
         { path: '', redirectTo: 'faculty-list', pathMatch: 'full' },
         { path: 'faculty-list', component: FacultyListComponent },
-        { path: 'edit-faculty', component: EditFacultyComponent },
+        { path: ':id/edit', component: EditFacultyComponent },
         { path: '**', redirectTo: 'faculty-list', pathMatch: 'full' },
     ],
 },

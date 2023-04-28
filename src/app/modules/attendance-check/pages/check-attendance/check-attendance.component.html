@@ -1,0 +1,45 @@
+<div class="flex flex-col pb-4">
+  <!-- title bar -->
+  <div class="sticky top-0 flex flex-col gap-4 px-4 py-8 bg-white dark:bg-night-800 rounded-tl-[32px]">
+    <span class="text-[24px] text-gray-900 font-medium dark:text-white">Check Attendance</span>
+  </div>
+
+  <div class="w-full flex justify-center">
+    <div class="border-light-dark rounded-lg mx-4 w-full max-w-4xl">
+      <!-- card-title -->
+      <div class="flex flex-col gap-4 justify-between border-b dark:border-night-500">
+        <div class="grow flex flex-col gap-0 border-b p-4 dark:border-night-500">
+          <span class="text-gray-700 text-[16px] font-bold dark:text-white">IT 319 (Mobile Game Development)</span>
+          <span class="text-gray-500 text-[14px]">Faculty Assigned: Gabriel Galang</span>
+          <span class="text-gray-500 text-[14px]">Schedule: 10:00 am - 1:00 pm</span>
+        </div>
+  
+        <div class="flex flex-col gap-4 p-4 dark:text-white">
+          <!-- add attachment -->
+          <div class="flex flex-col">
+            <span>Add Attachment</span>
+            <label for="attendance-attachment" class="flex flex-col gap-2 justofy-center items-center border-light-dark rounded-lg p-4 text-center cursor-pointer">
+              <span class="material-icons">
+                cloud_upload
+              </span>
+  
+              <div class="text-gray-500">
+                <span class="text-primary-700 text-[14px]">Click to upload</span> or drag and drop
+              </div>
+  
+              <span class="text-gray-500 text-[14px]">SVG, PNG, JPG or GIF (max. 800x400px)</span>
+            </label>
+            <input class="absolute -top-10"
+              type="file" name="attendance-attachment" id="attendance-attachment">
+          </div>
+  
+          <!-- add remarks -->
+          <div class="flex flex-col">
+            <span>Add Remarks</span>
+            <textarea class="textarea textarea-bordered resize-none" placeholder="Aa" rows="4"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

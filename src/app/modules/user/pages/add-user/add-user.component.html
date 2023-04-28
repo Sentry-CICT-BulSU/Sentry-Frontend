@@ -19,7 +19,7 @@
         <hr class="border-solid border-gray-200 dark:border-night-500" />
     </div>
 
-    <div class="grid grid-cols-4 gap-6">
+    <div class="grid md:grid-cols-4 gap-6">
         <div class="space-x-1 text-sm font-medium text-gray-600 dark:text-night-300">
             <p>Name</p>
         </div>
@@ -48,7 +48,7 @@
         <hr class="border-solid border-gray-200 dark:border-night-500" />
     </div>
 
-    <div class="grid grid-cols-4 gap-6">
+    <div class="grid md:grid-cols-4 gap-6">
         <div class="space-x-1 text-sm font-medium text-gray-600 dark:text-night-300">
             <p>Email address</p>
         </div>
@@ -67,7 +67,7 @@
         <hr class="border-solid border-gray-200 dark:border-night-500" />
     </div>
 
-    <div class="grid grid-cols-4 gap-6">
+    <div class="grid md:grid-cols-4 gap-6">
         <div class="space-x-1 text-sm font-medium text-gray-600 dark:text-night-300">
             <p>Contact Number</p>
         </div>
@@ -87,7 +87,7 @@
         <hr class="border-solid border-gray-200 dark:border-night-500" />
     </div>
 
-    <div class="grid grid-cols-4 gap-6">
+    <div class="grid md:grid-cols-4 gap-6">
         <div class="space-x-1 text-sm font-medium text-gray-600 dark:text-night-300">
             <p>Password</p>
         </div>
@@ -107,7 +107,7 @@
         <hr class="border-solid border-gray-200 dark:border-night-500" />
     </div>
 
-    <div class="grid grid-cols-4 gap-6">
+    <div class="grid md:grid-cols-4 gap-6">
         <div class="space-x-1 text-sm font-medium text-gray-600 dark:text-night-300">
             <p>Confirm Password</p>
         </div>
@@ -127,7 +127,7 @@
         <hr class="border-solid border-gray-200 dark:border-night-500" />
     </div>
 
-    <div class="grid grid-cols-4 gap-6">
+    <div class="grid md:grid-cols-4 gap-6">
         <div class="space-x-1 text-sm font-medium text-gray-600 dark:text-night-300">
             <p>Position</p>
         </div>
@@ -146,14 +146,14 @@
         <hr class="border-solid border-gray-200 dark:border-night-500" />
     </div>
 
-    <div class="grid grid-cols-4 gap-6">
+    <div class="grid md:grid-cols-4 gap-6">
         <div class="space-x-1 text-sm font-medium text-gray-600 dark:text-night-300">
             <p>College</p>
         </div>
 
         <div class="relative col-span-2">
-            <select formControlName="college" name="college" id="college" class="peer block">
-                <option *ngFor="let option of colleges" [value]="option">
+            <select name="college" id="college" class="peer block" disabled>
+                <option *ngFor="let option of colleges" [value]="option" selected>
                     {{ option }}
                 </option>
             </select>
@@ -165,7 +165,7 @@
         <hr class="border-solid border-gray-200 dark:border-night-500" />
     </div>
 
-    <div class="grid grid-cols-4 gap-6">
+    <div class="grid md:grid-cols-4 gap-6">
         <div class="space-x-1 text-sm font-medium text-gray-600 dark:text-night-300">
             <p>Account Type</p>
         </div>

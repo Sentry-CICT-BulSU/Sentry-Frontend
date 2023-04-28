@@ -4,141 +4,126 @@ import { MenuItem } from '../models/menu.model';
 // Each MenuItem object represents a group of menu items with a common label, icon, and route.
 
 export class Menu {
-    public static pages: MenuItem[] = [
+  public static pages: MenuItem[] = [
+    {
+      group: 'Dashboard',
+      separator: true,
+      type: '*',
+      items: [
         {
-            group: 'Dashboard',
-            separator: true,
-            type: '*',
-            items: [
-                {
-                    icon: 'home',
-                    label: 'Dashboard',
-                    route: '/dashboard',
-                },
-            ],
+          icon: 'home',
+          label: 'Dashboard',
+          route: '/dashboard/admin-dashboard',
         },
+      ],
+    },
 
-        // Admin
+    // Admin
+    {
+      group: 'Admin Management',
+      separator: false,
+      type: 'Admin',
+      items: [
         {
-            group: 'Drop Down',
-            separator: false,
-            type: 'Admin',
-            items: [
-                {
-                    icon: 'bar_chart',
-                    label: 'Faculty and Schedule',
-                    children: [
-                        { label: 'Faculty Management', route: '/faculty' },
-                        { label: 'Schedule Management', route: '/schedule' },
-                        {
-                            label: 'Attendance Monitoring',
-                            route: '/attendance',
-                        },
-                    ],
-                },
-                {
-                    icon: 'layers',
-                    label: 'Content Management',
-                    children: [
-                        { label: 'Semester Management', route: '/semester' },
-                        { label: 'Subject Management', route: '/subject' },
-                        { label: 'Room Management', route: '/room' },
-                    ],
-                },
-            ],
+          icon: 'bar_chart',
+          label: 'Faculty and Schedule',
+          children: [
+            { label: 'Faculty Management', route: '/faculty' },
+            { label: 'Schedule Management', route: '/schedule' },
+            {
+              label: 'Attendance Monitoring',
+              route: '/attendance',
+            },
+          ],
         },
-        // Attendance Checker
         {
-            group: 'Drop Down',
-            separator: false,
-            type: 'Attendance Checker',
-            items: [
-                {
-                    icon: 'bar_chart',
-                    label: 'Faculty and Schedule 2 ',
-                    children: [
-                        { label: 'Faculty Management', route: '/faculty' },
-                        { label: 'Schedule Management', route: '/schedule' },
-                        {
-                            label: 'Attendance Monitoring',
-                            route: '/attendance',
-                        },
-                    ],
-                },
-                {
-                    icon: 'layers',
-                    label: 'Content Management 2',
-                    children: [
-                        { label: 'Semester Management', route: '/semester' },
-                        { label: 'Subject Management', route: '/subject' },
-                        { label: 'Room Management', route: '/room' },
-                    ],
-                },
-            ],
+          icon: 'layers',
+          label: 'Content Management',
+          children: [
+            { label: 'Semester Management', route: '/semester' },
+            { label: 'Subject Management', route: '/subject' },
+            { label: 'Room Management', route: '/room' },
+          ],
         },
-        // Faculty
-        {
-            group: 'Drop Down',
-            separator: false,
-            type: 'Faculty',
-            items: [
-                {
-                    icon: 'bar_chart',
-                    label: 'Faculty and Schedule',
-                    children: [
-                        { label: 'Faculty Management', route: '/faculty' },
-                        { label: 'Schedule Management', route: '/schedule' },
-                        {
-                            label: 'Attendance Monitoring',
-                            route: '/attendance',
-                        },
-                    ],
-                },
-                {
-                    icon: 'layers',
-                    label: 'Content Management',
-                    children: [
-                        { label: 'Semester Management', route: '/semester' },
-                        { label: 'Subject Management', route: '/subject' },
-                        { label: 'Room Management', route: '/room' },
-                    ],
-                },
-            ],
-        },
+      ],
+    },
 
+    {
+      group: 'Admin',
+      separator: true,
+      type: 'Admin',
+      items: [
         {
-            group: 'Plain',
-            separator: true,
-            type: '*',
-            items: [
-                {
-                    icon: 'vpn_key',
-                    label: 'Room Key Monitoring',
-                    route: '/room-key',
-                },
-                {
-                    icon: 'lab_profile',
-                    label: 'Reports',
-                    route: '/reports',
-                },
-                {
-                    icon: 'group',
-                    label: 'User Management',
-                    route: '/user',
-                },
-                {
-                    icon: 'bar_chart',
-                    label: 'Attendance Management - AC',
-                    route: '/attendance-check',
-                },
-                {
-                    icon: 'vpn_key',
-                    label: 'Keys - AC',
-                    route: '/keys',
-                },
-            ],
+          icon: 'vpn_key',
+          label: 'Room Key Monitoring',
+          route: '/room-key',
         },
-    ];
+        {
+          icon: 'lab_profile',
+          label: 'Reports',
+          route: '/reports',
+        },
+        {
+          icon: 'group',
+          label: 'User Management',
+          route: '/user',
+        },
+      ],
+    },
+
+    // Attendance Checker
+    {
+      group: 'Attendance Checker',
+      separator: true,
+      type: 'Attendance Checker', //change * to Attendance Checker to hide
+      items: [
+        {
+          icon: 'home',
+          label: 'Dashboard - AC',
+          route: '/attendance-check/attendance-management',
+        },
+        {
+          icon: 'bar_chart',
+          label: 'Attendance Monitoring - AC',
+          route: '/attendance-check/attendance-monitoring',
+        },
+        {
+          icon: 'vpn_key',
+          label: 'Keys - AC',
+          route: '/keys/keys-overview',
+        },
+      ],
+    },
+
+    // Faculty
+    {
+      group: 'Faculty',
+      separator: true,
+      type: 'faculty', //change * to Faculty to hide
+      items: [
+        {
+          icon: 'home',
+          label: 'Dashboard - F',
+          route: '/dashboard/faculty-dashboard',
+        },
+        {
+          icon: 'vpn_key',
+          label: 'Keys - F',
+          route: '/keys/faculty-keys',
+        },
+        {
+          icon: 'event_available',
+          label: 'Schedule - F',
+          route: '/faculty-mode/faculty-schedule',
+        },
+        {
+          icon: 'settings',
+          label: 'Profile Settings - F',
+          route: '/faculty-mode/faculty-profile',
+        },
+      ],
+    },
+  ];
 }
 
 // This class can be used in an Angular application to generate a menu dynamically based on the MenuItem objects defined

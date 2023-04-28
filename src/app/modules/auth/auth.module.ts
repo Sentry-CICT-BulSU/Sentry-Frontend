@@ -16,6 +16,7 @@ import { TwoStepsComponent } from './pages/two-steps/two-steps.component'; // im
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { UniversalDeviceDetectorService } from './../../core/services/universal-device-detector.service';
 import { AuthCallbackComponent } from './pages/auth-callback/auth-callback.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -34,6 +35,7 @@ import { AuthCallbackComponent } from './pages/auth-callback/auth-callback.compo
         HttpClientModule,
         AngularSvgIconModule.forRoot(),
         ReactiveFormsModule,
+        SharedModule,
     ],
     providers: [
         AuthService,

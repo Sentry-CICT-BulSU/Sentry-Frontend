@@ -14,10 +14,10 @@
 
         <button type="button" [routerLink]="['/semester/add-semester']"
                 class="flex items-center justify-center button-colored">
-            <span class="material-symbols-rounded h-6 w-6 mr-2">
+            <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
                 add
             </span>
-            Add Semester
+            <span class="hidden md:inline-block">Add Semester</span>
         </button>
     </div>
     <!-- end Header -->
@@ -38,11 +38,13 @@
 
     <div
          class="grid grid-cols-1 border-x border-b border-gray-200 dark:border-night-500 bg-white p-5 dark:bg-night-700">
-        <div class="flex justify-between">
+        <div class="flex flex-col md:flex-row gap-4 justify-between">
             <div class="flex items-center justify-start">
                 <a href="#view-all"
                    class="tab-link active relative selection:flex justify-center rounded-l-md border border-gray-300 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200 dark:text-night-200 dark:hover:bg-night-500">
-                    View All
+                   <span class="md:inline-block">
+                    View
+                    </span> All
                 </a>
                 <a href="#active-sem"
                    class="tab-link relative selection:flex justify-center border-y border-gray-300 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200 dark:text-night-200 dark:hover:bg-night-500">
@@ -68,7 +70,7 @@
                         class="search-bar"
                         type="text"
                         id="search"
-                        placeholder="Search something.." />
+                        placeholder="Search.." />
                     </div>
                 </div>
 
@@ -97,18 +99,18 @@
                     <!--Table head-->
                     <thead class="text-xs text-gray-400 dark:text-night-300">
                         <tr>
-                            <th class="py-3 px-2 text-left font-medium w-1/4">Semester Name</th>
-                            <th class="py-3 px-2 text-left font-medium">Status</th>
-                            <th class="py-3 px-2 text-left font-medium w-1/4">Duration</th>
-                            <th class="py-3 px-2 text-left font-medium w-1/4">Last Modified</th>
-                            <th class="py-3 px-2 text-right font-medium w-1/10"></th>
+                            <th class="py-3 px-2 text-left font-medium md:w-1/4 w-56">Semester Name</th>
+                            <th class="py-3 px-2 text-left font-medium md:w-auto w-28">Status</th>
+                            <th class="py-3 px-2 text-left font-medium md:w-1/4 w-56">Duration</th>
+                            <th class="py-3 px-2 text-left font-medium md:w-1/4 w-56">Last Modified</th>
+                            <th class="py-3 px-2 text-right font-medium md:w-1/10 w-28"></th>
                         </tr>
                     </thead>
                     <!--end Table head-->
                     <!--Table body-->
                     <tbody>
                         <tr class="hover:bg-gray-100 dark:border-night-500 dark:hover:bg-night-600">
-                            <td class="py-2 px-2">
+                            <td class="py-4 px-2">
                                 <div class="flex items-center">
                                     <div class="flex flex-col justify-items-start">
                                         <a href="#"
@@ -123,7 +125,8 @@
                             </td>
                             <td class="p-2">
                                 <div
-                                     class="inline-block rounded-xl bg-green-500/25 py-1 px-2 text-xs font-medium text-green-500">
+                                     class="inline-block rounded-xl py-1 px-2 text-xs font-medium {{ getStatusClass('active') }}">
+                                     <!-- change to {{ getStatusClass(semester.status) }} when there is a data already -->
                                     Active
                                 </div>
                             </td>
@@ -141,11 +144,11 @@
                             <td class="py-2 pr-2">
                                 <div class="flex justify-end">
 
-                                    <span class="material-symbols-rounded font-medium cursor-pointer mr-6 justify-center rounded-md text-gray-500 hover:text-red-500 dark:text-night-300">
+                                    <span (click)="onDelete()" class="material-symbols-rounded font-medium cursor-pointer mr-6 justify-center rounded-md text-gray-500 hover:text-red-500 dark:text-night-300">
                                         delete
                                     </span>
 
-                                    <span [routerLink]="['/faculty/edit-faculty']" class="material-symbols-rounded font-medium cursor-pointer justify-center rounded-md text-gray-500 hover:text-primary-700 dark:text-night-300">
+                                    <span [routerLink]="['/semester/edit-semester']" class="material-symbols-rounded font-medium cursor-pointer justify-center rounded-md text-gray-500 hover:text-primary-700 dark:text-night-300">
                                         edit
                                     </span>
                                 </div>
