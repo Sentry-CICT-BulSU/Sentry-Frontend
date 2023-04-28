@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ISemesterCollection } from 'src/app/core/models';
 import { SemesterService } from 'src/app/core/services/semester.service';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-semester-list',
@@ -9,6 +10,28 @@ import { SemesterService } from 'src/app/core/services/semester.service';
 export class SemesterListComponent implements OnInit {
     semesterCollection?: ISemesterCollection;
     constructor(private semesterService: SemesterService) {}
+
+    getStatusClass(status: string): string {
+      return status === 'active' ? 'bg-green-500/25 text-green-500' : 'bg-gray-300/25 text-gray-500 dark:text-gray-300';
+    }
+
+    onDelete() {
+      Swal.fire({
+        title: 'Confirm Delete',
+        text: 'Are you sure you want to delete this subject?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#6941C6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+
+          Swal.fire('Deleted!', 'Semester has been deleted.', 'success');
+        }
+      });
+    }
 
     ngOnInit(): void {
         this.semesterService.loadSemesters$().subscribe((semester) => {

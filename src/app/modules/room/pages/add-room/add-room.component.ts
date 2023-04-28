@@ -2,6 +2,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RoomService } from './../../../../core/services/room.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-add-room',
@@ -28,6 +29,13 @@ export class AddRoomComponent implements OnInit {
             next: (room) => {
                 console.log(room);
                 this.router.navigate(['/room']);
+
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Success',
+                  text: 'Room added successfully!',
+                });
+
             },
             error: (err) => console.debug(err),
         });

@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
 import { CmsTableComponent } from './components/cms-table/cms-table.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { DeletedUserTableComponent } from './components/deleted-user-table/deleted-user-table.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
     declarations: [
@@ -28,11 +29,12 @@ import { DeletedUserTableComponent } from './components/deleted-user-table/delet
         ClickOutsideDirective,
         CmsTableComponent,
         SpinnerComponent,
+
     ],
     imports: [
         CommonModule,
         RouterModule,
-
+        NgxPaginationModule,
         // angular material
         MatIconModule,
         MatProgressSpinnerModule,

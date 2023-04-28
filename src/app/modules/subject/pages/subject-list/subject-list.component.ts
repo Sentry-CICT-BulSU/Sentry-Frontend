@@ -9,6 +9,13 @@ import Swal from 'sweetalert2';
   templateUrl: './subject-list.component.html',
 })
 export class SubjectListComponent implements OnInit {
+
+  p = 1;
+
+  public searchTerm = '';
+
+  selectedSort = 'latest';
+
   subjectCollection?: ISubjectCollection;
   activeSubjectCollection?: ISubjectCollection;
   inactiveSubjectCollection?: ISubjectCollection;
@@ -18,11 +25,88 @@ export class SubjectListComponent implements OnInit {
   inactiveSubjects?: ISubject[];
   constructor(private subjectService: SubjectService, private router: Router) {}
 
+  get filteredSearchSubjects() {
+    if (!this.subjects) {
+      return [];
+    }
+    return this.subjects.filter(subject => {
+      return subject.code.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+             subject.title.toLowerCase().includes(this.searchTerm.toLowerCase());
+    });
+  }
+
+  get filteredSearchActiveSubjects() {
+    if (!this.activeSubjects) {
+      return [];
+    }
+    return this.activeSubjects.filter(subject => {
+      return subject.code.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+             subject.title.toLowerCase().includes(this.searchTerm.toLowerCase());
+    });
+  }
+
+  get filteredSearchInactiveSubjects() {
+    if (!this.inactiveSubjects) {
+      return [];
+    }
+    return this.inactiveSubjects.filter(subject => {
+      return subject.code.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+             subject.title.toLowerCase().includes(this.searchTerm.toLowerCase());
+    });
+  }
+
+
+  sortSubjects(subjects: any[], sortParam: string): any[] {
+    return subjects.sort((a, b) => {
+      if (sortParam === 'code') {
+        return a.code.localeCompare(b.code);
+      } else if (sortParam === 'latest') {
+        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+      } else if (sortParam === 'oldest') {
+        return new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+      } else {
+        return 0;
+      }
+    });
+  }
+
+  sortActiveSubjects(activeSubjects: any[], sortParam: string): any[] {
+    return activeSubjects.sort((a, b) => {
+      if (sortParam === 'code') {
+        return a.code.localeCompare(b.code);
+      } else if (sortParam === 'latest') {
+        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+      } else if (sortParam === 'oldest') {
+        return new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+      } else {
+        return 0;
+      }
+    });
+  }
+
+  sortInactiveSubjects(inactiveSubjects: any[], sortParam: string): any[] {
+    return inactiveSubjects.sort((a, b) => {
+      if (sortParam === 'code') {
+        return a.code.localeCompare(b.code);
+      } else if (sortParam === 'latest') {
+        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+      } else if (sortParam === 'oldest') {
+        return new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+      } else {
+        return 0;
+      }
+    });
+  }
+
   ngOnInit(): void {
     this.initComponent();
     this.loadSubjects();
     this.loadActiveSubjects();
     this.loadInactiveSubjects();
+  }
+
+  getStatusClass(status: string): string {
+    return status === 'active' ? 'bg-green-500/25 text-green-500' : 'bg-gray-300/25 text-gray-500 dark:text-gray-300';
   }
 
   onEdit(id: number) {

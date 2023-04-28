@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SemesterService } from 'src/app/core/services/semester.service';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-add-semester',
@@ -37,6 +38,13 @@ export class AddSemesterComponent implements OnInit {
                 next: (res) => {
                     console.log(res);
                     this.router.navigate(['/semester']);
+
+                    Swal.fire({
+                      icon: 'success',
+                      title: 'Success',
+                      text: 'Semester added successfully!',
+                    });
+
                 },
                 error: (err) => console.debug(err),
             });

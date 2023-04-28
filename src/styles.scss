@@ -110,6 +110,18 @@ $sentry-frontend-theme: mat.define-light-theme(
     .text-subheading{
         @apply space-x-1 md:text-base text-sm font-medium text-gray-400 dark:text-night-300;
     }
+    .ngx-pagination .current {
+        @apply bg-primary-700 rounded-md #{!important};
+    }
+    .ngx-pagination {
+        @apply  px-4 py-2 text-sm font-medium text-gray-700  dark:text-night-200 mb-0 #{!important};
+    }
+    .ngx-pagination a{
+        @apply  rounded-md text-sm font-medium text-gray-700  dark:text-night-200 #{!important};
+    }
+    select option {
+        @apply bg-white dark:bg-night-700 font-normal text-gray-700 dark:text-night-200 px-4 py-4 rounded-md #{!important};
+    }
 }
 
 /** Scroll bar **/
@@ -127,6 +139,14 @@ body {
     margin: 0;
     font-family: Inter, Roboto, sans-serif;
 }
+
+select option {
+  background-color: #f2f2f2;
+  color: #333;
+  font-size: 16px;
+  padding: 10px;
+}
+
 
 // tr:nth-child(even) {
 //     background-color: #f2f2f2;
@@ -196,7 +216,9 @@ input[type="search"]::-webkit-search-results-decoration {
     33%   {top: 0px;}
     66%  {top: 20px;}
     100%  {top: 0px}
-
-
-
   }
+
+  .mat-mdc-progress-spinner {
+    --mdc-circular-progress-active-indicator-color: #6941C6;
+}
+

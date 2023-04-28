@@ -1,3 +1,4 @@
+import { FacultyScheduleComponent } from './pages/faculty-schedule/faculty-schedule.component';
 import { FacultyProfileComponent } from './pages/faculty-profile/faculty-profile.component';
 import { FacultyModeComponent } from './faculty-mode.component';
 import { NgModule } from '@angular/core';
@@ -15,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   declarations: [
     FacultyModeComponent,
-    FacultyProfileComponent
+    FacultyProfileComponent,
+    FacultyScheduleComponent
   ]
 })
 export class FacultyModeModule { }

@@ -1,6 +1,6 @@
 <div class="flex flex-col">
   <!-- title bar -->
-  <div class="sticky top-0 flex flex-col gap-4 px-4 py-8 bg-white dark:bg-night-800">
+  <div class="sticky top-0 flex flex-col gap-4 px-4 py-8 bg-white dark:bg-night-800 rounded-tl-[32px]">
     <span class="text-[24px] text-gray-900 font-medium dark:text-white">Attendance Monitoring</span>
     <div class="flex flex-row gap-2 items-center justify-start">
       <a href="#active-schedule" class="button-plain tab-link active">Active Schedule</a>
@@ -13,9 +13,11 @@
   <div id="active-schedule" class="tab-content active">
     <ul class="grid grid-cols-1 gap-4 place-items-center px-4 xl:grid-cols-2 xl:pb-4">
       <!-- before clicking present or absent -->
-      <li *ngFor="let loop2 of '01234567890123123123'.split('')" [routerLink]="['/attendance-check/room-information']" class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4 xl:last:mb-0">
+      <li *ngFor="let loop2 of '01234567890123123123'.split('')"
+        class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4 xl:last:mb-0">
         <!-- card-title -->
-        <div class="flex flex-row gap-4 p-4 justify-between border-b dark:border-night-500">
+        <div [routerLink]="['/attendance-check/room-information']"
+          class="flex flex-row gap-4 p-4 justify-between border-b cursor-pointer hover:bg-gray-100 transition-colors dark:border-night-500 dark:hover:bg-night-500">
           <!-- icon -->
           <div class="shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[32px] text-white">
             <span class="material-icons">
@@ -67,9 +69,11 @@
   <div id="am" class="tab-content">
     <ul class="grid grid-cols-1 gap-4 place-items-center px-4 xl:grid-cols-2 xl:pb-4">
       <!-- before clicking present or absent -->
-      <li *ngFor="let loop2 of '01234567890123123123'.split('')" [routerLink]="['/attendance-check/room-information']" class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4 xl:last:mb-0">
+      <li *ngFor="let loop2 of '01234567890123123123'.split('')"
+        class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4 xl:last:mb-0">
         <!-- card-title -->
-        <div class="flex flex-row gap-4 p-4 justify-between border-b dark:border-night-500">
+        <div [routerLink]="['/attendance-check/room-information']"
+          class="flex flex-row gap-4 p-4 justify-between border-b cursor-pointer hover:bg-gray-100 transition-colors dark:border-night-500 dark:hover:bg-night-500">
           <!-- icon -->
           <div class="shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[32px] text-white">
             <span class="material-icons">
@@ -121,9 +125,11 @@
   <div id="pm" class="tab-content">
     <ul class="grid grid-cols-1 gap-4 place-items-center px-4 xl:grid-cols-2 xl:pb-4">
       <!-- before clicking present or absent -->
-      <li *ngFor="let loop2 of '01234567890123123123'.split('')" [routerLink]="['/attendance-check/room-information']" class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4 xl:last:mb-0">
+      <li *ngFor="let loop2 of '01234567890123123123'.split('')"
+        class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4 xl:last:mb-0">
         <!-- card-title -->
-        <div class="flex flex-row gap-4 p-4 justify-between border-b dark:border-night-500">
+        <div [routerLink]="['/attendance-check/room-information']"
+          class="flex flex-row gap-4 p-4 justify-between border-b cursor-pointer hover:bg-gray-100 transition-colors dark:border-night-500 dark:hover:bg-night-500">
           <!-- icon -->
           <div class="shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[32px] text-white">
             <span class="material-icons">
