@@ -218,7 +218,7 @@
           <!--end Table head-->
           <!--Table body-->
           <tbody>
-            <tr *ngFor="let room of filteredSearchActiveRooms | paginate: { itemsPerPage: 15, currentPage: p }"
+            <tr *ngFor="let room of sortActiveRooms(filteredSearchActiveRooms, selectedSort) | paginate: { itemsPerPage: 15, currentPage: p }"
                 class="hover:bg-gray-100 dark:border-night-500 dark:hover:bg-night-600">
               <td class="py-4 px-2">
                 <div class="flex items-center">
@@ -320,7 +320,7 @@
           <!--end Table head-->
           <!--Table body-->
           <tbody>
-            <tr *ngFor="let room of filteredSearchInactiveRooms | paginate: { itemsPerPage: 15, currentPage: p }"
+            <tr *ngFor="let room of sortInactiveRooms(filteredSearchInactiveRooms, selectedSort) | paginate: { itemsPerPage: 15, currentPage: p }"
                 class="hover:bg-gray-100 dark:border-night-500 dark:hover:bg-night-600">
               <td class="py-4 px-2">
                 <div class="flex items-center">

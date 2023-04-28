@@ -84,6 +84,34 @@ export class RoomListComponent implements OnInit {
     });
   }
 
+  sortActiveRooms(activeRooms: any[], sortParam: string): any[] {
+    return activeRooms.sort((a, b) => {
+      if (sortParam === 'name') {
+        return a.name.localeCompare(b.name);
+      } else if (sortParam === 'latest') {
+        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+      } else if (sortParam === 'oldest') {
+        return new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+      } else {
+        return 0;
+      }
+    });
+  }
+
+  sortInactiveRooms(inactiveRooms: any[], sortParam: string): any[] {
+    return inactiveRooms.sort((a, b) => {
+      if (sortParam === 'name') {
+        return a.name.localeCompare(b.name);
+      } else if (sortParam === 'latest') {
+        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+      } else if (sortParam === 'oldest') {
+        return new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+      } else {
+        return 0;
+      }
+    });
+  }
+
 
 
 
