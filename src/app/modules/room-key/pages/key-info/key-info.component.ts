@@ -33,21 +33,15 @@ export class KeyInfoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.data.subscribe((data) => {
-      this.roomKeyId = data['id'];
-      if (typeof this.roomKeyId !== 'number') {
+    this.route.paramMap.subscribe((data) => {
+      const id = data.get('id');
+      if (!id || id === 'undefined' || typeof id !== 'string') {
         this.router.navigate(['/error-404']);
+        return;
       }
-      this.roomKeyForm = this.fb.group({
-        room_key_id: ['', [Validators.required]],
-        faculty: ['', [Validators.required]],
-        faculty_id: ['', [Validators.required]],
-        time: ['', [Validators.required]],
-        subject_id: ['', [Validators.required]],
-        subject_code: ['', [Validators.required]],
-        subject_name: ['', [Validators.required]],
-      });
+      this.roomKeyId = +id;
 
+      this.initForm();
       this.loadSubs();
     });
   }
@@ -73,6 +67,17 @@ export class KeyInfoComponent implements OnInit {
           this.loadFormControls();
         }
       });
+  }
+  initForm() {
+    this.roomKeyForm = this.fb.group({
+      room_key_id: ['', [Validators.required]],
+      faculty: ['', [Validators.required]],
+      faculty_id: ['', [Validators.required]],
+      time: ['', [Validators.required]],
+      subject_id: ['', [Validators.required]],
+      subject_code: ['', [Validators.required]],
+      subject_name: ['', [Validators.required]],
+    });
   }
   loadFormControls() {
     const sched: ISchedule = (this.schedules as ISchedule[])[0] as ISchedule;
