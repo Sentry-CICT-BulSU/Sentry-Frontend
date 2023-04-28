@@ -14,6 +14,8 @@ export class SubjectListComponent implements OnInit {
 
   public searchTerm = '';
 
+  selectedSort = 'latest';
+
   subjectCollection?: ISubjectCollection;
   activeSubjectCollection?: ISubjectCollection;
   inactiveSubjectCollection?: ISubjectCollection;
@@ -50,6 +52,49 @@ export class SubjectListComponent implements OnInit {
     return this.inactiveSubjects.filter(subject => {
       return subject.code.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
              subject.title.toLowerCase().includes(this.searchTerm.toLowerCase());
+    });
+  }
+
+
+  sortSubjects(subjects: any[], sortParam: string): any[] {
+    return subjects.sort((a, b) => {
+      if (sortParam === 'code') {
+        return a.code.localeCompare(b.code);
+      } else if (sortParam === 'latest') {
+        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+      } else if (sortParam === 'oldest') {
+        return new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+      } else {
+        return 0;
+      }
+    });
+  }
+
+  sortActiveSubjects(activeSubjects: any[], sortParam: string): any[] {
+    return activeSubjects.sort((a, b) => {
+      if (sortParam === 'code') {
+        return a.code.localeCompare(b.code);
+      } else if (sortParam === 'latest') {
+        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+      } else if (sortParam === 'oldest') {
+        return new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+      } else {
+        return 0;
+      }
+    });
+  }
+
+  sortInactiveSubjects(inactiveSubjects: any[], sortParam: string): any[] {
+    return inactiveSubjects.sort((a, b) => {
+      if (sortParam === 'code') {
+        return a.code.localeCompare(b.code);
+      } else if (sortParam === 'latest') {
+        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+      } else if (sortParam === 'oldest') {
+        return new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+      } else {
+        return 0;
+      }
     });
   }
 

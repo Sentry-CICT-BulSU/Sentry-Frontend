@@ -68,13 +68,13 @@
           </div>
         </div>
 
-        <button type="button"
-                class="flex items-center justify-center rounded-md button-plain">
-          <span class="material-symbols-rounded h-6 w-6 mr-2">
-            filter_list
-          </span>
-          Filters
-        </button>
+        <select [(ngModel)]="selectedSort" class="w-24 text-sm py-2.5">
+
+          <option value="latest">Latest</option>
+          <option value="oldest">Oldest</option>
+          <option value="code">A-Z</option>
+
+        </select>
       </div>
 
 
@@ -101,7 +101,8 @@
           <!--end Table head-->
           <!--Table body-->
           <tbody>
-            <tr *ngFor="let subject of filteredSearchSubjects | paginate: { itemsPerPage: 15, currentPage: p }"
+            <tr *ngFor="let subject of sortSubjects(filteredSearchSubjects, selectedSort) | paginate: { itemsPerPage: 15, currentPage: p }"
+
                 class="hover:bg-gray-100 dark:border-night-500 dark:hover:bg-night-600">
               <td class="py-4 px-2">
                 <div class="flex items-center">
@@ -191,6 +192,7 @@
 
       <div class="relative overflow-x-auto">
         <table *ngIf="activeSubjects && activeSubjects.length > 0; else elseActiveSubjectsBlock" class="w-full table-fixed">
+
           <!--Table head-->
           <thead class="text-xs text-gray-400 dark:text-night-300">
             <tr>
@@ -203,7 +205,9 @@
           <!--end Table head-->
           <!--Table body-->
           <tbody>
-            <tr *ngFor="let subject of filteredSearchActiveSubjects | paginate: { itemsPerPage: 15, currentPage: p }"
+            <tr *ngFor="let subject of sortActiveSubjects(filteredSearchActiveSubjects, selectedSort) | paginate: { itemsPerPage: 15, currentPage: p }"
+
+
                 class="hover:bg-gray-100 dark:border-night-500 dark:hover:bg-night-600">
               <td class="py-4 px-2">
                 <div class="flex items-center">
@@ -303,7 +307,7 @@
           <!--end Table head-->
           <!--Table body-->
           <tbody>
-            <tr *ngFor="let subject of filteredSearchInactiveSubjects | paginate: { itemsPerPage: 15, currentPage: p }"
+            <tr *ngFor="let subject of sortInactiveSubjects(filteredSearchInactiveSubjects, selectedSort) | paginate: { itemsPerPage: 15, currentPage: p }"
                 class="hover:bg-gray-100 dark:border-night-500 dark:hover:bg-night-600">
               <td class="py-4 px-2">
                 <div class="flex items-center">
