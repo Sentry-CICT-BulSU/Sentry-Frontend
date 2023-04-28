@@ -13,8 +13,8 @@
     </div>
 
 
-    <div *ngIf="roomKeyCollection" class="grid grid-cols-2 md:grid-cols-4 gap-6 lg:grid-cols-5 xl:grid-cols-6">
-      <ng-container *ngIf="roomKeys?.length; else elseRoomKeysBlock">
+    <div *ngIf="roomKeys" class="grid grid-cols-2 md:grid-cols-4 gap-6 lg:grid-cols-5 xl:grid-cols-6">
+      <ng-container *ngIf="roomKeys.length; else elseRoomKeysBlock">
         <!-- start key card -->
         <div *ngFor="let key of roomKeys" [routerLink]="['/room-key/',key.id]"
              class="cursor-pointer border-gray-200 dark:border-night-500 border flex min-h-[120px] flex-col rounded-lg bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-1">

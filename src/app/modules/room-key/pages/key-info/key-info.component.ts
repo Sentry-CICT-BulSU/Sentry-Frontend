@@ -33,16 +33,17 @@ export class KeyInfoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((data) => {
-      const id = data.get('id');
-      if (!id || id === 'undefined' || typeof id !== 'string') {
+    this.route.params.subscribe((data) => {
+      const id = data['id'];
+      if (!id) {
         this.router.navigate(['/error-404']);
         return;
-      }
-      this.roomKeyId = +id;
+      } else {
+        this.roomKeyId = +id;
 
-      this.initForm();
-      this.loadSubs();
+        this.initForm();
+        this.loadSubs();
+      }
     });
   }
 
