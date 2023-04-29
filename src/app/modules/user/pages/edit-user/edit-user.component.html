@@ -14,7 +14,8 @@
 </pre>
 
 
-<form class="grid grid-cols-1" *ngIf="editUserForm" [formGroup]="editUserForm" (ngSubmit)="onSubmit()" novalidate>
+<form class="grid grid-cols-1" *ngIf="editUserForm && user" [formGroup]="editUserForm" (ngSubmit)="onSubmit()"
+      novalidate>
   <!-- Separator -->
   <div class="py-6">
     <hr class="border-solid border-gray-200 dark:border-night-500" />
@@ -138,8 +139,8 @@
 
     <div class="relative col-span-2">
       <select formControlName="position" name="position" id="position" class="peer block">
-        <option>
-          Insructor I
+        <option *ngFor="let option of user_positions" [selected]="option===user.position">
+          {{option}}
         </option>
       </select>
     </div>
@@ -157,8 +158,8 @@
 
     <div class="relative col-span-2">
       <select name="college" id="college" class="peer block" disabled>
-        <option selected>
-          College of Information and Communications Technology
+        <option *ngFor="let option of colleges" [selected]="option===user.college">
+          {{option}}
         </option>
       </select>
     </div>
@@ -176,8 +177,8 @@
 
     <div class="relative col-span-2">
       <select formControlName="type" name="type" id="type" class="peer block">
-        <option>
-          Attendance Checker
+        <option *ngFor="let option of account_types" [selected]="option===user.type">
+          {{option}}
         </option>
       </select>
     </div>
