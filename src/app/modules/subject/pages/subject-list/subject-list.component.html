@@ -135,7 +135,7 @@
                     delete
                   </span>
 
-                  <span (click)="onEdit(subject.id)" [routerLink]="['/subject/edit-subject']"
+                  <span (click)="onEdit(subject.id)" [routerLink]="['/subject/edit-subject',subject.id]"
                         class="material-symbols-rounded font-medium cursor-pointer justify-center rounded-md text-gray-500 hover:text-primary-700 dark:text-night-300">
                     edit
                   </span>
@@ -149,22 +149,24 @@
         <ng-template #elseSubjectsBlock>
 
           <div class="mt-4 w-full h-64">
-              <div class="flex flex-col items-center justify-center">
-                  <span class="material-symbols-rounded floating-icon w-24 h-24 text-7xl text-center text-gray-500 dark:text-night-300">
-                      quick_reference_all
-                  </span>
+            <div class="flex flex-col items-center justify-center">
+              <span
+                    class="material-symbols-rounded floating-icon w-24 h-24 text-7xl text-center text-gray-500 dark:text-night-300">
+                quick_reference_all
+              </span>
               <div class="font-medium mt-4">
-              <span class="text-gray-500 dark:text-night-300 text-lg text-center">Hmm.. There's no data to display yet</span>
+                <span class="text-gray-500 dark:text-night-300 text-lg text-center">Hmm.. There's no data to display
+                  yet</span>
 
               </div>
               <div class="mt-6">
-              <button [routerLink]="['/dashboard']"class="button-plain">Go to Dashboard </button>
+                <button [routerLink]="['/dashboard']" class="button-plain">Go to Dashboard </button>
               </div>
-              </div>
+            </div>
 
-              </div>
+          </div>
 
-      </ng-template>
+        </ng-template>
 
       </div>
 
@@ -177,7 +179,7 @@
       <div class="flex items-center justify-center space-x-3">
 
 
-        <pagination-controls (pageChange)="p = $event" ></pagination-controls>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
 
       </div>
 
@@ -191,7 +193,8 @@
       <!-- start of table -->
 
       <div class="relative overflow-x-auto">
-        <table *ngIf="activeSubjects && activeSubjects.length > 0; else elseActiveSubjectsBlock" class="w-full table-fixed">
+        <table *ngIf="activeSubjects && activeSubjects.length > 0; else elseActiveSubjectsBlock"
+               class="w-full table-fixed">
 
           <!--Table head-->
           <thead class="text-xs text-gray-400 dark:text-night-300">
@@ -254,22 +257,24 @@
         <ng-template #elseActiveSubjectsBlock>
 
           <div class="mt-4 w-full h-64">
-              <div class="flex flex-col items-center justify-center">
-                  <span class="material-symbols-rounded floating-icon w-24 h-24 text-7xl text-center text-gray-500 dark:text-night-300">
-                      quick_reference_all
-                  </span>
+            <div class="flex flex-col items-center justify-center">
+              <span
+                    class="material-symbols-rounded floating-icon w-24 h-24 text-7xl text-center text-gray-500 dark:text-night-300">
+                quick_reference_all
+              </span>
               <div class="font-medium mt-4">
-              <span class="text-gray-500 dark:text-night-300 text-lg text-center">Hmm.. There's no data to display yet</span>
+                <span class="text-gray-500 dark:text-night-300 text-lg text-center">Hmm.. There's no data to display
+                  yet</span>
 
               </div>
               <div class="mt-6">
-              <button [routerLink]="['/dashboard']"class="button-plain">Go to Dashboard </button>
+                <button [routerLink]="['/dashboard']" class="button-plain">Go to Dashboard </button>
               </div>
-              </div>
+            </div>
 
-              </div>
+          </div>
 
-      </ng-template>
+        </ng-template>
 
       </div>
 
@@ -281,7 +286,7 @@
       <div class="flex items-center justify-center space-x-3">
 
 
-        <pagination-controls (pageChange)="p = $event" ></pagination-controls>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
 
       </div>
 
@@ -294,7 +299,8 @@
       <!-- start of table -->
 
       <div class="relative overflow-x-auto">
-        <table *ngIf="inactiveSubjects && inactiveSubjects.length > 0; else elseInactiveSubjectsBlock"  class="w-full table-fixed">
+        <table *ngIf="inactiveSubjects && inactiveSubjects.length > 0; else elseInactiveSubjectsBlock"
+               class="w-full table-fixed">
           <!--Table head-->
           <thead class="text-xs text-gray-400 dark:text-night-300">
             <tr>
@@ -354,22 +360,24 @@
         <ng-template #elseInactiveSubjectsBlock>
 
           <div class="mt-4 w-full h-64">
-              <div class="flex flex-col items-center justify-center">
-                  <span class="material-symbols-rounded floating-icon w-24 h-24 text-7xl text-center text-gray-500 dark:text-night-300">
-                      quick_reference_all
-                  </span>
+            <div class="flex flex-col items-center justify-center">
+              <span
+                    class="material-symbols-rounded floating-icon w-24 h-24 text-7xl text-center text-gray-500 dark:text-night-300">
+                quick_reference_all
+              </span>
               <div class="font-medium mt-4">
-              <span class="text-gray-500 dark:text-night-300 text-lg text-center">Hmm.. There's no data to display yet</span>
+                <span class="text-gray-500 dark:text-night-300 text-lg text-center">Hmm.. There's no data to display
+                  yet</span>
 
               </div>
               <div class="mt-6">
-              <button [routerLink]="['/dashboard']"class="button-plain">Go to Dashboard </button>
+                <button [routerLink]="['/dashboard']" class="button-plain">Go to Dashboard </button>
               </div>
-              </div>
+            </div>
 
-              </div>
+          </div>
 
-      </ng-template>
+        </ng-template>
 
       </div>
 
@@ -381,7 +389,7 @@
       <div class="flex items-center justify-center space-x-3">
 
 
-        <pagination-controls (pageChange)="p = $event" ></pagination-controls>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
 
       </div>
 
