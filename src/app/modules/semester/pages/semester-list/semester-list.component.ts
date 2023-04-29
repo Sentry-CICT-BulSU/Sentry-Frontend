@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ISemester, ISemesterCollection } from 'src/app/core/models';
 import { SemesterService } from 'src/app/core/services/semester.service';
 import Swal from 'sweetalert2';
@@ -14,7 +15,10 @@ export class SemesterListComponent implements OnInit {
   activeSemesters?: ISemester[];
   inactiveSemesterCollection?: ISemesterCollection;
   inactiveSemesters?: ISemester[];
-  constructor(private semesterService: SemesterService) {}
+  constructor(
+    private semesterService: SemesterService,
+    private router: Router
+  ) {}
 
   getStatusClass(status: string): string {
     return status === 'active'
@@ -22,7 +26,7 @@ export class SemesterListComponent implements OnInit {
       : 'bg-gray-300/25 text-gray-500 dark:text-gray-300';
   }
 
-  onDelete() {
+  onDelete(id: number) {
     Swal.fire({
       title: 'Confirm Delete',
       text: 'Are you sure you want to delete this semester?',
@@ -33,7 +37,22 @@ export class SemesterListComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire('Deleted!', 'Semester has been deleted.', 'success');
+        this.semesterService.softDeleteSemester$(id).subscribe({
+          next: (resp) => {
+            console.log(resp);
+            Swal.fire({
+              title: 'Deleted!',
+              text: 'Semester has been deleted.',
+              icon: 'success',
+              showConfirmButton: true,
+            }).then((result) => {
+              this.loadAll();
+              this.loadActive();
+              this.loadInactive();
+            });
+          },
+          error: (err) => console.debug(err),
+        });
       }
     });
   }

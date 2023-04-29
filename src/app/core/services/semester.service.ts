@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { HttpClient } from '@angular/common/http';
 import { ISemesterCollection } from '../models/semester.model';
-import { IUser } from '../models';
+import { IResponse, IUser } from '../models';
 import { environment } from 'src/environments/environment';
 import { PropertiesService } from './properties.service';
 
@@ -56,6 +56,18 @@ export class SemesterService extends PropertiesService {
 
   editSemester$(id: number, body: any) {
     return this.http.patch<ISemesterCollection>(this.url + '/' + id, body, {
+      headers: this.options.headers,
+    });
+  }
+
+  softDeleteSemester$(id: number) {
+    return this.http.delete<IResponse>(this.url + '/' + id, {
+      headers: this.options.headers,
+    });
+  }
+
+  restoreSemester$(id: number) {
+    return this.http.post<IResponse>(this.url + '/' + id + '/restore', null, {
       headers: this.options.headers,
     });
   }
