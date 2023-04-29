@@ -96,7 +96,7 @@ export class Menu {
     {
       group: 'Faculty',
       separator: true,
-      type: 'faculty', //change * to Faculty to hide
+      type: 'Faculty', //change * to Faculty to hide
       items: [
         {
           icon: 'home',
