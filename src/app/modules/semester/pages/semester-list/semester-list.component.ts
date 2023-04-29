@@ -10,6 +10,10 @@ import Swal from 'sweetalert2';
 export class SemesterListComponent implements OnInit {
   semesterCollection?: ISemesterCollection;
   semesters?: ISemester[];
+  activeSemesterCollection?: ISemesterCollection;
+  activeSemesters?: ISemester[];
+  inactiveSemesterCollection?: ISemesterCollection;
+  inactiveSemesters?: ISemester[];
   constructor(private semesterService: SemesterService) {}
 
   getStatusClass(status: string): string {
@@ -35,11 +39,38 @@ export class SemesterListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadAll();
+    this.loadActive();
+    this.loadInactive();
+    this.initComponent();
+  }
+
+  loadActive() {
+    const query = {
+      q: 'active',
+    };
+    this.semesterService.loadSemesters$(query).subscribe((semester) => {
+      this.activeSemesterCollection = semester as ISemesterCollection;
+      this.activeSemesters = this.activeSemesterCollection.data as ISemester[];
+      console.log('active', semester);
+    });
+  }
+  loadInactive() {
+    const query = {
+      q: 'inactive',
+    };
+    this.semesterService.loadSemesters$(query).subscribe((semester) => {
+      this.inactiveSemesterCollection = semester as ISemesterCollection;
+      this.inactiveSemesters = this.inactiveSemesterCollection
+        .data as ISemester[];
+      console.log('inactive', semester);
+    });
+  }
+  loadAll() {
     this.semesterService.loadSemesters$().subscribe((semester) => {
       this.semesterCollection = semester as ISemesterCollection;
       this.semesters = this.semesterCollection.data as ISemester[];
-      console.log(this.semesterCollection);
-      this.initComponent();
+      console.log('all', semester);
     });
   }
 

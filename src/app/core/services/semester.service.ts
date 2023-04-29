@@ -7,45 +7,50 @@ import { environment } from 'src/environments/environment';
 import { PropertiesService } from './properties.service';
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root',
 })
 export class SemesterService extends PropertiesService {
-    user?: IUser;
-    constructor(private authService: AuthService, private http: HttpClient) {
-        super();
-        this.authService.current_user_subject$?.subscribe(
-            (user: IUser | undefined) => (this.user = user)
-        );
-    }
+  user?: IUser;
+  constructor(private authService: AuthService, private http: HttpClient) {
+    super();
+    this.authService.current_user_subject$?.subscribe(
+      (user: IUser | undefined) => (this.user = user)
+    );
+  }
 
-    get url() {
-        if (this.user?.type === 'Admin') {
-            return environment.apiRootRoute + '/api/admin/semesters';
-        } else if (
-            this.user?.type === 'Attendance Checker' ||
-            this.user?.type === 'Faculty'
-        ) {
-            return environment.apiRootRoute + '/api/semesters';
-        } else {
-            throw new Error('User is not an admin');
-        }
+  get url() {
+    if (this.user?.type === 'Admin') {
+      return environment.apiRootRoute + '/api/admin/semesters';
+    } else if (
+      this.user?.type === 'Attendance Checker' ||
+      this.user?.type === 'Faculty'
+    ) {
+      return environment.apiRootRoute + '/api/semesters';
+    } else {
+      throw new Error('User is not an admin');
     }
+  }
 
-    loadSemesters$() {
-        return this.http.get<ISemesterCollection>(this.url, {
-            headers: this.options.headers,
+  loadSemesters$(query?: any) {
+    return query
+      ? this.http.get<ISemesterCollection>(this.url, {
+          headers: this.options.headers,
+          params: query,
+        })
+      : this.http.get<ISemesterCollection>(this.url, {
+          headers: this.options.headers,
         });
-    }
+  }
 
-    loadSemester$(id: ISemester['id']) {
-        return this.http.get<ISemesterCollection>(this.url + '/' + id, {
-            headers: this.options.headers,
-        });
-    }
+  loadSemester$(id: ISemester['id']) {
+    return this.http.get<ISemesterCollection>(this.url + '/' + id, {
+      headers: this.options.headers,
+    });
+  }
 
-    addSemester$(semester: any) {
-        return this.http.post<ISemesterCollection>(this.url, semester, {
-            headers: this.options.headers,
-        });
-    }
+  addSemester$(semester: any) {
+    return this.http.post<ISemesterCollection>(this.url, semester, {
+      headers: this.options.headers,
+    });
+  }
 }
