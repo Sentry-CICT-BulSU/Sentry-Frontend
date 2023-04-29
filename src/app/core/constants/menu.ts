@@ -8,7 +8,7 @@ export class Menu {
     {
       group: 'Dashboard',
       separator: true,
-      type: '*',
+      type: 'Admin',
       items: [
         {
           icon: 'home',
