@@ -19,14 +19,17 @@
       <div
            class="flex min-h-[120px] flex-col rounded-lg border-light-dark bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-1">
         <div class="mt-4 flex flex-1 flex-col justify-between space-y-1 md:mt-0">
-          <div class="flex items-center justify-between">
+          <div class="flex items-center justify-between dropdown dropdown-top">
             <small class="text-sm font-medium text-gray-400 dark:text-night-300">
               Today's Present
             </small>
             <div
                  class="cursor-pointer rounded-sm hover:bg-gray-100 px-1 py-1 text-center text-xs text-gray-500 hover:bg-primary-500/25 dark:bg-night-500 dark:text-night-300 dark:hover:bg-primary-500/25 dark:hover:text-primary-500">
-              <i class="fa-solid fa-ellipsis-vertical h-3 w-3"></i>
+                 <label tabindex="0"><i class="cursor-pointer fa-solid fa-ellipsis-vertical h-3 w-3"></i></label>
             </div>
+            <ul tabindex="0" class="dropdown-content menu rounded-md button-plain bg-white dark:bg-night-800 ">
+              <li><a class="text-xs rounded-md cursor-pointer" [routerLink]="['/attendance']">Go to Attedance Monitoring</a></li>
+            </ul>
           </div>
 
           <div class="flex items-center justify-between">
@@ -50,15 +53,17 @@
       <div
            class="flex min-h-[120px] flex-col rounded-lg border-light-dark bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-1">
         <div class="mt-4 flex flex-1 flex-col justify-between space-y-1 md:mt-0">
-          <div class="flex items-center justify-between">
+          <div class="flex items-center justify-between dropdown dropdown-top">
             <small class="text-sm font-medium text-gray-400 dark:text-night-300">
               Today's Absent
             </small>
             <div
                  class="cursor-pointer rounded-sm hover:bg-gray-100 px-1 py-1 text-center text-xs text-gray-500 hover:bg-primary-500/25 dark:bg-night-500 dark:text-night-300 dark:hover:bg-primary-500/25 dark:hover:text-primary-500">
-              <i class="fa-solid fa-ellipsis-vertical h-3 w-3">
-              </i>
+                 <label tabindex="0"><i class="cursor-pointer fa-solid fa-ellipsis-vertical h-3 w-3"></i></label>
             </div>
+            <ul tabindex="0" class="dropdown-content menu rounded-md button-plain bg-white dark:bg-night-800 ">
+              <li><a class="text-xs rounded-md cursor-pointer" [routerLink]="['/attendance']">Go to Attedance Monitoring</a></li>
+            </ul>
           </div>
 
           <div class="flex items-center justify-between">
@@ -81,15 +86,17 @@
       <div
            class="flex min-h-[120px] flex-col rounded-lg border-light-dark bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-1">
         <div class="mt-4 flex flex-1 flex-col justify-between space-y-1 md:mt-0">
-          <div class="flex items-center justify-between">
+          <div class="flex items-center justify-between dropdown dropdown-top">
             <small class="text-sm font-medium text-gray-400 dark:text-night-300">
               Available Keys
             </small>
             <div
                  class="cursor-pointer rounded-sm hover:bg-gray-100 px-1 py-1 text-center text-xs text-gray-500 hover:bg-primary-500/25 dark:bg-night-500 dark:text-night-300 dark:hover:bg-primary-500/25 dark:hover:text-primary-500">
-              <i class="fa-solid fa-ellipsis-vertical h-3 w-3">
-              </i>
+                 <label tabindex="0"><i class="cursor-pointer fa-solid fa-ellipsis-vertical h-3 w-3"></i></label>
             </div>
+            <ul tabindex="0" class="dropdown-content menu rounded-md button-plain bg-white dark:bg-night-800 ">
+              <li><a class="text-xs rounded-md cursor-pointer" [routerLink]="['/room-key']">Go to Room Key Monitoring</a></li>
+            </ul>
           </div>
 
           <div class="flex items-center justify-between">
