@@ -20,8 +20,10 @@ export class SemesterListComponent implements OnInit {
     private router: Router
   ) {}
 
+  p = 1;
+
   getStatusClass(status: string): string {
-    return status === 'active'
+    return status === 'Active'
       ? 'bg-green-500/25 text-green-500'
       : 'bg-gray-300/25 text-gray-500 dark:text-gray-300';
   }
