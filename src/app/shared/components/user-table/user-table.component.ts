@@ -28,8 +28,8 @@ export class UserTableComponent implements OnChanges {
     this.meta = this.pagination?.meta as IUserCollection['meta'];
   }
 
-  onEditUser(user: IUser) {
-    this.router.navigate(['/faculty/' + user.id + '/edit']);
+  onEditUser(id: number) {
+    this.router.navigate(['/user/edit-user', id]);
   }
 
   onDeleteUser(user: IUser) {

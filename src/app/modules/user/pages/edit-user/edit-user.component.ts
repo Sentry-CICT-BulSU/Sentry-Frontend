@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IUser, IUserCollection } from 'src/app/core/models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { User } from 'src/app/core/constants/user';
 
 // Defining a new component with the selector 'app-dashboard' and the template URL 'dashboard.component.html'
 @Component({
@@ -17,6 +18,10 @@ export class EditUserComponent implements OnInit {
   userId?: IUser['id'];
   user?: IUser;
   editUserForm?: FormGroup;
+
+  user_positions: string[] = User.user_positions;
+  colleges: string[] = User.colleges;
+  account_types: string[] = User.account_types;
   constructor(
     private route: ActivatedRoute,
     private adminService: AdminService,
@@ -113,7 +118,6 @@ export class EditUserComponent implements OnInit {
             title: 'Success',
             text: 'User edited successfully!',
           });
-
         },
         error: (err) => console.debug(err),
       });

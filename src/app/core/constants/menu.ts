@@ -20,7 +20,7 @@ export class Menu {
 
     // Admin
     {
-      group: 'Admin Management',
+      group: 'Management',
       separator: false,
       type: 'Admin',
       items: [
@@ -30,10 +30,7 @@ export class Menu {
           children: [
             { label: 'Faculty Management', route: '/faculty' },
             { label: 'Schedule Management', route: '/schedule' },
-            {
-              label: 'Attendance Monitoring',
-              route: '/attendance',
-            },
+            { label: 'Attendance Monitoring', route: '/attendance' },
           ],
         },
         {
@@ -49,7 +46,7 @@ export class Menu {
     },
 
     {
-      group: 'Admin',
+      group: 'CMS',
       separator: true,
       type: 'Admin',
       items: [

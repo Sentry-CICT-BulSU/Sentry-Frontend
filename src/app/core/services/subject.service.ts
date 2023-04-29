@@ -53,6 +53,12 @@ export class SubjectService extends PropertiesService {
     });
   }
 
+  updateSubject$(id: number, body: any) {
+    return this.http.patch<ISubjectCollection>(this.url + '/' + id, body, {
+      headers: this.options.headers,
+    });
+  }
+
   deleteSubject$(id: number) {
     return this.http.delete<IResponse>(this.url + '/' + id, {
       headers: this.options.headers,

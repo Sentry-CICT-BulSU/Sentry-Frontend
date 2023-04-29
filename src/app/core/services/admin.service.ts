@@ -14,10 +14,15 @@ export class AdminService extends PropertiesService {
     super();
   }
 
-  getUsers$() {
-    return this.http.get<IUserCollection>(this.adminApiRoute + '/users', {
-      headers: this.options.headers,
-    });
+  getUsers$(query?: any) {
+    return query
+      ? this.http.get<IUserCollection>(this.adminApiRoute + '/users', {
+          headers: this.options.headers,
+          params: query,
+        })
+      : this.http.get<IUserCollection>(this.adminApiRoute + '/users', {
+          headers: this.options.headers,
+        });
   }
 
   getUser$(id: number) {
@@ -46,9 +51,9 @@ export class AdminService extends PropertiesService {
     });
   }
 
-  restoreUser$(restoreUser: IUserConfig) {
+  restoreUser$(id: number) {
     return this.http.post<IResponse>(
-      this.adminApiRoute + '/users/' + restoreUser.id + '/restore',
+      this.adminApiRoute + '/users/' + id + '/restore',
       null,
       { headers: this.options.headers }
     );

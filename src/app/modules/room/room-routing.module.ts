@@ -8,25 +8,20 @@ import { EditRoomComponent } from './pages/edit-room/edit-room.component';
 
 const routes: Routes = [
   {
-
     path: '',
     component: RoomComponent,
     children: [
-
-        { path: '', redirectTo: 'room-list', pathMatch: 'full' },
-        { path: 'room-list', component: RoomListComponent },
-        { path: 'add-room', component: AddRoomComponent },
-        { path: 'edit-room', component: EditRoomComponent },
-        { path: '**', redirectTo: 'room-list', pathMatch: 'full' },
+      { path: '', redirectTo: 'room-list', pathMatch: 'full' },
+      { path: 'room-list', component: RoomListComponent },
+      { path: 'add-room', component: AddRoomComponent },
+      { path: 'edit-room/:id', component: EditRoomComponent },
+      { path: '**', redirectTo: 'room-list', pathMatch: 'full' },
     ],
-},
-
+  },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-
 export class RoomRoutingModule {}
