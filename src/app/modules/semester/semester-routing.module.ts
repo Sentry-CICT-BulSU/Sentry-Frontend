@@ -8,25 +8,20 @@ import { EditSemesterComponent } from './pages/edit-semester/edit-semester.compo
 
 const routes: Routes = [
   {
-
     path: '',
     component: SemesterComponent,
     children: [
-
-        { path: '', redirectTo: 'semester-list', pathMatch: 'full' },
-        { path: 'semester-list', component: SemesterListComponent },
-        { path: 'add-semester', component: AddSemesterComponent },
-        { path: 'edit-semester', component: EditSemesterComponent },
-        { path: '**', redirectTo: 'semester-list', pathMatch: 'full' },
+      { path: '', redirectTo: 'semester-list', pathMatch: 'full' },
+      { path: 'semester-list', component: SemesterListComponent },
+      { path: 'add-semester', component: AddSemesterComponent },
+      { path: 'edit-semester/:id', component: EditSemesterComponent },
+      { path: '**', redirectTo: 'semester-list', pathMatch: 'full' },
     ],
-},
-
+  },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-
 export class SemesterRoutingModule {}

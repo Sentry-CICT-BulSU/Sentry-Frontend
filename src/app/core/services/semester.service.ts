@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { HttpClient } from '@angular/common/http';
-import { ISemester, ISemesterCollection } from '../models/semester.model';
+import { ISemesterCollection } from '../models/semester.model';
 import { IUser } from '../models';
 import { environment } from 'src/environments/environment';
 import { PropertiesService } from './properties.service';
@@ -42,7 +42,7 @@ export class SemesterService extends PropertiesService {
         });
   }
 
-  loadSemester$(id: ISemester['id']) {
+  loadSemester$(id: number) {
     return this.http.get<ISemesterCollection>(this.url + '/' + id, {
       headers: this.options.headers,
     });
@@ -50,6 +50,12 @@ export class SemesterService extends PropertiesService {
 
   addSemester$(semester: any) {
     return this.http.post<ISemesterCollection>(this.url, semester, {
+      headers: this.options.headers,
+    });
+  }
+
+  editSemester$(id: number, body: any) {
+    return this.http.patch<ISemesterCollection>(this.url + '/' + id, body, {
       headers: this.options.headers,
     });
   }
