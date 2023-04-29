@@ -87,7 +87,21 @@ module.exports = {
                     600: '#7F56D9',
                     700: '#6941C6',
                     800: '#53389E',
-                }
+                },
+                indigo: {
+                  50: '#F0F5FF',
+                  300: '#8FA6FF',
+                  600: '#3F50F3',
+                  700: '#3346AD',
+                  800: '#2D3A8C',
+                },
+                teal: {
+                  50: '#F0FDFA',
+                  300: '#64FFDA',
+                  600: '#14B8A6',
+                  700: '#0D9488',
+                  800: '#0F766E',
+                },
             },
             fontFamily: {
                 sans: ['Inter', 'poppins', 'sans-serif'],
