@@ -9,7 +9,6 @@ import Swal from 'sweetalert2';
   templateUrl: './room-list.component.html',
 })
 export class RoomListComponent implements OnInit {
-
   public searchTerm = '';
 
   p = 1;
@@ -30,9 +29,11 @@ export class RoomListComponent implements OnInit {
     if (!this.rooms) {
       return [];
     }
-    return this.rooms.filter(room => {
-      return room.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-             room.location.toLowerCase().includes(this.searchTerm.toLowerCase());
+    return this.rooms.filter((room) => {
+      return (
+        room.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        room.location.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
     });
   }
 
@@ -40,23 +41,25 @@ export class RoomListComponent implements OnInit {
     if (!this.activeRooms) {
       return [];
     }
-    return this.activeRooms.filter(room => {
-      return room.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-             room.location.toLowerCase().includes(this.searchTerm.toLowerCase());
+    return this.activeRooms.filter((room) => {
+      return (
+        room.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        room.location.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
     });
   }
-
 
   get filteredSearchInactiveRooms() {
     if (!this.inactiveRooms) {
       return [];
     }
-    return this.inactiveRooms.filter(room => {
-      return room.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-             room.location.toLowerCase().includes(this.searchTerm.toLowerCase());
+    return this.inactiveRooms.filter((room) => {
+      return (
+        room.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        room.location.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
     });
   }
-
 
   // sortRooms(rooms: any[], sortParam: string): any[] {
   //   return rooms.sort((a, b) => {
@@ -75,9 +78,13 @@ export class RoomListComponent implements OnInit {
       if (sortParam === 'name') {
         return a.name.localeCompare(b.name);
       } else if (sortParam === 'latest') {
-        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+        return (
+          new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        );
       } else if (sortParam === 'oldest') {
-        return new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+        return (
+          new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+        );
       } else {
         return 0;
       }
@@ -89,9 +96,13 @@ export class RoomListComponent implements OnInit {
       if (sortParam === 'name') {
         return a.name.localeCompare(b.name);
       } else if (sortParam === 'latest') {
-        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+        return (
+          new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        );
       } else if (sortParam === 'oldest') {
-        return new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+        return (
+          new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+        );
       } else {
         return 0;
       }
@@ -103,23 +114,18 @@ export class RoomListComponent implements OnInit {
       if (sortParam === 'name') {
         return a.name.localeCompare(b.name);
       } else if (sortParam === 'latest') {
-        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+        return (
+          new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        );
       } else if (sortParam === 'oldest') {
-        return new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+        return (
+          new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+        );
       } else {
         return 0;
       }
     });
   }
-
-
-
-
-
-
-
-
-
 
   constructor(private roomService: RoomService, private router: Router) {}
 
@@ -134,7 +140,6 @@ export class RoomListComponent implements OnInit {
     console.log('edit room');
   }
 
-
   onDelete(id: number) {
     Swal.fire({
       title: 'Confirm Delete',
@@ -146,19 +151,17 @@ export class RoomListComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-
         console.log('delete room');
-    this.roomService.deleteRoom$(id).subscribe({
-      next: (resp) => {
-        console.log(resp);
-        this.router.navigate(['/room']);
-      },
-    });
+        this.roomService.deleteRoom$(id).subscribe({
+          next: (resp) => {
+            console.log(resp);
+            this.router.navigate(['/room']);
+          },
+        });
         Swal.fire('Deleted!', 'Room has been deleted.', 'success');
       }
     });
   }
-
 
   loadAll() {
     this.roomService.loadRooms$().subscribe((rooms) => {
@@ -185,9 +188,10 @@ export class RoomListComponent implements OnInit {
   }
 
   getRoomStatusClass(status: string): string {
-    return status === 'active' ? 'bg-green-500/25 text-green-500' : 'bg-gray-300/25 text-gray-500 dark:text-gray-300';
+    return status === 'active'
+      ? 'bg-green-500/25 text-green-500'
+      : 'bg-gray-300/25 text-gray-500 dark:text-gray-300';
   }
-
 
   initComponent() {
     const tabLinks = document.querySelectorAll(

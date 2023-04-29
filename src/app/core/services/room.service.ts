@@ -47,17 +47,22 @@ export class RoomService extends PropertiesService {
   }
 
   loadRoom$(id: number) {
-    return this.http.get<IRoomCollection>(this.url + '' + id, {
+    return this.http.get<IRoomCollection>(this.url + '/' + id, {
       headers: this.options.headers,
     });
   }
 
-  addRoom$(body: { name: string; location: string; status: string }) {
+  addRoom$(body: any) {
     return this.http.post<IRoomKeyCollection>(this.url, body, {
       headers: this.options.headers,
     });
   }
 
+  updateRoom$(id: number, body: any) {
+    return this.http.patch<IResponse>(this.url + '/' + id, body, {
+      headers: this.options.headers,
+    });
+  }
   deleteRoom$(id: number) {
     return this.http.delete<IResponse>(this.url + '/' + id, {
       headers: this.options.headers,
