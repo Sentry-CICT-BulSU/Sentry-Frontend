@@ -1,0 +1,10 @@
+{
+  "/api/*": {
+    "target": "https://sentry-backend.up.railway.app",
+    "secure": false
+  },
+  "/oauth/*": {
+    "target": "https://sentry-backend.up.railway.app",
+    "secure": false
+  }
+}

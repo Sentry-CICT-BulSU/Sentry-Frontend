@@ -1,16 +1,7 @@
-import { Component, OnInit} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-schedule',
-    templateUrl: './schedule.component.html',
+  selector: 'app-schedule',
+  templateUrl: './schedule.component.html',
 })
-
-export class ScheduleComponent implements OnInit {
-
-    constructor() { }
-
-    ngOnInit() {
-    }
-
-  }
-
+export class ScheduleComponent {}

@@ -7,13 +7,31 @@ import { ScheduleService } from 'src/app/core/services/schedule.service';
   templateUrl: './schedule-list.component.html',
 })
 export class ScheduleListComponent implements OnInit {
-    schedules?: IScheduleCollection;
-    isMultiPage?: boolean;
-  constructor(private scheduleService: ScheduleService) { }
+  schedules?: IScheduleCollection;
+  isMultiPage?: boolean;
+
+  constructor(private scheduleService: ScheduleService) {}
 
   ngOnInit(): void {
-    const tabLinks = document.querySelectorAll('.tab-link') as NodeListOf<HTMLAnchorElement>;
-    const tabContents = document.querySelectorAll('.tab-content') as NodeListOf<HTMLElement>;
+    this.initComponent();
+    this.scheduleService.loadSchedules$().subscribe({
+      next: (schedules) => {
+        console.log(schedules);
+        this.schedules = schedules;
+      },
+      error: (err) => {
+        console.debug(err);
+      },
+    });
+  }
+
+  initComponent() {
+    const tabLinks = document.querySelectorAll(
+      '.tab-link'
+    ) as NodeListOf<HTMLAnchorElement>;
+    const tabContents = document.querySelectorAll(
+      '.tab-content'
+    ) as NodeListOf<HTMLElement>;
 
     // Set Personal Information as default active tab
     tabLinks[0].classList.add('active');
@@ -30,13 +48,14 @@ export class ScheduleListComponent implements OnInit {
           content.classList.remove('active');
         });
         link.classList.add('active');
-        (document.querySelector(selectedTab) as HTMLElement).classList.add('active');
+        (document.querySelector(selectedTab) as HTMLElement).classList.add(
+          'active'
+        );
       });
     });
   }
 
-    pageMaxCount() {
-        return new Array(this.schedules?.meta?.last_page);
-    }
+  pageMaxCount() {
+    return new Array(this.schedules?.meta?.last_page);
+  }
 }
-
