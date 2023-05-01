@@ -1,16 +1,52 @@
 import { Component, OnInit } from '@angular/core';
+import { forkJoin } from 'rxjs';
+import { ISection, ISectionCollection } from 'src/app/core/models';
+import { SectionService } from 'src/app/core/services/section.service';
 
 @Component({
-    selector: 'app-section-list',
-    templateUrl: './section-list.component.html',
+  selector: 'app-section-list',
+  templateUrl: './section-list.component.html',
 })
 export class SectionListComponent implements OnInit {
-
-  constructor() { }
+  sectionsCollection?: ISectionCollection;
+  sections?: ISection[];
+  sectionsActiveCollection?: ISectionCollection;
+  sectionsActive?: ISection[];
+  sectionsInactiveCollection?: ISectionCollection;
+  sectionsInactive?: ISection[];
+  constructor(private sectionService: SectionService) {}
 
   ngOnInit(): void {
-    const tabLinks = document.querySelectorAll('.tab-link') as NodeListOf<HTMLAnchorElement>;
-    const tabContents = document.querySelectorAll('.tab-content') as NodeListOf<HTMLElement>;
+    this.initComponent();
+    this.loadSections();
+  }
+
+  loadSections() {
+    forkJoin([
+      this.sectionService.loadSections$(),
+      this.sectionService.loadSections$('active'),
+      this.sectionService.loadSections$('inactive'),
+    ]).subscribe({
+      next: ([sections, active, inactive]) => {
+        console.log(sections, active, inactive);
+        this.sectionsCollection = sections;
+        this.sections = sections.data as ISection[];
+        this.sectionsActiveCollection = active;
+        this.sectionsActive = active.data as ISection[];
+        this.sectionsInactiveCollection = inactive;
+        this.sectionsInactive = inactive.data as ISection[];
+      },
+      error: (err) => console.debug(err),
+    });
+  }
+
+  initComponent() {
+    const tabLinks = document.querySelectorAll(
+      '.tab-link'
+    ) as NodeListOf<HTMLAnchorElement>;
+    const tabContents = document.querySelectorAll(
+      '.tab-content'
+    ) as NodeListOf<HTMLElement>;
 
     tabLinks[0].classList.add('active');
     tabContents[0].classList.add('active');
@@ -26,10 +62,10 @@ export class SectionListComponent implements OnInit {
           content.classList.remove('active');
         });
         link.classList.add('active');
-        (document.querySelector(selectedTab) as HTMLElement).classList.add('active');
+        (document.querySelector(selectedTab) as HTMLElement).classList.add(
+          'active'
+        );
       });
     });
   }
-
 }
-

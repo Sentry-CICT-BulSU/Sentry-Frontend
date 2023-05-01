@@ -31,10 +31,15 @@ export class SectionService extends PropertiesService {
     }
   }
 
-  loadSections$() {
-    return this.http.get<ISectionCollection>(this.url, {
-      headers: this.options.headers,
-    });
+  loadSections$(query?: string) {
+    return query
+      ? this.http.get<ISectionCollection>(this.url, {
+          headers: this.options.headers,
+          params: { q: query },
+        })
+      : this.http.get<ISectionCollection>(this.url, {
+          headers: this.options.headers,
+        });
   }
 
   loadSection$(id: number) {
