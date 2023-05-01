@@ -2,7 +2,7 @@
     <div class="flex flex-col md:flex-row gap-4 justify-between">
 
         <div class="flex-col items-center justify-between">
-        <h3 class="font-medium text-gray-900 text-lg dark:text-white">
+        <h3 [ngClass]="'bg-' + selectedColor + '-700'" class="font-medium text-gray-900 text-lg dark:text-white">
             System Settings
         </h3>
 
@@ -105,37 +105,37 @@
     <div
     class="grid w-full grid-cols-7 text-xs">
     <div>
-      <input type="radio" name="option" id="1" class="peer hidden" checked />
+      <input type="radio" name="option" id="1" class="peer hidden" value="primary" [(ngModel)]="selectedColor" checked />
       <label for="1" class="rounded-full bg-primary-700 w-8 h-8 block cursor-pointer select-none text-center peer-checked:border-8 peer-checked:border-primary-50 peer-checked:scale-150 hover:scale-150 transition delay-150 duration-300 ease-in-out"></label>
     </div>
 
     <div>
-        <input type="radio" name="option" id="2" class="peer hidden" checked />
+        <input type="radio" name="option" id="2" class="peer hidden" value="blue" [(ngModel)]="selectedColor"/>
         <label for="2" class="rounded-full bg-blue-700 w-8 h-8 block cursor-pointer select-none text-center peer-checked:border-8 peer-checked:border-primary-50 peer-checked:scale-150 hover:scale-150 transition delay-150 duration-300 ease-in-out"></label>
       </div>
 
       <div>
-        <input type="radio" name="option" id="3" class="peer hidden" checked />
+        <input type="radio" name="option" id="3" class="peer hidden" value="yellow" [(ngModel)]="selectedColor"/>
         <label for="3" class="rounded-full bg-yellow-700 w-8 h-8 block cursor-pointer select-none text-center peer-checked:border-8 peer-checked:border-primary-50 peer-checked:scale-150 hover:scale-150 transition delay-150 duration-300 ease-in-out"></label>
       </div>
 
       <div>
-        <input type="radio" name="option" id="4" class="peer hidden" checked />
+        <input type="radio" name="option" id="4" class="peer hidden" value="pink" [(ngModel)]="selectedColor"/>
         <label for="4" class="rounded-full bg-pink-700 w-8 h-8 block cursor-pointer select-none text-center peer-checked:border-8 peer-checked:border-primary-50 peer-checked:scale-150 hover:scale-150 transition delay-150 duration-300 ease-in-out"></label>
       </div>
 
       <div>
-        <input type="radio" name="option" id="5" class="peer hidden" checked />
+        <input type="radio" name="option" id="5" class="peer hidden"  value="green" [(ngModel)]="selectedColor"/>
         <label for="5" class="rounded-full bg-green-700 w-8 h-8 block cursor-pointer select-none text-center peer-checked:border-8 peer-checked:border-primary-50 peer-checked:scale-150 hover:scale-150 transition delay-150 duration-300 ease-in-out"></label>
       </div>
 
       <div>
-        <input type="radio" name="option" id="6" class="peer hidden" checked />
+        <input type="radio" name="option" id="6" class="peer hidden"  value="orange" [(ngModel)]="selectedColor"/>
         <label for="6" class="rounded-full bg-orange-700 w-8 h-8 block cursor-pointer select-none text-center peer-checked:border-8 peer-checked:border-primary-50 peer-checked:scale-150 hover:scale-150 transition delay-150 duration-300 ease-in-out"></label>
       </div>
 
       <div>
-        <input type="radio" name="option" id="7" class="peer hidden" checked />
+        <input type="radio" name="option" id="7" class="peer hidden" value="red" [(ngModel)]="selectedColor"/>
         <label for="7" class="rounded-full bg-red-700 w-8 h-8 block cursor-pointer select-none text-center peer-checked:border-8 peer-checked:border-primary-50 peer-checked:scale-150 hover:scale-150 transition delay-150 duration-300 ease-in-out"></label>
       </div>
 

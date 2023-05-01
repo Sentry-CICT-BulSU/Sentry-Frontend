@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IUser, IUserCollection } from 'src/app/core/models';
 import { AdminService } from 'src/app/core/services/admin.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-deleted-user-table',
@@ -37,6 +38,13 @@ export class DeletedUserTableComponent implements OnInit {
       next: (resp) => {
         console.log(resp);
         this.router.navigate(['/user']);
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'User restored successfully!',
+        });
+
       },
       error: (err) => {
         console.log(err);

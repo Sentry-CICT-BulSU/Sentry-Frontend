@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SystemSettingsComponent implements OnInit {
 
+  selectedColor = 'primary';
+
   constructor() { }
 
   ngOnInit() {

@@ -26,9 +26,9 @@ export class Menu {
       items: [
         {
           icon: 'bar_chart',
-          label: 'Faculty and Schedule',
+          label: 'Attendance and Schedule',
           children: [
-            { label: 'Faculty Management', route: '/faculty' },
+            // { label: 'Faculty Management', route: '/faculty' },
             { label: 'Schedule Management', route: '/schedule' },
             { label: 'Attendance Monitoring', route: '/attendance' },
           ],
