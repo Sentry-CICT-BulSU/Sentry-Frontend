@@ -6,9 +6,9 @@
 // const api_url = 'https://sentry-backend.up.railway.app';
 // const app_id = '2';
 
-const app_url = 'http://app.cict-sentry.test:4200';
-const api_url = 'http://cict-sentry.test';
-const app_id = '1';
+const app_url = 'http://localhost:4200';
+const api_url = 'https://sentry-backend.up.railway.app';
+const app_id = '2';
 
 export const environment = {
   production: false,
