@@ -1,16 +1,21 @@
 <div class="mx-auto px-4 pb-4 pt-8 sm:px-8 lg:container">
     <!-- Header -->
-    <div class="mb-8 flex justify-between ">
+    <div class="mb-8 flex items-center justify-between ">
         <div class="inline-block">
             <h3 class="font-medium text-gray-900 text-3xl dark:text-white">Section Management</h3>
             <div class="space-x-1 text-base font-medium text-gray-400 dark:text-night-300">
                 <p>Manage the college’s sections.</p>
             </div>
         </div>
-        <button type="button" [routerLink]="['/section/add-section']"
-                class="my-auto flex-none button-colored">
-                Add Section
-        </button>
+
+    <button type="button" [routerLink]="['/section/add-section']"
+            class="flex items-center justify-center button-colored">
+      <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
+        add
+      </span>
+      <span class="hidden md:inline-block">Add Section</span>
+    </button>
+
     </div>
     <!-- end Header -->
     <!-- <router-outlet></router-outlet> -->
