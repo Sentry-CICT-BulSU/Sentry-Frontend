@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { combineLatest, forkJoin } from 'rxjs';
 import { ISchedule } from 'src/app/core/models';
 import { ScheduleService } from 'src/app/core/services/schedule.service';
 
@@ -64,17 +65,27 @@ export class ScheduleTableComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((data) => {
-      const id = data['id'];
-      if (data) {
-        this.scheduleService.loadSchedule$(id).subscribe({
-          next: (schedule) => {
-            this.schedules = schedule.data as ISchedule[];
-            console.log(this.schedules);
-          },
-          error: (err) => console.debug(err),
-        });
-      }
+    const obs = combineLatest([this.route.params, this.route.queryParams]);
+    console.log('hit');
+    obs.subscribe({
+      next: ([params, query]) => {
+        console.log(params, query);
+        const id: number = +params['id'];
+        const q: string = query['type'];
+        const type_id: number = +query['id'];
+        if (id && query) {
+          this.scheduleService
+            .loadSchedule$(id, { type: q, id: type_id })
+            .subscribe({
+              next: (schedule) => {
+                this.schedules = schedule.data as ISchedule[];
+                console.log(this.schedules);
+              },
+              error: (err) => console.debug(err),
+            });
+        }
+      },
+      error: (err) => console.debug(err),
     });
   }
 

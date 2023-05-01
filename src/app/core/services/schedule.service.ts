@@ -38,9 +38,10 @@ export class ScheduleService extends PropertiesService {
     });
   }
 
-  loadSchedule$(id: ISchedule['id']): Observable<IScheduleCollection> {
+  loadSchedule$(id: number, body: any): Observable<IScheduleCollection> {
     return this.http.get<IScheduleCollection>(this.url + '/' + id, {
       headers: this.options.headers,
+      params: body,
     });
   }
 
