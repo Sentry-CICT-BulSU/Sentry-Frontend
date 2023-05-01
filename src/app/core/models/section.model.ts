@@ -4,13 +4,15 @@ import { ISemester } from './semester.model';
 import { IUser } from './user.model';
 
 export interface ISection extends IMetaData {
-    id: number;
-    semester_id: ISemester['id'];
-    adviser_id: IUser['id'];
-    name: string;
-    status: string;
+  id: number;
+  semester_id: ISemester['id'];
+  semester?: ISemester;
+  adviser_id: IUser['id'];
+  adviser?: IUser;
+  name: string;
+  status: string;
 }
 
 export interface ISectionCollection extends ICollectionResponse {
-    data: ISection[] | ISection;
+  data: ISection[] | ISection;
 }
