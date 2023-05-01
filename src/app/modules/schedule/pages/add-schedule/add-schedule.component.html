@@ -119,9 +119,9 @@
     </div>
 
     <div class="relative col-span-2">
-      <select name="faculty" id="faculty" class="peer block">
-        <option>
-          12:00 pm
+      <select formControlName="time_start" name="time_start" id="time_start" class="peer block">
+        <option *ngFor="let time of timeStart" [value]="time.value">
+          {{time.label}}
         </option>
       </select>
     </div>
@@ -131,9 +131,9 @@
     </div>
 
     <div class="relative col-span-2">
-      <select name="room" id="room" class="peer block">
-        <option>
-          2:00 pm
+      <select formControlName="time_end" name="time_end" id="time_end" class="peer block">
+        <option *ngFor="let time of timeEnd" [value]="time.value">
+          {{time.label}}
         </option>
       </select>
     </div>
