@@ -1,129 +1,104 @@
-<form class="grid grid-cols-1">
-<div class="flex flex-col md:flex-row gap-4 justify-between">
+<pre *ngIf="updateUserForm">
+  {{updateUserForm.value|json}}
+</pre>
+
+<form *ngIf="updateUserForm" [formGroup]="updateUserForm" (ngSubmit)="onSubmit()" class="grid grid-cols-1">
+  <div class="flex flex-col md:flex-row gap-4 justify-between">
 
     <div class="flex-col items-center justify-between">
-    <h3 class="font-medium text-gray-900 text-lg dark:text-white">
+      <h3 class="font-medium text-gray-900 text-lg dark:text-white">
         Personal Info
-    </h3>
+      </h3>
 
-    <div class="space-x-1 text-sm font-medium text-gray-400 dark:text-night-300">
+      <div class="space-x-1 text-sm font-medium text-gray-400 dark:text-night-300">
         <p>
-            Update your photo and personal details here.
+          Update your photo and personal details here.
         </p>
-    </div>
+      </div>
     </div>
 
     <div class="flex items-center justify-start space-x-3">
-        <button type="reset"
-            class="relative flex w-20 justify-center button-plain">
-            Cancel
-        </button>
-        <button type="submit"
-            class="relative flex w-20 justify-center button-colored">
-            Save
-        </button>
+      <button type="reset"
+              class="relative flex w-20 justify-center button-plain">
+        Cancel
+      </button>
+      <button type="submit"
+              class="relative flex w-20 justify-center button-colored">
+        Save
+      </button>
     </div>
-</div>
+  </div>
 
+  <!-- Separator -->
+  <div class="py-6">
+    <hr class="border-solid border-gray-200 dark:border-night-500" />
+  </div>
 
-
-    <!-- Separator -->
-    <div class="py-6">
-        <hr class="border-solid border-gray-200 dark:border-night-500" />
-    </div>
-
-    <div class="grid md:grid-cols-4 gap-6">
-        <div class="space-x-1 text-sm font-medium text-gray-600 dark:text-night-300">
-            <p>Name</p>
-        </div>
-
-        <div class="relative">
-            <input name="first_name" type="text" id="first_name" class="peer block"
-                placeholder=" " />
-            <label for="firstname"
-                class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary-700 dark:bg-night-800 dark:text-night-200">
-                First Name
-            </label>
-        </div>
-
-        <div class="relative">
-            <input name="last_name" type="text" id="last_name" class="peer block"
-                placeholder=" " />
-            <label for="lastname"
-                class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary-700 dark:bg-night-800 dark:text-night-200">
-                Last Name
-            </label>
-        </div>
+  <div class="grid md:grid-cols-4 gap-6">
+    <div class="space-x-1 text-sm font-medium text-gray-600 dark:text-night-300">
+      <p>Name</p>
     </div>
 
-    <!-- Separator -->
-    <div class="py-6">
-        <hr class="border-solid border-gray-200 dark:border-night-500" />
+    <div class="relative">
+      <input formControlName="first_name" name="first_name" type="text" id="first_name" class="peer block"
+             placeholder=" " />
+      <label for="firstname"
+             class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary-700 dark:bg-night-800 dark:text-night-200">
+        First Name
+      </label>
     </div>
 
-    <div class="grid md:grid-cols-4 gap-6">
-        <div class="space-x-1 text-sm font-medium text-gray-600 dark:text-night-300">
-            <p>Email address</p>
-        </div>
+    <div class="relative">
+      <input formControlName="last_name" name="last_name" type="text" id="last_name" class="peer block"
+             placeholder=" " />
+      <label for="lastname"
+             class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary-700 dark:bg-night-800 dark:text-night-200">
+        Last Name
+      </label>
+    </div>
+  </div>
 
-        <div class="relative col-span-2">
-            <input name="email" type="text" id="email" class="peer block" placeholder=" " />
-            <label for="email"
-                class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary-700 dark:bg-night-800 dark:text-night-200">
-                Email address
-            </label>
-        </div>
+  <!-- Separator -->
+  <div class="py-6">
+    <hr class="border-solid border-gray-200 dark:border-night-500" />
+  </div>
+
+  <div class="grid md:grid-cols-4 gap-6">
+    <div class="space-x-1 text-sm font-medium text-gray-600 dark:text-night-300">
+      <p>Email address</p>
     </div>
 
-    <!-- Separator -->
-    <div class="py-6">
-        <hr class="border-solid border-gray-200 dark:border-night-500" />
+    <div class="relative col-span-2">
+      <input formControlName="email" name="email" type="text" id="email" class="peer block" placeholder=" " />
+      <label for="email"
+             class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary-700 dark:bg-night-800 dark:text-night-200">
+        Email address
+      </label>
+    </div>
+  </div>
+
+  <!-- Separator -->
+  <div class="py-6">
+    <hr class="border-solid border-gray-200 dark:border-night-500" />
+  </div>
+
+  <div class="grid md:grid-cols-8 gap-6">
+    <div class="col-span-2 text-sm font-medium text-gray-600 dark:text-night-300">
+      <p>You Photo</p>
+      <p class="text-gray-400">This will be displayed on your profile.</p>
     </div>
 
-    <div class="grid md:grid-cols-8 gap-6">
-        <div class="col-span-2 text-sm font-medium text-gray-600 dark:text-night-300">
-            <p>You Photo</p>
-            <p class="text-gray-400">This will be displayed on your profile.</p>
-        </div>
+    <img class="rounded-full w-10" src="assets/avatars/user-profile.png" alt="" />
 
-        <img class="rounded-full w-10" src="assets/avatars/user-profile.png" alt="" />
-
-        <div class="relative col-span-3">
-            <input type="file" class="file-input w-full rounded-md border text-sm border-light-dark " />
-        </div>
-
+    <div class="relative col-span-3">
+      <input formControlName="profile_img" (change)="onImgChange($event)" type="file"
+             class="file-input w-full rounded-md border text-sm border-light-dark " />
     </div>
 
+  </div>
 
-    <!-- Separator -->
-    <div class="py-6">
-        <hr class="border-solid border-gray-200 dark:border-night-500" />
-    </div>
-
-    <div class="grid md:grid-cols-4 gap-6">
-        <div class="space-x-1 text-sm font-medium text-gray-600 dark:text-night-300">
-            <p>Role</p>
-        </div>
-
-        <div class="relative col-span-2">
-            <select name="type" id="type" class="peer block">
-                <option>
-                    Admin
-                </option>
-                <option>
-                    Attendance Checker
-                </option>
-                <option>
-                    Faculty
-                </option>
-            </select>
-        </div>
-    </div>
-
-    <!-- Separator -->
-    <div class="py-6">
-        <hr class="border-solid border-gray-200 dark:border-night-500" />
-    </div>
-
-
+  <!-- Separator -->
+  <div class="py-6">
+    <hr class="border-solid border-gray-200 dark:border-night-500" />
+  </div>
 </form>
