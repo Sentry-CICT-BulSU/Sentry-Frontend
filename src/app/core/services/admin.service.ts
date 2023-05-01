@@ -1,17 +1,26 @@
 import { environment as env } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IUserConfig, IResponse, IUser, IUserCollection } from '../models';
+import { IUserConfig, IResponse, IUserCollection } from '../models';
 import { PropertiesService } from './properties.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AdminService extends PropertiesService {
-  adminApiRoute = env.apiRootRoute + '/api/admin';
-
   constructor(private http: HttpClient) {
     super();
+  }
+
+  get adminApiRoute() {
+    return env.apiRootRoute + '/api/admin';
+  }
+
+  getLists$(type: string) {
+    return this.http.get<any>(this.adminApiRoute + '/list', {
+      headers: this.options.headers,
+      params: { q: type },
+    });
   }
 
   getUsers$(query?: any) {
