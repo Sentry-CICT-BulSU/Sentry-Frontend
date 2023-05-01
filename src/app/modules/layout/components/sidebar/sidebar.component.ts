@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { IUser, MenuItem } from 'src/app/core/models';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
+import { ColorService } from 'src/app/core/services/color.service';
 
 @Component({
     selector: 'app-sidebar',
@@ -16,6 +17,8 @@ import Swal from 'sweetalert2';
 
 // Defining the class for the Sidebar Component and implementing the OnInit Interface
 export class SidebarComponent implements OnInit {
+
+    public colorClass = '';
     // Defining two observable variables showSideBar$ and pagesMenu$.
     // These observables are used to store the state of the menu items and sidebar.
 
@@ -33,6 +36,7 @@ export class SidebarComponent implements OnInit {
     // Initializing the constructor with the ThemeService and MenuService.
 
     constructor(
+        private colorService: ColorService,
         public themeService: ThemeService,
         private menuService: MenuService,
         private authService: AuthService,
@@ -45,14 +49,34 @@ export class SidebarComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        // this.authService.current_user_subject$?.subscribe(
-        //     (user: IUser | undefined) => (this.user = user)
-        // );
-        // comment below for frontend
-        this.user = this.activatedRoute.snapshot.data['user'];
+      // this.authService.current_user_subject$?.subscribe(
+      //     (user: IUser | undefined) => (this.user = user)
+      // );
+      // comment below for frontend
+      this.user = this.activatedRoute.snapshot.data['user'];
 
-        // uncomment below for frontend
-        // this.user = SAMPLE_USER;
+      // uncomment below for frontend
+      // this.user = SAMPLE_USER;
+
+      const selectedColor = localStorage.getItem('selectedColor');
+      if (selectedColor) {
+        this.colorService.selectedColor = selectedColor;
+      }
+      this.replaceClassName('bg-primary-', `bg-${this.colorService.selectedColor}-`);
+      this.replaceClassName('text-primary-', `text-${this.colorService.selectedColor}-`);
+      this.replaceClassName('border-primary-', `border-${this.colorService.selectedColor}-`);
+    }
+
+    private replaceClassName(prefix: string, replacement: string) {
+      const elements = document.querySelectorAll(`[class*="${prefix}"]`);
+      for (let i = 0; i < elements.length; i++) {
+        const classList = elements[i].classList;
+        for (let j = 0; j < classList.length; j++) {
+          if (classList[j].startsWith(prefix)) {
+            classList.replace(classList[j], classList[j].replace(prefix, replacement));
+          }
+        }
+      }
     }
 
     // A method to toggle the sidebar on and off.

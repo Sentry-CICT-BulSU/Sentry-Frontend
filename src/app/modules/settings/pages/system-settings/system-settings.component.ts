@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, } from '@angular/core';
+import { ColorService } from 'src/app/core/services/color.service';
 
 @Component({
   selector: 'app-system-settings',
   templateUrl: './system-settings.component.html',
 })
-export class SystemSettingsComponent implements OnInit {
+export class SystemSettingsComponent {
 
-  selectedColor = 'primary';
+  constructor(private colorService: ColorService) {}
 
-  constructor() { }
-
-  ngOnInit() {
+  setColor(color: string) {
+    this.colorService.selectedColor = color;
+    localStorage.setItem('selectedColor', color); // Save selected color in local storage
   }
 
 }
