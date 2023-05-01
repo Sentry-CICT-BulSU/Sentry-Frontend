@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { ISection, ISectionCollection } from 'src/app/core/models';
 import { SectionService } from 'src/app/core/services/section.service';
@@ -14,7 +15,7 @@ export class SectionListComponent implements OnInit {
   sectionsActive?: ISection[];
   sectionsInactiveCollection?: ISectionCollection;
   sectionsInactive?: ISection[];
-  constructor(private sectionService: SectionService) {}
+  constructor(private sectionService: SectionService, private router: Router) {}
 
   ngOnInit(): void {
     this.initComponent();
@@ -66,6 +67,16 @@ export class SectionListComponent implements OnInit {
           'active'
         );
       });
+    });
+  }
+
+  onDelete(id: number) {
+    this.sectionService.deleteSection$(id).subscribe({
+      next: (resp) => {
+        console.log(resp);
+        this.router.navigate(['/section']);
+      },
+      error: (err) => console.debug(err),
     });
   }
 }
