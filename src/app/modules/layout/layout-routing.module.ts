@@ -48,6 +48,11 @@ const routes: Routes = [
     component: LayoutComponent,
     loadChildren: () => import('../room/room.module').then((m) => m.RoomModule),
   },
+  {
+    path: 'section',
+    component: LayoutComponent,
+    loadChildren: () => import('../section/section.module').then((m) => m.SectionModule),
+  },
 
   {
     path: 'room-key',

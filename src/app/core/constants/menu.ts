@@ -40,6 +40,7 @@ export class Menu {
             { label: 'Semester Management', route: '/semester' },
             { label: 'Subject Management', route: '/subject' },
             { label: 'Room Management', route: '/room' },
+            { label: 'Section Management', route: '/section' },
           ],
         },
       ],
