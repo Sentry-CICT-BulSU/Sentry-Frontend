@@ -13,7 +13,7 @@
     </div>
 
     <button type="button" [routerLink]="['/semester/add-semester']"
-            class="flex items-center justify-center button-colored">
+            class="flex items-center justify-center button-size" [ngClass]="'bg-' + systemService.color + '-700 hover:bg-' + systemService.color + '-600 border-' + systemService.color + '-700'">
       <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
         add
       </span>
@@ -41,17 +41,17 @@
     <div class="flex flex-col md:flex-row gap-4 justify-between">
       <div class="flex items-center justify-start">
         <a href="#view-all"
-           class="tab-link active relative selection:flex justify-center rounded-l-md border border-gray-300 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200 dark:text-night-200 dark:hover:bg-night-500">
+           class="tab-link active relative selection:flex justify-center rounded-l-md border border-gray-300 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none hover:bg-gray-200 dark:text-night-200 dark:hover:bg-night-500">
           <span class="md:inline-block">
             View
           </span> All
         </a>
         <a href="#active-sem"
-           class="tab-link relative selection:flex justify-center border-y border-gray-300 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200 dark:text-night-200 dark:hover:bg-night-500">
+           class="tab-link relative selection:flex justify-center border-y border-gray-300 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none hover:bg-gray-200 dark:text-night-200 dark:hover:bg-night-500">
           Active
         </a>
         <a href="#inactive-sem"
-           class="tab-link relative selection:flex justify-center rounded-r-md border border-gray-300 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200 dark:text-night-200 dark:hover:bg-night-500">
+           class="tab-link relative selection:flex justify-center rounded-r-md border border-gray-300 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none hover:bg-gray-200 dark:text-night-200 dark:hover:bg-night-500">
           Inactive
         </a>
       </div>

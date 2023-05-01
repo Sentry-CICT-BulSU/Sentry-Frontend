@@ -127,7 +127,7 @@ module.exports = {
   },
   safelist: [
     {
-      pattern: /(bg|text|border|ring)-(primary|orange|blue|teal|red)-(50|100|200|300|400|500|600|700|800|900)/,
+      pattern: /(bg|text|border|ring)-(primary|orange|blue|teal|red)-(50|300|600|700|800)/,
       variants: [
         'sm', 'md', 'lg', 'xl', '2xl',
         'sm:hover', 'md:hover', 'lg:hover', 'xl:hover', '2xl:hover',

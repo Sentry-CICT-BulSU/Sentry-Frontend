@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ISemester } from 'src/app/core/models';
 import { SemesterService } from 'src/app/core/services/semester.service';
 import Swal from 'sweetalert2';
+import { SystemService } from 'src/app/core/services/system.service';
 
 @Component({
   selector: 'app-edit-semester',
@@ -16,7 +17,8 @@ export class EditSemesterComponent implements OnInit {
     private fb: FormBuilder,
     private semesterService: SemesterService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public systemService: SystemService
   ) {}
 
   onSubmit() {

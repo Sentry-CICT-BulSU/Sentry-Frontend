@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { IUser, MenuItem } from 'src/app/core/models';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
-import { ColorService } from 'src/app/core/services/color.service';
+// import { ColorService } from 'src/app/core/services/color.service';
 import { SystemService } from 'src/app/core/services/system.service';
 
 @Component({
@@ -18,7 +18,7 @@ import { SystemService } from 'src/app/core/services/system.service';
 
 // Defining the class for the Sidebar Component and implementing the OnInit Interface
 export class SidebarComponent implements OnInit {
-  public colorClass = '';
+  // public colorClass = '';
   // Defining two observable variables showSideBar$ and pagesMenu$.
   // These observables are used to store the state of the menu items and sidebar.
 
@@ -36,11 +36,11 @@ export class SidebarComponent implements OnInit {
   // Initializing the constructor with the ThemeService and MenuService.
 
   constructor(
-    private colorService: ColorService,
+    // private colorService: ColorService,
     public themeService: ThemeService,
     private menuService: MenuService,
     private activatedRoute: ActivatedRoute,
-    private systemService: SystemService
+    public systemService: SystemService
   ) {
     // Subscribing to the showSideBar$ and pagesMenu$ observables and storing their state in the class variables.
 
@@ -65,10 +65,11 @@ export class SidebarComponent implements OnInit {
     console.log('system color: ', color);
     this.replaceClassName('bg-primary-', `bg-${this.systemService.color}-`);
     this.replaceClassName('text-primary-', `text-${this.systemService.color}-`);
-    this.replaceClassName(
-      'border-primary-',
-      `border-${this.systemService.color}-`
-    );
+    this.replaceClassName('border-primary-', `border-${this.systemService.color}-`);
+    this.replaceClassName('ring-primary-', `ring-${this.systemService.color}-`);
+    this.replaceClassName('hover:bg-primary-', `hover:bg-${this.systemService.color}-`);
+    this.replaceClassName('scrollbar-track-primary-', `scrollbar-track-${this.systemService.color}-`);
+    this.replaceClassName('scrollbar-thumb-primary-', `scrollbar-thumb-${this.systemService.color}-`);
   }
 
   private replaceClassName(prefix: string, replacement: string) {

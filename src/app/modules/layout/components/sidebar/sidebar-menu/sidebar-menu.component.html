@@ -75,7 +75,7 @@
           <!-- The routerLink directive is used to set the link to navigate to when the menu item is clicked. -->
 
           <div
-               routerLinkActive="bg-primary-800"
+              [routerLinkActive]="'bg-' + systemService.color + '-800'"
                [routerLink]="[item.route]"
                class="flex h-9 cursor-pointer items-center justify-start rounded text-gray-100 hover:bg-primary-600
              dark:hover:bg-night-600">

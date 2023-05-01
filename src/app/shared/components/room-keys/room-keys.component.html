@@ -20,7 +20,7 @@
              class="cursor-pointer border-gray-200 dark:border-night-500 border flex min-h-[120px] flex-col rounded-lg bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-1">
           <div class="mt-4 flex items-center flex-1 flex-col justify-between space-y-1 md:mt-0">
 
-            <div class="flex items-center rounded-full bg-primary-700 w-20 h-20 text-xs font-medium text-white">
+            <div class="flex items-center rounded-full w-20 h-20 text-xs font-medium text-white" [ngClass]="'bg-' + systemService.color + '-700'">
               <span class="material-symbols-rounded text-4xl mx-auto -rotate-45">
                 vpn_key
               </span>

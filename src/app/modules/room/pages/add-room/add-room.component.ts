@@ -3,6 +3,7 @@ import { RoomService } from './../../../../core/services/room.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { SystemService } from 'src/app/core/services/system.service';
 
 @Component({
     selector: 'app-add-room',
@@ -13,7 +14,8 @@ export class AddRoomComponent implements OnInit {
     constructor(
         private roomService: RoomService,
         private fb: FormBuilder,
-        private router: Router
+        private router: Router,
+        public systemService: SystemService
     ) {}
 
     ngOnInit(): void {

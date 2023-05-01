@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IRoom } from 'src/app/core/models';
 import { RoomService } from 'src/app/core/services/room.service';
+import { SystemService } from 'src/app/core/services/system.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -16,7 +17,8 @@ export class EditRoomComponent implements OnInit {
     private route: ActivatedRoute,
     private roomService: RoomService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public systemService: SystemService
   ) {}
 
   onSubmit() {

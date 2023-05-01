@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { ISection, ISectionCollection } from 'src/app/core/models';
 import { SectionService } from 'src/app/core/services/section.service';
+import { SystemService } from 'src/app/core/services/system.service';
 
 @Component({
   selector: 'app-section-list',
@@ -15,7 +16,7 @@ export class SectionListComponent implements OnInit {
   sectionsActive?: ISection[];
   sectionsInactiveCollection?: ISectionCollection;
   sectionsInactive?: ISection[];
-  constructor(private sectionService: SectionService, private router: Router) {}
+  constructor(private sectionService: SectionService, private router: Router, public systemService: SystemService) {}
 
   ngOnInit(): void {
     this.initComponent();

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, forkJoin, tap } from 'rxjs';
 import { AdminService } from 'src/app/core/services/admin.service';
 import { SectionService } from 'src/app/core/services/section.service';
+import { SystemService } from 'src/app/core/services/system.service';
 
 @Component({
   selector: 'app-add-section',
@@ -17,7 +18,8 @@ export class AddSectionComponent implements OnInit {
     private fb: FormBuilder,
     private sectionService: SectionService,
     private adminService: AdminService,
-    private router: Router
+    private router: Router,
+    public systemService: SystemService
   ) {}
 
   ngOnInit(): void {

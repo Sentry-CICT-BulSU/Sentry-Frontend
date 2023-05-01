@@ -11,6 +11,7 @@ import { User } from 'src/app/core/constants/user';
 import { IUserConfig } from 'src/app/core/models';
 import { AdminService } from 'src/app/core/services/admin.service';
 import Swal from 'sweetalert2';
+import { SystemService } from 'src/app/core/services/system.service';
 
 @Component({
   selector: 'app-add-user',
@@ -36,7 +37,8 @@ export class AddUserComponent {
   constructor(
     private adminService: AdminService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    public systemService: SystemService
   ) {
     this.newUserForm = this.fb.group({
       first_name: ['', [Validators.required]],

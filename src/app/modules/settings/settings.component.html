@@ -8,15 +8,16 @@
     </div>
 
     <div class="flex items-center justify-start">
-        <div [routerLink]="['/settings/personal-information']" routerLinkActive="border-b-2 text-primary-700 border-primary-700"
+        <div [routerLink]="['/settings/personal-information']" [routerLinkActive]="'border-' + systemService.color + '-700 border-b-2 text-' + systemService.color + '-700' "
+
             class="cursor-pointer relative justify-center py-4 mr-4 text-sm font-medium text-gray-700 dark:text-night-200">
             Personal Information
         </div>
-        <div [routerLink]="['/settings/password-and-security']" routerLinkActive="border-b-2 text-primary-700 border-primary-700"
+        <div [routerLink]="['/settings/password-and-security']" [routerLinkActive]="'border-' + systemService.color + '-700 border-b-2 text-' + systemService.color + '-700'"
             class="cursor-pointer relative justify-center py-4 mx-4 text-sm font-medium text-gray-700  dark:text-night-200">
             Password and Security
         </div>
-        <div [routerLink]="['/settings/system-settings']" routerLinkActive="border-b-2 text-primary-700 border-primary-700"
+        <div [routerLink]="['/settings/system-settings']" [routerLinkActive]="'border-' + systemService.color + '-700 border-b-2 text-' + systemService.color + '-700'"
             class="cursor-pointer relative justify-center py-4 mx-4 text-sm font-medium text-gray-700 dark:text-night-200">
             System Settings
         </div>

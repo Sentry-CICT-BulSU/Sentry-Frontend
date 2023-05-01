@@ -12,6 +12,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { EditSectionComponent } from './pages/edit-section/edit-section.component';
 
 
 
@@ -20,6 +21,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
         SectionComponent,
         SectionListComponent,
         AddSectionComponent,
+        EditSectionComponent,
     ],
 
 

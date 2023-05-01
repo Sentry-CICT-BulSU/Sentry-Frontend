@@ -5,6 +5,7 @@ import { MenuService } from '../../../services/menu.service';
 import { ActivatedRoute } from '@angular/router';
 import { IUser } from 'src/app/core/models';
 import { environment as env } from 'src/environments/environment';
+import { SystemService } from 'src/app/core/services/system.service';
 
 @Component({
   selector: 'app-sidebar-menu',
@@ -28,7 +29,8 @@ export class SidebarMenuComponent implements OnInit {
 
   constructor(
     private menuService: MenuService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    public systemService: SystemService
   ) {}
 
   // A method to toggle a sub-menu item.
@@ -37,7 +39,33 @@ export class SidebarMenuComponent implements OnInit {
     this.menuService.toggleMenu(subMenu);
   }
 
+  initSystemColor() {
+    const color = this.systemService.color;
+    console.log('system color: ', color);
+    this.replaceClassName('bg-primary-', `bg-${this.systemService.color}-`);
+    this.replaceClassName('text-primary-', `text-${this.systemService.color}-`);
+    this.replaceClassName('border-primary-', `border-${this.systemService.color}-`);
+    this.replaceClassName('ring-primary-', `ring-${this.systemService.color}-`);
+    this.replaceClassName('hover:bg-primary-', `hover:bg-${this.systemService.color}-`);
+  }
+
+  private replaceClassName(prefix: string, replacement: string) {
+    const elements = document.querySelectorAll(`[class*="${prefix}"]`);
+    for (let i = 0; i < elements.length; i++) {
+      const classList = elements[i].classList;
+      for (let j = 0; j < classList.length; j++) {
+        if (classList[j].startsWith(prefix)) {
+          classList.replace(
+            classList[j],
+            classList[j].replace(prefix, replacement)
+          );
+        }
+      }
+    }
+  }
+
   ngOnInit(): void {
+    this.initSystemColor();
     // Subscribing to the showSideBar$ and pagesMenu$ observables and storing their state in the class variables.
     this.showSideBar$ = this.menuService.showSideBar$;
     this.pagesMenu$ = this.menuService.pagesMenu$;

@@ -13,20 +13,17 @@
 
   <div class="inline-block mb-4">
     <h3 class="font-medium text-gray-900 text-2xl dark:text-white">
-      Add Section information
+      Edit Section information
     </h3>
     <div class="space-x-1 text-sm font-medium text-gray-400 dark:text-night-300">
       <p>
-        Add necessary details needed here.
+        Edit necessary details needed here.
       </p>
     </div>
   </div>
 
-  <pre *ngIf="newSectionForm">
-    {{newSectionForm.value|json}}
-  </pre>
 
-  <form *ngIf="newSectionForm" [formGroup]="newSectionForm" (ngSubmit)="onSubmit()" novalidate class="grid grid-cols-1">
+  <form class="grid grid-cols-1">
     <!-- Separator -->
     <div class="py-6">
       <hr class="border-solid border-gray-200 dark:border-night-500" />
@@ -39,8 +36,11 @@
 
       <div class="relative col-span-4">
         <select formControlName="semester_id" name="semester_id" id="semester_id" class="peer block">
-          <option *ngFor="let sem of semesters|async" [value]="sem.id">
-            {{sem.name_acad_yr}}
+          <option>
+            1st Semester
+          </option>
+          <option>
+            2nd Semester
           </option>
         </select>
       </div>
@@ -52,7 +52,7 @@
       </div>
 
       <div class="relative col-span-4">
-        <select formControlName="name" name="section" id="section" class="peer block">
+        <select name="section" id="section" class="peer block">
           <option>
             BSIT 1A - G1
           </option>
@@ -118,8 +118,8 @@
 
       <div class="relative col-span-4">
         <select formControlName="adviser_id" name="adviser_id" id="adviser_id" class="peer block">
-          <option *ngFor="let faculty of faculty|async" [value]="faculty.id">
-            {{faculty.full_name}}
+          <option>
+           Gabriel Galang
           </option>
         </select>
       </div>
@@ -135,7 +135,7 @@
         <div
              class="grid w-full grid-cols-2 rounded-md border border-gray-300 text-xs">
           <div>
-            <input formControlName="status" value="active" type="radio" name="status" id="status-active"
+            <input value="active" type="radio" name="status" id="status-active"
                    class="peer hidden" checked />
             <label for="status-active"
                    class="rounded-l-md border-r border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:first-line:text-white hover:bg-gray-200" [ngClass]="'peer-checked:border-' + systemService.color + '-700 peer-checked:bg-' + systemService.color + '-700'">
@@ -143,7 +143,7 @@
             </label>
           </div>
           <div>
-            <input formControlName="status" value="inactive" type="radio" name="status" id="status-inactive"
+            <input value="inactive" type="radio" name="status" id="status-inactive"
                    class="peer hidden" />
             <label
                    for="status-inactive"

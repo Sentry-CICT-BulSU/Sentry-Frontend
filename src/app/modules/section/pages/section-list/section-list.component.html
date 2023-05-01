@@ -1,16 +1,21 @@
 <div class="mx-auto px-4 pb-4 pt-8 sm:px-8 lg:container">
   <!-- Header -->
-  <div class="mb-8 flex justify-between ">
+  <div class="mb-8 flex items-center justify-between ">
     <div class="inline-block">
       <h3 class="font-medium text-gray-900 text-3xl dark:text-white">Section Management</h3>
       <div class="space-x-1 text-base font-medium text-gray-400 dark:text-night-300">
         <p>Manage the college’s sections.</p>
       </div>
     </div>
+
     <button type="button" [routerLink]="['/section/add-section']"
-            class="my-auto flex-none button-colored">
-      Add Section
+            class="flex items-center justify-center button-size" [ngClass]="'bg-' + systemService.color + '-700 hover:bg-' + systemService.color + '-600 border-' + systemService.color + '-700'">
+      <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
+        add
+      </span>
+      <span class="hidden md:inline-block">Add Section</span>
     </button>
+
   </div>
   <!-- end Header -->
   <!-- <router-outlet></router-outlet> -->
@@ -30,28 +35,47 @@
     <div class="flex justify-between">
       <div class="flex items-center justify-start">
         <a href="#view-all"
-           class="tab-link active relative selection:flex justify-center rounded-l-md border border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
-          View All
+           class="tab-link active tab-button-1">
+          <span class="md:inline-block">
+            View
+          </span> All
         </a>
         <a href="#active-sem"
-           class="tab-link relative selection:flex justify-center border-y border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+           class="tab-link tab-button-2">
           Active
         </a>
         <a href="#inactive-sem"
-           class="tab-link relative selection:flex justify-center rounded-r-md border border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
+           class="tab-link tab-button-3">
           Inactive
         </a>
       </div>
 
 
       <div class="flex items-center justify-end space-x-3">
-        <input type="search"
-               class="relative justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 "
-               placeholder="Search" />
-        <button type="button"
-                class="relative selection:flex justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
-          Filters
-        </button>
+
+        <div class='max-w-md mx-auto'>
+          <div class="relative flex items-center w-full rounded-lg border-light-dark overflow-hidden">
+            <div class="grid place-items-center h-full w-12 text-gray-700 dark:text-night-200">
+              <span class="material-symbols-rounded h-6 w-6">
+                search
+              </span>
+            </div>
+
+            <input
+                   class="search-bar"
+                   type="text"
+                   id="search"
+                   placeholder="Search.." />
+          </div>
+        </div>
+
+        <select class="w-24 text-sm py-2.5">
+
+          <option value="latest">Latest</option>
+          <option value="oldest">Oldest</option>
+          <option value="code">A-Z</option>
+
+        </select>
       </div>
     </div>
   </div>
@@ -102,16 +126,20 @@
                 </span>
               </td>
 
-              <td class="py-2 pl-2">
+              <td class="py-2 pr-2">
                 <div class="flex justify-end">
-                  <i
-                     class="cursor-pointer fa-solid fa-trash-can mr-6 justify-center rounded-md text-gray-400 hover:text-red-500 dark:text-night-300">
-                  </i>
-                  <i
-                     class="cursor-pointer fa-solid fa-pen justify-center rounded-md text-gray-400 hover:text-primary-700 dark:text-night-300">
-                  </i>
+                  <span
+                        class="material-symbols-rounded font-medium cursor-pointer mr-6 justify-center rounded-md text-gray-500 hover:text-red-500 dark:text-night-300">
+                    delete
+                  </span>
+
+                  <span [routerLink]="['/section/edit-section']"
+                        class="material-symbols-rounded font-medium cursor-pointer justify-center rounded-md text-gray-500 hover:text-primary-700 dark:text-night-300">
+                    edit
+                  </span>
                 </div>
               </td>
+
             </tr>
           </tbody>
           <!--end::Table body-->
@@ -189,14 +217,17 @@
                 </span>
               </td>
 
-              <td class="py-2 pl-2">
+              <td class="py-2 pr-2">
                 <div class="flex justify-end">
-                  <i
-                     class="cursor-pointer fa-solid fa-trash-can mr-6 justify-center rounded-md text-gray-400 hover:text-red-500 dark:text-night-300">
-                  </i>
-                  <i
-                     class="cursor-pointer fa-solid fa-pen justify-center rounded-md text-gray-400 hover:text-primary-700 dark:text-night-300">
-                  </i>
+                  <span
+                        class="material-symbols-rounded font-medium cursor-pointer mr-6 justify-center rounded-md text-gray-500 hover:text-red-500 dark:text-night-300">
+                    delete
+                  </span>
+
+                  <span [routerLink]="['/section/edit-section']"
+                        class="material-symbols-rounded font-medium cursor-pointer justify-center rounded-md text-gray-500 hover:text-primary-700 dark:text-night-300">
+                    edit
+                  </span>
                 </div>
               </td>
             </tr>
@@ -273,14 +304,17 @@
                 </span>
               </td>
 
-              <td class="py-2 pl-2">
+              <td class="py-2 pr-2">
                 <div class="flex justify-end">
-                  <i (click)="onDelete(section.id)"
-                     class="cursor-pointer fa-solid fa-trash-can mr-6 justify-center rounded-md text-gray-400 hover:text-red-500 dark:text-night-300">
-                  </i>
-                  <i
-                     class="cursor-pointer fa-solid fa-pen justify-center rounded-md text-gray-400 hover:text-primary-700 dark:text-night-300">
-                  </i>
+                  <span
+                        class="material-symbols-rounded font-medium cursor-pointer mr-6 justify-center rounded-md text-gray-500 hover:text-red-500 dark:text-night-300">
+                    delete
+                  </span>
+
+                  <span [routerLink]="['/section/edit-section']"
+                        class="material-symbols-rounded font-medium cursor-pointer justify-center rounded-md text-gray-500 hover:text-primary-700 dark:text-night-300">
+                    edit
+                  </span>
                 </div>
               </td>
             </tr>

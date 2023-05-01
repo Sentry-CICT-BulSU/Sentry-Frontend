@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ISubject } from 'src/app/core/models';
 import { SubjectService } from 'src/app/core/services/subject.service';
+import { SystemService } from 'src/app/core/services/system.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -16,7 +17,8 @@ export class EditSubjectComponent implements OnInit {
     private subjectService: SubjectService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public systemService: SystemService
   ) {}
 
   onSubmit() {
