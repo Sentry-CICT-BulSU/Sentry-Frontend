@@ -53,4 +53,19 @@ export class SectionService extends PropertiesService {
       headers: this.options.headers,
     });
   }
+
+  deleteSection$(id: number) {
+    return this.http.delete<ISectionCollection>(this.url + '/' + id, {
+      headers: this.options.headers,
+    });
+  }
+
+  restoreSection$(id: number) {
+    return this.http.post<ISectionCollection>(
+      this.url + '/' + id + '/restore',
+      {
+        headers: this.options.headers,
+      }
+    );
+  }
 }
