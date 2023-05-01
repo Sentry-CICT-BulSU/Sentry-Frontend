@@ -8,25 +8,20 @@ import { ScheduleTableComponent } from './pages/schedule-table/schedule-table.co
 
 const routes: Routes = [
   {
-
     path: '',
     component: ScheduleComponent,
     children: [
-
-        { path: '', redirectTo: 'schedule-list', pathMatch: 'full' },
-        { path: 'schedule-list', component: ScheduleListComponent },
-        { path: 'add-schedule', component: AddScheduleComponent },
-        { path: 'schedule-table', component: ScheduleTableComponent },
-        { path: '**', redirectTo: 'schedule-list', pathMatch: 'full' },
+      { path: '', redirectTo: 'schedule-list', pathMatch: 'full' },
+      { path: 'schedule-list', component: ScheduleListComponent },
+      { path: 'add-schedule', component: AddScheduleComponent },
+      { path: 'schedule-table/:id', component: ScheduleTableComponent },
+      { path: '**', redirectTo: 'schedule-list', pathMatch: 'full' },
     ],
-},
-
+  },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-
 export class ScheduleRoutingModule {}

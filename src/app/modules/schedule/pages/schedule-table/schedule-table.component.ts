@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ISchedule } from 'src/app/core/models';
+import { ScheduleService } from 'src/app/core/services/schedule.service';
 
 interface ScheduleData {
   day: string;
@@ -53,9 +56,27 @@ export class ScheduleTableComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  schedules?: ISchedule[];
 
-  ngOnInit(): void {}
+  constructor(
+    private scheduleService: ScheduleService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.route.params.subscribe((data) => {
+      const id = data['id'];
+      if (data) {
+        this.scheduleService.loadSchedule$(id).subscribe({
+          next: (schedule) => {
+            this.schedules = schedule.data as ISchedule[];
+            console.log(this.schedules);
+          },
+          error: (err) => console.debug(err),
+        });
+      }
+    });
+  }
 
   isSlotFilled(day: string, time: string): ScheduleData | undefined {
     return this.scheduleData.find((schedule) => {
