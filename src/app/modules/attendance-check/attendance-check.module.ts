@@ -10,6 +10,7 @@ import { AttendanceManagementComponent } from './pages/attendance-management/att
 import { AttendanceMonitoringComponent } from './pages/attendance-monitoring/attendance-monitoring.component';
 import { RoomInformationComponent } from './pages/room-information/room-information.component';
 import { CheckAttendanceComponent } from './pages/check-attendance/check-attendance.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -18,14 +19,15 @@ import { CheckAttendanceComponent } from './pages/check-attendance/check-attenda
     NgApexchartsModule,
     SharedModule.forRoot(),
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   declarations: [
-    AttendanceCheckComponent, 
-    AttendanceManagementComponent, 
+    AttendanceCheckComponent,
+    AttendanceManagementComponent,
     AttendanceMonitoringComponent,
     RoomInformationComponent,
     CheckAttendanceComponent,
-    ChartCardColumnComponent
-  ]
+    ChartCardColumnComponent,
+  ],
 })
-export class AttendanceCheckModule { }
+export class AttendanceCheckModule {}

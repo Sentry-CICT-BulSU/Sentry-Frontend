@@ -25,22 +25,22 @@ export class Menu {
       type: 'Admin',
       items: [
         {
+          icon: 'layers',
+          label: 'Content Management',
+          children: [
+            { label: 'Semester Management', route: '/semester' },
+            { label: 'Section Management', route: '/section' },
+            { label: 'Subject Management', route: '/subject' },
+            { label: 'Room Management', route: '/room' },
+          ],
+        },
+        {
           icon: 'bar_chart',
           label: 'Attendance and Schedule',
           children: [
             // { label: 'Faculty Management', route: '/faculty' },
             { label: 'Schedule Management', route: '/schedule' },
             { label: 'Attendance Monitoring', route: '/attendance' },
-          ],
-        },
-        {
-          icon: 'layers',
-          label: 'Content Management',
-          children: [
-            { label: 'Semester Management', route: '/semester' },
-            { label: 'Subject Management', route: '/subject' },
-            { label: 'Room Management', route: '/room' },
-            { label: 'Section Management', route: '/section' },
           ],
         },
       ],
@@ -77,17 +77,17 @@ export class Menu {
       items: [
         {
           icon: 'home',
-          label: 'Dashboard - AC',
+          label: 'Dashboard',
           route: '/attendance-check/attendance-management',
         },
         {
           icon: 'bar_chart',
-          label: 'Attendance Monitoring - AC',
+          label: 'Attendance Monitoring',
           route: '/attendance-check/attendance-monitoring',
         },
         {
           icon: 'vpn_key',
-          label: 'Keys - AC',
+          label: 'Keys',
           route: '/keys/keys-overview',
         },
       ],
@@ -101,22 +101,22 @@ export class Menu {
       items: [
         {
           icon: 'home',
-          label: 'Dashboard - F',
+          label: 'Dashboard',
           route: '/dashboard/faculty-dashboard',
         },
         {
           icon: 'vpn_key',
-          label: 'Keys - F',
+          label: 'Keys',
           route: '/keys/faculty-keys',
         },
         {
           icon: 'event_available',
-          label: 'Schedule - F',
+          label: 'Schedule',
           route: '/faculty-mode/faculty-schedule',
         },
         {
           icon: 'settings',
-          label: 'Profile Settings - F',
+          label: 'Profile Settings',
           route: '/faculty-mode/faculty-profile',
         },
       ],

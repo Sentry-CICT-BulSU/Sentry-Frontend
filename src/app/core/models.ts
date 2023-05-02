@@ -10,4 +10,5 @@ export * from './models/section.model';
 export * from './models/semester.model';
 export * from './models/subject.model';
 export * from './models/user.model';
+export * from './models/attendance.model';
 export * from './models/available-key.model';

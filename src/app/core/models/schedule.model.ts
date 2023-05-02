@@ -1,3 +1,4 @@
+import { IAttendance } from './attendance.model';
 import { IMetaData } from './meta-data.model';
 import { ICollectionResponse } from './response.model';
 import { IRoom } from './room.model';
@@ -7,32 +8,34 @@ import { ISubject } from './subject.model';
 import { IUser } from './user.model';
 
 export interface ISchedule extends IMetaData {
-    id: number;
+  id: number;
 
-    adviser_id: IUser['id'];
-    adviser?: IUser | null;
+  adviser_id: IUser['id'];
+  adviser?: IUser | null;
 
-    subject_id: ISubject['id'];
-    subject?: ISubject | null;
+  subject_id: ISubject['id'];
+  subject?: ISubject | null;
 
-    semester_id: ISemester['id'];
-    semester?: ISemester | null;
+  semester_id: ISemester['id'];
+  semester?: ISemester | null;
 
-    room_id: IRoom['id'];
-    room?: IRoom | null;
+  room_id: IRoom['id'];
+  room?: IRoom | null;
 
-    section_id: ISection['id'];
-    section?: ISection | null;
+  section_id: ISection['id'];
+  section?: ISection | null;
 
-    date_start: string;
-    date_end: string;
-    time_start: string;
-    time_end: string;
-    active_days: string[];
+  attendance?: IAttendance | IAttendance[] | null;
 
-    laravel_through_key?: number;
+  date_start: string;
+  date_end: string;
+  time_start: string;
+  time_end: string;
+  active_days: string[];
+
+  laravel_through_key?: number;
 }
 
 export interface IScheduleCollection extends ICollectionResponse {
-    data: ISchedule[] | ISchedule;
+  data: ISchedule[] | ISchedule;
 }
