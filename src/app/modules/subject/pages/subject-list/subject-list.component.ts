@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ISubject, ISubjectCollection } from 'src/app/core/models';
 import { SubjectService } from 'src/app/core/services/subject.service';
 import Swal from 'sweetalert2';
+import { SystemService } from 'src/app/core/services/system.service';
 
 @Component({
   selector: 'app-subject-list',
@@ -23,7 +24,7 @@ export class SubjectListComponent implements OnInit {
   subjects?: ISubject[];
   activeSubjects?: ISubject[];
   inactiveSubjects?: ISubject[];
-  constructor(private subjectService: SubjectService, private router: Router) {}
+  constructor(private subjectService: SubjectService, private router: Router, public systemService: SystemService) {}
 
   get filteredSearchSubjects() {
     if (!this.subjects) {

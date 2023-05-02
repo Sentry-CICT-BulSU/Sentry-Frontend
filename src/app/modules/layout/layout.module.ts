@@ -16,6 +16,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { AuthInterceptor } from 'src/app/core/interceptor/auth.interceptor';
+import { FormsModule } from '@angular/forms';
 @NgModule({
     declarations: [
         LayoutComponent,
@@ -36,6 +37,7 @@ import { AuthInterceptor } from 'src/app/core/interceptor/auth.interceptor';
         HttpClientModule,
         AngularSvgIconModule.forRoot(),
         SharedModule.forRoot(),
+        FormsModule,
     ],
 })
 export class LayoutModule {}

@@ -4,7 +4,7 @@ import { SettingsComponent } from './settings.component';
 import { SettingsRoutingModule } from './settings-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PersonalInformationComponent } from './pages/personal-information/personal-information.component';
 import { PasswordAndSecurityComponent } from './pages/password-and-security/password-and-security.component';
 import { SystemSettingsComponent } from './pages/system-settings/system-settings.component';
@@ -16,6 +16,7 @@ import { SystemSettingsComponent } from './pages/system-settings/system-settings
     SharedModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
   declarations: [
     SettingsComponent,

@@ -8,6 +8,7 @@ import {
 } from 'src/app/core/models';
 import { RoomKeyLogsService } from 'src/app/core/services/roomkey-logs.service';
 import { RoomKeyService } from 'src/app/core/services/roomkey.service';
+import { SystemService } from 'src/app/core/services/system.service';
 
 @Component({
   selector: 'app-room-keys',
@@ -22,12 +23,41 @@ export class RoomKeysComponent implements OnInit {
   constructor(
     private roomKeySerivce: RoomKeyService,
     private roomKeyLogsService: RoomKeyLogsService,
-    private router: Router
+    private router: Router,
+    public systemService: SystemService
   ) {}
 
   ngOnInit(): void {
+    this.initSystemColor();
     this.loadRoomInfo();
+
   }
+
+  initSystemColor() {
+    const color = this.systemService.color;
+    console.log('system color: ', color);
+    this.replaceClassName('bg-primary-', `bg-${this.systemService.color}-`);
+    this.replaceClassName('text-primary-', `text-${this.systemService.color}-`);
+    this.replaceClassName('border-primary-', `border-${this.systemService.color}-`);
+    this.replaceClassName('ring-primary-', `ring-${this.systemService.color}-`);
+    this.replaceClassName('hover:bg-primary-', `hover:bg-${this.systemService.color}-`);
+  }
+
+  private replaceClassName(prefix: string, replacement: string) {
+    const elements = document.querySelectorAll(`[class*="${prefix}"]`);
+    for (let i = 0; i < elements.length; i++) {
+      const classList = elements[i].classList;
+      for (let j = 0; j < classList.length; j++) {
+        if (classList[j].startsWith(prefix)) {
+          classList.replace(
+            classList[j],
+            classList[j].replace(prefix, replacement)
+          );
+        }
+      }
+    }
+  }
+
   loadRoomInfo() {
     this.roomKeySerivce.getRoomKeys$().subscribe((roomKeys) => {
       this.roomKeyCollection = roomKeys as IRoomKeyCollection;

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SubjectService } from 'src/app/core/services/subject.service';
 import Swal from 'sweetalert2';
+import { SystemService } from 'src/app/core/services/system.service';
 
 @Component({
     selector: 'app-add-subject',
@@ -13,7 +14,8 @@ export class AddSubjectComponent implements OnInit {
     constructor(
         private subjectService: SubjectService,
         private fb: FormBuilder,
-        private router: Router
+        private router: Router,
+        public systemService: SystemService
     ) {}
 
     ngOnInit(): void {

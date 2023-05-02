@@ -87,7 +87,7 @@
                         <input formControlName="status" type="radio" name="status" id="1" value="active"
                                class="peer hidden" checked />
                         <label for="1"
-                               class="rounded-l-md border-r border-gray-300 text-gray-700 dark:text-night-200 dark:border-night-500 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200">Active</label>
+                               class="rounded-l-md border-r border-gray-300 text-gray-700 dark:text-night-200 dark:border-night-500 px-3 py-3 block cursor-pointer select-none text-center peer-checked:first-line:text-white hover:bg-gray-200" [ngClass]="'peer-checked:border-' + systemService.color + '-700 peer-checked:bg-' + systemService.color + '-700'">Active</label>
                     </div>
 
 
@@ -96,7 +96,7 @@
                                class="peer hidden" />
                         <label
                                for="2"
-                               class="rounded-r-md border-gray-300 text-gray-700 dark:text-night-200 dark:border-night-500 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200">Inactive</label>
+                               class="rounded-r-md border-gray-300 text-gray-700 dark:text-night-200 dark:border-night-500 px-3 py-3 block cursor-pointer select-none text-center peer-checked:first-line:text-white hover:bg-gray-200" [ngClass]="'peer-checked:border-' + systemService.color + '-700 peer-checked:bg-' + systemService.color + '-700'">Inactive</label>
                     </div>
 
                 </div>
@@ -136,7 +136,7 @@
                 Cancel
             </button>
             <button type="submit"
-                    class="relative mb-10 button-colored">
+                    class="relative mb-10 button-size" [ngClass]="'bg-' + systemService.color + '-700 hover:bg-' + systemService.color + '-600 border-' + systemService.color + '-700'">
                 Save
             </button>
         </div>

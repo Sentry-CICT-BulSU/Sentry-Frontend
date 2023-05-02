@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { EditSemesterComponent } from './pages/edit-semester/edit-semester.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -36,6 +37,7 @@ import { EditSemesterComponent } from './pages/edit-semester/edit-semester.compo
         MatInputModule,
         MatNativeDateModule,
         MatFormFieldModule,
+        NgxPaginationModule,
     ],
 })
 

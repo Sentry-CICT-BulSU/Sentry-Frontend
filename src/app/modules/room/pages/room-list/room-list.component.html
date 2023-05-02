@@ -8,7 +8,7 @@
       </div>
     </div>
     <button type="button" [routerLink]="['/room/add-room']"
-            class="flex items-center justify-center button-colored">
+            class="flex items-center justify-center button-size" [ngClass]="'bg-' + systemService.color + '-700 hover:bg-' + systemService.color + '-600 border-' + systemService.color + '-700'">
       <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
         add
       </span>

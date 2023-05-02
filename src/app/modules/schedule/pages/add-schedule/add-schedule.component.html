@@ -1,155 +1,158 @@
 <div class="inline-block mb-4">
-    <h3 class="font-medium text-gray-900 text-2xl dark:text-white">
-        Schedule
-    </h3>
-    <div class="space-x-1 text-sm font-medium text-gray-400 dark:text-night-300">
-        <p>
-            Enter necessary details to add faculty schedule.
-        </p>
-    </div>
+  <h3 class="font-medium text-gray-900 text-2xl dark:text-white">
+    Schedule
+  </h3>
+  <div class="space-x-1 text-sm font-medium text-gray-400 dark:text-night-300">
+    <p>
+      Enter necessary details to add faculty schedule.
+    </p>
+  </div>
 </div>
 
-<pre>
+<pre *ngIf="newScheduleForm">
     {{newScheduleForm.value|json}}
 </pre>
 
-<form class="grid grid-cols-1" [formGroup]="newScheduleForm" (ngSubmit)="onSubmit()" novalidate>
-    <!-- Separator -->
-    <div class="py-6">
-        <hr class="border-solid border-gray-200 dark:border-night-500" />
+<form class="grid grid-cols-1" *ngIf="newScheduleForm" [formGroup]="newScheduleForm" (ngSubmit)="onSubmit()" novalidate>
+  <!-- Separator -->
+  <div class="py-6">
+    <hr class="border-solid border-gray-200 dark:border-night-500" />
+  </div>
+
+  <div class="grid md:grid-cols-8 gap-8 pb-6">
+    <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
+      <p>Faculty</p>
     </div>
 
-    <div class="grid md:grid-cols-8 gap-8 pb-6">
-        <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
-            <p>Faculty</p>
-        </div>
-
-        <div class="relative col-span-2">
-            <select formControlName="faculty" name="faculty" id="faculty" class="peer block">
-                <option>
-                    Gabriel Galang
-                </option>
-            </select>
-        </div>
-
-        <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
-            <p>Room</p>
-        </div>
-
-        <div class="relative col-span-2">
-            <select formControlName="room" name="room" id="room" class="peer block">
-                <option>
-                    IT1
-                </option>
-            </select>
-        </div>
-
+    <div class="relative col-span-2">
+      <select formControlName="faculty" name="faculty" id="faculty" class="peer block">
+        <option *ngFor="let faculty of faculty|async" [value]="faculty.id">
+          {{faculty.full_name}}
+        </option>
+      </select>
     </div>
 
-
-    <div class="grid md:grid-cols-8 gap-8 pb-6">
-        <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
-            <p>Subject</p>
-        </div>
-
-        <div class="relative col-span-2">
-            <select formControlName="subject" name="subject" id="subject" class="peer block">
-                <option>
-                    Elective 5
-                </option>
-            </select>
-        </div>
-
-        <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
-            <p>Section</p>
-        </div>
-
-        <div class="relative col-span-2">
-            <select formControlName="section" name="section" id="section" class="peer block">
-                <option>
-                    BSIT 4K
-                </option>
-            </select>
-        </div>
-
+    <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
+      <p>Room</p>
     </div>
 
-
-    <div class="grid md:grid-cols-8 gap-8 pb-6">
-        <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
-            <p>Semester</p>
-        </div>
-
-        <div class="relative col-span-2">
-            <select formControlName="semester" name="semester" id="semester" class="peer block">
-                <option>
-                    1st Semester
-                </option>
-            </select>
-        </div>
+    <div class="relative col-span-2">
+      <select formControlName="room" name="room" id="room" class="peer block">
+        <option *ngFor="let room of room|async" [value]="room.id">
+          {{room.name}}
+        </option>
+      </select>
     </div>
 
-    <div class="grid md:grid-cols-8 gap-8 pb-6">
-        <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
-            <p>Schedule</p>
-        </div>
+  </div>
 
-        <div class="relative md:col-span-4 col-span-3">
-            <!-- tabs -->
-            <div formGroupName="active_days" class="grid w-full grid-cols-7 rounded-md border border-gray-300 text-xs">
-                <div *ngFor="let day of activeDaysArray; let i = index">
-                    <input [formControlName]="day" type="checkbox" [name]="day" [id]="day" [value]="day"
-                        class="peer hidden" />
-                    <label [for]="day" [ngClass]="{'rounded-l-md':i===0,'rounded-r-md':i===activeDaysArray.length-1}"
-                        class="border-r border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:first-line:text-white hover:bg-gray-200">
-                        {{day}}
-                    </label>
-                </div>
-            </div>
-        </div>
+
+  <div class="grid md:grid-cols-8 gap-8 pb-6">
+    <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
+      <p>Subject</p>
     </div>
 
-
-    <div class="grid md:grid-cols-8 gap-8 pb-6">
-        <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
-            <p>Start Time</p>
-        </div>
-
-        <div class="relative col-span-2">
-            <select name="faculty" id="faculty" class="peer block">
-                <option>
-                    12:00 pm
-                </option>
-            </select>
-        </div>
-
-        <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
-            <p>End Time</p>
-        </div>
-
-        <div class="relative col-span-2">
-            <select name="room" id="room" class="peer block">
-                <option>
-                    2:00 pm
-                </option>
-            </select>
-        </div>
-
+    <div class="relative col-span-2">
+      <select formControlName="subject" name="subject"
+              id="subject" class="peer block">
+        <option *ngFor="let subject of subject|async" [value]="subject.id">
+          {{subject.title}}
+        </option>
+      </select>
     </div>
 
-    <!-- Separator -->
-    <div class="py-6">
-        <hr class="border-solid border-gray-200 dark:border-night-500" />
+    <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
+      <p>Section</p>
     </div>
 
-    <div class="flex items-center justify-end space-x-3">
-        <button type="reset"
-            class="relative mb-10 flex w-20 justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
-            Cancel
-        </button>
-        <button type="submit"
-            class="relative mb-10 flex w-20 justify-center rounded-md border border-transparent bg-primary-700 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-primary-600">
-            Save
-        </button>
+    <div class="relative col-span-2">
+      <select formControlName="section" name="section"
+              id="section" class="peer block">
+        <option *ngFor="let section of section|async" [value]="section.id">
+          {{section.name}}
+        </option>
+      </select>
     </div>
+
+  </div>
+
+
+  <div class="grid md:grid-cols-8 gap-8 pb-6">
+    <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
+      <p>Semester</p>
+    </div>
+
+    <div class="relative col-span-2">
+      <select formControlName="semester" name="semester"
+              id="semester" class="peer block">
+        <option *ngFor="let semester of semester|async" [value]="semester.id">
+          {{semester.name_acad_yr}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-8 gap-8 pb-6">
+    <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
+      <p>Schedule</p>
+    </div>
+
+    <div class="relative md:col-span-4 col-span-3">
+      <!-- tabs -->
+      <div formGroupName="active_days" class="grid w-full grid-cols-7 rounded-md border border-gray-300 text-xs">
+        <div *ngFor="let day of activeDaysArray; let i = index">
+          <input [formControlName]="day" type="checkbox" [name]="day" [id]="day" [value]="day"
+                 class="peer hidden" />
+          <label [for]="day" [ngClass]="{'rounded-l-md':i===0,'rounded-r-md':i===activeDaysArray.length-1}" [ngClass]="'peer-checked:bg-' + systemService.color + '-700'"
+                 class="border-r border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:first-line:text-white hover:bg-gray-200">
+            {{day}}
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="grid md:grid-cols-8 gap-8 pb-6">
+    <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
+      <p>Start Time</p>
+    </div>
+
+    <div class="relative col-span-2">
+      <select formControlName="time_start" name="time_start" id="time_start" class="peer block">
+        <option *ngFor="let time of timeStart" [value]="time.value">
+          {{time.label}}
+        </option>
+      </select>
+    </div>
+
+    <div class="space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
+      <p>End Time</p>
+    </div>
+
+    <div class="relative col-span-2">
+      <select formControlName="time_end" name="time_end" id="time_end" class="peer block">
+        <option *ngFor="let time of timeEnd" [value]="time.value">
+          {{time.label}}
+        </option>
+      </select>
+    </div>
+
+  </div>
+
+  <!-- Separator -->
+  <div class="py-6">
+    <hr class="border-solid border-gray-200 dark:border-night-500" />
+  </div>
+
+  <div class="flex items-center justify-end space-x-3">
+    <button type="reset"
+            class="relative mb-10 flex w-20 justify-center rounded-md border border-gray-200 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none hover:bg-gray-200">
+      Cancel
+    </button>
+    <button type="submit" [ngClass]="'bg-' + systemService.color + '-700'"
+            class="relative mb-10 flex w-20 justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium text-white focus:outline-none hover:bg-primary-600">
+      Save
+    </button>
+  </div>
 </form>

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ISemester, ISemesterCollection } from 'src/app/core/models';
 import { SemesterService } from 'src/app/core/services/semester.service';
 import Swal from 'sweetalert2';
+import { SystemService } from 'src/app/core/services/system.service';
 
 @Component({
   selector: 'app-semester-list',
@@ -17,11 +18,14 @@ export class SemesterListComponent implements OnInit {
   inactiveSemesters?: ISemester[];
   constructor(
     private semesterService: SemesterService,
-    private router: Router
+    private router: Router,
+    public systemService: SystemService
   ) {}
 
+  p = 1;
+
   getStatusClass(status: string): string {
-    return status === 'active'
+    return status === 'Active'
       ? 'bg-green-500/25 text-green-500'
       : 'bg-gray-300/25 text-gray-500 dark:text-gray-300';
   }
@@ -57,7 +61,37 @@ export class SemesterListComponent implements OnInit {
     });
   }
 
+  initSystemColor() {
+    const color = this.systemService.color;
+    console.log('system color: ', color);
+    this.replaceClassName('bg-primary-', `bg-${this.systemService.color}-`);
+    this.replaceClassName('text-primary-', `text-${this.systemService.color}-`);
+    this.replaceClassName('border-primary-', `border-${this.systemService.color}-`);
+    this.replaceClassName('ring-primary-', `ring-${this.systemService.color}-`);
+    this.replaceClassName('hover:bg-primary-', `hover:bg-${this.systemService.color}-`);
+    this.replaceClassName('scrollbar-track-primary-', `scrollbar-track-${this.systemService.color}-`);
+    this.replaceClassName('scrollbar-thumb-primary-', `scrollbar-thumb-${this.systemService.color}-`);
+    // this.replaceClassName('tab-link', `tab-link-${this.systemService.color}`);
+  }
+
+  private replaceClassName(prefix: string, replacement: string) {
+    const elements = document.querySelectorAll(`[class*="${prefix}"]`);
+    for (let i = 0; i < elements.length; i++) {
+      const classList = elements[i].classList;
+      for (let j = 0; j < classList.length; j++) {
+        if (classList[j].startsWith(prefix)) {
+          classList.replace(
+            classList[j],
+            classList[j].replace(prefix, replacement)
+          );
+        }
+      }
+    }
+  }
+
+
   ngOnInit(): void {
+    this.initSystemColor();
     this.loadAll();
     this.loadActive();
     this.loadInactive();

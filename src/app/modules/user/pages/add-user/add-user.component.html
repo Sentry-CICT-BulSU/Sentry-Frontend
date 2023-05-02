@@ -190,7 +190,7 @@
             Cancel
         </button>
         <button type="submit"
-            class="mb-10 button-colored">
+            class="mb-10 button-size" [ngClass]="'bg-' + systemService.color + '-700 hover:bg-' + systemService.color + '-600 border-' + systemService.color + '-700'">
             Save
         </button>
     </div>

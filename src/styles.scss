@@ -74,35 +74,89 @@ $sentry-frontend-theme: mat.define-light-theme(
     .tab-content {
         @apply hidden;
     }
+
+
+
+
     .tab-link.active {
-        @apply border-primary-700 bg-primary-700 text-white dark:text-white hover:bg-primary-600;
+        @apply border-gray-700 bg-gray-700 dark:border-night-800 dark:bg-night-800 hover:dark:bg-night-600 text-white dark:text-white hover:bg-gray-600;
     }
     .tab-link.grp-active {
-        @apply border-primary-700 text-primary-700
+        @apply border-gray-700 text-gray-700
     }
+    .tab-link-orange.active {
+      @apply border-orange-700 bg-orange-700 text-white dark:text-white hover:bg-orange-600;
+  }
+    .tab-link-orange.grp-active {
+      @apply border-orange-700 text-orange-700
+    }
+    .tab-link-blue.active {
+      @apply border-blue-700 bg-blue-700 text-white dark:text-white hover:bg-blue-600;
+  }
+    .tab-link-blue.grp-active {
+      @apply border-blue-700 text-blue-700
+    }
+    .tab-link-teal.active {
+      @apply border-teal-700 bg-teal-700 text-white dark:text-white hover:bg-teal-600;
+  }
+    .tab-link-teal.grp-active {
+      @apply border-teal-700 text-teal-700
+    }
+    .tab-link-red.active {
+      @apply border-red-700 bg-red-700 text-white dark:text-white hover:bg-red-600;
+  }
+    .tab-link-red.grp-active {
+      @apply border-red-700 text-red-700
+    }
+
+
     .tab-link {
         @apply cursor-pointer;
     }
     .tab-content.active {
         @apply block;
     }
+
+
+
+
     .button-plain {
         @apply border border-gray-300 dark:border-night-500 rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-night-200 dark:hover:bg-night-500
+    }
+    .button-size {
+      @apply text-white rounded-md px-4 py-2 text-sm font-medium;
     }
     .button-colored {
         @apply border border-primary-700 hover:bg-primary-600 bg-primary-700 text-white rounded-md px-4 py-2 text-sm font-medium;
     }
+    .button-orange {
+      @apply border border-orange-700 hover:bg-orange-600 bg-orange-700 text-white rounded-md px-4 py-2 text-sm font-medium;
+    }
+    .button-blue {
+      @apply border border-blue-700 hover:bg-blue-600 bg-blue-700 text-white rounded-md px-4 py-2 text-sm font-medium;
+    }
+    .button-teal {
+      @apply border border-teal-700 hover:bg-teal-600 bg-teal-700 text-white rounded-md px-4 py-2 text-sm font-medium;
+    }
+    .button-red {
+      @apply border border-red-700 hover:bg-red-600 bg-red-700 text-white rounded-md px-4 py-2 text-sm font-medium;
+    }
+
+
+
+
+
     .search-bar {
         @apply h-full w-full outline-none bg-transparent focus:border-none focus:ring-0 dark:bg-transparent text-sm text-gray-700 pr-2 border-none;
     }
     .tab-button-1{
-        @apply relative selection:flex justify-center rounded-l-md border border-gray-300 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-100 dark:text-night-200 dark:hover:bg-night-500;
+        @apply relative selection:flex justify-center rounded-l-md border border-gray-300 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-700 focus:outline-none hover:bg-gray-100 dark:text-night-200 dark:hover:bg-night-500;
     }
     .tab-button-2{
-        @apply relative selection:flex justify-center border-y border-gray-300 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-100 dark:text-night-200 dark:hover:bg-night-500;
+        @apply relative selection:flex justify-center border-y border-gray-300 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-700 focus:outline-none hover:bg-gray-100 dark:text-night-200 dark:hover:bg-night-500;
     }
     .tab-button-3{
-        @apply relative selection:flex justify-center rounded-r-md border border-gray-300 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-100 dark:text-night-200 dark:hover:bg-night-500;
+        @apply relative selection:flex justify-center rounded-r-md border border-gray-300 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-700 focus:outline-none hover:bg-gray-100 dark:text-night-200 dark:hover:bg-night-500;
     }
     .text-heading{
         @apply font-medium text-gray-900 md:text-3xl text-2xl dark:text-white;
@@ -111,7 +165,7 @@ $sentry-frontend-theme: mat.define-light-theme(
         @apply space-x-1 md:text-base text-sm font-medium text-gray-400 dark:text-night-300;
     }
     .ngx-pagination .current {
-        @apply bg-primary-700 rounded-md #{!important};
+        @apply bg-gray-700 dark:bg-night-900 rounded-md #{!important};
     }
     .ngx-pagination {
         @apply  px-4 py-2 text-sm font-medium text-gray-700  dark:text-night-200 mb-0 #{!important};
@@ -221,4 +275,6 @@ input[type="search"]::-webkit-search-results-decoration {
   .mat-mdc-progress-spinner {
     --mdc-circular-progress-active-indicator-color: #6941C6;
 }
+
+
 

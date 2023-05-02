@@ -16,7 +16,8 @@
         <ng-template #parentMenu let-sub="sub">
           <a
             [routerLink]="sub.route"
-            routerLinkActive="text-white bg-primary-800"
+            routerLinkActive="text-white"
+            [routerLinkActive]="'bg-' + systemService.color + '-800'"
             [routerLinkActiveOptions]="{ exact: true }"
             class="inline-block w-full px-4 py-2 text-sm font-medium tracking-wide text-gray-100">
             {{ sub.label }}

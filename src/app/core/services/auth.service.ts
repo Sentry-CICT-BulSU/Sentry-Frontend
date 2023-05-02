@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { environment as env } from './../../../environments/environment';
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { IUser } from '../models';
+import { IUser, IUserCollection } from '../models';
 import {
   BehaviorSubject,
   Observable,
@@ -16,6 +16,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import { PropertiesService } from './properties.service';
 import CryptoJS from 'crypto-js';
 import sha256 from 'crypto-js/sha256';
+import { url } from 'inspector';
 
 @Injectable()
 export class AuthService extends PropertiesService {
@@ -55,7 +56,7 @@ export class AuthService extends PropertiesService {
 
   getUser$() {
     return this.http
-      .get<IUser>(env.apiRootRoute + '/api/user', {
+      .get<IUser>(this.url, {
         headers: this.options.headers,
       })
       .pipe(
@@ -83,6 +84,14 @@ export class AuthService extends PropertiesService {
         this.current_user_subject$?.next(this.current_user);
       })
     );
+  }
+
+  updateUser$(body: any) {
+    return this.http.patch<IUserCollection>(this.url, body);
+  }
+
+  get url() {
+    return env.apiRootRoute + '/api/user';
   }
 
   get isAuthenticated() {

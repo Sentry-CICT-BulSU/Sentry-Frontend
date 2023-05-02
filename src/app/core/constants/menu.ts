@@ -8,7 +8,7 @@ export class Menu {
     {
       group: 'Dashboard',
       separator: true,
-      type: '*',
+      type: 'Admin',
       items: [
         {
           icon: 'home',
@@ -26,9 +26,9 @@ export class Menu {
       items: [
         {
           icon: 'bar_chart',
-          label: 'Faculty and Schedule',
+          label: 'Attendance and Schedule',
           children: [
-            { label: 'Faculty Management', route: '/faculty' },
+            // { label: 'Faculty Management', route: '/faculty' },
             { label: 'Schedule Management', route: '/schedule' },
             { label: 'Attendance Monitoring', route: '/attendance' },
           ],
@@ -40,6 +40,7 @@ export class Menu {
             { label: 'Semester Management', route: '/semester' },
             { label: 'Subject Management', route: '/subject' },
             { label: 'Room Management', route: '/room' },
+            { label: 'Section Management', route: '/section' },
           ],
         },
       ],
@@ -96,7 +97,7 @@ export class Menu {
     {
       group: 'Faculty',
       separator: true,
-      type: 'faculty', //change * to Faculty to hide
+      type: 'Faculty', //change * to Faculty to hide
       items: [
         {
           icon: 'home',

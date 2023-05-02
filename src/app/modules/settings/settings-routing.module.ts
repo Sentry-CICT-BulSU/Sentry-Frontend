@@ -8,25 +8,23 @@ import { SystemSettingsComponent } from './pages/system-settings/system-settings
 
 const routes: Routes = [
   {
-
     path: '',
     component: SettingsComponent,
     children: [
-
-        { path: '', redirectTo: 'personal-information', pathMatch: 'full' },
-        { path: 'personal-information', component: PersonalInformationComponent },
-        { path: 'password-and-security', component: PasswordAndSecurityComponent },
-        { path: 'system-settings', component: SystemSettingsComponent },
-        { path: '**', redirectTo: 'personal-information', pathMatch: 'full' },
+      { path: '', redirectTo: 'personal-information', pathMatch: 'full' },
+      { path: 'personal-information', component: PersonalInformationComponent },
+      {
+        path: 'password-and-security',
+        component: PasswordAndSecurityComponent,
+      },
+      { path: 'system-settings', component: SystemSettingsComponent },
+      { path: '**', redirectTo: 'personal-information', pathMatch: 'full' },
     ],
-},
-
+  },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-
 export class SettingsRoutingModule {}

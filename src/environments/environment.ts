@@ -1,19 +1,26 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-const app_url = 'http://localhost:4200';
-const api_url = 'http://cict-sentry.test';
-export const environment = {
-    production: false,
-    apiRootRoute: api_url,
-    clientRoot: app_url,
-    clientId: '2',
-    clientSecret: 'M14ZncSPP7dTzXjXpYzuaQImjBUvJOd3QfYsg7TJ',
 
-    oauthClientId: '2',
-    oauthLoginUrl: api_url + '/oauth/authorize',
-    oauthTokenUrl: api_url + '/oauth/token',
-    oauthCallbackUrl: app_url + '/auth/callback',
+// const app_url = 'http://localhost:4200';
+// const api_url = 'https://sentry-backend.up.railway.app';
+// const app_id = '2';
+
+const app_url = 'http://localhost:4200';
+const api_url = 'https://sentry-backend.up.railway.app';
+const app_id = '2';
+
+export const environment = {
+  production: false,
+  apiRootRoute: api_url,
+  clientRoot: app_url,
+
+  oauthClientId: app_id,
+  oauthLoginUrl: api_url + '/oauth/authorize',
+  oauthTokenUrl: api_url + '/oauth/token',
+  oauthCallbackUrl: app_url + '/auth/callback',
+
+  MAX_FILE_SIZE: 15000,
 };
 
 /*

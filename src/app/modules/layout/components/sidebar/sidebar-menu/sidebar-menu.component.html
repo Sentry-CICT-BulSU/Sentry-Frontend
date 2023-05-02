@@ -1,3 +1,28 @@
+<!-- <div
+  class="mt-6 mb-4 group flex h-9 cursor-pointer items-center justify-start rounded p-2 bg-primary-600 dark:bg-night-500 dark:hover:bg-night-600">
+
+  <span class="material-symbols-rounded text-gray-100 text-center w-5">
+    search
+  </span>
+
+  <form class="truncate text-sm font-medium tracking-wide text-gray-100 outline-none focus:outline-none" action="#"
+    method="GET">
+
+    <input
+      class="search-bar bg-transparent truncate text-sm outline-none border-none font-medium tracking-wide placeholder:text-gray-100 text-gray-100 focus:outline-none"
+      type="text" id="search" placeholder="Search.." />
+  </form>
+
+  <div class="fixed w-full" *ngIf="!(showSideBar$ | async)">
+    <span
+      class="z-1 absolute left-12 -top-4 w-auto min-w-max origin-left scale-0 rounded-md bg-black p-2 text-xs font-medium text-white shadow-md transition-all duration-200 group-hover:scale-100 dark:bg-white dark:text-night-900">
+      Search
+    </span>
+  </div>
+</div> -->
+
+
+
 <!-- This whole code is inside a div. The *ngFor directive iterates over the pagesMenu$ observable to create a menu for each item.
   This is in the sidebar-menu.component.ts -->
 
@@ -50,7 +75,7 @@
           <!-- The routerLink directive is used to set the link to navigate to when the menu item is clicked. -->
 
           <div
-               routerLinkActive="bg-primary-800"
+              [routerLinkActive]="'bg-' + systemService.color + '-800'"
                [routerLink]="[item.route]"
                class="flex h-9 cursor-pointer items-center justify-start rounded text-gray-100 hover:bg-primary-600
              dark:hover:bg-night-600">

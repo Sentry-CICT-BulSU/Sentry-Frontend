@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IRoom, IRoomCollection } from 'src/app/core/models';
 import { RoomService } from 'src/app/core/services/room.service';
+import { SystemService } from 'src/app/core/services/system.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -127,7 +128,7 @@ export class RoomListComponent implements OnInit {
     });
   }
 
-  constructor(private roomService: RoomService, private router: Router) {}
+  constructor(private roomService: RoomService, private router: Router, public systemService: SystemService) {}
 
   ngOnInit(): void {
     this.initComponent();

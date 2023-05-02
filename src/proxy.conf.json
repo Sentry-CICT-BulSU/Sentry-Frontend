@@ -1,10 +1,10 @@
 {
-    "/api/*": {
-        "target": "http://la-passport.test",
-        "secure": false
-    },
-    "/oauth/*": {
-        "target": "http://la-passport.test",
-        "secure": false
-    }
+  "/api/*": {
+    "target": "http://cict-sentry.test",
+    "secure": false
+  },
+  "/oauth/*": {
+    "target": "http://cict-sentry.test",
+    "secure": false
+  }
 }

@@ -53,7 +53,7 @@
            Preview
         </button>
         <button type="button"
-        class="my-auto flex-none button-colored">
+        class="my-auto flex-none button-size" [ngClass]="'bg-' + systemService.color + '-700 hover:bg-' + systemService.color + '-600 border-' + systemService.color + '-700'">
         Generate Report
         </button>
     </div>

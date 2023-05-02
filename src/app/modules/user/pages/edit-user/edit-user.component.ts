@@ -6,6 +6,7 @@ import { IUser, IUserCollection } from 'src/app/core/models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { User } from 'src/app/core/constants/user';
+import { SystemService } from 'src/app/core/services/system.service';
 
 // Defining a new component with the selector 'app-dashboard' and the template URL 'dashboard.component.html'
 @Component({
@@ -26,7 +27,8 @@ export class EditUserComponent implements OnInit {
     private route: ActivatedRoute,
     private adminService: AdminService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    public systemService: SystemService
   ) {}
 
   loadUser() {
