@@ -29,10 +29,15 @@ export class RoomKeyLogsService extends PropertiesService {
     }
   }
 
-  getRoomKeyLogs$() {
-    return this.http.get<IRoomKeyLogCollection>(this.url, {
-      headers: this.options.headers,
-    });
+  getRoomKeyLogs$(query?: any) {
+    return query
+      ? this.http.get<IRoomKeyLogCollection>(this.url, {
+          headers: this.options.headers,
+          params: query,
+        })
+      : this.http.get<IRoomKeyLogCollection>(this.url, {
+          headers: this.options.headers,
+        });
   }
   getAvailableRoomKeys$() {
     return this.http.get<IAvailableKeys>(this.url + '/available', {

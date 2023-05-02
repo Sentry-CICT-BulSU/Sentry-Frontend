@@ -9,27 +9,21 @@ import { KeyLogsComponent } from './pages/key-logs/key-logs.component';
 
 const routes: Routes = [
   {
-
     path: '',
     component: KeysComponent,
     children: [
-
       { path: '', redirectTo: 'keys-overview', pathMatch: 'full' },
       { path: 'keys-overview', component: KeysOverviewComponent },
       { path: 'classroom-keys', component: ClassroomKeysComponent },
       { path: 'key-logs', component: KeyLogsComponent },
       { path: 'faculty-keys', component: FacultyKeysComponent },
       { path: '**', redirectTo: 'keys-overview', pathMatch: 'full' },
-
     ],
-},
-
+  },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-
 export class KeysRoutingModule {}

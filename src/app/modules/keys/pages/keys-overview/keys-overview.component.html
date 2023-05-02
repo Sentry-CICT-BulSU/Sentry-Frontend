@@ -53,7 +53,8 @@
       <span class="text-gray-500 text-[14px]">Keep track the attendance of the faculty.</span>
     </div>
 
-    <button *ngIf="false" [routerLink]="['/keys/key-logs']" class="flex justify-center items-center gap-2 button-plain w-fit mx-4">
+    <button *ngIf="false" [routerLink]="['/keys/key-logs']"
+            class="flex justify-center items-center gap-2 button-plain w-fit mx-4">
       <span>
         <i class="fa-solid fa-chevron-right"></i>
         <i class="fa-solid fa-chevron-right"></i>
@@ -61,19 +62,18 @@
       <span>Proceed to key logs</span>
     </button>
 
-
-
     <!-- search bar and filter buttons-->
     <div class="flex flex-col mx-4 gap-2">
       <!-- search bar row -->
       <div class="flex flex-row gap-2 mb-2">
         <div class="grow border-light-dark rounded-lg flex flex-row justify-start items-center px-2">
           <i class="fa-solid fa-magnifying-glass dark:text-night-200"></i>
-          <input class="border-none" type="text" name="faculty-member-search" id="faculty-member-search" placeholder="Search">
+          <input class="border-none" type="text" name="faculty-member-search" id="faculty-member-search"
+                 placeholder="Search">
         </div>
 
-        <button class="shrink-0 button-plain w-fit" 
-          type="submit">
+        <button class="shrink-0 button-plain w-fit"
+                type="submit">
           <i class="fa-solid fa-filter"></i>
         </button>
       </div>
@@ -87,87 +87,92 @@
     </div>
 
     <div id="keylogs-all" class="tab-content active">
-      <ul class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
+      <ul *ngIf="keyLogs" class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
         <!-- list header -->
-        <div class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
+        <div
+             class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
           <div class="basis-2/5">
             <button class="w-fit flex flex-row items-center justify-start gap-2">
-              <span>Faculty</span> 
+              <span>Faculty</span>
               <i class="fa-solid fa-arrow-up"></i>
             </button>
           </div>
           <div class="basis-1/5 flex justify-center items-center">
             <button class="w-fit flex flex-row items-center justify-start gap-2">
-              <span>Room</span> 
+              <span>Room</span>
               <i class="fa-solid fa-arrow-up"></i>
             </button>
           </div>
           <div class="basis-1/5 flex justify-center items-center">
-              <span>Key Monitoring</span> 
+            <span>Key Monitoring</span>
           </div>
-  
+
           <div class="basis-1/5 flex justify-center items-center">
             <button class="w-fit flex flex-row items-center justify-start gap-2">
-              <span>Date and Time</span> 
+              <span>Date and Time</span>
               <i class="fa-solid fa-arrow-up"></i>
             </button>
           </div>
         </div>
-  
-  
+
         <!-- faculty member entries -->
-        <li *ngFor="let loop2 of '01234567890123123123'.split('')" class="flex flex-row p-4">
+        <li *ngFor="let keyLog of keyLogs" class="flex flex-row p-4">
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
+            <div
+                 class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
-  
+
             <!-- name and email -->
             <div class="text-[14px] min-w-0">
-              <div class="text-gray-900 min-w-0 truncate dark:text-white">First_name Last_name</div>
-              <div class="text-gray-500 min-w-0 truncate">name@email.com</div>
+              <div class="text-gray-900 min-w-0 truncate dark:text-white">
+                {{ keyLog.faculty?.full_name }}
+              </div>
+              <div class="text-gray-500 min-w-0 truncate">
+                {{ keyLog.faculty?.email }}
+              </div>
             </div>
           </div>
-  
+
           <!-- key monitoring badges -->
           <div class="shrink-0 basis-1/5 text-center flex justify-center items-center min-w-0 truncate dark:text-white">
-            <span>IT 1</span>
+            <span>
+              {{ keyLog.faculty?.full_name }}
+            </span>
           </div>
-  
-          <!-- key monitoring badges -->
+
           <div class="shrink-0 basis-1/5 flex flex-col justify-center items-center">
             <!-- returned -->
-            <div class="shrink-0 badge badge-accent">Returned</div>
-  
-  
+            <div *ngIf="keyLog.status==='Returned'" class="shrink-0 badge badge-accent">Returned</div>
             <!-- borrowed -->
-            <div class="shrink-0 badge badge-secondary">Borrowed</div>
-  
-  
+            <div *ngIf="keyLog.status==='Borrowed'" class="shrink-0 badge badge-secondary">Borrowed</div>
             <!-- lost -->
-            <div class="shrink-0 badge badge-error">Lost</div>
+            <div *ngIf="keyLog.status==='Lost'" class="shrink-0 badge badge-error">Lost</div>
           </div>
-  
-  
+
+
           <!-- date and time -->
-          <div class="min-w-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
-            <div class="min-w-0 text-center dark:border-night-200 dark:text-night-200">03/25/2023 - 11:10 am</div>
+          <div
+               class="min-w-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
+            <div class="min-w-0 text-center dark:border-night-200 dark:text-night-200">
+              {{keyLog.time_block}}
+            </div>
           </div>
         </li>
-  
+
         <!-- pagination -->
-        <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300 
+        <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300
           dark:border-night-500 dark:bg-night-700">
           <button class="btn-square shrink-0 button-plain w-fit">
             <span class="material-icons">
               chevron_left
             </span>
           </button>
-  
+
           <span class="text-center dark:text-night-200">Page 1 out of 10</span>
-  
+
           <button class="btn-square shrink-0 button-plain w-fit">
             <span class="material-icons">
               chevron_right
@@ -178,87 +183,93 @@
     </div>
 
     <div id="keylogs-returned" class="tab-content">
-      <ul class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
+      <ul *ngIf="keyLogsReturned" class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
         <!-- list header -->
-        <div class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
+        <div
+             class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
           <div class="basis-2/5">
             <button class="w-fit flex flex-row items-center justify-start gap-2">
-              <span>Faculty</span> 
+              <span>Faculty</span>
               <i class="fa-solid fa-arrow-up"></i>
             </button>
           </div>
           <div class="basis-1/5 flex justify-center items-center">
             <button class="w-fit flex flex-row items-center justify-start gap-2">
-              <span>Room</span> 
+              <span>Room</span>
               <i class="fa-solid fa-arrow-up"></i>
             </button>
           </div>
           <div class="basis-1/5 flex justify-center items-center">
-              <span>Key Monitoring</span> 
+            <span>Key Monitoring</span>
           </div>
-  
+
           <div class="basis-1/5 flex justify-center items-center">
             <button class="w-fit flex flex-row items-center justify-start gap-2">
-              <span>Date and Time</span> 
+              <span>Date and Time</span>
               <i class="fa-solid fa-arrow-up"></i>
             </button>
           </div>
         </div>
-  
-  
+
         <!-- faculty member entries -->
-        <li *ngFor="let loop2 of '01234567890123123123'.split('')" class="flex flex-row p-4">
+        <li *ngFor="let keyLog of keyLogsReturned" class="flex flex-row p-4">
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
+            <div
+                 class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
-  
+
             <!-- name and email -->
             <div class="text-[14px] min-w-0">
-              <div class="text-gray-900 min-w-0 truncate dark:text-white">First_name Last_name</div>
-              <div class="text-gray-500 min-w-0 truncate">name@email.com</div>
+              <div class="text-gray-900 min-w-0 truncate dark:text-white">
+                {{ keyLog.faculty?.full_name }}
+              </div>
+              <div class="text-gray-500 min-w-0 truncate">
+                {{ keyLog.faculty?.email }}
+              </div>
             </div>
           </div>
-  
+
           <!-- key monitoring badges -->
           <div class="shrink-0 basis-1/5 text-center flex justify-center items-center min-w-0 truncate dark:text-white">
-            <span>IT 1</span>
+            <span>
+              {{ keyLog.faculty?.full_name }}
+            </span>
           </div>
-  
+
           <!-- key monitoring badges -->
           <div class="shrink-0 basis-1/5 flex flex-col justify-center items-center">
             <!-- returned -->
-            <div class="shrink-0 badge badge-accent">Returned</div>
-  
-  
+            <div *ngIf="keyLog.status==='Returned'" class="shrink-0 badge badge-accent">Returned</div>
             <!-- borrowed -->
-            <div class="shrink-0 badge badge-secondary">Borrowed</div>
-  
-  
+            <div *ngIf="keyLog.status==='Borrowed'" class="shrink-0 badge badge-secondary">Borrowed</div>
             <!-- lost -->
-            <div class="shrink-0 badge badge-error">Lost</div>
+            <div *ngIf="keyLog.status==='Lost'" class="shrink-0 badge badge-error">Lost</div>
           </div>
-  
-  
+
+
           <!-- date and time -->
-          <div class="min-w-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
-            <div class="min-w-0 text-center dark:border-night-200 dark:text-night-200">03/25/2023 - 11:10 am</div>
+          <div
+               class="min-w-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
+            <div class="min-w-0 text-center dark:border-night-200 dark:text-night-200">
+              {{keyLog.time_block}}
+            </div>
           </div>
         </li>
-  
+
         <!-- pagination -->
-        <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300 
+        <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300
           dark:border-night-500 dark:bg-night-700">
           <button class="btn-square shrink-0 button-plain w-fit">
             <span class="material-icons">
               chevron_left
             </span>
           </button>
-  
+
           <span class="text-center dark:text-night-200">Page 1 out of 10</span>
-  
+
           <button class="btn-square shrink-0 button-plain w-fit">
             <span class="material-icons">
               chevron_right
@@ -269,87 +280,92 @@
     </div>
 
     <div id="keylogs-borrowed" class="tab-content">
-      <ul class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
+      <ul *ngIf="keyLogsBorrowed" class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
         <!-- list header -->
-        <div class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
+        <div
+             class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
           <div class="basis-2/5">
             <button class="w-fit flex flex-row items-center justify-start gap-2">
-              <span>Faculty</span> 
+              <span>Faculty</span>
               <i class="fa-solid fa-arrow-up"></i>
             </button>
           </div>
           <div class="basis-1/5 flex justify-center items-center">
             <button class="w-fit flex flex-row items-center justify-start gap-2">
-              <span>Room</span> 
+              <span>Room</span>
               <i class="fa-solid fa-arrow-up"></i>
             </button>
           </div>
           <div class="basis-1/5 flex justify-center items-center">
-              <span>Key Monitoring</span> 
+            <span>Key Monitoring</span>
           </div>
-  
+
           <div class="basis-1/5 flex justify-center items-center">
             <button class="w-fit flex flex-row items-center justify-start gap-2">
-              <span>Date and Time</span> 
+              <span>Date and Time</span>
               <i class="fa-solid fa-arrow-up"></i>
             </button>
           </div>
         </div>
-  
-  
+
         <!-- faculty member entries -->
-        <li *ngFor="let loop2 of '01234567890123123123'.split('')" class="flex flex-row p-4">
+        <li *ngFor="let keyLog of keyLogsBorrowed" class="flex flex-row p-4">
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
+            <div
+                 class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
-  
+
             <!-- name and email -->
             <div class="text-[14px] min-w-0">
-              <div class="text-gray-900 min-w-0 truncate dark:text-white">First_name Last_name</div>
-              <div class="text-gray-500 min-w-0 truncate">name@email.com</div>
+              <div class="text-gray-900 min-w-0 truncate dark:text-white">
+                {{ keyLog.faculty?.full_name }}
+              </div>
+              <div class="text-gray-500 min-w-0 truncate">
+                {{ keyLog.faculty?.email }}
+              </div>
             </div>
           </div>
-  
+
           <!-- key monitoring badges -->
           <div class="shrink-0 basis-1/5 text-center flex justify-center items-center min-w-0 truncate dark:text-white">
-            <span>IT 1</span>
+            <span>
+              {{ keyLog.faculty?.full_name }}
+            </span>
           </div>
-  
-          <!-- key monitoring badges -->
+
           <div class="shrink-0 basis-1/5 flex flex-col justify-center items-center">
             <!-- returned -->
-            <div class="shrink-0 badge badge-accent">Returned</div>
-  
-  
+            <div *ngIf="keyLog.status==='Returned'" class="shrink-0 badge badge-accent">Returned</div>
             <!-- borrowed -->
-            <div class="shrink-0 badge badge-secondary">Borrowed</div>
-  
-  
+            <div *ngIf="keyLog.status==='Borrowed'" class="shrink-0 badge badge-secondary">Borrowed</div>
             <!-- lost -->
-            <div class="shrink-0 badge badge-error">Lost</div>
+            <div *ngIf="keyLog.status==='Lost'" class="shrink-0 badge badge-error">Lost</div>
           </div>
-  
-  
+
+
           <!-- date and time -->
-          <div class="min-w-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
-            <div class="min-w-0 text-center dark:border-night-200 dark:text-night-200">03/25/2023 - 11:10 am</div>
+          <div
+               class="min-w-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
+            <div class="min-w-0 text-center dark:border-night-200 dark:text-night-200">
+              {{keyLog.time_block}}
+            </div>
           </div>
         </li>
-  
+
         <!-- pagination -->
-        <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300 
+        <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300
           dark:border-night-500 dark:bg-night-700">
           <button class="btn-square shrink-0 button-plain w-fit">
             <span class="material-icons">
               chevron_left
             </span>
           </button>
-  
+
           <span class="text-center dark:text-night-200">Page 1 out of 10</span>
-  
+
           <button class="btn-square shrink-0 button-plain w-fit">
             <span class="material-icons">
               chevron_right
@@ -360,87 +376,92 @@
     </div>
 
     <div id="keylogs-lost" class="tab-content">
-      <ul class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
+      <ul *ngIf="keyLogsLost" class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
         <!-- list header -->
-        <div class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
+        <div
+             class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
           <div class="basis-2/5">
             <button class="w-fit flex flex-row items-center justify-start gap-2">
-              <span>Faculty</span> 
+              <span>Faculty</span>
               <i class="fa-solid fa-arrow-up"></i>
             </button>
           </div>
           <div class="basis-1/5 flex justify-center items-center">
             <button class="w-fit flex flex-row items-center justify-start gap-2">
-              <span>Room</span> 
+              <span>Room</span>
               <i class="fa-solid fa-arrow-up"></i>
             </button>
           </div>
           <div class="basis-1/5 flex justify-center items-center">
-              <span>Key Monitoring</span> 
+            <span>Key Monitoring</span>
           </div>
-  
+
           <div class="basis-1/5 flex justify-center items-center">
             <button class="w-fit flex flex-row items-center justify-start gap-2">
-              <span>Date and Time</span> 
+              <span>Date and Time</span>
               <i class="fa-solid fa-arrow-up"></i>
             </button>
           </div>
         </div>
-  
-  
+
         <!-- faculty member entries -->
-        <li *ngFor="let loop2 of '01234567890123123123'.split('')" class="flex flex-row p-4">
+        <li *ngFor="let keyLog of keyLogsLost" class="flex flex-row p-4">
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
+            <div
+                 class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
-  
+
             <!-- name and email -->
             <div class="text-[14px] min-w-0">
-              <div class="text-gray-900 min-w-0 truncate dark:text-white">First_name Last_name</div>
-              <div class="text-gray-500 min-w-0 truncate">name@email.com</div>
+              <div class="text-gray-900 min-w-0 truncate dark:text-white">
+                {{ keyLog.faculty?.full_name }}
+              </div>
+              <div class="text-gray-500 min-w-0 truncate">
+                {{ keyLog.faculty?.email }}
+              </div>
             </div>
           </div>
-  
+
           <!-- key monitoring badges -->
           <div class="shrink-0 basis-1/5 text-center flex justify-center items-center min-w-0 truncate dark:text-white">
-            <span>IT 1</span>
+            <span>
+              {{ keyLog.faculty?.full_name }}
+            </span>
           </div>
-  
-          <!-- key monitoring badges -->
+
           <div class="shrink-0 basis-1/5 flex flex-col justify-center items-center">
             <!-- returned -->
-            <div class="shrink-0 badge badge-accent">Returned</div>
-  
-  
+            <div *ngIf="keyLog.status==='Returned'" class="shrink-0 badge badge-accent">Returned</div>
             <!-- borrowed -->
-            <div class="shrink-0 badge badge-secondary">Borrowed</div>
-  
-  
+            <div *ngIf="keyLog.status==='Borrowed'" class="shrink-0 badge badge-secondary">Borrowed</div>
             <!-- lost -->
-            <div class="shrink-0 badge badge-error">Lost</div>
+            <div *ngIf="keyLog.status==='Lost'" class="shrink-0 badge badge-error">Lost</div>
           </div>
-  
-  
+
+
           <!-- date and time -->
-          <div class="min-w-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
-            <div class="min-w-0 text-center dark:border-night-200 dark:text-night-200">03/25/2023 - 11:10 am</div>
+          <div
+               class="min-w-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
+            <div class="min-w-0 text-center dark:border-night-200 dark:text-night-200">
+              {{keyLog.time_block}}
+            </div>
           </div>
         </li>
-  
+
         <!-- pagination -->
-        <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300 
+        <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300
           dark:border-night-500 dark:bg-night-700">
           <button class="btn-square shrink-0 button-plain w-fit">
             <span class="material-icons">
               chevron_left
             </span>
           </button>
-  
+
           <span class="text-center dark:text-night-200">Page 1 out of 10</span>
-  
+
           <button class="btn-square shrink-0 button-plain w-fit">
             <span class="material-icons">
               chevron_right
