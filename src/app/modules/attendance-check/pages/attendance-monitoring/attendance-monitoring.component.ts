@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ISchedule, IScheduleCollection } from 'src/app/core/models';
+import { AttendanceService } from 'src/app/core/services/attendance.service';
 import { ScheduleService } from 'src/app/core/services/schedule.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-attendance-monitoring',
@@ -13,17 +16,24 @@ export class AttendanceMonitoringComponent implements OnInit {
   schedulesActive?: ISchedule[];
   schedulesInactiveCollection?: IScheduleCollection;
   schedulesInactive?: ISchedule[];
-  constructor(private schedulleService: ScheduleService) {}
+  constructor(
+    private scheduleService: ScheduleService,
+    private attendanceService: AttendanceService,
+    private router: Router
+  ) {}
   ngOnInit(): void {
     this.initComponent();
     this.loadSchedules();
   }
 
   loadSchedules() {
-    this.schedulleService.loadSchedules$().subscribe((schedules) => {
-      this.schedulesCollection = schedules;
-      this.schedules = schedules.data as ISchedule[];
-      console.log(schedules);
+    this.scheduleService.loadSchedules$().subscribe({
+      next: (schedules) => {
+        this.schedulesCollection = schedules;
+        this.schedules = schedules.data as ISchedule[];
+        console.log(schedules);
+      },
+      error: (err) => console.debug(err),
     });
   }
 
@@ -53,6 +63,53 @@ export class AttendanceMonitoringComponent implements OnInit {
           'active'
         );
       });
+    });
+  }
+
+  onMarkAsAbsent(schedule_id: number, user_id: number) {
+    const body = {
+      user_id: user_id,
+      status: 'Absent',
+    };
+    this.attendanceService.addAttendance$(schedule_id, body).subscribe({
+      next: (attendance) => {
+        console.log(attendance);
+        this.router.navigate(['/attendance-check/attendance-monitoring']);
+      },
+      error: (err) => console.debug(err),
+    });
+  }
+
+  onDelete(schedule: ISchedule) {
+    Swal.fire({
+      title: 'Mark as Absent',
+      text: 'Proceed to mark as absent: ' + schedule.adviser?.full_name + '?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#6941C6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Proceed!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const body = {
+          user_id: schedule.adviser?.id,
+          status: 'Absent',
+        };
+        this.attendanceService.addAttendance$(schedule.id, body).subscribe({
+          next: (attendance) => {
+            console.log(attendance);
+            Swal.fire({
+              title: 'Success!',
+              text: schedule.adviser?.full_name + ' has been marked as absent.',
+              icon: 'success',
+              showConfirmButton: true,
+            }).then(() => {
+              this.router.navigate(['/attendance-check/attendance-monitoring']);
+            });
+          },
+          error: (err) => console.debug(err),
+        });
+      }
     });
   }
 }

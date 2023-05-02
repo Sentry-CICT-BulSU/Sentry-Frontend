@@ -17,12 +17,12 @@ export class AttendanceService extends PropertiesService {
 
   get url() {
     if (this.user?.type === 'Admin') {
-      return env.apiRootRoute + '/api/admin/attendance';
+      return env.apiRootRoute + '/api/admin/attendances';
     } else if (
       this.user?.type === 'Attendance Checker' ||
       this.user?.type === 'Faculty'
     ) {
-      return env.apiRootRoute + '/api/attendance';
+      return env.apiRootRoute + '/api/attendances';
     } else {
       throw new Error('User is not an admin');
     }
@@ -38,9 +38,10 @@ export class AttendanceService extends PropertiesService {
       headers: this.options.headers,
     });
   }
-  addAttendance$(body: any) {
-    return this.http.post<IAttendanceCollection>(this.url, body, {
-      headers: this.options.headers,
-    });
+  addAttendance$(schedule_id: number, body: any) {
+    return this.http.post<IAttendanceCollection>(
+      env.apiRootRoute + '/api/schedules/' + schedule_id + '/attendances',
+      body
+    );
   }
 }
