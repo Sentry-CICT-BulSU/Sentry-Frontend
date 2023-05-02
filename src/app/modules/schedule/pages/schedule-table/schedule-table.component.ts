@@ -44,7 +44,7 @@ export class ScheduleTableComponent implements OnInit {
   ];
   scheduleData: ScheduleData[] = [
     {
-      day: 'Wednesday',
+      day: 'Wednesday,Friday',
       timeStart: '9:00 am',
       timeEnd: '11:00 am',
       subject: 'Capstone 2',
@@ -96,8 +96,9 @@ export class ScheduleTableComponent implements OnInit {
   }
 
   isSlotFilled(day: string, time: string): ScheduleData | undefined {
-    return this.scheduleData.find((schedule) => {
-      if (schedule.day !== day) {
+    return this.scheduleData.find(schedule => {
+      const days = schedule.day.split(',');
+      if (!days.includes(day)) {
         return false;
       }
       const startTime = this.timeslots.indexOf(schedule.timeStart);
@@ -106,6 +107,7 @@ export class ScheduleTableComponent implements OnInit {
       return currentTime >= startTime && currentTime <= endTime;
     });
   }
+
 
   getSubject(day: string, time: string): string | undefined {
     const slot = this.isSlotFilled(day, time);
