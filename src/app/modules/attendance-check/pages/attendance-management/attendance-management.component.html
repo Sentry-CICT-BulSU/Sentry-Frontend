@@ -1,11 +1,14 @@
 <div class="flex flex-col">
   <!-- title bar -->
   <div class="flex flex-col gap-4 px-4 py-8">
-    <span class="text-[24px] text-gray-900 font-medium dark:text-white">Attendance Management</span>
-    <button type="button" [routerLink]="['/attendance-check/attendance-monitoring']" class="button-plain w-fit">Attendance Monitoring</button>
+    <span class="text-[24px] text-gray-900 font-medium dark:text-white">
+      Attendance Management
+    </span>
+    <button type="button" [routerLink]="['/attendance-check/attendance-monitoring']"
+            class="button-plain w-fit">
+      Attendance Monitoring
+    </button>
   </div>
-
-
 
   <div class="flex flex-col gap-4 xl:flex-row xl:gap-2">
     <!-- attendance breakdown -->
@@ -13,35 +16,36 @@
       <!-- card-title -->
       <div class="flex flex-row gap-4 p-4 justify-between border-b border-gray-300 dark:border-night-500">
         <!-- icon -->
-        <span class="shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[32px] text-white">
+        <span
+              class="shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[32px] text-white">
           <i class="fa-solid fa-chart-simple"></i>
         </span>
-  
+
         <!-- title and description -->
         <div class="grow flex flex-col gap-0">
           <span class="text-gray-700 text-[16px] font-bold dark:text-white">Attendance breakdown</span>
           <span class="text-gray-500 text-[14px]">Keep track the attendance of faculty if present or absent.</span>
         </div>
-  
+
         <!-- triple dot -->
         <button class="shrink-0 h-5 w-5">
           <i class="fa-solid fa-ellipsis-vertical w-full h-full"></i>
         </button>
       </div>
-  
+
       <!-- place chart here -->
       <div class="border-b border-gray-300 dark:border-night-500 xl:grow">
         <div chart-card-column class></div>
       </div>
-  
+
       <!-- card-footer -->
       <div class="flex justify-end items-center p-4">
         <button class="button-plain w-fit">View Full Report</button>
       </div>
     </div>
-  
-  
-  
+
+
+
     <!-- attendance monitored -->
     <div class="border-light-dark rounded-lg mx-4 xl:basis-1/2 xl:ml-2">
       <!-- card-title -->
@@ -51,17 +55,18 @@
           <span class="text-gray-700 text-[16px] font-bold dark:text-white">Attendance monitored</span>
           <span class="text-gray-500 text-[14px]">You’re able to monitor 80% of the attendance</span>
         </div>
-  
+
         <!-- triple dot -->
         <button class="shrink-0 h-5 w-5">
           <i class="fa-solid fa-ellipsis-vertical w-full h-full"></i>
         </button>
       </div>
-  
+
       <!-- place chart here -->
       <div class="flex flex-col gap-4 p-6 border-b border-gray-300 dark:border-night-500">
         <div class="flex flex-row justify-center items-end">
-          <div class="radial-progress text-green-400" style="--value:70; --size:10rem;"><span class="text-black text-[30px] dark:text-night-200">51</span></div>
+          <div class="radial-progress text-green-400" style="--value:70; --size:10rem;"><span
+                  class="text-black text-[30px] dark:text-night-200">51</span></div>
           <div class="shrink-0 badge badge-accent">+12%</div>
         </div>
 
@@ -70,10 +75,11 @@
           <div class="text-gray-500 text-[14px]">You have already monitored 80% of the faculty keep going!</div>
         </div>
       </div>
-  
+
       <!-- card-footer -->
       <div class="flex justify-end items-center p-4">
-        <button [routerLink]="['/attendance-check/attendance-monitoring']" class="flex justify-center items-center gap-2 button-plain w-fit">
+        <button [routerLink]="['/attendance-check/attendance-monitoring']"
+                class="flex justify-center items-center gap-2 button-plain w-fit">
           <span>
             <i class="fa-solid fa-chevron-right"></i>
             <i class="fa-solid fa-chevron-right"></i>
@@ -83,9 +89,9 @@
       </div>
     </div>
   </div>
-  
-  
-  
+
+
+
   <!-- faculty members -->
   <div class="flex flex-col gap-4 pt-8 justify-between">
     <!-- title and description -->
@@ -102,11 +108,12 @@
       <div class="flex flex-row gap-2 mb-2 xl:grow xl:mb-0">
         <div class="grow border-light-dark rounded-lg flex flex-row justify-start items-center px-2">
           <i class="fa-solid fa-magnifying-glass dark:text-night-200"></i>
-          <input class="border-none" type="text" name="faculty-member-search" id="faculty-member-search" placeholder="Search">
+          <input class="border-none" type="text" name="faculty-member-search" id="faculty-member-search"
+                 placeholder="Search">
         </div>
 
-        <button class="shrink-0 button-plain w-fit" 
-          type="submit">
+        <button class="shrink-0 button-plain w-fit"
+                type="submit">
           <i class="fa-solid fa-filter"></i>
         </button>
       </div>
@@ -121,55 +128,58 @@
     <div id="view-all" class="tab-content active">
       <ul class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll xl:max-h-[700px]">
         <!-- list header -->
-        <div class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
+        <div
+             class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
           <div class="basis-2/5">
             <button class="w-fit flex flex-row items-center justify-start gap-2">
-              <span>A-Z</span> 
+              <span>A-Z</span>
               <i class="fa-solid fa-arrow-up"></i>
             </button>
           </div>
           <span class="basis-2/5 text-center">Attendance</span>
-  
-  
+
+
           <!-- this is a space for the action column -->
           <span class="basis-1/5"></span>
         </div>
-  
-  
+
+
         <!-- faculty member entries -->
         <li *ngFor="let loop2 of '01234567890123123123'.split('')" class="flex flex-row p-4">
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
+            <div
+                 class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
-  
+
             <!-- name and email -->
             <div class="text-[14px] min-w-0">
               <div class="text-gray-900 min-w-0 truncate dark:text-white">First_name Last_name</div>
               <div class="text-gray-500 min-w-0 truncate">name@email.com</div>
             </div>
           </div>
-  
-  
+
+
           <!-- attendance -->
           <div class="shrink-0 basis-2/5 flex justify-center items-center">
             <!-- present -->
             <div class="shrink-0 badge badge-accent">Present</div>
-  
-  
+
+
             <!-- absent -->
             <div class="shrink-0 badge badge-secondary">Absent</div>
-  
-  
+
+
             <!-- no action taken -->
             <div class="shrink-0 badge badge-outline dark:border-night-200 dark:text-night-200">No action taken</div>
           </div>
-  
-  
+
+
           <!-- actions -->
-          <div class="shrink-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
+          <div
+               class="shrink-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
             <!-- The button to open modal -->
             <label for="delete-modal" class="cursor-pointer">
               <span class="material-icons">
@@ -183,18 +193,18 @@
             </button>
           </div>
         </li>
-  
+
         <!-- pagination -->
-        <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300 
+        <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300
           dark:border-night-500 dark:bg-night-700">
           <button class="btn-square shrink-0 button-plain w-fit">
             <span class="material-icons">
               chevron_left
             </span>
           </button>
-  
+
           <span class="text-center dark:text-night-200">Page 1 out of 10</span>
-  
+
           <button class="btn-square shrink-0 button-plain w-fit">
             <span class="material-icons">
               chevron_right
@@ -207,55 +217,58 @@
     <div id="monitored" class="tab-content">
       <ul class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll xl:max-h-[700px]">
         <!-- list header -->
-        <div class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
+        <div
+             class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
           <div class="basis-2/5">
             <button class="w-fit flex flex-row items-center justify-start gap-2">
-              <span>A-Z</span> 
+              <span>A-Z</span>
               <i class="fa-solid fa-arrow-up"></i>
             </button>
           </div>
           <span class="basis-2/5 text-center">Attendance</span>
-  
-  
+
+
           <!-- this is a space for the action column -->
           <span class="basis-1/5"></span>
         </div>
-  
-  
+
+
         <!-- faculty member entries -->
         <li *ngFor="let loop2 of '01234567890123123123'.split('')" class="flex flex-row p-4">
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
+            <div
+                 class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
-  
+
             <!-- name and email -->
             <div class="text-[14px] min-w-0">
               <div class="text-gray-900 min-w-0 truncate dark:text-white">First_name Last_name</div>
               <div class="text-gray-500 min-w-0 truncate">name@email.com</div>
             </div>
           </div>
-  
-  
+
+
           <!-- attendance -->
           <div class="shrink-0 basis-2/5 flex justify-center items-center">
             <!-- present -->
             <div class="shrink-0 badge badge-accent">Present</div>
-  
-  
+
+
             <!-- absent -->
             <div class="shrink-0 badge badge-secondary">Absent</div>
-  
-  
+
+
             <!-- no action taken -->
             <div class="shrink-0 badge badge-outline dark:border-night-200 dark:text-night-200">No action taken</div>
           </div>
-  
-  
+
+
           <!-- actions -->
-          <div class="shrink-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
+          <div
+               class="shrink-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
             <!-- The button to open modal -->
             <label for="delete-modal" class="cursor-pointer">
               <span class="material-icons">
@@ -269,18 +282,18 @@
             </button>
           </div>
         </li>
-  
+
         <!-- pagination -->
-        <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300 
+        <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300
           dark:border-night-500 dark:bg-night-700">
           <button class="btn-square shrink-0 button-plain w-fit">
             <span class="material-icons">
               chevron_left
             </span>
           </button>
-  
+
           <span class="text-center dark:text-night-200">Page 1 out of 10</span>
-  
+
           <button class="btn-square shrink-0 button-plain w-fit">
             <span class="material-icons">
               chevron_right
@@ -293,55 +306,58 @@
     <div id="unmonitored" class="tab-content">
       <ul class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll xl:max-h-[700px]">
         <!-- list header -->
-        <div class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
+        <div
+             class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
           <div class="basis-2/5">
             <button class="w-fit flex flex-row items-center justify-start gap-2">
-              <span>A-Z</span> 
+              <span>A-Z</span>
               <i class="fa-solid fa-arrow-up"></i>
             </button>
           </div>
           <span class="basis-2/5 text-center">Attendance</span>
-  
-  
+
+
           <!-- this is a space for the action column -->
           <span class="basis-1/5"></span>
         </div>
-  
-  
+
+
         <!-- faculty member entries -->
         <li *ngFor="let loop2 of '01234567890123123123'.split('')" class="flex flex-row p-4">
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
+            <div
+                 class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
-  
+
             <!-- name and email -->
             <div class="text-[14px] min-w-0">
               <div class="text-gray-900 min-w-0 truncate dark:text-white">First_name Last_name</div>
               <div class="text-gray-500 min-w-0 truncate">name@email.com</div>
             </div>
           </div>
-  
-  
+
+
           <!-- attendance -->
           <div class="shrink-0 basis-2/5 flex justify-center items-center">
             <!-- present -->
             <div class="shrink-0 badge badge-accent">Present</div>
-  
-  
+
+
             <!-- absent -->
             <div class="shrink-0 badge badge-secondary">Absent</div>
-  
-  
+
+
             <!-- no action taken -->
             <div class="shrink-0 badge badge-outline dark:border-night-200 dark:text-night-200">No action taken</div>
           </div>
-  
-  
+
+
           <!-- actions -->
-          <div class="shrink-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
+          <div
+               class="shrink-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
             <!-- The button to open modal -->
             <label for="delete-modal" class="cursor-pointer">
               <span class="material-icons">
@@ -355,18 +371,18 @@
             </button>
           </div>
         </li>
-  
+
         <!-- pagination -->
-        <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300 
+        <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300
           dark:border-night-500 dark:bg-night-700">
           <button class="btn-square shrink-0 button-plain w-fit">
             <span class="material-icons">
               chevron_left
             </span>
           </button>
-  
+
           <span class="text-center dark:text-night-200">Page 1 out of 10</span>
-  
+
           <button class="btn-square shrink-0 button-plain w-fit">
             <span class="material-icons">
               chevron_right
@@ -386,7 +402,7 @@
     <p class="py-4">Do you want to delete <b>this_name?</b></p>
     <div class="modal-action">
       <label for="delete-modal" class="btn btn-outline dark:text-white">
-          cancel
+        cancel
       </label>
       <button class="btn btn-error text-white">
         Delete

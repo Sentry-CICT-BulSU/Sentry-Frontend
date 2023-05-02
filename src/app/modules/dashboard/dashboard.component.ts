@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
         this.router.navigate(['faculty-dashboard'], { relativeTo: this.route });
         break;
       default:
-        this.router.navigate(['error-404']);
+        this.router.navigate(['/error-404']);
         break;
     }
   }
