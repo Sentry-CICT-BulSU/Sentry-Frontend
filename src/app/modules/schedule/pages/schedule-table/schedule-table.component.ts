@@ -20,27 +20,27 @@ interface ScheduleData {
 })
 export class ScheduleTableComponent implements OnInit {
   daysOfWeek: string[] = [
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday',
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday',
+    'sunday',
   ];
   timeslots: string[] = [
-    '7:00 am',
-    '8:00 am',
-    '9:00 am',
-    '10:00 am',
-    '11:00 am',
-    '12:00 pm',
-    '1:00 pm',
-    '2:00 pm',
-    '3:00 pm',
-    '4:00 pm',
-    '5:00 pm',
-    '6:00 pm',
+    '07:00 AM',
+    '08:00 AM',
+    '09:00 AM',
+    '10:00 AM',
+    '11:00 AM',
+    '12:00 PM',
+    '01:00 PM',
+    '02:00 PM',
+    '03:00 PM',
+    '04:00 PM',
+    '05:00 PM',
+    '06:00 PM',
   ];
   scheduleData: ScheduleData[] = [
     {
@@ -95,14 +95,14 @@ export class ScheduleTableComponent implements OnInit {
     });
   }
 
-  isSlotFilled(day: string, time: string): ScheduleData | undefined {
-    return this.scheduleData.find(schedule => {
-      const days = schedule.day.split(',');
+  isSlotFilled(day: string, time: string): ISchedule | undefined {
+    return this.schedules?.find(schedule => {
+      const days = schedule.active_days.join(',');
       if (!days.includes(day)) {
         return false;
       }
-      const startTime = this.timeslots.indexOf(schedule.timeStart);
-      const endTime = this.timeslots.indexOf(schedule.timeEnd);
+      const startTime = this.timeslots.indexOf(schedule.time_start);
+      const endTime = this.timeslots.indexOf(schedule.time_end);
       const currentTime = this.timeslots.indexOf(time);
       return currentTime >= startTime && currentTime <= endTime;
     });
@@ -111,11 +111,11 @@ export class ScheduleTableComponent implements OnInit {
 
   getSubject(day: string, time: string): string | undefined {
     const slot = this.isSlotFilled(day, time);
-    return slot && slot.timeStart === time ? slot.subject : undefined;
+    return slot && slot.time_start === time ? slot.subject?.title : undefined;
   }
 
   getRoom(day: string, time: string): string | undefined {
     const slot = this.isSlotFilled(day, time);
-    return slot && slot.timeStart === time ? slot.room : undefined;
+    return slot && slot.time_start === time ? slot.room?.name : undefined;
   }
 }
