@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { forkJoin } from 'rxjs';
 import {
   IAttendance,
-  IAttendanceCollection,
+  IAttendanceStatistics,
   ISchedule,
   IScheduleCollection,
 } from 'src/app/core/models';
@@ -15,6 +15,7 @@ import { AttendanceService } from 'src/app/core/services/attendance.service';
 export class AttendanceManagementComponent implements OnInit {
   schedules?: ISchedule[];
   schedulesCollection?: IScheduleCollection;
+  attendancesStatistics?: IAttendanceStatistics;
   constructor(private attendanceService: AttendanceService) {}
   ngOnInit(): void {
     this.initComponent();
@@ -22,11 +23,15 @@ export class AttendanceManagementComponent implements OnInit {
   }
 
   loadAttendances() {
-    this.attendanceService.loadAttendances$().subscribe({
-      next: (schedules) => {
-        console.log(schedules);
+    forkJoin([
+      this.attendanceService.loadAttendances$(),
+      this.attendanceService.loadStatistics$(),
+    ]).subscribe({
+      next: ([schedules, statistics]) => {
+        console.log(schedules, statistics);
         this.schedulesCollection = schedules;
         this.schedules = schedules.data as ISchedule[];
+        this.attendancesStatistics = statistics;
       },
       error: (err) => console.log(err),
     });
