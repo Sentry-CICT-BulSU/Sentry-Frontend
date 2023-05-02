@@ -16,6 +16,7 @@
           class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4 xl:last:mb-0">
         <!-- card-title -->
         <div [routerLink]="['/attendance-check/room-information']"
+             [queryParams]="{sid: schedule.id,rid: schedule.room_id}"
              class="flex flex-row gap-4 p-4 justify-between border-b cursor-pointer hover:bg-gray-100 transition-colors dark:border-night-500 dark:hover:bg-night-500">
           <!-- icon -->
           <div
@@ -90,6 +91,7 @@
           class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4 xl:last:mb-0">
         <!-- card-title -->
         <div [routerLink]="['/attendance-check/room-information']"
+             [queryParams]="{sid: schedule.id,rid: schedule.room_id}"
              class="flex flex-row gap-4 p-4 justify-between border-b cursor-pointer hover:bg-gray-100 transition-colors dark:border-night-500 dark:hover:bg-night-500">
           <!-- icon -->
           <div
@@ -164,6 +166,7 @@
           class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4 xl:last:mb-0">
         <!-- card-title -->
         <div [routerLink]="['/attendance-check/room-information']"
+             [queryParams]="{sid: schedule.id,rid: schedule.room_id}"
              class="flex flex-row gap-4 p-4 justify-between border-b cursor-pointer hover:bg-gray-100 transition-colors dark:border-night-500 dark:hover:bg-night-500">
           <!-- icon -->
           <div
