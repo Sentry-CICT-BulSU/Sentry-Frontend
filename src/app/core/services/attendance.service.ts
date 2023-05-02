@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { PropertiesService } from './properties.service';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
-import { IAttendanceCollection, IUser } from '../models';
+import { IAttendanceCollection, IScheduleCollection, IUser } from '../models';
 import { environment as env } from 'src/environments/environment';
 
 @Injectable({
@@ -28,10 +28,15 @@ export class AttendanceService extends PropertiesService {
     }
   }
 
-  loadAttendances$() {
-    return this.http.get<IAttendanceCollection>(this.url, {
-      headers: this.options.headers,
-    });
+  loadAttendances$(query?: any) {
+    return query
+      ? this.http.get<IScheduleCollection>(this.url, {
+          headers: this.options.headers,
+          params: query,
+        })
+      : this.http.get<IScheduleCollection>(this.url, {
+          headers: this.options.headers,
+        });
   }
   loadAttendance$(id: number) {
     return this.http.get<IAttendanceCollection>(this.url + '/' + id, {

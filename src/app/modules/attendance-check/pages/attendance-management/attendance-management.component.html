@@ -90,8 +90,6 @@
     </div>
   </div>
 
-
-
   <!-- faculty members -->
   <div class="flex flex-col gap-4 pt-8 justify-between">
     <!-- title and description -->
@@ -99,8 +97,6 @@
       <span class="text-gray-700 text-[16px] font-bold dark:text-white">Faculty Members</span>
       <span class="text-gray-500 text-[14px]">Keep track the attendance of the faculty.</span>
     </div>
-
-
 
     <!-- search bar and filter buttons-->
     <div class="flex flex-col mx-4 gap-2 xl:flex-row-reverse xl:items-center">
@@ -126,7 +122,7 @@
     </div>
 
     <div id="view-all" class="tab-content active">
-      <ul class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll xl:max-h-[700px]">
+      <ul *ngIf="schedules" class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll xl:max-h-[700px]">
         <!-- list header -->
         <div
              class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
@@ -137,15 +133,13 @@
             </button>
           </div>
           <span class="basis-2/5 text-center">Attendance</span>
-
-
           <!-- this is a space for the action column -->
           <span class="basis-1/5"></span>
         </div>
 
 
         <!-- faculty member entries -->
-        <li *ngFor="let loop2 of '01234567890123123123'.split('')" class="flex flex-row p-4">
+        <li *ngFor="let schedule of schedules" class="flex flex-row p-4">
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
@@ -156,26 +150,31 @@
 
             <!-- name and email -->
             <div class="text-[14px] min-w-0">
-              <div class="text-gray-900 min-w-0 truncate dark:text-white">First_name Last_name</div>
-              <div class="text-gray-500 min-w-0 truncate">name@email.com</div>
+              <div class="text-gray-900 min-w-0 truncate dark:text-white">
+                {{schedule.adviser?.full_name}}
+              </div>
+              <div class="text-gray-500 min-w-0 truncate">
+                {{schedule.adviser?.email}}
+              </div>
             </div>
           </div>
-
 
           <!-- attendance -->
           <div class="shrink-0 basis-2/5 flex justify-center items-center">
             <!-- present -->
-            <div class="shrink-0 badge badge-accent">Present</div>
-
-
+            <div *ngIf="checkAttendanceStatus(schedule,'present')" class="shrink-0 badge badge-accent">
+              Present
+            </div>
             <!-- absent -->
-            <div class="shrink-0 badge badge-secondary">Absent</div>
-
-
+            <div *ngIf="checkAttendanceStatus(schedule,'absent')" class="shrink-0 badge badge-secondary">
+              Absent
+            </div>
             <!-- no action taken -->
-            <div class="shrink-0 badge badge-outline dark:border-night-200 dark:text-night-200">No action taken</div>
+            <div *ngIf="checkAttendanceStatus(schedule,'NaT')"
+                 class="shrink-0 badge badge-outline dark:border-night-200 dark:text-night-200">
+              No action taken
+            </div>
           </div>
-
 
           <!-- actions -->
           <div
@@ -215,7 +214,7 @@
     </div>
 
     <div id="monitored" class="tab-content">
-      <ul class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll xl:max-h-[700px]">
+      <ul *ngIf="schedules" class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll xl:max-h-[700px]">
         <!-- list header -->
         <div
              class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
@@ -226,15 +225,13 @@
             </button>
           </div>
           <span class="basis-2/5 text-center">Attendance</span>
-
-
           <!-- this is a space for the action column -->
           <span class="basis-1/5"></span>
         </div>
 
 
         <!-- faculty member entries -->
-        <li *ngFor="let loop2 of '01234567890123123123'.split('')" class="flex flex-row p-4">
+        <li *ngFor="let schedule of filterMonitoredAttendances(true)" class="flex flex-row p-4">
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
@@ -245,26 +242,31 @@
 
             <!-- name and email -->
             <div class="text-[14px] min-w-0">
-              <div class="text-gray-900 min-w-0 truncate dark:text-white">First_name Last_name</div>
-              <div class="text-gray-500 min-w-0 truncate">name@email.com</div>
+              <div class="text-gray-900 min-w-0 truncate dark:text-white">
+                {{schedule.adviser?.full_name}}
+              </div>
+              <div class="text-gray-500 min-w-0 truncate">
+                {{schedule.adviser?.email}}
+              </div>
             </div>
           </div>
-
 
           <!-- attendance -->
           <div class="shrink-0 basis-2/5 flex justify-center items-center">
             <!-- present -->
-            <div class="shrink-0 badge badge-accent">Present</div>
-
-
+            <div *ngIf="checkAttendanceStatus(schedule,'present')" class="shrink-0 badge badge-accent">
+              Present
+            </div>
             <!-- absent -->
-            <div class="shrink-0 badge badge-secondary">Absent</div>
-
-
+            <div *ngIf="checkAttendanceStatus(schedule,'absent')" class="shrink-0 badge badge-secondary">
+              Absent
+            </div>
             <!-- no action taken -->
-            <div class="shrink-0 badge badge-outline dark:border-night-200 dark:text-night-200">No action taken</div>
+            <div *ngIf="checkAttendanceStatus(schedule,'NaT')"
+                 class="shrink-0 badge badge-outline dark:border-night-200 dark:text-night-200">
+              No action taken
+            </div>
           </div>
-
 
           <!-- actions -->
           <div
@@ -304,7 +306,7 @@
     </div>
 
     <div id="unmonitored" class="tab-content">
-      <ul class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll xl:max-h-[700px]">
+      <ul *ngIf="schedules" class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll xl:max-h-[700px]">
         <!-- list header -->
         <div
              class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
@@ -315,15 +317,12 @@
             </button>
           </div>
           <span class="basis-2/5 text-center">Attendance</span>
-
-
           <!-- this is a space for the action column -->
           <span class="basis-1/5"></span>
         </div>
 
-
         <!-- faculty member entries -->
-        <li *ngFor="let loop2 of '01234567890123123123'.split('')" class="flex flex-row p-4">
+        <li *ngFor="let schedule of filterMonitoredAttendances(false)" class="flex flex-row p-4">
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
@@ -334,26 +333,31 @@
 
             <!-- name and email -->
             <div class="text-[14px] min-w-0">
-              <div class="text-gray-900 min-w-0 truncate dark:text-white">First_name Last_name</div>
-              <div class="text-gray-500 min-w-0 truncate">name@email.com</div>
+              <div class="text-gray-900 min-w-0 truncate dark:text-white">
+                {{schedule.adviser?.full_name}}
+              </div>
+              <div class="text-gray-500 min-w-0 truncate">
+                {{schedule.adviser?.email}}
+              </div>
             </div>
           </div>
-
 
           <!-- attendance -->
           <div class="shrink-0 basis-2/5 flex justify-center items-center">
             <!-- present -->
-            <div class="shrink-0 badge badge-accent">Present</div>
-
-
+            <div *ngIf="checkAttendanceStatus(schedule,'present')" class="shrink-0 badge badge-accent">
+              Present
+            </div>
             <!-- absent -->
-            <div class="shrink-0 badge badge-secondary">Absent</div>
-
-
+            <div *ngIf="checkAttendanceStatus(schedule,'absent')" class="shrink-0 badge badge-secondary">
+              Absent
+            </div>
             <!-- no action taken -->
-            <div class="shrink-0 badge badge-outline dark:border-night-200 dark:text-night-200">No action taken</div>
+            <div *ngIf="checkAttendanceStatus(schedule,'NaT')"
+                 class="shrink-0 badge badge-outline dark:border-night-200 dark:text-night-200">
+              No action taken
+            </div>
           </div>
-
 
           <!-- actions -->
           <div
