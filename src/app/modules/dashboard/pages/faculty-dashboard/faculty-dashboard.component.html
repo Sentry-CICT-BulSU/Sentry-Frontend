@@ -126,8 +126,8 @@
   <div class="flex flex-col xl:basis-1/4">
     <!-- title bar -->
     <div class="flex flex-row justify-between items-center py-8 mr-4">
-      <span class="text-[16px] text-gray-900 font-medium dark:text-white">Your Recent Activity</span>
-      <a href="#" class="link link-hover dark:text-white">View all</a>
+      <span class="text-[16px] text-gray-900 font-medium dark:text-white">Your Attendance History</span>
+      <a *ngIf="false" class="link link-hover dark:text-white">View all</a>
     </div>
 
     <!-- activity logs -->
@@ -136,13 +136,14 @@
         class="basis-2/5 flex flex-row items-center min-w-0 first:mt-2 last:mb-2">
         <!-- image -->
         <div class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-white overflow-hidden">
-          <span class="material-icons">person</span>
+          <span class="material-icons">build</span>
         </div>
 
         <!-- name and email -->
         <div class="text-[14px] min-w-0">
-          <div class="text-gray-900 min-w-0 truncate dark:text-white">First_name Last_name</div>
-          <div class="text-gray-500 min-w-0 truncate">Borrowed IT 1 key</div>
+          <div class="text-gray-900 min-w-0 truncate dark:text-white">MM/DD/YYYY</div>
+          <div class="shrink-0 badge badge-accent">Present</div>
+          <div class="shrink-0 badge badge-secondary">Absent</div>
         </div>
       </li>
     </ul>

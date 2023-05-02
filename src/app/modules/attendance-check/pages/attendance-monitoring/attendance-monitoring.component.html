@@ -38,8 +38,9 @@
           <span class="text-gray-500 text-[14px]">Is the assigned faculty present?</span>
           <!-- <span class="text-gray-500 text-[14px]">Marked as present (Apr 3, 2023 - 10:46 am)</span> --> <!-- use this when the user clicks present/absent -->
           <div class="flex flex-row items-center justify-end gap-4">
-            <button class="button-plain w-fit">Absent</button>
-            <button class="button-plain w-fit">Present</button>
+            <label for="absent-modal" class="button-plain btn-error w-fit transition-colors text-white hover:bg-red-700">Mark as absent</label>
+            <button [routerLink]="['/attendance-check/check-attendance']"
+              class="button-plain btn-success w-fit transition-colors text-white hover:bg-green-700">Mark as present</button>
           </div>
   
           <!-- <button class="button-plain w-fit">Undo Attendance</button> -->
@@ -94,8 +95,9 @@
           <span class="text-gray-500 text-[14px]">Is the assigned faculty present?</span>
           <!-- <span class="text-gray-500 text-[14px]">Marked as present (Apr 3, 2023 - 10:46 am)</span> --> <!-- use this when the user clicks present/absent -->
           <div class="flex flex-row items-center justify-end gap-4">
-            <button class="button-plain w-fit">Absent</button>
-            <button class="button-plain w-fit">Present</button>
+            <label for="absent-modal" class="button-plain btn-error w-fit transition-colors text-white hover:bg-red-700">Mark as absent</label>
+            <button [routerLink]="['/attendance-check/check-attendance']"
+              class="button-plain btn-success w-fit transition-colors text-white hover:bg-green-700">Mark as present</button>
           </div>
   
           <!-- <button class="button-plain w-fit">Undo Attendance</button> -->
@@ -150,8 +152,9 @@
           <span class="text-gray-500 text-[14px]">Is the assigned faculty present?</span>
           <!-- <span class="text-gray-500 text-[14px]">Marked as present (Apr 3, 2023 - 10:46 am)</span> --> <!-- use this when the user clicks present/absent -->
           <div class="flex flex-row items-center justify-end gap-4">
-            <button class="button-plain w-fit">Absent</button>
-            <button class="button-plain w-fit">Present</button>
+            <label for="absent-modal" class="button-plain btn-error w-fit transition-colors text-white hover:bg-red-700">Mark as absent</label>
+            <button [routerLink]="['/attendance-check/check-attendance']"
+              class="button-plain btn-success w-fit transition-colors text-white hover:bg-green-700">Mark as present</button>
           </div>
   
           <!-- <button class="button-plain w-fit">Undo Attendance</button> -->
@@ -175,6 +178,19 @@
           chevron_right
         </span>
       </button>
+    </div>
+  </div>
+</div>
+
+<!-- Put this part before </body> tag -->
+<input type="checkbox" id="absent-modal" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">Mark as absent</h3>
+    <p class="py-4">Do you want to mark first_name last_name as absent?</p>
+    <div class="modal-action">
+      <label for="absent-modal" class="button-plain w-fit">Cancel</label>
+      <label for="absent-modal" class="button-plain btn-error w-fit transition-colors text-white hover:bg-red-700">Mark as absent</label>
     </div>
   </div>
 </div>
