@@ -66,21 +66,7 @@ export class AttendanceMonitoringComponent implements OnInit {
     });
   }
 
-  onMarkAsAbsent(schedule_id: number, user_id: number) {
-    const body = {
-      user_id: user_id,
-      status: 'Absent',
-    };
-    this.attendanceService.addAttendance$(schedule_id, body).subscribe({
-      next: (attendance) => {
-        console.log(attendance);
-        this.router.navigate(['/attendance-check/attendance-monitoring']);
-      },
-      error: (err) => console.debug(err),
-    });
-  }
-
-  onDelete(schedule: ISchedule) {
+  onMarkAsAbsent(schedule: ISchedule) {
     Swal.fire({
       title: 'Mark as Absent',
       text: 'Proceed to mark as absent: ' + schedule.adviser?.full_name + '?',
@@ -93,7 +79,7 @@ export class AttendanceMonitoringComponent implements OnInit {
       if (result.isConfirmed) {
         const body = {
           user_id: schedule.adviser?.id,
-          status: 'Absent',
+          status: 'absent',
         };
         this.attendanceService.addAttendance$(schedule.id, body).subscribe({
           next: (attendance) => {
@@ -104,7 +90,8 @@ export class AttendanceMonitoringComponent implements OnInit {
               icon: 'success',
               showConfirmButton: true,
             }).then(() => {
-              this.router.navigate(['/attendance-check/attendance-monitoring']);
+              // this.router.navigate(['/attendance-check/attendance-monitoring']);
+              this.ngOnInit();
             });
           },
           error: (err) => console.debug(err),
