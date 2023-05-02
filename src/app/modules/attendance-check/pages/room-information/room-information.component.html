@@ -1,7 +1,7 @@
 <div class="flex flex-col">
   <!-- title bar -->
   <div class="sticky top-0 flex flex-col gap-4 px-4 py-8 bg-white dark:bg-night-800 rounded-tl-[32px]">
-    <span class="text-[24px] text-gray-900 font-medium dark:text-white">Room Information for IT 1</span>
+    <span class="text-[24px] text-gray-900 font-medium dark:text-white">Faculty Schedule for IT 1</span>
     <div class="flex flex-row gap-2 items-center justify-start">
       <a href="#room-schedule" class="button-plain tab-link active">Room Schedule</a>
       <a href="#assigned-faculty" class="button-plain tab-link">Assigned Faculty</a>
@@ -51,8 +51,9 @@
         <div class="flex justify-between items-center p-4">
           <span class="text-gray-500 text-[14px]">Is the assigned faculty present?</span>
           <div class="flex flex-row items-center justify-end gap-4">
-            <button class="button-plain w-fit">Absent</button>
-            <button class="button-plain w-fit">Present</button>
+            <label for="absent-modal" class="button-plain btn-error w-fit transition-colors text-white hover:bg-red-700">Mark as absent</label>
+            <button [routerLink]="['/attendance-check/check-attendance']"
+              class="button-plain btn-success w-fit transition-colors text-white hover:bg-green-700">Mark as present</button>
           </div>
   
           <!-- <button class="button-plain w-fit">Undo Attendance</button> -->
@@ -117,6 +118,19 @@
           chevron_right
         </span>
       </button>
+    </div>
+  </div>
+</div>
+
+<!-- Put this part before </body> tag -->
+<input type="checkbox" id="absent-modal" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">Mark as absent</h3>
+    <p class="py-4">Do you want to mark first_name last_name as absent?</p>
+    <div class="modal-action">
+      <label for="absent-modal" class="button-plain w-fit">Cancel</label>
+      <label for="absent-modal" class="button-plain btn-error w-fit transition-colors text-white hover:bg-red-700">Mark as absent</label>
     </div>
   </div>
 </div>
