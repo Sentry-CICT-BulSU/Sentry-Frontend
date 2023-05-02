@@ -116,7 +116,7 @@
         </div>
 
         <!-- card-footer -->
-        <div class="flex justify-between items-center p-4">
+        <div *ngIf="!schedule.attendance;else hasAttendance" class="flex justify-between items-center p-4">
           <span class="text-gray-500 text-[14px]">Is the assigned faculty present?</span>
           <!-- <span class="text-gray-500 text-[14px]">Marked as present (Apr 3, 2023 - 10:46 am)</span> -->
           <!-- use this when the user clicks present/absent -->
@@ -127,12 +127,14 @@
             </label>
             <button [routerLink]="['/attendance-check/check-attendance',schedule.id]"
                     class="button-plain btn-success w-fit transition-colors text-white hover:bg-green-700">
-              Mark as
-              present
+              Mark as present
             </button>
           </div>
           <!-- <button class="button-plain w-fit">Undo Attendance</button> -->
         </div>
+        <ng-template #hasAttendance>
+          <div class="bg-red-700">test</div>
+        </ng-template>
       </li>
     </ul>
 
@@ -188,7 +190,7 @@
         </div>
 
         <!-- card-footer -->
-        <div class="flex justify-between items-center p-4">
+        <div *ngIf="!schedule.attendance;else hasAttendance" class="flex justify-between items-center p-4">
           <span class="text-gray-500 text-[14px]">Is the assigned faculty present?</span>
           <!-- <span class="text-gray-500 text-[14px]">Marked as present (Apr 3, 2023 - 10:46 am)</span> -->
           <!-- use this when the user clicks present/absent -->
@@ -202,9 +204,11 @@
               Mark as present
             </button>
           </div>
-
           <!-- <button class="button-plain w-fit">Undo Attendance</button> -->
         </div>
+        <ng-template #hasAttendance>
+          <div class="bg-red-700">test</div>
+        </ng-template>
       </li>
     </ul>
 

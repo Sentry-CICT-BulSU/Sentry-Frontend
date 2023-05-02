@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
 import { ISchedule, IScheduleCollection } from 'src/app/core/models';
 import { AttendanceService } from 'src/app/core/services/attendance.service';
 import { ScheduleService } from 'src/app/core/services/schedule.service';
@@ -27,11 +28,19 @@ export class AttendanceMonitoringComponent implements OnInit {
   }
 
   loadSchedules() {
-    this.scheduleService.loadSchedules$().subscribe({
-      next: (schedules) => {
+    forkJoin([
+      this.scheduleService.loadSchedules$(),
+      this.scheduleService.loadSchedules$({ q: 'am' }),
+      this.scheduleService.loadSchedules$({ q: 'pm' }),
+    ]).subscribe({
+      next: ([schedules, active, inactive]) => {
         this.schedulesCollection = schedules;
         this.schedules = schedules.data as ISchedule[];
-        console.log(schedules);
+        this.schedulesActiveCollection = active;
+        this.schedulesActive = active.data as ISchedule[];
+        this.schedulesInactiveCollection = inactive;
+        this.schedulesInactive = inactive.data as ISchedule[];
+        console.log(schedules, active, inactive);
       },
       error: (err) => console.debug(err),
     });
