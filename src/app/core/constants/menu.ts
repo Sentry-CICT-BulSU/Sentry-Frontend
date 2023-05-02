@@ -25,22 +25,22 @@ export class Menu {
       type: 'Admin',
       items: [
         {
+          icon: 'layers',
+          label: 'Content Management',
+          children: [
+            { label: 'Semester Management', route: '/semester' },
+            { label: 'Section Management', route: '/section' },
+            { label: 'Subject Management', route: '/subject' },
+            { label: 'Room Management', route: '/room' },
+          ],
+        },
+        {
           icon: 'bar_chart',
           label: 'Attendance and Schedule',
           children: [
             // { label: 'Faculty Management', route: '/faculty' },
             { label: 'Schedule Management', route: '/schedule' },
             { label: 'Attendance Monitoring', route: '/attendance' },
-          ],
-        },
-        {
-          icon: 'layers',
-          label: 'Content Management',
-          children: [
-            { label: 'Semester Management', route: '/semester' },
-            { label: 'Subject Management', route: '/subject' },
-            { label: 'Room Management', route: '/room' },
-            { label: 'Section Management', route: '/section' },
           ],
         },
       ],
