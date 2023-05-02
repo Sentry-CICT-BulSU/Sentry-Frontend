@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
         this.router.navigate(['admin-dashboard'], { relativeTo: this.route });
         break;
       case 'Attendance Checker':
-        this.router.navigate(['attendance-checker-dashboard'], { relativeTo: this.route });
+        this.router.navigate(['/attendance-check/attendance-management']);
         break;
       case 'Faculty':
         this.router.navigate(['faculty-dashboard'], { relativeTo: this.route });
