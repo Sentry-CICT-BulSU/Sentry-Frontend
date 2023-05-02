@@ -30,12 +30,19 @@
         </span>
       </button>
 
-      <ng-container *ngFor="let schedule of schedules">
-        {{schedule.adviser?.full_name}}
-      </ng-container>
+
 
     </div>
   </div>
+
+  <ng-container *ngFor="let schedule of schedules">
+    <h1>{{schedule.subject?.title}}</h1>
+    <h1>{{schedule.adviser?.full_name}}</h1>
+    <h1>{{schedule.section?.name}}</h1>
+    <h1>{{schedule.room?.name}}</h1>
+    <h1>{{schedule.time_start}}</h1>
+    <h1>{{schedule.time_end}}</h1>
+  </ng-container>
 
   <div class="grid grid-cols-1 rounded-b-lg border-x border-b border-gray-300 dark:border-night-500 bg-white p-5 dark:bg-night-700">
     <table class="table-fixed w-full dark:text-night-200">

@@ -9,6 +9,8 @@ interface ScheduleData {
   timeStart: string;
   timeEnd: string;
   subject: string;
+  faculty: string;
+  section: string;
   room: string;
 }
 
@@ -46,6 +48,8 @@ export class ScheduleTableComponent implements OnInit {
       timeStart: '9:00 am',
       timeEnd: '11:00 am',
       subject: 'Capstone 2',
+      faculty: 'Renato Adriano',
+      section: 'BSIT 4P',
       room: 'IT1',
     },
     {
@@ -53,6 +57,8 @@ export class ScheduleTableComponent implements OnInit {
       timeStart: '7:00 am',
       timeEnd: '10:00 am',
       subject: 'Networking 2',
+      faculty: 'Gabriel Galang',
+      section: 'BSIT 4K',
       room: 'IT2',
     },
   ];
