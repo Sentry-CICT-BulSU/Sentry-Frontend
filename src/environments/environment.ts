@@ -8,7 +8,7 @@
 // const app_id = '2';
 
 // vreiln's env
-const app_url = 'http://app.cict-sentry:4200.test';
+const app_url = 'http://app.cict-sentry.test:4200';
 const api_url = 'http://cict-sentry.test';
 const app_id = '1';
 
