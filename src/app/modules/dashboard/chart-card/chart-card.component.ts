@@ -12,16 +12,16 @@ export class ChartCardComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
 
   constructor(private themeService: ThemeService) {
-    const data = [8, 4, 8, 5, 4, 0, 2];
-    const data2 = [0, 4, 0, 3, 4, 8, 6];
+    const data = [0, 0, 0, 5, 4, 0, 2];
+    const data2 = [0, 0, 0, 3, 4, 8, 6];
     const categories = [
-        "Day 1",
-        "Day 2",
-        "Day 3",
-        "Day 4",
-        "Day 5",
-        "Day 6",
-        "Day 7"
+        "6 days ago",
+        "5 days ago",
+        "4 days ago",
+        "3 days ago",
+        "2 days ago",
+        "Yesterday",
+        "Today"
     ];
 
     this.chartOptions = {
