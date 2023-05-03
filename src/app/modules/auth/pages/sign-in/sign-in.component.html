@@ -1,5 +1,5 @@
 <!-- login form -->
-<form class="my-10 space-y-6" #signin="ngForm" [formGroup]="signinForm" (submit)="submit()">
+<div class="my-10 space-y-6">
   <div class="text-center">
     <h2 class="mb-1 text-3xl font-medium text-gray-700 dark:text-white">
       Welcome <span class="text-primary-700">!</span>
@@ -51,6 +51,6 @@
   <!-- Submit Button -->
   <button type="submit"
           class="group relative mb-10 flex w-full justify-center rounded-md border border-transparent bg-primary-700 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-primary-600">
-    Proceed to App
+    {{proceedMsg}}
   </button>
-</form>
+</div>
