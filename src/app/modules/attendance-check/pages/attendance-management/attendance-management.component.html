@@ -107,19 +107,7 @@
 
     <!-- search bar and filter buttons-->
     <div class="flex flex-col mx-4 gap-2 xl:flex-row-reverse xl:items-center">
-      <!-- search bar row -->
-      <div class="flex flex-row gap-2 mb-2 xl:grow xl:mb-0">
-        <div class="grow border-light-dark rounded-lg flex flex-row justify-start items-center px-2">
-          <i class="fa-solid fa-magnifying-glass dark:text-night-200"></i>
-          <input class="border-none" type="text" name="faculty-member-search" id="faculty-member-search"
-                 placeholder="Search">
-        </div>
 
-        <button class="shrink-0 button-plain w-fit"
-                type="submit">
-          <i class="fa-solid fa-filter"></i>
-        </button>
-      </div>
 
       <div class="flex flex-row gap-2 items-center">
         <a href="#view-all" class="button-plain tab-link active1">View All</a>
@@ -129,7 +117,7 @@
     </div>
 
     <div id="view-all" class="tab-content active">
-      <ul *ngIf="schedules; else noSchedulesBlock" 
+      <ul *ngIf="schedules; else noSchedulesBlock"
         class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll xl:max-h-[700px]">
         <!-- list header -->
         <div
@@ -184,21 +172,7 @@
             </div>
           </div>
 
-          <!-- actions -->
-          <div
-               class="shrink-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
-            <!-- The button to open modal -->
-            <label for="delete-modal" class="cursor-pointer">
-              <span class="material-icons">
-                delete
-              </span>
-            </label>
-            <button>
-              <span class="material-icons">
-                edit
-              </span>
-            </button>
-          </div>
+
         </li>
 
         <!-- pagination -->
@@ -274,20 +248,7 @@
           </div>
 
           <!-- actions -->
-          <div
-               class="shrink-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
-            <!-- The button to open modal -->
-            <label for="delete-modal" class="cursor-pointer">
-              <span class="material-icons">
-                delete
-              </span>
-            </label>
-            <button>
-              <span class="material-icons">
-                edit
-              </span>
-            </button>
-          </div>
+
         </li>
 
         <!-- pagination -->
@@ -362,20 +323,7 @@
           </div>
 
           <!-- actions -->
-          <div
-               class="shrink-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
-            <!-- The button to open modal -->
-            <label for="delete-modal" class="cursor-pointer">
-              <span class="material-icons">
-                delete
-              </span>
-            </label>
-            <button>
-              <span class="material-icons">
-                edit
-              </span>
-            </button>
-          </div>
+
         </li>
 
         <!-- pagination -->
