@@ -18,6 +18,9 @@ export class KeysOverviewComponent implements OnInit {
   keyLogsLost?: IRoomKeyLog[];
   keyLogsLostCollection?: IRoomKeyLogCollection;
   constructor(private keyLogsService: RoomKeyLogsService, public systemService: SystemService) {}
+
+  p = 1;
+
   ngOnInit() {
     this.initComponent();
     this.loadRoomKeyLogs()

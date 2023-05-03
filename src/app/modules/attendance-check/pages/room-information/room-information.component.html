@@ -74,21 +74,9 @@
       </li>
 
       <!-- pagination -->
-      <div class="w-full sticky bottom-0 flex items-center justify-between bg-white p-4 border-t dark:border-night-500 dark:bg-night-800
+      <div class="w-full sticky bottom-0 flex flex-row items-center justify-center bg-white p-4 border-t dark:bg-night-700 dark:border-night-500
         xl:col-span-2">
-        <button class="btn-square shrink-0 button-plain w-fit">
-          <span class="material-icons">
-            chevron_left
-          </span>
-        </button>
-  
-        <span class="text-center dark:text-white">Page 1 out of 10</span>
-  
-        <button class="btn-square shrink-0 button-plain w-fit">
-          <span class="material-icons">
-            chevron_right
-          </span>
-        </button>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
       </div>
     </ul>
 
@@ -130,21 +118,9 @@
       </li>
 
       <!-- pagination -->
-      <div class="w-full sticky bottom-0 flex items-center justify-between bg-white p-4 border-t dark:border-night-500 dark:bg-night-800
+      <div class="w-full sticky bottom-0 flex flex-row items-center justify-center bg-white p-4 border-t dark:bg-night-700 dark:border-night-500
         xl:col-span-2">
-        <button class="btn-square shrink-0 button-plain w-fit">
-          <span class="material-icons">
-            chevron_left
-          </span>
-        </button>
-  
-        <span class="text-center dark:text-white">Page 1 out of 10</span>
-  
-        <button class="btn-square shrink-0 button-plain w-fit">
-          <span class="material-icons">
-            chevron_right
-          </span>
-        </button>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
       </div>
     </ul>
 

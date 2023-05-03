@@ -20,6 +20,9 @@ export class RoomInformationComponent implements OnInit {
     private roomService: RoomService,
     public systemService: SystemService
   ) {}
+
+  p = 1;
+
   ngOnInit(): void {
     this.initComponent();
     this.loadSchedules();

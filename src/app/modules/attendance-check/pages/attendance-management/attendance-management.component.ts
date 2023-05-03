@@ -23,6 +23,8 @@ export class AttendanceManagementComponent implements OnInit {
     this.loadAttendances();
   }
 
+  p = 1;
+
   loadAttendances() {
     forkJoin([
       this.attendanceService.loadAttendances$(),

@@ -24,6 +24,9 @@ export class AttendanceMonitoringComponent implements OnInit {
     private router: Router,
     public systemService: SystemService
   ) {}
+
+  p = 1; 
+
   ngOnInit(): void {
     this.initComponent();
     this.loadSchedules();
