@@ -95,7 +95,7 @@
     <div class=" rounded-b-lg border-light-dark bg-white p-5 dark:bg-night-700">
         <div class="flex items-center justify-end space-x-3">
 
-            <button type="button"
+            <button type="button" [routerLink]="['/reports']"
                 class="relative selection:flex justify-center button-plain">
                 View Full Report
             </button>
@@ -120,7 +120,7 @@
 
             <div class="md:space-x-1 mt-2 md:mt-0 text-sm font-medium text-gray-400 dark:text-night-300">
                 <p>
-                    Keep track of vendor and their security ratings.
+                    Keep track of the faculty's attendance.
                 </p>
             </div>
         </div>
@@ -194,7 +194,6 @@
             <th class="py-3 px-2 text-left font-medium md:w-auto w-28">Room</th>
             <th class="py-3 px-2 text-left font-medium md:w-auto w-28">Subject</th>
             <th class="py-3 px-2 text-left font-medium md:w-1/4 w-56">Last Modified</th>
-            <th class="py-3 px-2 text-right font-medium md:w-1/10 w-28"></th>
         </tr>
     </thead>
     <!--end Table head-->
@@ -233,18 +232,6 @@
                 </span>
             </td>
 
-            <td class="py-2 pr-2">
-                <div class="flex justify-end">
-
-                    <span class="material-symbols-rounded font-medium cursor-pointer mr-6 justify-center rounded-md text-gray-500 hover:text-red-500 dark:text-night-300">
-                        delete
-                    </span>
-
-                    <span [routerLink]="['/faculty/edit-faculty']" class="material-symbols-rounded font-medium cursor-pointer justify-center rounded-md text-gray-500 hover:text-primary-700 dark:text-night-300">
-                        edit
-                    </span>
-                </div>
-            </td>
         </tr>
     </tbody>
     <!--end::Table body-->
