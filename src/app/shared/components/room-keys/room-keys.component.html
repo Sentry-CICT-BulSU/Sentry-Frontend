@@ -30,7 +30,7 @@
               {{key.room?.name}}
             </span>
             <div
-                 class="flex items-center rounded-md bg-green-500/25 py-1 pr-2 pl-2 text-xs font-medium text-[#12B76A] bg-[#ECFDF3]">
+                 class="flex items-center rounded-md py-1 pr-2 pl-2 text-xs font-medium {{ getStatusClass(key.status) }}">
               {{key.status}}
             </div>
           </div>
