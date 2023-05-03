@@ -28,10 +28,15 @@ export class RoomKeyContentComponent implements OnInit {
   constructor(private roomKeyLogsService: RoomKeyLogsService) {}
 
   getStatusClass(status: string): string {
-    return status === 'Returned'
-      ? 'bg-green-500/25 text-green-500'
-      : 'bg-blue-300/25 text-blue-500 dark:text-blue-300';
+    if (status === 'Returned') {
+      return 'bg-green-500/25 text-green-500';
+    } else if (status === 'Borrowed') {
+      return 'bg-blue-300/25 text-blue-500 dark:text-blue-300';
+    } else {
+      return 'bg-gray-300/25 text-gray-500 dark:text-gray-300';
+    }
   }
+
 
   ngOnInit(): void {
     // comment below for frontend
