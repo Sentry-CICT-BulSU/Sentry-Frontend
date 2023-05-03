@@ -4,6 +4,7 @@ import { forkJoin } from 'rxjs';
 import { ISection, ISectionCollection } from 'src/app/core/models';
 import { SectionService } from 'src/app/core/services/section.service';
 import { SystemService } from 'src/app/core/services/system.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-section-list',
@@ -76,12 +77,26 @@ export class SectionListComponent implements OnInit {
   }
 
   onDelete(id: number) {
-    this.sectionService.deleteSection$(id).subscribe({
-      next: (resp) => {
-        console.log(resp);
-        this.router.navigate(['/section']);
-      },
-      error: (err) => console.debug(err),
+    Swal.fire({
+      title: 'Confirm Delete',
+      text: 'Are you sure you want to delete this section?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#6941C6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log('delete room');
+        this.sectionService.deleteSection$(id).subscribe({
+          next: (resp) => {
+            console.log(resp);
+            this.ngOnInit();
+          },
+          error: (err) => console.debug(err),
+        });
+        Swal.fire('Deleted!', 'Section has been deleted.', 'success');
+      }
     });
   }
 }
