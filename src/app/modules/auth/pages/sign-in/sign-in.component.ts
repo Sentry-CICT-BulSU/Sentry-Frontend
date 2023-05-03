@@ -1,5 +1,6 @@
 // Import necessary modules from '@angular/core'
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 // Use the '@Component' decorator to define the metadata for the component
 @Component({
@@ -13,6 +14,11 @@ import { Component } from '@angular/core';
 
 // Define the class that represents this component and implement the 'OnInit' interface
 export class SignInComponent {
+  constructor(private authService: AuthService) {}
   proceedMsg = 'Proceed to Authentication';
   // Define the constructor for this component
+
+  login() {
+    this.authService.login();
+  }
 }
