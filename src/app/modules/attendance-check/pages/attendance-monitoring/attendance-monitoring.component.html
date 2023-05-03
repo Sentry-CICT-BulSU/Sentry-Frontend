@@ -79,7 +79,7 @@
   </div>
 
   <div id="am" class="tab-content">
-    <ul *ngIf="schedules; else noAmScheduleBlock" class="grid grid-cols-1 gap-4 place-items-center px-4 xl:grid-cols-2 xl:pb-4">
+    <ul *ngIf="schedulesActive; else noAmScheduleBlock" class="grid grid-cols-1 gap-4 place-items-center px-4 xl:grid-cols-2 xl:pb-4">
       <!-- before clicking present or absent -->
       <li *ngFor="let schedule of schedulesActive"
           class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4 xl:last:mb-0">
@@ -145,11 +145,11 @@
         <span class="ml-4 dark:text-white">There are no AM schedules yet...</span>
       </div>
     </ng-template>
-  
+
   </div>
 
   <div id="pm" class="tab-content">
-    <ul *ngIf="schedules; else noPmScheduleBlock" class="grid grid-cols-1 gap-4 place-items-center px-4 xl:grid-cols-2 xl:pb-4">
+    <ul *ngIf="schedulesInactive; else noPmScheduleBlock" class="grid grid-cols-1 gap-4 place-items-center px-4 xl:grid-cols-2 xl:pb-4">
       <!-- before clicking present or absent -->
       <li *ngFor="let schedule of schedulesInactive"
           class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4 xl:last:mb-0">
@@ -209,7 +209,7 @@
         <pagination-controls (pageChange)="p = $event"></pagination-controls>
       </div>
     </ul>
-    
+
     <ng-template #noPmScheduleBlock>
       <div>
         <span class="ml-4 dark:text-white">There are no PM schedules yet...</span>
