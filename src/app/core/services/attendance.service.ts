@@ -33,11 +33,10 @@ export class AttendanceService extends PropertiesService {
     }
   }
 
-  loadAttendances$(query?: any) {
-    return query
-      ? this.http.get<IScheduleCollection>(this.url, {
+  loadAttendances$(id?: number) {
+    return id
+      ? this.http.get<IAttendanceCollection>(this.url + '/user/' + id, {
           headers: this.options.headers,
-          params: query,
         })
       : this.http.get<IScheduleCollection>(this.url, {
           headers: this.options.headers,

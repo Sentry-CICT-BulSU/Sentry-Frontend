@@ -4,6 +4,7 @@ import { forkJoin } from 'rxjs';
 import { IRoom, ISchedule, IScheduleCollection } from 'src/app/core/models';
 import { RoomService } from 'src/app/core/services/room.service';
 import { ScheduleService } from 'src/app/core/services/schedule.service';
+import { SystemService } from 'src/app/core/services/system.service';
 
 @Component({
   selector: 'app-room-information',
@@ -16,8 +17,12 @@ export class RoomInformationComponent implements OnInit {
   constructor(
     private scheduleService: ScheduleService,
     private route: ActivatedRoute,
-    private roomService: RoomService
+    private roomService: RoomService,
+    public systemService: SystemService
   ) {}
+
+  p = 1;
+
   ngOnInit(): void {
     this.initComponent();
     this.loadSchedules();
@@ -52,7 +57,7 @@ export class RoomInformationComponent implements OnInit {
       '.tab-content'
     ) as NodeListOf<HTMLElement>;
 
-    tabLinks[0].classList.add('active');
+    tabLinks[0].classList.add('active1');
     tabContents[0].classList.add('active');
 
     tabLinks.forEach((link: HTMLAnchorElement) => {
@@ -60,12 +65,12 @@ export class RoomInformationComponent implements OnInit {
         event.preventDefault();
         const selectedTab = link.hash;
         tabLinks.forEach((link) => {
-          link.classList.remove('active');
+          link.classList.remove('active1');
         });
         tabContents.forEach((content) => {
           content.classList.remove('active');
         });
-        link.classList.add('active');
+        link.classList.add('active1');
         (document.querySelector(selectedTab) as HTMLElement).classList.add(
           'active'
         );

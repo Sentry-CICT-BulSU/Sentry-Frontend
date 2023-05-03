@@ -10,7 +10,7 @@
       <!-- title and description -->
       <div class="grow flex flex-col gap-0">
         <span class="text-gray-700 text-[16px] font-bold dark:text-white">Classroom key availability</span>
-        <span class="text-gray-500 text-[14px]">This is the availability of keys for room access.</span>
+        <span class="text-gray-500 text-[14px] dark:text-night-100">This is the availability of keys for room access.</span>
       </div>
 
       <!-- triple dot -->
@@ -22,12 +22,16 @@
     <!-- place chart here -->
     <div class="flex flex-col gap-4 p-6 border-b border-gray-300 dark:border-night-500">
       <div class="flex flex-row justify-center items-end">
-        chart here :>
+        <div class="radial-progress text-green-400" style="--value:70; --size:10rem;">
+          <span class="text-black text-[30px] dark:text-night-200">
+            7
+          </span>
+        </div>
       </div>
 
       <div class="">
         <div class="text-gray-900 text-[16px] dark:text-white">There are only few keys left for rooms.</div>
-        <div class="text-gray-500 text-[14px]">Contact the responsible authority for the designated room and key.</div>
+        <div class="text-gray-500 text-[14px] dark:text-night-100">Contact the responsible authority for the designated room and key.</div>
       </div>
     </div>
 
@@ -50,7 +54,7 @@
     <!-- title and description -->
     <div class="grow flex flex-col mx-4 gap-0">
       <span class="text-gray-700 text-[16px] font-bold dark:text-white">Key Logs</span>
-      <span class="text-gray-500 text-[14px]">Keep track the attendance of the faculty.</span>
+      <span class="text-gray-500 text-[14px] dark:text-night-100">Keep track the attendance of the faculty.</span>
     </div>
 
     <button *ngIf="false" [routerLink]="['/keys/key-logs']"
@@ -79,7 +83,7 @@
       </div>
 
       <div class="flex flex-row gap-2 items-center">
-        <a href="#keylogs-all" class="button-plain tab-link active">All</a>
+        <a href="#keylogs-all" class="button-plain tab-link active1">All</a>
         <a href="#keylogs-returned" class="button-plain tab-link">Returned</a>
         <a href="#keylogs-borrowed" class="button-plain tab-link">Borrowed</a>
         <a href="#keylogs-lost" class="button-plain tab-link">Lost</a>
@@ -120,8 +124,8 @@
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div
-                 class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
+            <div [ngClass]="'bg-' + systemService.color + '-700'"
+                 class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
 
@@ -130,7 +134,7 @@
               <div class="text-gray-900 min-w-0 truncate dark:text-white">
                 {{ keyLog.faculty?.full_name }}
               </div>
-              <div class="text-gray-500 min-w-0 truncate">
+              <div class="text-gray-500 min-w-0 truncate dark:text-night-100">
                 {{ keyLog.faculty?.email }}
               </div>
             </div>
@@ -155,35 +159,23 @@
 
           <!-- date and time -->
           <div
-               class="min-w-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
-            <div class="min-w-0 text-center dark:border-night-200 dark:text-night-200">
+               class="min-w-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500">
+            <div class="min-w-0 text-center dark:border-night-200 dark:text-night-100">
               {{keyLog.time_block}}
             </div>
           </div>
         </li>
 
         <!-- pagination -->
-        <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300
-          dark:border-night-500 dark:bg-night-700">
-          <button class="btn-square shrink-0 button-plain w-fit">
-            <span class="material-icons">
-              chevron_left
-            </span>
-          </button>
-
-          <span class="text-center dark:text-night-200">Page 1 out of 10</span>
-
-          <button class="btn-square shrink-0 button-plain w-fit">
-            <span class="material-icons">
-              chevron_right
-            </span>
-          </button>
+        <div class="w-full sticky bottom-0 flex flex-row items-center justify-center bg-white p-4 border-t dark:bg-night-700 dark:border-night-500
+          xl:col-span-2">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
       </ul>
 
       <ng-template #noKeylogsAllBlock>
         <div>
-          <span class="ml-4">There are no keylogs yet...</span>
+          <span class="ml-4 dark:text-white">There are no keylogs yet...</span>
         </div>
       </ng-template>
     </div>
@@ -222,8 +214,8 @@
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div
-                 class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
+            <div [ngClass]="'bg-' + systemService.color + '-700'"
+                 class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
 
@@ -232,7 +224,7 @@
               <div class="text-gray-900 min-w-0 truncate dark:text-white">
                 {{ keyLog.faculty?.full_name }}
               </div>
-              <div class="text-gray-500 min-w-0 truncate">
+              <div class="text-gray-500 min-w-0 truncate dark:text-night-100">
                 {{ keyLog.faculty?.email }}
               </div>
             </div>
@@ -258,35 +250,23 @@
 
           <!-- date and time -->
           <div
-               class="min-w-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
-            <div class="min-w-0 text-center dark:border-night-200 dark:text-night-200">
+               class="min-w-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500">
+            <div class="min-w-0 text-center dark:border-night-200 dark:text-night-100">
               {{keyLog.time_block}}
             </div>
           </div>
         </li>
 
         <!-- pagination -->
-        <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300
-          dark:border-night-500 dark:bg-night-700">
-          <button class="btn-square shrink-0 button-plain w-fit">
-            <span class="material-icons">
-              chevron_left
-            </span>
-          </button>
-
-          <span class="text-center dark:text-night-200">Page 1 out of 10</span>
-
-          <button class="btn-square shrink-0 button-plain w-fit">
-            <span class="material-icons">
-              chevron_right
-            </span>
-          </button>
+        <div class="w-full sticky bottom-0 flex flex-row items-center justify-center bg-white p-4 border-t dark:bg-night-700 dark:border-night-500
+          xl:col-span-2">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
       </ul>
 
       <ng-template #noKeylogsReturnedBlock>
         <div>
-          <span class="ml-4">There are no returned keys yet...</span>
+          <span class="ml-4 dark:text-white">There are no returned keys yet...</span>
         </div>
       </ng-template>
     </div>
@@ -325,8 +305,8 @@
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div
-                 class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
+            <div [ngClass]="'bg-' + systemService.color + '-700'"
+                 class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
 
@@ -335,7 +315,7 @@
               <div class="text-gray-900 min-w-0 truncate dark:text-white">
                 {{ keyLog.faculty?.full_name }}
               </div>
-              <div class="text-gray-500 min-w-0 truncate">
+              <div class="text-gray-500 min-w-0 truncate dark:text-night-100">
                 {{ keyLog.faculty?.email }}
               </div>
             </div>
@@ -360,35 +340,23 @@
 
           <!-- date and time -->
           <div
-               class="min-w-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
-            <div class="min-w-0 text-center dark:border-night-200 dark:text-night-200">
+               class="min-w-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500">
+            <div class="min-w-0 text-center dark:border-night-200 dark:text-night-100">
               {{keyLog.time_block}}
             </div>
           </div>
         </li>
 
         <!-- pagination -->
-        <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300
-          dark:border-night-500 dark:bg-night-700">
-          <button class="btn-square shrink-0 button-plain w-fit">
-            <span class="material-icons">
-              chevron_left
-            </span>
-          </button>
-
-          <span class="text-center dark:text-night-200">Page 1 out of 10</span>
-
-          <button class="btn-square shrink-0 button-plain w-fit">
-            <span class="material-icons">
-              chevron_right
-            </span>
-          </button>
+        <div class="w-full sticky bottom-0 flex flex-row items-center justify-center bg-white p-4 border-t dark:bg-night-700 dark:border-night-500
+          xl:col-span-2">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
       </ul>
 
       <ng-template #noKeylogsBorrowedBlock>
         <div>
-          <span class="ml-4">There are no borrowed keys yet...</span>
+          <span class="ml-4 dark:text-white">There are no borrowed keys yet...</span>
         </div>
       </ng-template>
     </div>
@@ -427,8 +395,8 @@
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div
-                 class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
+            <div [ngClass]="'bg-' + systemService.color + '-700'"
+                 class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
 
@@ -437,7 +405,7 @@
               <div class="text-gray-900 min-w-0 truncate dark:text-white">
                 {{ keyLog.faculty?.full_name }}
               </div>
-              <div class="text-gray-500 min-w-0 truncate">
+              <div class="text-gray-500 min-w-0 truncate dark:text-night-100">
                 {{ keyLog.faculty?.email }}
               </div>
             </div>
@@ -462,35 +430,23 @@
 
           <!-- date and time -->
           <div
-               class="min-w-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
-            <div class="min-w-0 text-center dark:border-night-200 dark:text-night-200">
+               class="min-w-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500">
+            <div class="min-w-0 text-center dark:border-night-200 dark:text-night-100">
               {{keyLog.time_block}}
             </div>
           </div>
         </li>
 
         <!-- pagination -->
-        <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300
-          dark:border-night-500 dark:bg-night-700">
-          <button class="btn-square shrink-0 button-plain w-fit">
-            <span class="material-icons">
-              chevron_left
-            </span>
-          </button>
-
-          <span class="text-center dark:text-night-200">Page 1 out of 10</span>
-
-          <button class="btn-square shrink-0 button-plain w-fit">
-            <span class="material-icons">
-              chevron_right
-            </span>
-          </button>
+        <div class="w-full sticky bottom-0 flex flex-row items-center justify-center bg-white p-4 border-t dark:bg-night-700 dark:border-night-500
+          xl:col-span-2">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
       </ul>
 
       <ng-template #noKeylogsLostBlock>
         <div>
-          <span class="ml-4">There are no keys lost yet...</span>
+          <span class="ml-4 dark:text-white">There are no keys lost yet...</span>
         </div>
       </ng-template>
     </div>
