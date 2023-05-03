@@ -16,15 +16,15 @@
       <!-- card-title -->
       <div class="flex flex-row gap-4 p-4 justify-between border-b border-gray-300 dark:border-night-500">
         <!-- icon -->
-        <span
-              class="shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[32px] text-white">
+        <span [ngClass]="'bg-' + systemService.color + '-700'"
+          class="shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[32px] text-white">
           <i class="fa-solid fa-chart-simple"></i>
         </span>
 
         <!-- title and description -->
         <div class="grow flex flex-col gap-0">
           <span class="text-gray-700 text-[16px] font-bold dark:text-white">Attendance breakdown</span>
-          <span class="text-gray-500 text-[14px]">Keep track the attendance of faculty if present or absent.</span>
+          <span class="text-gray-500 text-[14px] dark:text-night-100">Keep track the attendance of faculty if present or absent.</span>
         </div>
 
         <!-- triple dot -->
@@ -44,16 +44,18 @@
       </div>
     </div>
 
-
-
     <!-- attendance monitored -->
-    <div class="flex flex-col border-light-dark rounded-lg mx-4 xl:basis-1/2 xl:ml-2">
+    <div *ngIf="attendancesStatistics" class="flex flex-col border-light-dark rounded-lg mx-4 xl:basis-1/2 xl:ml-2">
       <!-- card-title -->
       <div class="flex flex-row gap-4 p-4 justify-between border-b border-gray-300 dark:border-night-500">
         <!-- title and description -->
         <div class="grow flex flex-col gap-0">
-          <span class="text-gray-700 text-[16px] font-bold dark:text-white">Attendance monitored</span>
-          <span class="text-gray-500 text-[14px]">You’re able to monitor 80% of the attendance</span>
+          <span class="text-gray-700 text-[16px] font-bold dark:text-white">
+            Attendance monitored
+          </span>
+          <span class="text-gray-500 text-[14px] dark:text-night-100">
+            You’re able to monitor {{attendancesStatistics.monitored_percentage}}% of the attendance
+          </span>
         </div>
 
         <!-- triple dot -->
@@ -65,14 +67,19 @@
       <!-- place chart here -->
       <div class="grow justify-center flex flex-col gap-4 p-6 border-b border-gray-300 dark:border-night-500">
         <div class="flex flex-row justify-center items-end">
-          <div class="radial-progress text-green-400" style="--value:70; --size:10rem;"><span
-                  class="text-black text-[30px] dark:text-night-200">51</span></div>
-          <div class="shrink-0 badge badge-accent">+12%</div>
+          <div class="radial-progress text-green-400"
+               style="--value:{{attendancesStatistics.monitored_percentage}}; --size:10rem;">
+            <span class="text-black text-[30px] dark:text-night-100">
+              {{attendancesStatistics.monitored}}
+            </span>
+          </div>
+          <div *ngIf="false" class="shrink-0 badge badge-accent">+12%</div>
         </div>
 
         <div class="">
           <div class="text-gray-900 text-[16px] dark:text-white">You are almost done with the monitoring!</div>
-          <div class="text-gray-500 text-[14px]">You have already monitored 80% of the faculty keep going!</div>
+          <div class="text-gray-500 text-[14px] dark:text-night-100">You have already monitored
+            {{attendancesStatistics.monitored_percentage}}% of the faculty keep going!</div>
         </div>
       </div>
 
@@ -90,17 +97,13 @@
     </div>
   </div>
 
-
-
   <!-- faculty members -->
   <div class="flex flex-col gap-4 pt-8 justify-between">
     <!-- title and description -->
     <div class="grow flex flex-col mx-4 gap-0">
       <span class="text-gray-700 text-[16px] font-bold dark:text-white">Faculty Members</span>
-      <span class="text-gray-500 text-[14px]">Keep track the attendance of the faculty.</span>
+      <span class="text-gray-500 text-[14px] dark:text-night-100">Keep track the attendance of the faculty.</span>
     </div>
-
-
 
     <!-- search bar and filter buttons-->
     <div class="flex flex-col mx-4 gap-2 xl:flex-row-reverse xl:items-center">
@@ -119,14 +122,15 @@
       </div>
 
       <div class="flex flex-row gap-2 items-center">
-        <a href="#view-all" class="button-plain tab-link active">View All</a>
+        <a href="#view-all" class="button-plain tab-link active1">View All</a>
         <a href="#monitored" class="button-plain tab-link">Monitored</a>
         <a href="#unmonitored" class="button-plain tab-link">Unmonitored</a>
       </div>
     </div>
 
     <div id="view-all" class="tab-content active">
-      <ul class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll xl:max-h-[700px]">
+      <ul *ngIf="schedules; else noSchedulesBlock" 
+        class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll xl:max-h-[700px]">
         <!-- list header -->
         <div
              class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
@@ -137,45 +141,48 @@
             </button>
           </div>
           <span class="basis-2/5 text-center">Attendance</span>
-
-
           <!-- this is a space for the action column -->
           <span class="basis-1/5"></span>
         </div>
 
 
         <!-- faculty member entries -->
-        <li *ngFor="let loop2 of '01234567890123123123'.split('')" class="flex flex-row p-4">
+        <li *ngFor="let schedule of schedules" class="flex flex-row p-4">
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div
-                 class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
+            <div [ngClass]="'bg-' + systemService.color + '-700'"
+              class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
 
             <!-- name and email -->
             <div class="text-[14px] min-w-0">
-              <div class="text-gray-900 min-w-0 truncate dark:text-white">First_name Last_name</div>
-              <div class="text-gray-500 min-w-0 truncate">name@email.com</div>
+              <div class="text-gray-900 min-w-0 truncate dark:text-white">
+                {{schedule.adviser?.full_name}}
+              </div>
+              <div class="text-gray-500 min-w-0 truncate dark:text-night-100">
+                {{schedule.adviser?.email}}
+              </div>
             </div>
           </div>
-
 
           <!-- attendance -->
           <div class="shrink-0 basis-2/5 flex justify-center items-center">
             <!-- present -->
-            <div class="shrink-0 badge badge-accent">Present</div>
-
-
+            <div *ngIf="checkAttendanceStatus(schedule,'present')" class="shrink-0 badge badge-accent">
+              Present
+            </div>
             <!-- absent -->
-            <div class="shrink-0 badge badge-secondary">Absent</div>
-
-
+            <div *ngIf="checkAttendanceStatus(schedule,'absent')" class="shrink-0 badge badge-secondary">
+              Absent
+            </div>
             <!-- no action taken -->
-            <div class="shrink-0 badge badge-outline dark:border-night-200 dark:text-night-200">No action taken</div>
+            <div *ngIf="checkAttendanceStatus(schedule,'NaT')"
+                 class="shrink-0 badge badge-outline dark:border-night-200 dark:text-night-200">
+              No action taken
+            </div>
           </div>
-
 
           <!-- actions -->
           <div
@@ -195,27 +202,24 @@
         </li>
 
         <!-- pagination -->
-        <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300
-          dark:border-night-500 dark:bg-night-700">
-          <button class="btn-square shrink-0 button-plain w-fit">
-            <span class="material-icons">
-              chevron_left
-            </span>
-          </button>
-
-          <span class="text-center dark:text-night-200">Page 1 out of 10</span>
-
-          <button class="btn-square shrink-0 button-plain w-fit">
-            <span class="material-icons">
-              chevron_right
-            </span>
-          </button>
+        <div class="bottom-0 sticky flex flex-row items-center justify-center bg-white p-4 border-t border-gray-300
+        dark:border-night-500 dark:bg-night-700">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
       </ul>
+
+      <ng-template #noSchedulesBlock>
+        <div class="flex justify-center items-center">
+          <span class="dark:text-white">
+            There are no entries yet...
+          </span>
+        </div>
+      </ng-template>
     </div>
 
     <div id="monitored" class="tab-content">
-      <ul class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll xl:max-h-[700px]">
+      <ul *ngIf="schedules; else noSchedulesBlock"
+        class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll xl:max-h-[700px]">
         <!-- list header -->
         <div
              class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
@@ -226,45 +230,48 @@
             </button>
           </div>
           <span class="basis-2/5 text-center">Attendance</span>
-
-
           <!-- this is a space for the action column -->
           <span class="basis-1/5"></span>
         </div>
 
 
         <!-- faculty member entries -->
-        <li *ngFor="let loop2 of '01234567890123123123'.split('')" class="flex flex-row p-4">
+        <li *ngFor="let schedule of filterMonitoredAttendances(true)" class="flex flex-row p-4">
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div
-                 class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
+            <div [ngClass]="'bg-' + systemService.color + '-700'"
+              class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
 
             <!-- name and email -->
             <div class="text-[14px] min-w-0">
-              <div class="text-gray-900 min-w-0 truncate dark:text-white">First_name Last_name</div>
-              <div class="text-gray-500 min-w-0 truncate">name@email.com</div>
+              <div class="text-gray-900 min-w-0 truncate dark:text-white">
+                {{schedule.adviser?.full_name}}
+              </div>
+              <div class="text-gray-500 min-w-0 truncate dark:text-night-100">
+                {{schedule.adviser?.email}}
+              </div>
             </div>
           </div>
-
 
           <!-- attendance -->
           <div class="shrink-0 basis-2/5 flex justify-center items-center">
             <!-- present -->
-            <div class="shrink-0 badge badge-accent">Present</div>
-
-
+            <div *ngIf="checkAttendanceStatus(schedule,'present')" class="shrink-0 badge badge-accent">
+              Present
+            </div>
             <!-- absent -->
-            <div class="shrink-0 badge badge-secondary">Absent</div>
-
-
+            <div *ngIf="checkAttendanceStatus(schedule,'absent')" class="shrink-0 badge badge-secondary">
+              Absent
+            </div>
             <!-- no action taken -->
-            <div class="shrink-0 badge badge-outline dark:border-night-200 dark:text-night-200">No action taken</div>
+            <div *ngIf="checkAttendanceStatus(schedule,'NaT')"
+                 class="shrink-0 badge badge-outline dark:border-night-200 dark:text-night-200">
+              No action taken
+            </div>
           </div>
-
 
           <!-- actions -->
           <div
@@ -284,27 +291,24 @@
         </li>
 
         <!-- pagination -->
-        <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300
-          dark:border-night-500 dark:bg-night-700">
-          <button class="btn-square shrink-0 button-plain w-fit">
-            <span class="material-icons">
-              chevron_left
-            </span>
-          </button>
-
-          <span class="text-center dark:text-night-200">Page 1 out of 10</span>
-
-          <button class="btn-square shrink-0 button-plain w-fit">
-            <span class="material-icons">
-              chevron_right
-            </span>
-          </button>
+        <div class="bottom-0 sticky flex flex-row items-center justify-center bg-white p-4 border-t border-gray-300
+        dark:border-night-500 dark:bg-night-700">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
       </ul>
+
+      <ng-template #noSchedulesBlock>
+        <div class="flex justify-center items-center">
+          <span class="dark:text-white">
+            There are no entries yet...
+          </span>
+        </div>
+      </ng-template>
     </div>
 
     <div id="unmonitored" class="tab-content">
-      <ul class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll xl:max-h-[700px]">
+      <ul *ngIf="schedules; else noSchedulesBlock"
+        class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll xl:max-h-[700px]">
         <!-- list header -->
         <div
              class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
@@ -315,45 +319,47 @@
             </button>
           </div>
           <span class="basis-2/5 text-center">Attendance</span>
-
-
           <!-- this is a space for the action column -->
           <span class="basis-1/5"></span>
         </div>
 
-
         <!-- faculty member entries -->
-        <li *ngFor="let loop2 of '01234567890123123123'.split('')" class="flex flex-row p-4">
+        <li *ngFor="let schedule of filterMonitoredAttendances(false)" class="flex flex-row p-4">
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div
-                 class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
+            <div [ngClass]="'bg-' + systemService.color + '-700'"
+                 class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
 
             <!-- name and email -->
             <div class="text-[14px] min-w-0">
-              <div class="text-gray-900 min-w-0 truncate dark:text-white">First_name Last_name</div>
-              <div class="text-gray-500 min-w-0 truncate">name@email.com</div>
+              <div class="text-gray-900 min-w-0 truncate dark:text-white">
+                {{schedule.adviser?.full_name}}
+              </div>
+              <div class="text-gray-500 min-w-0 truncate dark:text-night-100">
+                {{schedule.adviser?.email}}
+              </div>
             </div>
           </div>
-
 
           <!-- attendance -->
           <div class="shrink-0 basis-2/5 flex justify-center items-center">
             <!-- present -->
-            <div class="shrink-0 badge badge-accent">Present</div>
-
-
+            <div *ngIf="checkAttendanceStatus(schedule,'present')" class="shrink-0 badge badge-accent">
+              Present
+            </div>
             <!-- absent -->
-            <div class="shrink-0 badge badge-secondary">Absent</div>
-
-
+            <div *ngIf="checkAttendanceStatus(schedule,'absent')" class="shrink-0 badge badge-secondary">
+              Absent
+            </div>
             <!-- no action taken -->
-            <div class="shrink-0 badge badge-outline dark:border-night-200 dark:text-night-200">No action taken</div>
+            <div *ngIf="checkAttendanceStatus(schedule,'NaT')"
+                 class="shrink-0 badge badge-outline dark:border-night-200 dark:text-night-200">
+              No action taken
+            </div>
           </div>
-
 
           <!-- actions -->
           <div
@@ -373,23 +379,19 @@
         </li>
 
         <!-- pagination -->
-        <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300
-          dark:border-night-500 dark:bg-night-700">
-          <button class="btn-square shrink-0 button-plain w-fit">
-            <span class="material-icons">
-              chevron_left
-            </span>
-          </button>
-
-          <span class="text-center dark:text-night-200">Page 1 out of 10</span>
-
-          <button class="btn-square shrink-0 button-plain w-fit">
-            <span class="material-icons">
-              chevron_right
-            </span>
-          </button>
+        <div class="bottom-0 sticky flex flex-row items-center justify-center bg-white p-4 border-t border-gray-300
+        dark:border-night-500 dark:bg-night-700">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
       </ul>
+
+      <ng-template #noSchedulesBlock>
+        <div class="flex justify-center items-center">
+          <span class="dark:text-white">
+            There are no entries yet...
+          </span>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>

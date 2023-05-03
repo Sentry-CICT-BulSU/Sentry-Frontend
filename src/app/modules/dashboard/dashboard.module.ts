@@ -1,3 +1,4 @@
+import { NgxPaginationModule } from 'ngx-pagination';
 // Importing necessary modules from @angular and other third-party packages
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,7 +19,7 @@ import { FacultyDashboardComponent } from './pages/faculty-dashboard/faculty-das
 
 // Defining the NgModule for the Dashboard feature module
 @NgModule({
-    declarations: [DashboardComponent, ChartCardComponent, AdminDashboardComponent, FacultyDashboardComponent],
+    declarations: [DashboardComponent, ChartCardComponent, AdminDashboardComponent, FacultyDashboardComponent,],
 
     // Importing necessary modules to be used in this module
     imports: [
@@ -28,6 +29,7 @@ import { FacultyDashboardComponent } from './pages/faculty-dashboard/faculty-das
         HttpClientModule,
         NgApexchartsModule,
         AngularSvgIconModule.forRoot(),
+        NgxPaginationModule
     ]
 })
 

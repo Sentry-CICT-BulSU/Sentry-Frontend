@@ -46,6 +46,10 @@ export class UserListComponent implements OnInit {
       }
     }
 
+    printThisPage() {
+      window.print();
+    }
+
     // Implementing the ngOnInit lifecycle hook
     ngOnInit(): void {
         this.adminService

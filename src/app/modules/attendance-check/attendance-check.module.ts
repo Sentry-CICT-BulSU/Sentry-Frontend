@@ -11,6 +11,7 @@ import { AttendanceMonitoringComponent } from './pages/attendance-monitoring/att
 import { RoomInformationComponent } from './pages/room-information/room-information.component';
 import { CheckAttendanceComponent } from './pages/check-attendance/check-attendance.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SharedModule.forRoot(),
     HttpClientModule,
     ReactiveFormsModule,
+    NgxPaginationModule
   ],
   declarations: [
     AttendanceCheckComponent,

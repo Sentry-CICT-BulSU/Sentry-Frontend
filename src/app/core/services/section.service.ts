@@ -53,6 +53,11 @@ export class SectionService extends PropertiesService {
       headers: this.options.headers,
     });
   }
+  updateSection$(id: number, body: any) {
+    return this.http.patch<ISectionCollection>(this.url + '/' + id, body, {
+      headers: this.options.headers,
+    });
+  }
 
   deleteSection$(id: number) {
     return this.http.delete<ISectionCollection>(this.url + '/' + id, {

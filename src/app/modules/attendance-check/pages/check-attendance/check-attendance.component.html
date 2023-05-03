@@ -19,10 +19,10 @@
           <span class="text-gray-700 text-[16px] font-bold dark:text-white">
             {{schedule.subject?.code}} ({{schedule.subject?.title}})
           </span>
-          <span class="text-gray-500 text-[14px]">
+          <span class="text-gray-500 text-[14px] dark:text-night-100">
             Faculty Assigned: {{schedule.adviser?.full_name}}
           </span>
-          <span class="text-gray-500 text-[14px]">
+          <span class="text-gray-500 text-[14px] dark:text-night-100">
             Schedule: {{schedule.time_start}} - {{schedule.time_end}}
           </span>
         </div>
@@ -38,10 +38,10 @@
               </span>
 
               <div class="text-gray-500">
-                <span class="text-primary-700 text-[14px]">Click to upload</span> or drag and drop
+                <span class="text-primary-700 text-[14px] dark:text-night-100">Click to upload</span> or drag and drop
               </div>
 
-              <span class="text-gray-500 text-[14px]">SVG, PNG, JPG or GIF (max. 800x400px)</span>
+              <span class="text-gray-500 text-[14px] dark:text-night-100">SVG, PNG, JPG or GIF (max. 800x400px)</span>
             </label>
             <input formControlName="attachment" class="absolute -top-10"
                    type="file" name="attendance-attachment" id="attendance-attachment">
@@ -58,7 +58,7 @@
         <!-- card-footer -->
         <div class="flex justify-end items-center p-4">
           <button type="submit"
-                  class="button-plain btn-success w-fit transition-colors text-white hover:bg-green-700">Mark as
+                  class="button-plain btn-success w-fit transition-colors text-white hover:bg-green-700 dark:text-white">Mark as
             present
           </button>
         </div>

@@ -2,7 +2,12 @@ import { Injectable } from '@angular/core';
 import { PropertiesService } from './properties.service';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
-import { IAttendanceCollection, IUser } from '../models';
+import {
+  IAttendanceCollection,
+  IAttendanceStatistics,
+  IScheduleCollection,
+  IUser,
+} from '../models';
 import { environment as env } from 'src/environments/environment';
 
 @Injectable({
@@ -28,10 +33,14 @@ export class AttendanceService extends PropertiesService {
     }
   }
 
-  loadAttendances$() {
-    return this.http.get<IAttendanceCollection>(this.url, {
-      headers: this.options.headers,
-    });
+  loadAttendances$(id?: number) {
+    return id
+      ? this.http.get<IAttendanceCollection>(this.url + '/user/' + id, {
+          headers: this.options.headers,
+        })
+      : this.http.get<IScheduleCollection>(this.url, {
+          headers: this.options.headers,
+        });
   }
   loadAttendance$(id: number) {
     return this.http.get<IAttendanceCollection>(this.url + '/' + id, {
@@ -43,5 +52,11 @@ export class AttendanceService extends PropertiesService {
       env.apiRootRoute + '/api/schedules/' + schedule_id + '/attendances',
       body
     );
+  }
+
+  loadStatistics$() {
+    return this.http.get<IAttendanceStatistics>(this.url + '/stats', {
+      headers: this.options.headers,
+    });
   }
 }

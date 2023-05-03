@@ -12,3 +12,4 @@ export * from './models/subject.model';
 export * from './models/user.model';
 export * from './models/attendance.model';
 export * from './models/available-key.model';
+export * from './models/attendance-statistics.model';

@@ -1,129 +1,122 @@
 <div class="flex flex-col xl:flex-row">
-  <div class="flex flex-col h-[calc(100vh-12px)] xl:basis-3/4">
+  <div class="flex flex-col overflow-y-auto xl:h-[calc(100vh-12px)] xl:basis-3/4">
     <!-- title bar -->
     <div class="flex flex-col px-4 py-8">
       <span class="text-[24px] text-gray-900 font-medium dark:text-white">Attendance logs and Key History</span>
-      <p class="text-subheading">See your recent activities and key logs for the rooms in CICT Building</p>
+      <p class="text-subheading dark:text-night-100">See your recent activities and key logs for the rooms in CICT Building</p>
     </div>
 
     <!-- attendance report -->
-    <div class="flex mx-4 mb-4 min-h-[120px] flex-col rounded-lg border-light-dark bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-1">
-        <div class="mt-4 flex flex-1 flex-col justify-between space-y-1 md:mt-0">
-            <div class="mb-2 flex items-center justify-between">
-                <div class="flex-col items-center">
-                    <h3 class="text-md font-medium text-gray-900 dark:text-night-50">
-                        Attendance Activity
-                    </h3>
-                </div>
-            </div>
-
-            <div
-                 chart-card
-                 class="md:col-span-2 xl:col-span-1">
-            </div>
+    <div
+         class="flex mx-4 mb-4 min-h-[350px] flex-col rounded-lg border-light-dark bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-1">
+      <div class="mt-4 flex flex-1 flex-col justify-between space-y-1 md:mt-0">
+        <div class="mb-2 flex items-center justify-between">
+          <div class="flex-col items-center">
+            <h3 class="text-md font-medium text-gray-900 dark:text-night-50">
+              Attendance Activity
+            </h3>
+          </div>
         </div>
+
+        <div
+             chart-card
+             class="md:col-span-2 xl:col-span-1">
+        </div>
+      </div>
     </div>
-    
+
     <!-- Key logs -->
     <div class="flex flex-col gap-4 justify-between mx-4">
       <!-- title and description -->
       <div class="grow flex flex-col mx-4 gap-0">
         <span class="text-gray-700 text-[16px] font-bold dark:text-white">Key Logs</span>
-        <span class="text-gray-500 text-[14px]">Keep track the attendance of the faculty.</span>
+        <span class="text-gray-500 text-[14px] dark:text-night-100">Keep track the attendance of the faculty.</span>
       </div>
 
-      <ul class="flex flex-col border-light-dark h-[calc(100vh-12px-45px-24px-486px)] rounded-lg overflow-y-scroll">
+      <ul *ngIf="roomKeyLogs"
+          class="flex flex-col border-light-dark h-[500px] rounded-lg overflow-y-scroll xl:min-h-[350px] xl:h-[calc(100vh-12px-45px-24px-486px)]">
         <!-- list header -->
-        <div class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
+        <div
+             class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
           <div class="basis-2/5">
             <button class="w-fit flex flex-row items-center justify-start gap-2">
-              <span>Faculty</span> 
+              <span>Faculty</span>
               <i class="fa-solid fa-arrow-up"></i>
             </button>
           </div>
           <div class="basis-1/5 flex justify-center items-center">
             <button class="w-fit flex flex-row items-center justify-start gap-2">
-              <span>Room</span> 
+              <span>Room</span>
               <i class="fa-solid fa-arrow-up"></i>
             </button>
           </div>
           <div class="basis-1/5 flex justify-center items-center">
-              <span>Key Monitoring</span> 
+            <span>Key Monitoring</span>
           </div>
 
           <div class="basis-1/5 flex justify-center items-center">
             <button class="w-fit flex flex-row items-center justify-start gap-2">
-              <span>Date and Time</span> 
+              <span>Date and Time</span>
               <i class="fa-solid fa-arrow-up"></i>
             </button>
           </div>
         </div>
 
-
         <!-- faculty member entries -->
-        <li *ngFor="let loop2 of '01234567890123123123'.split('')" class="flex flex-row p-4">
+        <li *ngFor="let keyLog of roomKeyLogs" class="flex flex-row p-4">
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-white overflow-hidden">
+            <div [ngClass]="'bg-' + systemService.color + '-700'"
+                 class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-white overflow-hidden">
               <span class="material-icons">person</span>
             </div>
 
             <!-- name and email -->
             <div class="text-[14px] min-w-0">
-              <div class="text-gray-900 min-w-0 truncate dark:text-white">First_name Last_name</div>
-              <div class="text-gray-500 min-w-0 truncate">name@email.com</div>
+              <div class="text-gray-900 min-w-0 truncate dark:text-white">
+                {{keyLog.faculty?.full_name}}
+              </div>
+              <div class="text-gray-500 min-w-0 truncate dark:text-night-100">
+                {{keyLog.faculty?.email}}
+              </div>
             </div>
           </div>
 
           <!-- key monitoring badges -->
           <div class="shrink-0 basis-1/5 text-center flex justify-center items-center min-w-0 truncate dark:text-white">
-            <span>IT 1</span>
+            <span>{{keyLog.room_key?.room?.name}}</span>
           </div>
 
           <!-- key monitoring badges -->
           <div class="shrink-0 basis-1/5 flex flex-col justify-center items-center">
             <!-- returned -->
-            <div class="shrink-0 badge badge-accent">Returned</div>
-
-
+            <div *ngIf="keyLog.status==='Returned'" class="shrink-0 badge badge-accent">Returned</div>
             <!-- borrowed -->
-            <div class="shrink-0 badge badge-secondary">Borrowed</div>
-
-
+            <div *ngIf="keyLog.status==='Borrowed'" class="shrink-0 badge badge-secondary">Borrowed</div>
             <!-- lost -->
-            <div class="shrink-0 badge badge-error">Lost</div>
+            <div *ngIf="keyLog.status==='Lost'" class="shrink-0 badge badge-error">Lost</div>
           </div>
 
-
           <!-- date and time -->
-          <div class="min-w-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
-            <div class="min-w-0 text-center dark:border-night-200 dark:text-night-200">03/25/2023 - 11:10 am</div>
+          <div
+               class="min-w-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
+            <div class="min-w-0 text-center dark:border-night-200 dark:text-night-100">
+              {{keyLog.time_block}}
+            </div>
           </div>
         </li>
 
         <!-- pagination -->
-        <div class="bottom-0 sticky flex items-center justify-between bg-white p-2 border-t border-gray-300 
-          dark:border-night-500 dark:bg-night-700">
-          <button class="btn-square shrink-0 button-plain w-fit">
-            <span class="material-icons">
-              chevron_left
-            </span>
-          </button>
-
-          <span class="text-center dark:text-night-200">Page 1 out of 10</span>
-
-          <button class="btn-square shrink-0 button-plain w-fit">
-            <span class="material-icons">
-              chevron_right
-            </span>
-          </button>
+        <div class="bottom-0 sticky flex flex-row items-center justify-center bg-white p-4 border-t border-gray-300
+        dark:border-night-500 dark:bg-night-700">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
       </ul>
     </div>
   </div>
 
-  <div class="flex flex-col xl:basis-1/4">
+  <div class="flex flex-col mx-4 xl:mx-0 xl:basis-1/4">
     <!-- title bar -->
     <div class="flex flex-row justify-between items-center py-8 mr-4">
       <span class="text-[16px] text-gray-900 font-medium dark:text-white">Your Attendance History</span>
@@ -131,19 +124,23 @@
     </div>
 
     <!-- activity logs -->
-    <ul class="flex flex-col gap-2 overflow-y-auto max-h-[500px] xl:max-h-none xl:h-[calc(100vh-12px-88px)]">
-      <li *ngFor="let loop2 of '01234567890123123123asdfkljasdkfjasdjflasdjfljdfljasfjal;fsd'.split('')"
-        class="basis-2/5 flex flex-row items-center min-w-0 first:mt-2 last:mb-2">
+    <ul *ngIf="attendances"
+        class="flex flex-col gap-2 overflow-y-auto max-h-[300px] xl:max-h-none xl:h-[calc(100vh-12px-88px)] ">
+      <li *ngFor="let attendance of attendances"
+          class="flex flex-row items-center justify-between min-w-0 first:mt-2 last:mb-2">
         <!-- image -->
-        <div class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-white overflow-hidden">
+        <div [ngClass]="'bg-' + systemService.color + '-700'"
+          class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-white overflow-hidden">
           <span class="material-icons">build</span>
         </div>
 
-        <!-- name and email -->
-        <div class="text-[14px] min-w-0">
-          <div class="text-gray-900 min-w-0 truncate dark:text-white">MM/DD/YYYY</div>
-          <div class="shrink-0 badge badge-accent">Present</div>
-          <div class="shrink-0 badge badge-secondary">Absent</div>
+        <!-- date and attendance status? -->
+        <div class="grow text-[14px] min-w-0 flex flex-row gap-2 xl:block">
+          <div class="text-gray-900 min-w-0 truncate dark:text-white">
+            {{attendance.created_at|date:'medium'}}
+          </div>
+          <div *ngIf="attendance.status==='present'" class="shrink-0 badge badge-accent">Present</div>
+          <div *ngIf="attendance.status==='absent'" class="shrink-0 badge badge-secondary">Absent</div>
         </div>
       </li>
     </ul>
