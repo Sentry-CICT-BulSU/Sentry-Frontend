@@ -17,20 +17,14 @@ import { SystemService } from 'src/app/core/services/system.service';
 export class RoomKeysComponent implements OnInit {
   roomKeyCollection?: IRoomKeyCollection;
   roomKeys?: IRoomKey[];
-  roomKeyLogs?: IRoomKeyLog[];
-  roomKeyLogCollection?: IRoomKeyLogCollection;
-  availableKeys?: any;
   constructor(
     private roomKeySerivce: RoomKeyService,
-    private roomKeyLogsService: RoomKeyLogsService,
-    private router: Router,
     public systemService: SystemService
   ) {}
 
   ngOnInit(): void {
     this.initSystemColor();
     this.loadRoomInfo();
-
   }
 
   getStatusClass(status: string): string {
@@ -44,9 +38,15 @@ export class RoomKeysComponent implements OnInit {
     console.log('system color: ', color);
     this.replaceClassName('bg-primary-', `bg-${this.systemService.color}-`);
     this.replaceClassName('text-primary-', `text-${this.systemService.color}-`);
-    this.replaceClassName('border-primary-', `border-${this.systemService.color}-`);
+    this.replaceClassName(
+      'border-primary-',
+      `border-${this.systemService.color}-`
+    );
     this.replaceClassName('ring-primary-', `ring-${this.systemService.color}-`);
-    this.replaceClassName('hover:bg-primary-', `hover:bg-${this.systemService.color}-`);
+    this.replaceClassName(
+      'hover:bg-primary-',
+      `hover:bg-${this.systemService.color}-`
+    );
   }
 
   private replaceClassName(prefix: string, replacement: string) {
@@ -66,17 +66,9 @@ export class RoomKeysComponent implements OnInit {
 
   loadRoomInfo() {
     this.roomKeySerivce.getRoomKeys$().subscribe((roomKeys) => {
+      console.log(roomKeys);
       this.roomKeyCollection = roomKeys as IRoomKeyCollection;
       this.roomKeys = this.roomKeyCollection.data as IRoomKey[];
-      console.log(roomKeys);
     });
-    this.roomKeyLogsService.getRoomKeyLogs$().subscribe((roomKeyLogs) => {
-      this.roomKeyLogCollection = roomKeyLogs;
-      this.roomKeyLogs = roomKeyLogs.data as IRoomKeyLog[];
-      console.log(roomKeyLogs);
-    });
-    this.roomKeyLogsService
-      .getAvailableRoomKeys$()
-      .subscribe((response) => (this.availableKeys = response));
   }
 }
