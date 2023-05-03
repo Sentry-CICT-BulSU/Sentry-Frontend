@@ -35,55 +35,67 @@
       </div>
     </div>
 
-      
-    <div id="keys-all" class="tab-content active overflow-y-auto mx-4 my-4 max-h-[calc(100vh-68px-36px-38px-81px-48px)]">
-      <ul class="rounded-lg border-light-dark grid grid-cols-3 gap-4 p-2 place-items-center md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-        <li *ngFor="let loop2 of '01234567890123123123'.split('')" class="rounded-lg border-light-dark flex flex-col gap-2 justify-center items-center shadow-lg p-4 w-full max-w-[150px] dark:bg-night-700">
+
+    <div id="keys-all"
+         class="tab-content active overflow-y-auto mx-4 my-4 max-h-[calc(100vh-68px-36px-38px-81px-48px)]">
+      <ul *ngIf="roomKeys"
+          class="rounded-lg border-light-dark grid grid-cols-3 gap-4 p-2 place-items-center md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+        <li *ngFor="let roomKey of roomKeys"
+            class="rounded-lg border-light-dark flex flex-col gap-2 justify-center items-center shadow-lg p-4 w-full max-w-[150px] dark:bg-night-700">
           <div class="rounded-full w-[54px] h-[54px] bg-primary-700 flex items-center justify-center">
             <span class="material-icons text-white">
               vpn_key
             </span>
           </div>
-          <span class="dark:text-white">IT 1</span>
-          <div class="badge badge-secondary">In use</div>
-        </li>
-    
-        <li *ngFor="let loop2 of '01234567890123123123'.split('')" class="rounded-lg border-light-dark flex flex-col gap-2 justify-center items-center shadow-lg p-4 w-full max-w-[150px] dark:bg-night-700">
-          <div class="rounded-full w-[54px] h-[54px] bg-primary-700 flex items-center justify-center">
-            <span class="material-icons text-white">
-              vpn_key
-            </span>
+          <span class="dark:text-white">
+            {{roomKey.room?.name}}
+          </span>
+          <div class="badge badge-secondary"
+               [ngClass]="{ 'badge-secondary':roomKey.status==='In Use','badge-accent':roomKey.status==='Available'}">
+            {{roomKey.status}}
           </div>
-          <span class="dark:text-white">IT 1</span>
-          <div class="badge badge-accent">Available</div>
         </li>
       </ul>
     </div>
-    
+
     <div id="keys-in-use" class="tab-content overflow-y-auto mx-4 my-4 max-h-[calc(100vh-68px-36px-38px-81px-48px)]">
-      <ul class="rounded-lg border-light-dark grid grid-cols-3 gap-4 p-2 place-items-center md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-        <li *ngFor="let loop2 of '01234567890123123123'.split('')" class="rounded-lg border-light-dark flex flex-col gap-2 justify-center items-center shadow-lg p-4 w-full max-w-[150px] dark:bg-night-700">
+      <ul *ngIf="roomKeys"
+          class="rounded-lg border-light-dark grid grid-cols-3 gap-4 p-2 place-items-center md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+        <li *ngFor="let roomKey of fillterRoomKeys('In Use')"
+            class="rounded-lg border-light-dark flex flex-col gap-2 justify-center items-center shadow-lg p-4 w-full max-w-[150px] dark:bg-night-700">
           <div class="rounded-full w-[54px] h-[54px] bg-primary-700 flex items-center justify-center">
             <span class="material-icons text-white">
               vpn_key
             </span>
           </div>
-          <span class="dark:text-white">IT 1</span>
-          <div class="badge badge-secondary">In use</div>
+          <span class="dark:text-white">
+            {{roomKey.room?.name}}
+          </span>
+          <div class="badge badge-secondary"
+               [ngClass]="{ 'badge-secondary':roomKey.status==='In Use','badge-accent':roomKey.status==='Available'}">
+            {{roomKey.status}}
+          </div>
         </li>
       </ul>
     </div>
-    
+
     <div id="keys-available" class="tab-content overflow-y-auto mx-4 my-4 max-h-[calc(100vh-68px-36px-38px-81px-48px)]">
-      <ul class="rounded-lg border-light-dark grid grid-cols-3 gap-4 p-2 place-items-center md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-        <li *ngFor="let loop2 of '01234567890123123123'.split('')" class="rounded-lg border-light-dark flex flex-col gap-2 justify-center items-center shadow-lg p-4 w-full max-w-[150px] dark:bg-night-700">
+      <ul *ngIf="roomKeys"
+          class="rounded-lg border-light-dark grid grid-cols-3 gap-4 p-2 place-items-center md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+        <li *ngFor="let roomKey of fillterRoomKeys('Available')"
+            class="rounded-lg border-light-dark flex flex-col gap-2 justify-center items-center shadow-lg p-4 w-full max-w-[150px] dark:bg-night-700">
           <div class="rounded-full w-[54px] h-[54px] bg-primary-700 flex items-center justify-center">
             <span class="material-icons text-white">
               vpn_key
             </span>
           </div>
-          <span class="dark:text-white">IT 1</span>
-          <div class="badge badge-accent">Available</div>
+          <span class="dark:text-white">
+            {{roomKey.room?.name}}
+          </span>
+          <div class="badge badge-secondary"
+               [ngClass]="{ 'badge-secondary':roomKey.status==='In Use','badge-accent':roomKey.status==='Available'}">
+            {{roomKey.status}}
+          </div>
         </li>
       </ul>
     </div>

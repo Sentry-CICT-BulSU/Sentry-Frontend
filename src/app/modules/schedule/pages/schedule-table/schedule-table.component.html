@@ -29,8 +29,21 @@
           Print
         </span>
       </button>
+
+
+
     </div>
   </div>
+
+  <!-- <ng-container *ngFor="let schedule of schedules">
+    <h1>{{schedule.subject?.title}}</h1>
+    <h1>{{schedule.adviser?.full_name}}</h1>
+    <h1>{{schedule.section?.name}}</h1>
+    <h1>{{schedule.room?.name}}</h1>
+    <h1>{{schedule.time_start}}</h1>
+    <h1>{{schedule.time_end}}</h1>
+    <h1>{{schedule.active_days}}</h1>
+  </ng-container> -->
 
   <div class="grid grid-cols-1 rounded-b-lg border-x border-b border-gray-300 dark:border-night-500 bg-white p-5 dark:bg-night-700">
     <table class="table-fixed w-full dark:text-night-200">
@@ -38,7 +51,7 @@
         <tr>
           <th class="w-2/4">&nbsp;</th>
           <ng-container *ngFor="let day of daysOfWeek">
-            <th class="w-2/4 text-gray-500 text-sm font-medium pb-4">{{ day }}</th>
+            <th class="w-2/4 text-gray-500 text-sm font-medium pb-4 capitalize">{{ day }}</th>
           </ng-container>
         </tr>
       </thead>
@@ -48,15 +61,19 @@
             <td class="border-light-dark px-4 py-2 h-24 text-center">{{ time }}</td>
             <ng-container *ngFor="let day of daysOfWeek">
               <td class="border-light-dark px-4 py-2" [ngClass]="{'bg-primary-300 dark:bg-night-500': isSlotFilled(day, time)}">
-                <ng-container *ngIf="isSlotFilled(day, time) as slot">
-                  <div class="flex flex-col justify-center items-center"
-                    *ngIf="time === slot.timeStart; else blankSlot">
-                    <div>{{ slot.subject }}</div>
-                    <div class="text-gray-600 dark:text-night-200">{{ slot.room }}</div>
-                  </div>
-                  <ng-template #blankSlot>
-                    &nbsp;
-                  </ng-template>
+                <ng-container *ngFor="let schedule of schedules">
+                  <ng-container *ngIf="schedule.active_days.join(',').indexOf(day) !== -1">
+                    <div class="flex flex-col justify-center items-center"
+                      *ngIf="time === schedule.time_start; else blankSlot">
+                      <div class="text-center">{{schedule.subject?.title}}</div>
+                      <div class="text-gray-600 text-center text-xs dark:text-night-200">{{schedule.adviser?.full_name}}</div>
+                      <div class="text-gray-600 text-center text-xs dark:text-night-200">{{schedule.section?.name}}</div>
+                      <div class="text-gray-600 text-center text-xs dark:text-night-200">{{schedule.room?.name}}</div>
+                    </div>
+                    <ng-template #blankSlot>
+                      &nbsp;
+                    </ng-template>
+                  </ng-container>
                 </ng-container>
               </td>
             </ng-container>
@@ -64,6 +81,7 @@
         </ng-container>
       </tbody>
     </table>
+
   </div>
 
 

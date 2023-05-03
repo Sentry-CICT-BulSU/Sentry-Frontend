@@ -189,7 +189,29 @@ const defaultDays = [
 
 const time_start: { value: string; label: string }[] = [
   { value: '7:00 AM', label: '7:00 AM' },
+  { value: '8:00 AM', label: '8:00 AM' },
+  { value: '9:00 AM', label: '9:00 AM' },
+  { value: '10:00 AM', label: '10:00 AM' },
+  { value: '11:00 AM', label: '11:00 AM' },
+  { value: '12:00 AM', label: '12:00 AM' },
+  { value: '1:00 PM', label: '1:00 PM' },
+  { value: '2:00 PM', label: '2:00 PM' },
+  { value: '3:00 PM', label: '3:00 PM' },
+  { value: '4:00 PM', label: '4:00 PM' },
+  { value: '5:00 PM', label: '5:00 PM' },
+  { value: '6:00 PM', label: '6:00 PM' },
 ];
 const time_end: { value: string; label: string }[] = [
+  { value: '7:00 AM', label: '7:00 AM' },
+  { value: '8:00 AM', label: '8:00 AM' },
+  { value: '9:00 AM', label: '9:00 AM' },
+  { value: '10:00 AM', label: '10:00 AM' },
+  { value: '11:00 AM', label: '11:00 AM' },
+  { value: '12:00 AM', label: '12:00 AM' },
+  { value: '1:00 PM', label: '1:00 PM' },
+  { value: '2:00 PM', label: '2:00 PM' },
+  { value: '3:00 PM', label: '3:00 PM' },
+  { value: '4:00 PM', label: '4:00 PM' },
+  { value: '5:00 PM', label: '5:00 PM' },
   { value: '6:00 PM', label: '6:00 PM' },
 ];
