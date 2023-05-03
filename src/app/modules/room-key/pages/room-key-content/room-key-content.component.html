@@ -71,36 +71,11 @@
           <h3 class="text-lg font-medium text-gray-900 dark:text-white mr-3">Key Monitoring Log</h3>
           <div class="space-x-1 text-sm font-medium text-gray-400 dark:text-night-300">
             <p>
-              Edit necessary personal details and information needed here.
+              Edit necessary details and information needed here.
             </p>
           </div>
         </div>
-        <div class="flex items-center justify-end space-x-3">
 
-          <div class='max-w-md mx-auto'>
-            <div class="relative flex items-center w-full rounded-lg border-light-dark overflow-hidden">
-              <div class="grid place-items-center h-full w-12 text-gray-700 dark:text-night-200">
-                <span class="material-symbols-rounded h-6 w-6">
-                  search
-                </span>
-              </div>
-
-              <input
-                     class="search-bar"
-                     type="text"
-                     id="search"
-                     placeholder="Search.." />
-            </div>
-          </div>
-
-          <button type="button"
-                  class="flex items-center justify-center rounded-md button-plain">
-            <span class="material-symbols-rounded h-6 w-6 mr-2">
-              filter_list
-            </span>
-            Filters
-          </button>
-        </div>
       </div>
     </div>
 
@@ -139,11 +114,8 @@
                 </div>
               </td>
               <td class="p-2">
-                <div [ngClass]="{
-                  'text-green-500': log.status==='Borrowed',
-                  'text-green-100': log.status==='Returned',
-                  'text-green-250': log.status==='Lost'}"
-                     class="inline-block rounded-xl bg-green-500/25 py-1 px-2 text-xs font-medium ">
+                <div
+                     class="inline-block rounded-xl py-1 px-2 text-xs font-medium {{ getStatusClass(log.status) }}">
                   {{log.status}}
                 </div>
               </td>
