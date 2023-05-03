@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { combineLatest, forkJoin } from 'rxjs';
+import { combineLatest, of, switchMap } from 'rxjs';
 import { ISchedule } from 'src/app/core/models';
 import { ScheduleService } from 'src/app/core/services/schedule.service';
 
@@ -75,32 +75,38 @@ export class ScheduleTableComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const obs = combineLatest([this.route.params, this.route.queryParams]);
-    console.log('hit');
-    obs.subscribe({
-      next: ([params, query]) => {
-        console.log(params, query);
-        const id: number = +params['id'];
-        const q: string = query['type'];
-        const type_id: number = +query['id'];
-        if (id && query) {
-          this.scheduleService
-            .loadSchedule$(id, { type: q, id: type_id })
-            .subscribe({
-              next: (schedule) => {
-                this.schedules = schedule.data as ISchedule[];
-                console.log(this.schedules);
-              },
-              error: (err) => console.debug(err),
+    this.loadSchedule();
+  }
+
+  loadSchedule() {
+    combineLatest([this.route.params, this.route.queryParams])
+      .pipe(
+        switchMap(([params, query]) => {
+          console.log(params, query);
+          const id = +params['id'];
+          const { type, id: type_id } = query;
+          if (id && query) {
+            return this.scheduleService.loadSchedule$(id, {
+              type,
+              id: type_id,
             });
-        }
-      },
-      error: (err) => console.debug(err),
-    });
+          }
+          return of(null);
+        })
+      )
+      .subscribe({
+        next: (schedule) => {
+          if (schedule) {
+            this.schedules = schedule.data as ISchedule[];
+            console.log(this.schedules);
+          }
+        },
+        error: (err) => console.debug(err),
+      });
   }
 
   isSlotFilled(day: string, time: string): ISchedule | undefined {
-    return this.schedules?.find(schedule => {
+    return this.schedules?.find((schedule) => {
       const days = schedule.active_days.join(',');
       if (!days.includes(day)) {
         return false;
@@ -111,7 +117,6 @@ export class ScheduleTableComponent implements OnInit {
       return currentTime >= startTime && currentTime <= endTime;
     });
   }
-
 
   getSubject(day: string, time: string): string | undefined {
     const slot = this.isSlotFilled(day, time);
