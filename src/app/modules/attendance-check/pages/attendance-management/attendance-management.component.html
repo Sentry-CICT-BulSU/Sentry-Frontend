@@ -131,7 +131,8 @@
     </div>
 
     <div id="view-all" class="tab-content active">
-      <ul *ngIf="schedules" class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll xl:max-h-[700px]">
+      <ul *ngIf="schedules; else noSchedulesBlock" 
+        class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll xl:max-h-[700px]">
         <!-- list header -->
         <div
              class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
@@ -220,10 +221,19 @@
           </button>
         </div>
       </ul>
+
+      <ng-template #noSchedulesBlock>
+        <div class="flex justify-center items-center">
+          <span>
+            There are no entries yet...
+          </span>
+        </div>
+      </ng-template>
     </div>
 
     <div id="monitored" class="tab-content">
-      <ul *ngIf="schedules" class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll xl:max-h-[700px]">
+      <ul *ngIf="schedules; else noSchedulesBlock"
+        class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll xl:max-h-[700px]">
         <!-- list header -->
         <div
              class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
@@ -312,10 +322,19 @@
           </button>
         </div>
       </ul>
+
+      <ng-template #noSchedulesBlock>
+        <div class="flex justify-center items-center">
+          <span>
+            There are no entries yet...
+          </span>
+        </div>
+      </ng-template>
     </div>
 
     <div id="unmonitored" class="tab-content">
-      <ul *ngIf="schedules" class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll xl:max-h-[700px]">
+      <ul *ngIf="schedules; else noSchedulesBlock"
+        class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll xl:max-h-[700px]">
         <!-- list header -->
         <div
              class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
@@ -403,6 +422,14 @@
           </button>
         </div>
       </ul>
+
+      <ng-template #noSchedulesBlock>
+        <div class="flex justify-center items-center">
+          <span>
+            There are no entries yet...
+          </span>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>

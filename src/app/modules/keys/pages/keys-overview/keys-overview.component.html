@@ -65,7 +65,7 @@
     <!-- search bar and filter buttons-->
     <div class="flex flex-col mx-4 gap-2">
       <!-- search bar row -->
-      <div class="flex flex-row gap-2 mb-2">
+      <div *ngIf="false" class="flex flex-row gap-2 mb-2">
         <div class="grow border-light-dark rounded-lg flex flex-row justify-start items-center px-2">
           <i class="fa-solid fa-magnifying-glass dark:text-night-200"></i>
           <input class="border-none" type="text" name="faculty-member-search" id="faculty-member-search"
@@ -87,7 +87,7 @@
     </div>
 
     <div id="keylogs-all" class="tab-content active">
-      <ul *ngIf="keyLogs" class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
+      <ul *ngIf="keyLogs && keyLogs.length > 0; else noKeylogsAllBlock" class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
         <!-- list header -->
         <div
              class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
@@ -180,10 +180,16 @@
           </button>
         </div>
       </ul>
+
+      <ng-template #noKeylogsAllBlock>
+        <div>
+          <span class="ml-4">There are no keylogs yet...</span>
+        </div>
+      </ng-template>
     </div>
 
     <div id="keylogs-returned" class="tab-content">
-      <ul *ngIf="keyLogsReturned" class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
+      <ul *ngIf="keyLogsReturned && keyLogsReturned.length > 0; else noKeylogsReturnedBlock" class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
         <!-- list header -->
         <div
              class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
@@ -277,10 +283,16 @@
           </button>
         </div>
       </ul>
+
+      <ng-template #noKeylogsReturnedBlock>
+        <div>
+          <span class="ml-4">There are no returned keys yet...</span>
+        </div>
+      </ng-template>
     </div>
 
     <div id="keylogs-borrowed" class="tab-content">
-      <ul *ngIf="keyLogsBorrowed" class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
+      <ul *ngIf="keyLogsBorrowed && keyLogsBorrowed.length > 0; else noKeylogsBorrowedBlock" class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
         <!-- list header -->
         <div
              class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
@@ -373,10 +385,16 @@
           </button>
         </div>
       </ul>
+
+      <ng-template #noKeylogsBorrowedBlock>
+        <div>
+          <span class="ml-4">There are no borrowed keys yet...</span>
+        </div>
+      </ng-template>
     </div>
 
     <div id="keylogs-lost" class="tab-content">
-      <ul *ngIf="keyLogsLost" class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
+      <ul *ngIf="keyLogsLost && keyLogsLost.length > 0; else noKeylogsLostBlock" class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
         <!-- list header -->
         <div
              class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
@@ -469,6 +487,12 @@
           </button>
         </div>
       </ul>
+
+      <ng-template #noKeylogsLostBlock>
+        <div>
+          <span class="ml-4">There are no keys lost yet...</span>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>
