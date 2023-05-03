@@ -29,7 +29,7 @@ export class AttendanceManagementComponent implements OnInit {
     ]).subscribe({
       next: ([schedules, statistics]) => {
         console.log(schedules, statistics);
-        this.schedulesCollection = schedules;
+        this.schedulesCollection = schedules as IScheduleCollection;
         this.schedules = schedules.data as ISchedule[];
         this.attendancesStatistics = statistics;
       },
