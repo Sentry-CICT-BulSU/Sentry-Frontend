@@ -16,7 +16,11 @@ export class SectionListComponent implements OnInit {
   sectionsActive?: ISection[];
   sectionsInactiveCollection?: ISectionCollection;
   sectionsInactive?: ISection[];
-  constructor(private sectionService: SectionService, private router: Router, public systemService: SystemService) {}
+  constructor(
+    private sectionService: SectionService,
+    private router: Router,
+    public systemService: SystemService
+  ) {}
 
   ngOnInit(): void {
     this.initComponent();

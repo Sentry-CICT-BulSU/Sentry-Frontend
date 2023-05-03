@@ -22,8 +22,12 @@
     </div>
   </div>
 
+  <pre *ngIf="editSectionForm">
+    {{editSectionForm.value|json}}
+  </pre>
 
-  <form class="grid grid-cols-1">
+  <form *ngIf="editSectionForm && section" [formGroup]="editSectionForm" (ngSubmit)="onSubmit()" novalidate
+        class="grid grid-cols-1">
     <!-- Separator -->
     <div class="py-6">
       <hr class="border-solid border-gray-200 dark:border-night-500" />
@@ -36,11 +40,8 @@
 
       <div class="relative col-span-4">
         <select formControlName="semester_id" name="semester_id" id="semester_id" class="peer block">
-          <option>
-            1st Semester
-          </option>
-          <option>
-            2nd Semester
+          <option *ngFor="let sem of semesters|async" [value]="sem.id">
+            {{sem.name_acad_yr}}
           </option>
         </select>
       </div>
@@ -52,7 +53,7 @@
       </div>
 
       <div class="relative col-span-4">
-        <select name="section" id="section" class="peer block">
+        <select formControlName="name" name="section" id="section" class="peer block">
           <option>
             BSIT 1A - G1
           </option>
@@ -118,8 +119,8 @@
 
       <div class="relative col-span-4">
         <select formControlName="adviser_id" name="adviser_id" id="adviser_id" class="peer block">
-          <option>
-           Gabriel Galang
+          <option *ngFor="let faculty of faculty|async" [value]="faculty.id">
+            {{faculty.full_name}}
           </option>
         </select>
       </div>
@@ -135,19 +136,21 @@
         <div
              class="grid w-full grid-cols-2 rounded-md border border-gray-300 text-xs">
           <div>
-            <input value="active" type="radio" name="status" id="status-active"
-                   class="peer hidden" checked />
+            <input formControlName="status" value="active" type="radio" name="status" id="status-active"
+                   class="peer hidden" [checked]="section.status ==='active'" />
             <label for="status-active"
-                   class="rounded-l-md border-r border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:first-line:text-white hover:bg-gray-200" [ngClass]="'peer-checked:border-' + systemService.color + '-700 peer-checked:bg-' + systemService.color + '-700'">
+                   class="rounded-l-md border-r border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:first-line:text-white hover:bg-gray-200"
+                   [ngClass]="'peer-checked:border-' + systemService.color + '-700 peer-checked:bg-' + systemService.color + '-700'">
               Active
             </label>
           </div>
           <div>
-            <input value="inactive" type="radio" name="status" id="status-inactive"
-                   class="peer hidden" />
+            <input formControlName="status" value="inactive" type="radio" name="status" id="status-inactive"
+                   class="peer hidden" [checked]="section.status ==='inactive'" />
             <label
                    for="status-inactive"
-                   class="rounded-r-md border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:first-line:text-white hover:bg-gray-200" [ngClass]="'peer-checked:border-' + systemService.color + '-700 peer-checked:bg-' + systemService.color + '-700'">
+                   class="rounded-r-md border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:first-line:text-white hover:bg-gray-200"
+                   [ngClass]="'peer-checked:border-' + systemService.color + '-700 peer-checked:bg-' + systemService.color + '-700'">
               Inactive
             </label>
           </div>
@@ -166,7 +169,8 @@
         Cancel
       </button>
       <button type="submit"
-              class="relative mb-10 flex w-20 justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium text-white focus:outline-none" [ngClass]="'bg-' + systemService.color + '-700 hover:bg-' + systemService.color + '-600 border-' + systemService.color + '-700'">
+              class="relative mb-10 flex w-20 justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium text-white focus:outline-none"
+              [ngClass]="'bg-' + systemService.color + '-700 hover:bg-' + systemService.color + '-600 border-' + systemService.color + '-700'">
         Save
       </button>
     </div>

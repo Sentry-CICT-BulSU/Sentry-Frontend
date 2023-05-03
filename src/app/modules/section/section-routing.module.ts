@@ -16,7 +16,7 @@ const routes: Routes = [
         { path: '', redirectTo: 'section-list', pathMatch: 'full' },
         { path: 'section-list', component: SectionListComponent },
         { path: 'add-section', component: AddSectionComponent },
-        { path: 'edit-section', component: EditSectionComponent },
+        { path: 'edit-section/:id', component: EditSectionComponent },
         { path: '**', redirectTo: 'section-list', pathMatch: 'full' },
     ],
 },

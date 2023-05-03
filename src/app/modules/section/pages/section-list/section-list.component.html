@@ -9,7 +9,8 @@
     </div>
 
     <button type="button" [routerLink]="['/section/add-section']"
-            class="flex items-center justify-center button-size" [ngClass]="'bg-' + systemService.color + '-700 hover:bg-' + systemService.color + '-600 border-' + systemService.color + '-700'">
+            class="flex items-center justify-center button-size"
+            [ngClass]="'bg-' + systemService.color + '-700 hover:bg-' + systemService.color + '-600 border-' + systemService.color + '-700'">
       <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
         add
       </span>
@@ -133,7 +134,7 @@
                     delete
                   </span>
 
-                  <span [routerLink]="['/section/edit-section']"
+                  <span [routerLink]="['/section/edit-section',section.id]"
                         class="material-symbols-rounded font-medium cursor-pointer justify-center rounded-md text-gray-500 hover:text-primary-700 dark:text-night-300">
                     edit
                   </span>
@@ -224,7 +225,7 @@
                     delete
                   </span>
 
-                  <span [routerLink]="['/section/edit-section']"
+                  <span [routerLink]="['/section/edit-section',section.id]"
                         class="material-symbols-rounded font-medium cursor-pointer justify-center rounded-md text-gray-500 hover:text-primary-700 dark:text-night-300">
                     edit
                   </span>
@@ -311,7 +312,7 @@
                     delete
                   </span>
 
-                  <span [routerLink]="['/section/edit-section']"
+                  <span [routerLink]="['/section/edit-section',section.id]"
                         class="material-symbols-rounded font-medium cursor-pointer justify-center rounded-md text-gray-500 hover:text-primary-700 dark:text-night-300">
                     edit
                   </span>
