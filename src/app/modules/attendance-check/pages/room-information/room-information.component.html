@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <ul class="grid grid-cols-1 gap-4 items-center px-4 place-items-center xl:grid-cols-2 xl:pb-4">
+    <ul *ngIf="schedules; else noRoomScheduleBlock" class="grid grid-cols-1 gap-4 items-center px-4 place-items-center xl:grid-cols-2 xl:pb-4">
       <li *ngFor="let schedule of schedules"
           class="border-light-dark rounded-lg mx-4 w-full max-w-4xl overflow-hidden last:mb-4 xl:last:mb-0">
         <!-- card-title -->
@@ -72,35 +72,41 @@
           <!-- <button class="button-plain w-fit">Undo Attendance</button> -->
         </div>
       </li>
+
+      <!-- pagination -->
+      <div class="w-full sticky bottom-0 flex items-center justify-between bg-white p-4 border-t dark:border-night-500 dark:bg-night-800
+        xl:col-span-2">
+        <button class="btn-square shrink-0 button-plain w-fit">
+          <span class="material-icons">
+            chevron_left
+          </span>
+        </button>
+  
+        <span class="text-center dark:text-white">Page 1 out of 10</span>
+  
+        <button class="btn-square shrink-0 button-plain w-fit">
+          <span class="material-icons">
+            chevron_right
+          </span>
+        </button>
+      </div>
     </ul>
 
-    <!-- pagination -->
-    <div
-         class="sticky bottom-0 flex items-center justify-between bg-white p-4 border-t dark:border-night-500 dark:bg-night-800">
-      <button class="btn-square shrink-0 button-plain w-fit">
-        <span class="material-icons">
-          chevron_left
-        </span>
-      </button>
-
-      <span class="text-center dark:text-white">Page 1 out of 10</span>
-
-      <button class="btn-square shrink-0 button-plain w-fit">
-        <span class="material-icons">
-          chevron_right
-        </span>
-      </button>
-    </div>
+    <ng-template #noRoomScheduleBlock>
+      <div>
+        <span class="ml-4">There are no room schedules yet...</span>
+      </div>
+    </ng-template>
   </div>
 
   <!-- assigned faculty -->
   <div id="assigned-faculty" class="tab-content">
-    <ul class="grid grid-cols-1 gap-4 items-center px-4 place-items-center xl:grid-cols-2">
+    <ul *ngIf="schedules; else noAssignedFacultyBlock" class="grid grid-cols-1 gap-4 items-center px-4 place-items-center xl:grid-cols-2">
       <li *ngFor="let schedule of schedules"
-          class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4 cursor-pointer hover:bg-gray-100 transition-colors dark:hover:bg-night-500">
+          class="border-light-dark rounded-lg mx-4 w-full max-w-4xl overflow-hidden last:mb-4 xl:last:mb-0">
         <!-- card-title -->
         <div [routerLink]="['/attendance-check/check-attendance',schedule.id]"
-             class="flex flex-row gap-4 p-4 justify-between border-b dark:border-night-500">
+             class="flex flex-row gap-4 p-4 justify-between border-b cursor-pointer transition-colors dark:border-night-500 dark:hover:bg-night-500 hover:bg-gray-100">
           <!-- icon -->
           <div
                class="shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[32px] text-white">
@@ -122,25 +128,31 @@
           </div>
         </div>
       </li>
+
+      <!-- pagination -->
+      <div class="w-full sticky bottom-0 flex items-center justify-between bg-white p-4 border-t dark:border-night-500 dark:bg-night-800
+        xl:col-span-2">
+        <button class="btn-square shrink-0 button-plain w-fit">
+          <span class="material-icons">
+            chevron_left
+          </span>
+        </button>
+  
+        <span class="text-center dark:text-white">Page 1 out of 10</span>
+  
+        <button class="btn-square shrink-0 button-plain w-fit">
+          <span class="material-icons">
+            chevron_right
+          </span>
+        </button>
+      </div>
     </ul>
 
-    <!-- pagination -->
-    <div
-         class="sticky bottom-0 flex items-center justify-between bg-white p-4 border-t dark:border-night-500 dark:bg-night-800">
-      <button class="btn-square shrink-0 button-plain w-fit">
-        <span class="material-icons">
-          chevron_left
-        </span>
-      </button>
-
-      <span class="text-center dark:text-white">Page 1 out of 10</span>
-
-      <button class="btn-square shrink-0 button-plain w-fit">
-        <span class="material-icons">
-          chevron_right
-        </span>
-      </button>
-    </div>
+    <ng-template #noAssignedFacultyBlock>
+      <div>
+        <span class="ml-4">There are no assigned faculties yet...</span>
+      </div>
+    </ng-template>
   </div>
 </div>
 

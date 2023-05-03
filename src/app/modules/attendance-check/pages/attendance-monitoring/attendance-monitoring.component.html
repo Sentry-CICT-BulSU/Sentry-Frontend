@@ -10,7 +10,7 @@
   </div>
 
   <div id="active-schedule" class="tab-content active">
-    <ul *ngIf="schedules" class="grid grid-cols-1 gap-4 place-items-center px-4 xl:grid-cols-2 xl:pb-4">
+    <ul *ngIf="schedules; else noActiveScheduleBlock" class="grid grid-cols-1 gap-4 place-items-center px-4 xl:grid-cols-2 xl:pb-4">
       <!-- before clicking present or absent -->
       <li *ngFor="let schedule of schedules"
           class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4 xl:last:mb-0">
@@ -47,7 +47,7 @@
           <span class="text-gray-500 text-[14px]">Is the assigned faculty present?</span>
           <!-- <span class="text-gray-500 text-[14px]">Marked as present (Apr 3, 2023 - 10:46 am)</span> -->
           <!-- use this when the user clicks present/absent -->
-          <div class="flex flex-row items-center justify-end gap-4">
+          <div class="flex flex-row items-center justify-end gap-4 text-center">
             <label (click)="onMarkAsAbsent(schedule)"
                    class="button-plain btn-error w-fit transition-colors text-white hover:bg-red-700">
               Mark as absent
@@ -63,29 +63,35 @@
           <div class="bg-red-700">test</div>
         </ng-template>
       </li>
+
+      <!-- pagination -->
+      <div class="w-full sticky bottom-0 flex items-center justify-between bg-white p-4 border-t dark:bg-night-700 dark:border-night-500
+        xl:col-span-2">
+        <button class="btn-square shrink-0 button-plain w-fit">
+          <span class="material-icons">
+            chevron_left
+          </span>
+        </button>
+
+        <span class="text-center dark:text-white">Page 1 out of 10</span>
+
+        <button class="btn-square shrink-0 button-plain w-fit">
+          <span class="material-icons">
+            chevron_right
+          </span>
+        </button>
+      </div>
     </ul>
 
-    <!-- pagination -->
-    <div
-         class="sticky bottom-0 flex items-center justify-between bg-white p-4 border-t dark:bg-night-700 dark:border-night-500">
-      <button class="btn-square shrink-0 button-plain w-fit">
-        <span class="material-icons">
-          chevron_left
-        </span>
-      </button>
-
-      <span class="text-center dark:text-white">Page 1 out of 10</span>
-
-      <button class="btn-square shrink-0 button-plain w-fit">
-        <span class="material-icons">
-          chevron_right
-        </span>
-      </button>
-    </div>
+    <ng-template #noActiveScheduleBlock>
+      <div>
+        <span class="ml-4">There are no active schedules yet...</span>
+      </div>
+    </ng-template>
   </div>
 
   <div id="am" class="tab-content">
-    <ul *ngIf="schedules" class="grid grid-cols-1 gap-4 place-items-center px-4 xl:grid-cols-2 xl:pb-4">
+    <ul *ngIf="schedules; else noAmScheduleBlock" class="grid grid-cols-1 gap-4 place-items-center px-4 xl:grid-cols-2 xl:pb-4">
       <!-- before clicking present or absent -->
       <li *ngFor="let schedule of schedulesActive"
           class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4 xl:last:mb-0">
@@ -122,7 +128,7 @@
           <span class="text-gray-500 text-[14px]">Is the assigned faculty present?</span>
           <!-- <span class="text-gray-500 text-[14px]">Marked as present (Apr 3, 2023 - 10:46 am)</span> -->
           <!-- use this when the user clicks present/absent -->
-          <div class="flex flex-row items-center justify-end gap-4">
+          <div class="flex flex-row items-center justify-end gap-4 text-center">
             <label (click)="onMarkAsAbsent(schedule)"
                    class="button-plain btn-error w-fit transition-colors text-white hover:bg-red-700">
               Mark as absent
@@ -138,29 +144,36 @@
           <div class="bg-red-700">test</div>
         </ng-template>
       </li>
+
+      <!-- pagination -->
+      <div class="w-full sticky bottom-0 flex items-center justify-between bg-white p-4 border-t dark:bg-night-700 dark:border-night-500
+        xl:col-span-2">
+        <button class="btn-square shrink-0 button-plain w-fit">
+          <span class="material-icons">
+            chevron_left
+          </span>
+        </button>
+
+        <span class="text-center dark:text-white">Page 1 out of 10</span>
+
+        <button class="btn-square shrink-0 button-plain w-fit">
+          <span class="material-icons">
+            chevron_right
+          </span>
+        </button>
+      </div>
     </ul>
 
-    <!-- pagination -->
-    <div
-         class="sticky bottom-0 flex items-center justify-between bg-white p-4 border-t dark:bg-night-700 dark:border-night-500">
-      <button class="btn-square shrink-0 button-plain w-fit">
-        <span class="material-icons">
-          chevron_left
-        </span>
-      </button>
-
-      <span class="text-center dark:text-white">Page 1 out of 10</span>
-
-      <button class="btn-square shrink-0 button-plain w-fit">
-        <span class="material-icons">
-          chevron_right
-        </span>
-      </button>
-    </div>
+    <ng-template #noAmScheduleBlock>
+      <div>
+        <span class="ml-4">There are no AM schedules yet...</span>
+      </div>
+    </ng-template>
+  
   </div>
 
   <div id="pm" class="tab-content">
-    <ul *ngIf="schedules" class="grid grid-cols-1 gap-4 place-items-center px-4 xl:grid-cols-2 xl:pb-4">
+    <ul *ngIf="schedules; else noPmScheduleBlock" class="grid grid-cols-1 gap-4 place-items-center px-4 xl:grid-cols-2 xl:pb-4">
       <!-- before clicking present or absent -->
       <li *ngFor="let schedule of schedulesInactive"
           class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4 xl:last:mb-0">
@@ -197,7 +210,7 @@
           <span class="text-gray-500 text-[14px]">Is the assigned faculty present?</span>
           <!-- <span class="text-gray-500 text-[14px]">Marked as present (Apr 3, 2023 - 10:46 am)</span> -->
           <!-- use this when the user clicks present/absent -->
-          <div class="flex flex-row items-center justify-end gap-4">
+          <div class="flex flex-row items-center justify-end gap-4 text-center">
             <label (click)="onMarkAsAbsent(schedule)"
                    class="button-plain btn-error w-fit transition-colors text-white hover:bg-red-700">
               Mark as absent
@@ -213,24 +226,30 @@
           <div class="bg-red-700">test</div>
         </ng-template>
       </li>
+
+      <!-- pagination -->
+      <div class="w-full sticky bottom-0 flex items-center justify-between bg-white p-4 border-t dark:bg-night-700 dark:border-night-500
+        xl:col-span-2">
+        <button class="btn-square shrink-0 button-plain w-fit">
+          <span class="material-icons">
+            chevron_left
+          </span>
+        </button>
+
+        <span class="text-center dark:text-white">Page 1 out of 10</span>
+
+        <button class="btn-square shrink-0 button-plain w-fit">
+          <span class="material-icons">
+            chevron_right
+          </span>
+        </button>
+      </div>
     </ul>
-
-    <!-- pagination -->
-    <div
-         class="sticky bottom-0 flex items-center justify-between bg-white p-4 border-t dark:bg-night-700 dark:border-night-500">
-      <button class="btn-square shrink-0 button-plain w-fit">
-        <span class="material-icons">
-          chevron_left
-        </span>
-      </button>
-
-      <span class="text-center dark:text-white">Page 1 out of 10</span>
-
-      <button class="btn-square shrink-0 button-plain w-fit">
-        <span class="material-icons">
-          chevron_right
-        </span>
-      </button>
-    </div>
+    
+    <ng-template #noPmScheduleBlock>
+      <div>
+        <span class="ml-4">There are no PM schedules yet...</span>
+      </div>
+    </ng-template>
   </div>
 </div>
