@@ -1,38 +1,37 @@
 <div class="mx-auto px-4 pb-4 pt-8 sm:px-8 lg:container">
-    <!-- Header -->
-    <div class="mb-8 flex justify-between">
-        <div class="inline-block">
-            <h3 class="text-heading">Settings</h3>
+  <!-- Header -->
+  <div class="mb-8 flex justify-between">
+    <div class="inline-block">
+      <h3 class="text-heading">Settings</h3>
 
-        </div>
     </div>
+  </div>
 
-    <div class="flex items-center justify-start">
-        <div [routerLink]="['/settings/personal-information']" [routerLinkActive]="'border-' + systemService.color + '-700 border-b-2 text-' + systemService.color + '-700' "
+  <div class="flex items-center justify-start">
+    <div [routerLink]="['/settings/personal-information']"
+         [routerLinkActive]="'border-' + systemService.color + '-700 border-b-2 text-' + systemService.color + '-700' "
 
-            class="cursor-pointer relative justify-center py-4 mr-4 text-sm font-medium text-gray-700 dark:text-night-200">
-            Personal Information
-        </div>
-        <div [routerLink]="['/settings/password-and-security']" [routerLinkActive]="'border-' + systemService.color + '-700 border-b-2 text-' + systemService.color + '-700'"
-            class="cursor-pointer relative justify-center py-4 mx-4 text-sm font-medium text-gray-700  dark:text-night-200">
-            Password and Security
-        </div>
-        <div [routerLink]="['/settings/system-settings']" [routerLinkActive]="'border-' + systemService.color + '-700 border-b-2 text-' + systemService.color + '-700'"
-            class="cursor-pointer relative justify-center py-4 mx-4 text-sm font-medium text-gray-700 dark:text-night-200">
-            System Settings
-        </div>
+         class="cursor-pointer relative justify-center py-4 mr-4 text-sm font-medium text-gray-700 dark:text-night-200">
+      Personal Information
     </div>
-
-    <div class="pb-6">
-        <hr class="border-solid border-gray-200 dark:border-night-500" />
+    <div [routerLink]="['/settings/password-and-security']"
+         [routerLinkActive]="'border-' + systemService.color + '-700 border-b-2 text-' + systemService.color + '-700'"
+         class="cursor-pointer relative justify-center py-4 mx-4 text-sm font-medium text-gray-700  dark:text-night-200">
+      Password and Security
     </div>
+    <div *ngIf="user&&user.type==='Admin'" [routerLink]="['/settings/system-settings']"
+         [routerLinkActive]="'border-' + systemService.color + '-700 border-b-2 text-' + systemService.color + '-700'"
+         class="cursor-pointer relative justify-center py-4 mx-4 text-sm font-medium text-gray-700 dark:text-night-200">
+      System Settings
+    </div>
+  </div>
 
-    <!-- end Header -->
-    <router-outlet></router-outlet>
+  <div class="pb-6">
+    <hr class="border-solid border-gray-200 dark:border-night-500" />
+  </div>
+
+  <!-- end Header -->
+  <router-outlet></router-outlet>
 
 
 </div>
-
-
-
-
