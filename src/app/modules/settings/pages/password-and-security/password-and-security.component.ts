@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SystemService } from 'src/app/core/services/system.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-password-and-security',
@@ -12,6 +13,23 @@ export class PasswordAndSecurityComponent implements OnInit {
   ngOnInit(): void {
     this.initSystemColor();
   }
+
+  resetPassword() {
+    Swal.fire({
+      title: 'Are you sure you want to change your password?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Code to reset the password goes here.
+        // For example, you can call a reset password service API.
+      }
+    });
+  }
+
+
 
   initSystemColor() {
     const color = this.systemService.color;
