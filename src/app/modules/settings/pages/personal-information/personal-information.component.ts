@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IUserCollection, IUser } from 'src/app/core/models';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { environment as env } from 'src/environments/environment';
@@ -18,20 +18,36 @@ export class PersonalInformationComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private route: ActivatedRoute,
+    private router: Router,
     public systemService: SystemService
   ) {}
 
   initSystemColor() {
     const color = this.systemService.color;
     console.log('system color: ', color);
-    this.replaceClassName('md:bg-primary-', `md:bg-${this.systemService.color}-`);
+    this.replaceClassName(
+      'md:bg-primary-',
+      `md:bg-${this.systemService.color}-`
+    );
     this.replaceClassName('text-primary-', `text-${this.systemService.color}-`);
-    this.replaceClassName('border-primary-', `border-${this.systemService.color}-`);
+    this.replaceClassName(
+      'border-primary-',
+      `border-${this.systemService.color}-`
+    );
     this.replaceClassName('ring-primary-', `ring-${this.systemService.color}-`);
-    this.replaceClassName('hover:bg-primary-', `hover:bg-${this.systemService.color}-`);
+    this.replaceClassName(
+      'hover:bg-primary-',
+      `hover:bg-${this.systemService.color}-`
+    );
     this.replaceClassName('tab-link', `tab-link-${this.systemService.color}`);
-    this.replaceClassName('peer-checked:bg-primary-', `peer-checked:bg-${this.systemService.color}-`);
-    this.replaceClassName('peer-checked:border-primary-', `peer-checked:border-${this.systemService.color}-`);
+    this.replaceClassName(
+      'peer-checked:bg-primary-',
+      `peer-checked:bg-${this.systemService.color}-`
+    );
+    this.replaceClassName(
+      'peer-checked:border-primary-',
+      `peer-checked:border-${this.systemService.color}-`
+    );
   }
 
   private replaceClassName(prefix: string, replacement: string) {
@@ -65,7 +81,7 @@ export class PersonalInformationComponent implements OnInit {
       first_name: [user.first_name],
       last_name: [user.last_name],
       email: [user.email],
-      profile_img: [user.profile_img],
+      // profile_img: [user.profile_img],
     });
   }
 
@@ -86,8 +102,8 @@ export class PersonalInformationComponent implements OnInit {
 
   onSubmit() {
     if (!this.updateUserForm) return;
-    if (this.updateUserForm.controls['profile_img'].value && !this.file)
-      return alert('No image selected');
+    // if (this.updateUserForm.controls['profile_img'].value && !this.file)
+    //   return alert('No image selected');
     if (
       this.updateUserForm.controls['first_name'].pristine &&
       !this.updateUserForm.controls['first_name'].dirty
@@ -106,20 +122,21 @@ export class PersonalInformationComponent implements OnInit {
 
     console.log(this.updateUserForm.value);
     // eslint-disable-next-line prefer-const
-    const formData: FormData = new FormData();
+    // const formData: FormData = new FormData();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    Object.entries(this.updateUserForm.value).forEach(([key, value]: any[]) =>
-      formData.append(key, value)
-    );
-    if (this.file && this.updateUserForm.contains('profile_img'))
-      formData.set('profile_img', this.file as Blob);
+    // Object.entries(this.updateUserForm.value).forEach(([key, value]: any[]) =>
+    //   formData.append(key, value)
+    // );
+    // if (this.file && this.updateUserForm.contains('profile_img'))
+    //   formData.set('profile_img', this.file as Blob);
 
     // eslint-disable-next-line
-    console.log(formData);
+    // console.log(formData);
 
-    this.authService.updateUser$(formData).subscribe({
+    this.authService.updateUser$(this.updateUserForm.value).subscribe({
       next: (user: IUserCollection) => {
         console.log(user);
+        window.location.reload();
       },
       error: (err) => console.debug(err),
     });
