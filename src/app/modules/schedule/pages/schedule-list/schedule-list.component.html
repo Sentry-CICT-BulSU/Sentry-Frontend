@@ -1,9 +1,12 @@
 <div class="grid grid-cols-1 rounded-t-lg border-light-dark bg-white p-5 dark:bg-night-700">
   <div class="flex justify-between">
+
     <div class="flex items-center justify-start">
       <a href="#faculty"
-         class="tab-link tab-button-1 active">
-        Faculty
+         class="tab-link active tab-button-1">
+        <span class="md:inline-block">
+          Faculty
+        </span>
       </a>
       <a href="#room"
          class="tab-link tab-button-2">
@@ -14,6 +17,7 @@
         Section
       </a>
     </div>
+
     <button type="button" [routerLink]="['/schedule/add-schedule']"
             class="flex items-center justify-center rounded-md button-plain">
       <span class="material-symbols-rounded h-6 w-6 md:mr-2 mr-0">
