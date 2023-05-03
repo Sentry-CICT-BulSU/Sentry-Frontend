@@ -5,9 +5,10 @@ import { ReportsRoutingModule } from './reports-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ReportsTableComponent } from './pages/reports-table/reports-table.component';
 
 @NgModule({
-  declarations: [ReportsComponent],
+  declarations: [ReportsComponent, ReportsTableComponent],
 
   imports: [
     CommonModule,
