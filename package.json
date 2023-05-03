@@ -42,7 +42,6 @@
     "crypto-js": "^4.1.1",
     "daisyui": "^2.51.5",
     "express": "^4.15.2",
-    "jspdf": "^2.5.1",
     "localstorage-polyfill": "^1.0.1",
     "ng-apexcharts": "^1.7.4",
     "ngx-device-detector": "^5.0.1",
