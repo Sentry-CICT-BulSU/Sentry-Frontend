@@ -16,15 +16,15 @@
       <!-- card-title -->
       <div class="flex flex-row gap-4 p-4 justify-between border-b border-gray-300 dark:border-night-500">
         <!-- icon -->
-        <span
-              class="shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[32px] text-white">
+        <span [ngClass]="'bg-' + systemService.color + '-700'"
+          class="shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[32px] text-white">
           <i class="fa-solid fa-chart-simple"></i>
         </span>
 
         <!-- title and description -->
         <div class="grow flex flex-col gap-0">
           <span class="text-gray-700 text-[16px] font-bold dark:text-white">Attendance breakdown</span>
-          <span class="text-gray-500 text-[14px]">Keep track the attendance of faculty if present or absent.</span>
+          <span class="text-gray-500 text-[14px] dark:text-night-100">Keep track the attendance of faculty if present or absent.</span>
         </div>
 
         <!-- triple dot -->
@@ -44,8 +44,6 @@
       </div>
     </div>
 
-
-
     <!-- attendance monitored -->
     <div *ngIf="attendancesStatistics" class="flex flex-col border-light-dark rounded-lg mx-4 xl:basis-1/2 xl:ml-2">
       <!-- card-title -->
@@ -55,7 +53,7 @@
           <span class="text-gray-700 text-[16px] font-bold dark:text-white">
             Attendance monitored
           </span>
-          <span class="text-gray-500 text-[14px]">
+          <span class="text-gray-500 text-[14px] dark:text-night-100">
             You’re able to monitor {{attendancesStatistics.monitored_percentage}}% of the attendance
           </span>
         </div>
@@ -71,7 +69,7 @@
         <div class="flex flex-row justify-center items-end">
           <div class="radial-progress text-green-400"
                style="--value:{{attendancesStatistics.monitored_percentage}}; --size:10rem;">
-            <span class="text-black text-[30px] dark:text-night-200">
+            <span class="text-black text-[30px] dark:text-night-100">
               {{attendancesStatistics.monitored}}
             </span>
           </div>
@@ -80,7 +78,7 @@
 
         <div class="">
           <div class="text-gray-900 text-[16px] dark:text-white">You are almost done with the monitoring!</div>
-          <div class="text-gray-500 text-[14px]">You have already monitored
+          <div class="text-gray-500 text-[14px] dark:text-night-100">You have already monitored
             {{attendancesStatistics.monitored_percentage}}% of the faculty keep going!</div>
         </div>
       </div>
@@ -104,7 +102,7 @@
     <!-- title and description -->
     <div class="grow flex flex-col mx-4 gap-0">
       <span class="text-gray-700 text-[16px] font-bold dark:text-white">Faculty Members</span>
-      <span class="text-gray-500 text-[14px]">Keep track the attendance of the faculty.</span>
+      <span class="text-gray-500 text-[14px] dark:text-night-100">Keep track the attendance of the faculty.</span>
     </div>
 
     <!-- search bar and filter buttons-->
@@ -124,7 +122,7 @@
       </div>
 
       <div class="flex flex-row gap-2 items-center">
-        <a href="#view-all" class="button-plain tab-link active">View All</a>
+        <a href="#view-all" class="button-plain tab-link active1">View All</a>
         <a href="#monitored" class="button-plain tab-link">Monitored</a>
         <a href="#unmonitored" class="button-plain tab-link">Unmonitored</a>
       </div>
@@ -153,8 +151,8 @@
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div
-                 class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
+            <div [ngClass]="'bg-' + systemService.color + '-700'"
+              class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
 
@@ -163,7 +161,7 @@
               <div class="text-gray-900 min-w-0 truncate dark:text-white">
                 {{schedule.adviser?.full_name}}
               </div>
-              <div class="text-gray-500 min-w-0 truncate">
+              <div class="text-gray-500 min-w-0 truncate dark:text-night-100">
                 {{schedule.adviser?.email}}
               </div>
             </div>
@@ -204,27 +202,15 @@
         </li>
 
         <!-- pagination -->
-        <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300
-          dark:border-night-500 dark:bg-night-700">
-          <button class="btn-square shrink-0 button-plain w-fit">
-            <span class="material-icons">
-              chevron_left
-            </span>
-          </button>
-
-          <span class="text-center dark:text-night-200">Page 1 out of 10</span>
-
-          <button class="btn-square shrink-0 button-plain w-fit">
-            <span class="material-icons">
-              chevron_right
-            </span>
-          </button>
+        <div class="bottom-0 sticky flex flex-row items-center justify-center bg-white p-4 border-t border-gray-300
+        dark:border-night-500 dark:bg-night-700">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
       </ul>
 
       <ng-template #noSchedulesBlock>
         <div class="flex justify-center items-center">
-          <span>
+          <span class="dark:text-white">
             There are no entries yet...
           </span>
         </div>
@@ -254,8 +240,8 @@
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div
-                 class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
+            <div [ngClass]="'bg-' + systemService.color + '-700'"
+              class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
 
@@ -264,7 +250,7 @@
               <div class="text-gray-900 min-w-0 truncate dark:text-white">
                 {{schedule.adviser?.full_name}}
               </div>
-              <div class="text-gray-500 min-w-0 truncate">
+              <div class="text-gray-500 min-w-0 truncate dark:text-night-100">
                 {{schedule.adviser?.email}}
               </div>
             </div>
@@ -305,27 +291,15 @@
         </li>
 
         <!-- pagination -->
-        <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300
-          dark:border-night-500 dark:bg-night-700">
-          <button class="btn-square shrink-0 button-plain w-fit">
-            <span class="material-icons">
-              chevron_left
-            </span>
-          </button>
-
-          <span class="text-center dark:text-night-200">Page 1 out of 10</span>
-
-          <button class="btn-square shrink-0 button-plain w-fit">
-            <span class="material-icons">
-              chevron_right
-            </span>
-          </button>
+        <div class="bottom-0 sticky flex flex-row items-center justify-center bg-white p-4 border-t border-gray-300
+        dark:border-night-500 dark:bg-night-700">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
       </ul>
 
       <ng-template #noSchedulesBlock>
         <div class="flex justify-center items-center">
-          <span>
+          <span class="dark:text-white">
             There are no entries yet...
           </span>
         </div>
@@ -354,8 +328,8 @@
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div
-                 class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
+            <div [ngClass]="'bg-' + systemService.color + '-700'"
+                 class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
 
@@ -364,7 +338,7 @@
               <div class="text-gray-900 min-w-0 truncate dark:text-white">
                 {{schedule.adviser?.full_name}}
               </div>
-              <div class="text-gray-500 min-w-0 truncate">
+              <div class="text-gray-500 min-w-0 truncate dark:text-night-100">
                 {{schedule.adviser?.email}}
               </div>
             </div>
@@ -405,27 +379,15 @@
         </li>
 
         <!-- pagination -->
-        <div class="bottom-0 sticky flex items-center justify-between bg-white p-4 border-t border-gray-300
-          dark:border-night-500 dark:bg-night-700">
-          <button class="btn-square shrink-0 button-plain w-fit">
-            <span class="material-icons">
-              chevron_left
-            </span>
-          </button>
-
-          <span class="text-center dark:text-night-200">Page 1 out of 10</span>
-
-          <button class="btn-square shrink-0 button-plain w-fit">
-            <span class="material-icons">
-              chevron_right
-            </span>
-          </button>
+        <div class="bottom-0 sticky flex flex-row items-center justify-center bg-white p-4 border-t border-gray-300
+        dark:border-night-500 dark:bg-night-700">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
       </ul>
 
       <ng-template #noSchedulesBlock>
         <div class="flex justify-center items-center">
-          <span>
+          <span class="dark:text-white">
             There are no entries yet...
           </span>
         </div>

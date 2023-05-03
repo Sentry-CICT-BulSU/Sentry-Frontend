@@ -10,6 +10,7 @@ import { KeysRoutingModule } from './keys-routing.module';
 import { KeysOverviewComponent } from './pages/keys-overview/keys-overview.component';
 import { ClassroomKeysComponent } from './pages/classroom-keys/classroom-keys.component';
 import { KeyLogsComponent } from './pages/key-logs/key-logs.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { KeyLogsComponent } from './pages/key-logs/key-logs.component';
     KeysRoutingModule,
     SharedModule.forRoot(),
     HttpClientModule,
+    NgxPaginationModule
   ],
   declarations: [
     KeysComponent,

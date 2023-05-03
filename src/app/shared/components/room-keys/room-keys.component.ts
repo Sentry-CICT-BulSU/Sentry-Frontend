@@ -33,6 +33,12 @@ export class RoomKeysComponent implements OnInit {
 
   }
 
+  getStatusClass(status: string): string {
+    return status === 'Available'
+      ? 'bg-green-500/25 text-green-500'
+      : 'bg-blue-300/25 text-blue-500 dark:text-blue-300';
+  }
+
   initSystemColor() {
     const color = this.systemService.color;
     console.log('system color: ', color);

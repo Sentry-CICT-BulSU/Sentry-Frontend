@@ -63,6 +63,10 @@ export class ScheduleTableComponent implements OnInit {
     },
   ];
 
+  printThisPage() {
+    window.print();
+  }
+
   schedules?: ISchedule[];
 
   constructor(

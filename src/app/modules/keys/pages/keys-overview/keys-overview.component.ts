@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { forkJoin } from 'rxjs';
 import { IRoomKeyLog, IRoomKeyLogCollection } from 'src/app/core/models';
 import { RoomKeyLogsService } from 'src/app/core/services/roomkey-logs.service';
+import { SystemService } from 'src/app/core/services/system.service';
 
 @Component({
   selector: 'app-keys-overview',
@@ -16,7 +17,10 @@ export class KeysOverviewComponent implements OnInit {
   keyLogsBorrowedCollection?: IRoomKeyLogCollection;
   keyLogsLost?: IRoomKeyLog[];
   keyLogsLostCollection?: IRoomKeyLogCollection;
-  constructor(private keyLogsService: RoomKeyLogsService) {}
+  constructor(private keyLogsService: RoomKeyLogsService, public systemService: SystemService) {}
+
+  p = 1;
+
   ngOnInit() {
     this.initComponent();
     this.loadRoomKeyLogs()
@@ -52,7 +56,7 @@ export class KeysOverviewComponent implements OnInit {
       '.tab-content'
     ) as NodeListOf<HTMLElement>;
 
-    tabLinks[0].classList.add('active');
+    tabLinks[0].classList.add('active1');
     tabContents[0].classList.add('active');
 
     tabLinks.forEach((link: HTMLAnchorElement) => {
@@ -60,12 +64,12 @@ export class KeysOverviewComponent implements OnInit {
         event.preventDefault();
         const selectedTab = link.hash;
         tabLinks.forEach((link) => {
-          link.classList.remove('active');
+          link.classList.remove('active1');
         });
         tabContents.forEach((content) => {
           content.classList.remove('active');
         });
-        link.classList.add('active');
+        link.classList.add('active1');
         (document.querySelector(selectedTab) as HTMLElement).classList.add(
           'active'
         );

@@ -4,6 +4,7 @@ import { IAttendance, IRoomKeyLog, ISchedule } from 'src/app/core/models';
 import { AttendanceService } from 'src/app/core/services/attendance.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { RoomKeyLogsService } from 'src/app/core/services/roomkey-logs.service';
+import { SystemService } from 'src/app/core/services/system.service';
 
 @Component({
   selector: 'app-faculty-dashboard',
@@ -15,8 +16,11 @@ export class FacultyDashboardComponent implements OnInit {
   constructor(
     private keyLogsService: RoomKeyLogsService,
     private attendanceService: AttendanceService,
-    private authService: AuthService
+    private authService: AuthService,
+    public systemService: SystemService
   ) {}
+
+  p = 1;
 
   ngOnInit() {
     this.loadLogs();
