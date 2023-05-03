@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IRoomKey } from 'src/app/core/models';
 import { RoomKeyService } from 'src/app/core/services/roomkey.service';
+import { SystemService } from 'src/app/core/services/system.service';
 
 @Component({
   selector: 'app-classroom-keys',
@@ -8,7 +9,7 @@ import { RoomKeyService } from 'src/app/core/services/roomkey.service';
 })
 export class ClassroomKeysComponent implements OnInit {
   roomKeys?: IRoomKey[];
-  constructor(private roomKeyService: RoomKeyService) {}
+  constructor(private roomKeyService: RoomKeyService, public systemService: SystemService) {}
   ngOnInit() {
     this.initComponent();
     this.loadRoomKeys();
