@@ -30,13 +30,13 @@
             <span class="text-gray-700 text-[16px] font-bold dark:text-white">
               {{schedule.room?.name}}
             </span>
-            <span class="text-gray-500 text-[14px]">
+            <span class="text-gray-500 text-[14px] dark:text-night-100">
               Subject: {{schedule.subject?.code}} ({{schedule.subject?.title}})
             </span>
-            <span class="text-gray-500 text-[14px]">
+            <span class="text-gray-500 text-[14px] dark:text-night-100">
               Faculty Assigned: {{schedule.adviser?.full_name}}
             </span>
-            <span class="text-gray-500 text-[14px]">
+            <span class="text-gray-500 text-[14px] dark:text-night-100">
               Schedule: {{schedule.time_start}} - {{schedule.time_end}}
             </span>
           </div>
@@ -49,11 +49,11 @@
           <!-- use this when the user clicks present/absent -->
           <div class="flex flex-row items-center justify-end gap-4 text-center">
             <label (click)="onMarkAsAbsent(schedule)"
-                   class="button-plain btn-error w-fit transition-colors text-white hover:bg-red-700">
+                   class="button-plain btn-error w-fit transition-colors text-white hover:bg-red-700 dark:text-white">
               Mark as absent
             </label>
             <button [routerLink]="['/attendance-check/check-attendance',schedule.id]"
-                    class="button-plain btn-success w-fit transition-colors text-white hover:bg-green-700">
+                    class="button-plain btn-success w-fit transition-colors text-white hover:bg-green-700 dark:text-white">
               Mark as present
             </button>
           </div>
@@ -99,13 +99,13 @@
             <span class="text-gray-700 text-[16px] font-bold dark:text-white">
               {{schedule.room?.name}}
             </span>
-            <span class="text-gray-500 text-[14px]">
+            <span class="text-gray-500 text-[14px] dark:text-night-100">
               Subject: {{schedule.subject?.code}} ({{schedule.subject?.title}})
             </span>
-            <span class="text-gray-500 text-[14px]">
+            <span class="text-gray-500 text-[14px] dark:text-night-100">
               Faculty Assigned: {{schedule.adviser?.full_name}}
             </span>
-            <span class="text-gray-500 text-[14px]">
+            <span class="text-gray-500 text-[14px] dark:text-night-100">
               Schedule: {{schedule.time_start}} - {{schedule.time_end}}
             </span>
           </div>
@@ -118,11 +118,11 @@
           <!-- use this when the user clicks present/absent -->
           <div class="flex flex-row items-center justify-end gap-4 text-center">
             <label (click)="onMarkAsAbsent(schedule)"
-                   class="button-plain btn-error w-fit transition-colors text-white hover:bg-red-700">
+                   class="button-plain btn-error w-fit transition-colors text-white hover:bg-red-700 dark:text-white">
               Mark as absent
             </label>
             <button [routerLink]="['/attendance-check/check-attendance',schedule.id]"
-                    class="button-plain btn-success w-fit transition-colors text-white hover:bg-green-700">
+                    class="button-plain btn-success w-fit transition-colors text-white hover:bg-green-700 dark:text-white">
               Mark as present
             </button>
           </div>
@@ -169,13 +169,13 @@
             <span class="text-gray-700 text-[16px] font-bold dark:text-white">
               {{schedule.room?.name}}
             </span>
-            <span class="text-gray-500 text-[14px]">
+            <span class="text-gray-500 text-[14px] dark:text-night-100">
               Subject: {{schedule.subject?.code}} ({{schedule.subject?.title}})
             </span>
-            <span class="text-gray-500 text-[14px]">
+            <span class="text-gray-500 text-[14px] dark:text-night-100">
               Faculty Assigned: {{schedule.adviser?.full_name}}
             </span>
-            <span class="text-gray-500 text-[14px]">
+            <span class="text-gray-500 text-[14px] dark:text-night-100">
               Schedule: {{schedule.time_start}} - {{schedule.time_end}}
             </span>
           </div>
@@ -188,11 +188,11 @@
           <!-- use this when the user clicks present/absent -->
           <div class="flex flex-row items-center justify-end gap-4 text-center">
             <label (click)="onMarkAsAbsent(schedule)"
-                   class="button-plain btn-error w-fit transition-colors text-white hover:bg-red-700">
+                   class="button-plain btn-error w-fit transition-colors text-white hover:bg-red-700 dark:text-white">
               Mark as absent
             </label>
             <button [routerLink]="['/attendance-check/check-attendance',schedule.id]"
-                    class="button-plain btn-success w-fit transition-colors text-white hover:bg-green-700">
+                    class="button-plain btn-success w-fit transition-colors text-white hover:bg-green-700 dark:text-white">
               Mark as present
             </button>
           </div>

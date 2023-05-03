@@ -3,7 +3,7 @@
     <!-- title bar -->
     <div class="flex flex-col px-4 py-8">
       <span class="text-[24px] text-gray-900 font-medium dark:text-white">Attendance logs and Key History</span>
-      <p class="text-subheading">See your recent activities and key logs for the rooms in CICT Building</p>
+      <p class="text-subheading dark:text-night-100">See your recent activities and key logs for the rooms in CICT Building</p>
     </div>
 
     <!-- attendance report -->
@@ -30,7 +30,7 @@
       <!-- title and description -->
       <div class="grow flex flex-col mx-4 gap-0">
         <span class="text-gray-700 text-[16px] font-bold dark:text-white">Key Logs</span>
-        <span class="text-gray-500 text-[14px] dark:text-night-300">Keep track the attendance of the faculty.</span>
+        <span class="text-gray-500 text-[14px] dark:text-night-100">Keep track the attendance of the faculty.</span>
       </div>
 
       <ul *ngIf="roomKeyLogs"
@@ -77,7 +77,7 @@
               <div class="text-gray-900 min-w-0 truncate dark:text-white">
                 {{keyLog.faculty?.full_name}}
               </div>
-              <div class="text-gray-500 min-w-0 truncate">
+              <div class="text-gray-500 min-w-0 truncate dark:text-night-100">
                 {{keyLog.faculty?.email}}
               </div>
             </div>
@@ -101,7 +101,7 @@
           <!-- date and time -->
           <div
                class="min-w-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
-            <div class="min-w-0 text-center dark:border-night-200 dark:text-night-200">
+            <div class="min-w-0 text-center dark:border-night-200 dark:text-night-100">
               {{keyLog.time_block}}
             </div>
           </div>
