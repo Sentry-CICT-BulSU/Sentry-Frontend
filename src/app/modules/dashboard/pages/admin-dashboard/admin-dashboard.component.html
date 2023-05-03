@@ -88,14 +88,14 @@
         <div class="mt-4 flex flex-1 flex-col justify-between space-y-1 md:mt-0">
           <div class="flex items-center justify-between dropdown dropdown-top">
             <small class="text-sm font-medium text-gray-400 dark:text-night-300">
-              Available Keys
+              Unmarked Attendances
             </small>
             <div
                  class="cursor-pointer rounded-sm hover:bg-gray-100 px-1 py-1 text-center text-xs text-gray-500 hover:bg-primary-500/25 dark:bg-night-500 dark:text-night-300 dark:hover:bg-primary-500/25 dark:hover:text-primary-500">
                  <label tabindex="0"><i class="cursor-pointer fa-solid fa-ellipsis-vertical h-3 w-3"></i></label>
             </div>
             <ul tabindex="0" class="dropdown-content menu rounded-md button-plain bg-white dark:bg-night-800 ">
-              <li><a class="text-xs rounded-md cursor-pointer" [routerLink]="['/room-key']">Go to Room Key Monitoring</a></li>
+              <li><a class="text-xs rounded-md cursor-pointer" [routerLink]="['/attendance']">Go to Attedance Monitoring</a></li>
             </ul>
           </div>
 
@@ -110,7 +110,7 @@
       <!-- start of attendance report -->
 
       <div
-           class="flex min-h-[120px] flex-col rounded-lg border-light-dark bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-3">
+           class="flex min-h-[120px] flex-col rounded-lg border-light-dark bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-2">
         <div class="mt-4 flex flex-1 flex-col justify-between space-y-1 md:mt-0">
           <div class="mb-2 flex items-center justify-between">
             <div class="flex-col items-center">
@@ -131,6 +131,60 @@
       </div>
 
       <!-- end of attendance report -->
+
+
+       <!-- start of available keys -->
+
+  <div
+  class="flex min-h-[120px] flex-col rounded-lg border-light-dark bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-1">
+<div class="mt-4 flex flex-1 flex-col justify-between space-y-1 md:mt-0">
+
+ <div>
+   <div class="flex items-center justify-between">
+     <h3 class="text-md font-medium text-gray-900 dark:text-night-50">Available Keys</h3>
+     <div
+          class="cursor-pointer rounded-sm hover:bg-gray-100 px-1 py-1 text-center text-xs text-gray-500 hover:bg-primary-500/25 dark:bg-night-500 dark:text-night-300 dark:hover:bg-primary-500/25 dark:hover:text-primary-500">
+       <i class="fa-solid fa-ellipsis-vertical h-3 w-3"></i>
+     </div>
+   </div>
+
+   <!-- Separator -->
+   <div class="py-4">
+     <hr class="border-solid border-gray-200 dark:border-night-500" />
+   </div>
+ </div>
+
+ <div class="mx-auto radial-progress text-primary-700"
+      style="--value:90; --size:12rem;">
+   <span class="text-4xl font-medium text-gray-700 dark:text-night-200">
+     90%
+   </span>
+ </div>
+
+ <div>
+   <div>
+     <p class="text-md font-medium text-gray-900 dark:text-night-50">
+       There are still 5 available keys left.
+     </p>
+
+     <div class="space-x-1 text-sm font-medium text-gray-400 dark:text-night-300">
+       <p class="hover:text-primary-800">
+         The faculty members are currently using 90% of the
+         rooms..
+       </p>
+     </div>
+   </div>
+
+   <!-- Separator -->
+   <div class="pt-6">
+     <hr class="border-solid border-gray-200 dark:border-night-500" />
+   </div>
+ </div>
+
+</div>
+</div>
+<!-- end of available keys -->
+
 
       <!-- start of room keys-->
 
