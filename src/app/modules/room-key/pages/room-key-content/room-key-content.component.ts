@@ -37,6 +37,7 @@ export class RoomKeyContentComponent implements OnInit {
     }
   }
 
+  p = 1;
 
   ngOnInit(): void {
     // comment below for frontend
