@@ -80,6 +80,8 @@ $sentry-frontend-theme: mat.define-light-theme(
 
     .tab-link.active {
         @apply border-gray-700 bg-gray-700 dark:border-night-800 dark:bg-night-800 hover:dark:bg-night-600 text-white dark:text-white hover:bg-gray-600;
+    }.tab-link.active1 {
+        @apply border-gray-700 bg-gray-700 dark:border-night-800 dark:bg-night-500 hover:dark:bg-night-600 text-white dark:text-white hover:bg-gray-600;
     }
     .tab-link.grp-active {
         @apply border-gray-700 text-gray-700

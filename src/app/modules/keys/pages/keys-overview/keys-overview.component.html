@@ -79,7 +79,7 @@
       </div>
 
       <div class="flex flex-row gap-2 items-center">
-        <a href="#keylogs-all" class="button-plain tab-link active">All</a>
+        <a href="#keylogs-all" class="button-plain tab-link active1">All</a>
         <a href="#keylogs-returned" class="button-plain tab-link">Returned</a>
         <a href="#keylogs-borrowed" class="button-plain tab-link">Borrowed</a>
         <a href="#keylogs-lost" class="button-plain tab-link">Lost</a>
@@ -120,8 +120,8 @@
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div
-                 class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
+            <div [ngClass]="'bg-' + systemService.color + '-700'"
+                 class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
 
@@ -183,7 +183,7 @@
 
       <ng-template #noKeylogsAllBlock>
         <div>
-          <span class="ml-4">There are no keylogs yet...</span>
+          <span class="ml-4 dark:text-white">There are no keylogs yet...</span>
         </div>
       </ng-template>
     </div>
@@ -222,8 +222,8 @@
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div
-                 class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
+            <div [ngClass]="'bg-' + systemService.color + '-700'"
+                 class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
 
@@ -286,7 +286,7 @@
 
       <ng-template #noKeylogsReturnedBlock>
         <div>
-          <span class="ml-4">There are no returned keys yet...</span>
+          <span class="ml-4 dark:text-white">There are no returned keys yet...</span>
         </div>
       </ng-template>
     </div>
@@ -325,8 +325,8 @@
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div
-                 class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
+            <div [ngClass]="'bg-' + systemService.color + '-700'"
+                 class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
 
@@ -388,7 +388,7 @@
 
       <ng-template #noKeylogsBorrowedBlock>
         <div>
-          <span class="ml-4">There are no borrowed keys yet...</span>
+          <span class="ml-4 dark:text-white">There are no borrowed keys yet...</span>
         </div>
       </ng-template>
     </div>
@@ -427,8 +427,8 @@
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div
-                 class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
+            <div [ngClass]="'bg-' + systemService.color + '-700'"
+                 class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
 
@@ -490,7 +490,7 @@
 
       <ng-template #noKeylogsLostBlock>
         <div>
-          <span class="ml-4">There are no keys lost yet...</span>
+          <span class="ml-4 dark:text-white">There are no keys lost yet...</span>
         </div>
       </ng-template>
     </div>

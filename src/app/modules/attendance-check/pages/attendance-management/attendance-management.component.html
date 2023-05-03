@@ -16,8 +16,8 @@
       <!-- card-title -->
       <div class="flex flex-row gap-4 p-4 justify-between border-b border-gray-300 dark:border-night-500">
         <!-- icon -->
-        <span
-              class="shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[32px] text-white">
+        <span [ngClass]="'bg-' + systemService.color + '-700'"
+          class="shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[32px] text-white">
           <i class="fa-solid fa-chart-simple"></i>
         </span>
 
@@ -124,7 +124,7 @@
       </div>
 
       <div class="flex flex-row gap-2 items-center">
-        <a href="#view-all" class="button-plain tab-link active">View All</a>
+        <a href="#view-all" class="button-plain tab-link active1">View All</a>
         <a href="#monitored" class="button-plain tab-link">Monitored</a>
         <a href="#unmonitored" class="button-plain tab-link">Unmonitored</a>
       </div>
@@ -153,8 +153,8 @@
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div
-                 class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
+            <div [ngClass]="'bg-' + systemService.color + '-700'"
+              class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
 
@@ -224,7 +224,7 @@
 
       <ng-template #noSchedulesBlock>
         <div class="flex justify-center items-center">
-          <span>
+          <span class="dark:text-white">
             There are no entries yet...
           </span>
         </div>
@@ -254,8 +254,8 @@
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div
-                 class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
+            <div [ngClass]="'bg-' + systemService.color + '-700'"
+              class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
 
@@ -325,7 +325,7 @@
 
       <ng-template #noSchedulesBlock>
         <div class="flex justify-center items-center">
-          <span>
+          <span class="dark:text-white">
             There are no entries yet...
           </span>
         </div>
@@ -354,8 +354,8 @@
           <!-- members' basic info -->
           <div class="basis-2/5 flex flex-row items-center min-w-0">
             <!-- image -->
-            <div
-                 class="mr-2 shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
+            <div [ngClass]="'bg-' + systemService.color + '-700'"
+                 class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
 
@@ -425,7 +425,7 @@
 
       <ng-template #noSchedulesBlock>
         <div class="flex justify-center items-center">
-          <span>
+          <span class="dark:text-white">
             There are no entries yet...
           </span>
         </div>

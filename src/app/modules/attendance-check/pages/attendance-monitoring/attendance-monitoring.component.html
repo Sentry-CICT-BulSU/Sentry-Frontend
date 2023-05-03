@@ -3,7 +3,7 @@
   <div class="sticky top-0 flex flex-col gap-4 px-4 py-8 bg-white dark:bg-night-800 rounded-tl-[32px]">
     <span class="text-[24px] text-gray-900 font-medium dark:text-white">Attendance Monitoring</span>
     <div class="flex flex-row gap-2 items-center justify-start">
-      <a href="#active-schedule" class="button-plain tab-link active">Active Schedule</a>
+      <a href="#active-schedule" class="button-plain tab-link active1">Active Schedule</a>
       <a href="#am" class="button-plain tab-link">AM</a>
       <a href="#pm" class="button-plain tab-link">PM</a>
     </div>
@@ -19,8 +19,8 @@
              [queryParams]="{sid: schedule.id,rid: schedule.room_id}"
              class="flex flex-row gap-4 p-4 justify-between border-b cursor-pointer hover:bg-gray-100 transition-colors dark:border-night-500 dark:hover:bg-night-500">
           <!-- icon -->
-          <div
-               class="shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[32px] text-white">
+          <div [ngClass]="'bg-' + systemService.color + '-700'"
+               class="shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[32px] text-white">
             <span class="material-icons">
               meeting_room
             </span>
@@ -85,7 +85,7 @@
 
     <ng-template #noActiveScheduleBlock>
       <div>
-        <span class="ml-4">There are no active schedules yet...</span>
+        <span class="ml-4 dark:text-white">There are no active schedules yet...</span>
       </div>
     </ng-template>
   </div>
@@ -100,8 +100,8 @@
              [queryParams]="{sid: schedule.id,rid: schedule.room_id}"
              class="flex flex-row gap-4 p-4 justify-between border-b cursor-pointer hover:bg-gray-100 transition-colors dark:border-night-500 dark:hover:bg-night-500">
           <!-- icon -->
-          <div
-               class="shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[32px] text-white">
+          <div [ngClass]="'bg-' + systemService.color + '-700'"
+               class="shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[32px] text-white">
             <span class="material-icons">
               meeting_room
             </span>
@@ -166,7 +166,7 @@
 
     <ng-template #noAmScheduleBlock>
       <div>
-        <span class="ml-4">There are no AM schedules yet...</span>
+        <span class="ml-4 dark:text-white">There are no AM schedules yet...</span>
       </div>
     </ng-template>
   
@@ -182,8 +182,8 @@
              [queryParams]="{sid: schedule.id,rid: schedule.room_id}"
              class="flex flex-row gap-4 p-4 justify-between border-b cursor-pointer hover:bg-gray-100 transition-colors dark:border-night-500 dark:hover:bg-night-500">
           <!-- icon -->
-          <div
-               class="shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[32px] text-white">
+          <div [ngClass]="'bg-' + systemService.color + '-700'"
+               class="shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[32px] text-white">
             <span class="material-icons">
               meeting_room
             </span>
@@ -248,7 +248,7 @@
     
     <ng-template #noPmScheduleBlock>
       <div>
-        <span class="ml-4">There are no PM schedules yet...</span>
+        <span class="ml-4 dark:text-white">There are no PM schedules yet...</span>
       </div>
     </ng-template>
   </div>

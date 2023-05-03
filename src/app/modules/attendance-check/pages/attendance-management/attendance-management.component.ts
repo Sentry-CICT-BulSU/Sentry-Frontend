@@ -7,6 +7,7 @@ import {
   IScheduleCollection,
 } from 'src/app/core/models';
 import { AttendanceService } from 'src/app/core/services/attendance.service';
+import { SystemService } from 'src/app/core/services/system.service';
 
 @Component({
   selector: 'app-attendance-management',
@@ -16,7 +17,7 @@ export class AttendanceManagementComponent implements OnInit {
   schedules?: ISchedule[];
   schedulesCollection?: IScheduleCollection;
   attendancesStatistics?: IAttendanceStatistics;
-  constructor(private attendanceService: AttendanceService) {}
+  constructor(private attendanceService: AttendanceService, public systemService: SystemService) {}
   ngOnInit(): void {
     this.initComponent();
     this.loadAttendances();
@@ -63,7 +64,7 @@ export class AttendanceManagementComponent implements OnInit {
       '.tab-content'
     ) as NodeListOf<HTMLElement>;
 
-    tabLinks[0].classList.add('active');
+    tabLinks[0].classList.add('active1');
     tabContents[0].classList.add('active');
 
     tabLinks.forEach((link: HTMLAnchorElement) => {
@@ -71,12 +72,12 @@ export class AttendanceManagementComponent implements OnInit {
         event.preventDefault();
         const selectedTab = link.hash;
         tabLinks.forEach((link) => {
-          link.classList.remove('active');
+          link.classList.remove('active1');
         });
         tabContents.forEach((content) => {
           content.classList.remove('active');
         });
-        link.classList.add('active');
+        link.classList.add('active1');
         (document.querySelector(selectedTab) as HTMLElement).classList.add(
           'active'
         );

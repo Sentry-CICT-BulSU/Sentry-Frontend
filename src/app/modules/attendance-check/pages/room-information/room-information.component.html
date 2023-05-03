@@ -5,7 +5,7 @@
       Faculty Schedule for {{roomName}}
     </span>
     <div class="flex flex-row gap-2 items-center justify-start">
-      <a href="#room-schedule" class="button-plain tab-link active">Room Schedule</a>
+      <a href="#room-schedule" class="button-plain tab-link active1">Room Schedule</a>
       <a href="#assigned-faculty" class="button-plain tab-link">Assigned Faculty</a>
     </div>
   </div>
@@ -35,8 +35,8 @@
         <div [routerLink]="['/attendance-check/check-attendance',schedule.id]"
              class="flex flex-row gap-4 p-4 justify-between border-b cursor-pointer hover:bg-gray-100 transition-colors dark:border-night-500 dark:hover:bg-night-500">
           <!-- icon -->
-          <div
-               class="shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[32px] text-white">
+          <div [ngClass]="'bg-' + systemService.color + '-700'"
+               class="shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[32px] text-white">
             <span class="material-icons">
               meeting_room
             </span>
@@ -94,7 +94,7 @@
 
     <ng-template #noRoomScheduleBlock>
       <div>
-        <span class="ml-4">There are no room schedules yet...</span>
+        <span class="ml-4 dark:text-white">There are no room schedules yet...</span>
       </div>
     </ng-template>
   </div>
@@ -108,8 +108,8 @@
         <div [routerLink]="['/attendance-check/check-attendance',schedule.id]"
              class="flex flex-row gap-4 p-4 justify-between border-b cursor-pointer transition-colors dark:border-night-500 dark:hover:bg-night-500 hover:bg-gray-100">
           <!-- icon -->
-          <div
-               class="shrink-0 flex items-center justify-center bg-primary-700 w-12 h-12 rounded-full text-[32px] text-white">
+          <div [ngClass]="'bg-' + systemService.color + '-700'"
+               class="shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[32px] text-white">
             <span class="material-icons">
               person
             </span>
@@ -150,7 +150,7 @@
 
     <ng-template #noAssignedFacultyBlock>
       <div>
-        <span class="ml-4">There are no assigned faculties yet...</span>
+        <span class="ml-4 dark:text-white">There are no assigned faculties yet...</span>
       </div>
     </ng-template>
   </div>
