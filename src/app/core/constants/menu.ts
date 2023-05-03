@@ -114,11 +114,11 @@ export class Menu {
           label: 'Schedule',
           route: '/faculty-mode/faculty-schedule',
         },
-        {
-          icon: 'settings',
-          label: 'Profile Settings',
-          route: '/faculty-mode/faculty-profile',
-        },
+        // {
+        //   icon: 'settings',
+        //   label: 'Profile Settings',
+        //   route: '/faculty-mode/faculty-profile',
+        // },
       ],
     },
   ];
