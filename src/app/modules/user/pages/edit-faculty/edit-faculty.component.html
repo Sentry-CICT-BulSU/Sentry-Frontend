@@ -9,10 +9,6 @@
   </div>
 </div>
 
-<pre *ngIf="editUserForm">
-  {{editUserForm.value|json}}
-</pre>
-
 
 <form class="grid grid-cols-1" *ngIf="editUserForm" [formGroup]="editUserForm" (ngSubmit)="onSubmit()" novalidate>
   <!-- Separator -->

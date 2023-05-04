@@ -30,7 +30,7 @@ export class AttendanceManagementComponent implements OnInit {
 
   loadAttendances() {
     forkJoin([
-      this.attendanceService.loadAttendances$({ 'no-filter': true }),
+      this.attendanceService.loadAttendances$(),
       this.attendanceService.loadStatistics$(),
     ]).subscribe({
       next: ([schedules, statistics]) => {
@@ -55,11 +55,17 @@ export class AttendanceManagementComponent implements OnInit {
     });
   }
   checkAttendanceStatus(schedule: ISchedule, status: string): boolean {
-    if (!schedule.attendance && status === 'NaT') return true;
-    const attendance = schedule.attendance as IAttendance;
-    if (attendance.status === 'present' && status === 'present') return true;
-    if (attendance.status === 'absent' && status === 'absent') return true;
-    return false;
+    const attendance = schedule.attendance as IAttendance | null;
+    if (!attendance && status === 'NaT') return true;
+    if (attendance && attendance.status === 'present' && status === 'present')
+      return true;
+    else if (
+      attendance &&
+      attendance.status === 'absent' &&
+      status === 'absent'
+    )
+      return true;
+    else return false;
   }
   initComponent() {
     const tabLinks = document.querySelectorAll(

@@ -6,10 +6,6 @@
     </span>
   </div>
 
-  <pre *ngIf="schedule && markAsPresentForm">
-    {{markAsPresentForm.value|json}}
-  </pre>
-
   <form *ngIf="schedule && markAsPresentForm" [formGroup]="markAsPresentForm" (ngSubmit)="onSubmit()" novalidate
         class="w-full flex justify-center">
     <div class="border-light-dark rounded-lg mx-4 w-full max-w-4xl">

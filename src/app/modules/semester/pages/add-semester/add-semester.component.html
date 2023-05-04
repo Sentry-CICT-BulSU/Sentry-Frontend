@@ -26,9 +26,6 @@
         </div>
     </div>
 
-    <pre *ngIf="newSemesterForm">
-        {{ newSemesterForm.value | json }}
-    </pre>
 
     <form class="grid grid-cols-1" *ngIf="newSemesterForm" [formGroup]="newSemesterForm" novalidate
           (ngSubmit)="onSubmit()">

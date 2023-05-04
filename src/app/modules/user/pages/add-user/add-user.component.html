@@ -9,9 +9,6 @@
     </div>
 </div>
 
-<pre>
-    {{ newUserForm.value | json }}
-</pre>
 
 <form class="grid grid-cols-1" [formGroup]="newUserForm" (ngSubmit)="onSubmit()" novalidate>
     <!-- Separator -->

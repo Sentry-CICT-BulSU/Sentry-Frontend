@@ -9,9 +9,6 @@
   </div>
 </div>
 
-<pre *ngIf="newScheduleForm">
-    {{newScheduleForm.value|json}}
-</pre>
 
 <form class="grid grid-cols-1" *ngIf="newScheduleForm" [formGroup]="newScheduleForm" (ngSubmit)="onSubmit()" novalidate>
   <!-- Separator -->

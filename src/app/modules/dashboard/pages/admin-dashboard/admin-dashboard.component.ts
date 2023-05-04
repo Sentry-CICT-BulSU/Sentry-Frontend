@@ -1,3 +1,5 @@
+import { ScheduleService } from './../../../../core/services/schedule.service';
+import { forkJoin } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { RoomKeyLogsService } from 'src/app/core/services/roomkey-logs.service';
 import { IRoomKeyLog, IRoomKeyLogCollection } from 'src/app/core/models';
@@ -10,25 +12,25 @@ export class AdminDashboardComponent implements OnInit {
   roomKeyLogs?: IRoomKeyLog[];
   roomKeyLogsCollection?: IRoomKeyLogCollection;
   // Defining a constructor for the DashboardComponent class
-  constructor(private roomKeyLogsService: RoomKeyLogsService) {}
+  constructor(
+    private roomKeyLogsService: RoomKeyLogsService,
+    private schedulesService: ScheduleService
+  ) {}
 
   // Implementing the ngOnInit lifecycle hook
   ngOnInit(): void {
-      this.roomKeyLogsService
-          .getRoomKeyLogs$()
-          .subscribe((logs: IRoomKeyLogCollection) => {
-              this.roomKeyLogsCollection = logs;
-              if (
-                  this.roomKeyLogsCollection.data &&
-                  Array.isArray(this.roomKeyLogsCollection.data)
-              ) {
-                  this.roomKeyLogs = this.roomKeyLogsCollection.data;
-              }
-              console.debug('Room Key Logs', this.roomKeyLogs);
-              console.debug(
-                  'Room Key Logs Collection',
-                  this.roomKeyLogsCollection
-              );
-          });
+    forkJoin([
+      this.roomKeyLogsService.getRoomKeyLogs$(),
+      this.schedulesService.loadSchedules$({ 'admin-dash': true }),
+    ]).subscribe(([logs, schedules]) => {
+      console.log(logs, schedules);
+      this.roomKeyLogsCollection = logs;
+      if (
+        this.roomKeyLogsCollection.data &&
+        Array.isArray(this.roomKeyLogsCollection.data)
+      ) {
+        this.roomKeyLogs = this.roomKeyLogsCollection.data;
+      }
+    });
   }
 }
