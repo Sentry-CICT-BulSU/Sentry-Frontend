@@ -15,13 +15,13 @@ export class ChartCardComponent implements OnInit, OnDestroy {
     const data = [0, 0, 0, 5, 4, 0, 2];
     const data2 = [0, 0, 0, 3, 4, 8, 6];
     const categories = [
+        "7 days ago",
         "6 days ago",
         "5 days ago",
         "4 days ago",
         "3 days ago",
         "2 days ago",
         "Yesterday",
-        "Today"
     ];
 
     this.chartOptions = {

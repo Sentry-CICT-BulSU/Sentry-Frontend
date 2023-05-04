@@ -13,8 +13,8 @@ export class ChartCardColumnComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
 
   constructor(private themeService: ThemeService) {
-    const data = [60, 70, 32, 24, 24, 18, 5, 40, 40, 32, 32, 30];
-    const data2 = [32, 12, 12, 40, 40, 80, 90, 40, 45, 21, 20, 30];
+    const data = [0, 0, 0, 5, 4, 0, 2];
+    const data2 = [0, 0, 0, 3, 4, 8, 6];
 
     this.chartOptions = {
       series: [
@@ -63,18 +63,13 @@ export class ChartCardColumnComponent implements OnInit, OnDestroy {
       xaxis: {
         type: "category",
         categories: [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec"
+          "7 days ago",
+          "6 days ago",
+          "5 days ago",
+          "4 days ago",
+          "3 days ago",
+          "2 days ago",
+          "Yesterday",
         ]
       },
 

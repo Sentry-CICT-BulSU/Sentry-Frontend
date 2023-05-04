@@ -62,7 +62,7 @@
               </span>
             </div>
 
-            <input
+            <input [(ngModel)]="searchTerm"
                    class="search-bar"
                    type="text"
                    id="search"
@@ -70,14 +70,28 @@
           </div>
         </div>
 
-        <select class="w-24 text-sm py-2.5">
+        <!-- <button type="button"
+                class="flex items-center justify-center rounded-md button-plain">
+          <span class="material-symbols-rounded h-6 w-6 mr-2">
+            filter_list
+          </span>
+          Filters
+        </button> -->
+
+
+
+        <select [(ngModel)]="selectedSort" class="w-24 text-sm py-2.5">
 
           <option value="latest">Latest</option>
           <option value="oldest">Oldest</option>
-          <option value="code">A-Z</option>
+          <option value="name">A-Z</option>
 
         </select>
+
+
+
       </div>
+
     </div>
   </div>
 
@@ -101,7 +115,8 @@
           <!--end Table head-->
           <!--Table body-->
           <tbody>
-            <tr *ngFor="let section of sections"
+            <tr *ngFor="let section of sortSections(filteredSearchSections, selectedSort) | paginate: { itemsPerPage: 15, currentPage: p }"
+
                 class="hover:bg-gray-100 dark:border-night-500 dark:hover:bg-night-600">
               <td class="py-2 px-2">
                 <div class="flex items-center">
@@ -117,7 +132,7 @@
                 </div>
               </td>
               <td class="p-2">
-                <div class="inline-block rounded-xl bg-green-500/25 py-1 px-2 text-xs font-medium text-green-500">
+                <div class="inline-block rounded-xl py-1 px-2 text-xs font-medium {{ getStatusClass(section.status) }}">
                   {{section.status|titlecase}}
                 </div>
               </td>
@@ -152,24 +167,14 @@
 
 
     <div class="grid grid-cols-1 rounded-b-lg border-light-dark bg-white p-5 dark:bg-night-700">
-      <div class="flex items-center justify-between space-x-3">
-        <button type="button"
-                class="relative selection:flex justify-center rounded-md border border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
-          Previous
-        </button>
+      <div class="flex items-center justify-center space-x-3">
 
-        <div>
-          <div
-               class="relative justify-center rounded-md py-2 px-4 text-sm font-medium text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-50">
-            1
-          </div>
-        </div>
 
-        <button type="button"
-                class="relative selection:flex justify-center rounded-md border border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
-          Next
-        </button>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
       </div>
+
+
     </div>
 
   </div>
@@ -192,7 +197,8 @@
           <!--end Table head-->
           <!--Table body-->
           <tbody>
-            <tr *ngFor="let section of sectionsActive"
+            <tr *ngFor="let section of sortActiveSections(filteredSearchActiveSections, selectedSort) | paginate: { itemsPerPage: 15, currentPage: p }"
+
                 class="hover:bg-gray-100 dark:border-night-500 dark:hover:bg-night-600">
               <td class="py-2 px-2">
                 <div class="flex items-center">
@@ -208,7 +214,7 @@
                 </div>
               </td>
               <td class="p-2">
-                <div class="inline-block rounded-xl bg-green-500/25 py-1 px-2 text-xs font-medium text-green-500">
+                <div class="inline-block rounded-xl py-1 px-2 text-xs font-medium {{ getStatusClass(section.status) }}">
                   {{section.status|titlecase}}
                 </div>
               </td>
@@ -241,24 +247,14 @@
 
 
     <div class="grid grid-cols-1 rounded-b-lg border-light-dark bg-white p-5 dark:bg-night-700">
-      <div class="flex items-center justify-between space-x-3">
-        <button type="button"
-                class="relative selection:flex justify-center rounded-md border border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
-          Previous
-        </button>
+      <div class="flex items-center justify-center space-x-3">
 
-        <div>
-          <div
-               class="relative justify-center rounded-md py-2 px-4 text-sm font-medium text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-50">
-            1
-          </div>
-        </div>
 
-        <button type="button"
-                class="relative selection:flex justify-center rounded-md border border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
-          Next
-        </button>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
       </div>
+
+
     </div>
   </div>
 
@@ -279,7 +275,7 @@
           <!--end Table head-->
           <!--Table body-->
           <tbody>
-            <tr *ngFor="let section of sectionsInactive"
+            <tr *ngFor="let section of sortInactiveSections(filteredSearchInactiveSections, selectedSort) | paginate: { itemsPerPage: 15, currentPage: p }"
                 class="hover:bg-gray-100 dark:border-night-500 dark:hover:bg-night-600">
               <td class="py-2 px-2">
                 <div class="flex items-center">
@@ -295,7 +291,7 @@
                 </div>
               </td>
               <td class="p-2">
-                <div class="inline-block rounded-xl bg-green-500/25 py-1 px-2 text-xs font-medium text-green-500">
+                <div class="inline-block rounded-xl py-1 px-2 text-xs font-medium {{ getStatusClass(section.status) }}">
                   {{section.status|titlecase}}
                 </div>
               </td>
@@ -328,24 +324,14 @@
 
 
     <div class="grid grid-cols-1 rounded-b-lg border-light-dark bg-white p-5 dark:bg-night-700">
-      <div class="flex items-center justify-between space-x-3">
-        <button type="button"
-                class="relative selection:flex justify-center rounded-md border border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
-          Previous
-        </button>
+      <div class="flex items-center justify-center space-x-3">
 
-        <div>
-          <div
-               class="relative justify-center rounded-md py-2 px-4 text-sm font-medium text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 bg-primary-50">
-            1
-          </div>
-        </div>
 
-        <button type="button"
-                class="relative selection:flex justify-center rounded-md border border-gray-200 dark:border-night-500 py-2 px-4 text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 hover:bg-gray-200">
-          Next
-        </button>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
       </div>
+
+
     </div>
 
   </div>
