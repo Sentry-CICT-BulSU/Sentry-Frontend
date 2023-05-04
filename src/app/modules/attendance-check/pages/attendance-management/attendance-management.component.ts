@@ -17,7 +17,10 @@ export class AttendanceManagementComponent implements OnInit {
   schedules?: ISchedule[];
   schedulesCollection?: IScheduleCollection;
   attendancesStatistics?: IAttendanceStatistics;
-  constructor(private attendanceService: AttendanceService, public systemService: SystemService) {}
+  constructor(
+    private attendanceService: AttendanceService,
+    public systemService: SystemService
+  ) {}
   ngOnInit(): void {
     this.initComponent();
     this.loadAttendances();
@@ -27,7 +30,7 @@ export class AttendanceManagementComponent implements OnInit {
 
   loadAttendances() {
     forkJoin([
-      this.attendanceService.loadAttendances$(),
+      this.attendanceService.loadAttendances$({ 'no-filter': true }),
       this.attendanceService.loadStatistics$(),
     ]).subscribe({
       next: ([schedules, statistics]) => {
