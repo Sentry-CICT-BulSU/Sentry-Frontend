@@ -19,7 +19,7 @@
          class="cursor-pointer relative justify-center py-4 mx-4 text-sm font-medium text-gray-700  dark:text-night-200">
       Password and Security
     </div>
-    <div *ngIf="user&&user.type==='Admin'" [routerLink]="['/settings/system-settings']"
+    <div *ngIf="isAdmin()" [routerLink]="['/settings/system-settings']"
          [routerLinkActive]="'border-' + systemService.color + '-700 border-b-2 text-' + systemService.color + '-700'"
          class="cursor-pointer relative justify-center py-4 mx-4 text-sm font-medium text-gray-700 dark:text-night-200">
       System Settings

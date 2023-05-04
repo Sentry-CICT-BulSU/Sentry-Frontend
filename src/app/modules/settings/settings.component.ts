@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IUser } from 'src/app/core/models';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { SystemService } from 'src/app/core/services/system.service';
@@ -9,7 +10,6 @@ import { SystemService } from 'src/app/core/services/system.service';
   styleUrls: ['./settings.component.scss'],
 })
 export class SettingsComponent implements OnInit {
-  user?: IUser;
   constructor(
     public systemService: SystemService,
     private authService: AuthService
@@ -60,8 +60,12 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.initComponent();
-    this.authService.current_user_subject$?.subscribe(
-      (user) => (this.user = user)
+  }
+
+  isAdmin(): boolean {
+    return (
+      !!this.authService.current_user_type &&
+      this.authService.current_user_type === 'Admin'
     );
   }
 
