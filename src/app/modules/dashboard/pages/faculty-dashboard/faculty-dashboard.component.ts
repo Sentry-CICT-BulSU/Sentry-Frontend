@@ -33,7 +33,7 @@ export class FacultyDashboardComponent implements OnInit {
           user
             ? forkJoin([
                 this.keyLogsService.getRoomKeyLogs$(),
-                this.attendanceService.loadAttendances$(user.id),
+                this.attendanceService.loadAttendance$(user.id),
               ])
             : of([null, null])
         )
