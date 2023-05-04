@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { IUser } from '../models';
 import { environment as env } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -29,9 +30,27 @@ export class ReportsService extends PropertiesService {
   }
 
   getReport$(query: any) {
-    return this.http.get(this.url, {
-      headers: this.options.headers,
-      params: query,
-    });
+    return query.preview
+      ? this.http.get(this.url, {
+          headers: this.options.headers,
+          params: query,
+        })
+      : this.http
+          .get(this.url, {
+            headers: this.options.headers,
+            responseType: 'blob',
+            params: query,
+          })
+          .pipe(
+            map((report) => {
+              if (!query.preview) {
+                const downloadURL = window.URL.createObjectURL(
+                  new Blob([report as Blob], { type: 'text/csv' })
+                );
+                window.open(downloadURL);
+              }
+              return report;
+            })
+          );
   }
 }
