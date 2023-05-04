@@ -24,7 +24,8 @@
         class="rounded-lg border-light-dark grid grid-cols-3 gap-4 p-2 place-items-center md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
       <li *ngFor="let key of roomKeys"
           class="rounded-lg border-light-dark flex flex-col gap-2 justify-center items-center shadow-lg p-4 w-full max-w-[150px] dark:bg-night-700">
-        <div class="rounded-full w-[54px] h-[54px] bg-primary-700 flex items-center justify-center">
+        <div [ngClass]="'bg-' + systemService.color + '-700'"
+          class="rounded-full w-[54px] h-[54px] flex items-center justify-center">
           <span class="material-icons text-white">
             vpn_key
           </span>
@@ -45,7 +46,8 @@
         class="rounded-lg border-light-dark grid grid-cols-3 gap-4 p-2 place-items-center md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
       <li *ngFor="let key of filterRoomKey(false)"
           class="rounded-lg border-light-dark flex flex-col gap-2 justify-center items-center shadow-lg p-4 w-full max-w-[150px] dark:bg-night-700">
-        <div class="rounded-full w-[54px] h-[54px] bg-primary-700 flex items-center justify-center">
+        <div [ngClass]="'bg-' + systemService.color + '-700'"
+          class="rounded-full w-[54px] h-[54px] flex items-center justify-center">
           <span class="material-icons text-white">
             vpn_key
           </span>
@@ -66,7 +68,8 @@
         class="rounded-lg border-light-dark grid grid-cols-3 gap-4 p-2 place-items-center md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
       <li *ngFor="let key of filterRoomKey(true)"
           class="rounded-lg border-light-dark flex flex-col gap-2 justify-center items-center shadow-lg p-4 w-full max-w-[150px] dark:bg-night-700">
-        <div class="rounded-full w-[54px] h-[54px] bg-primary-700 flex items-center justify-center">
+        <div [ngClass]="'bg-' + systemService.color + '-700'"
+          class="rounded-full w-[54px] h-[54px] flex items-center justify-center">
           <span class="material-icons text-white">
             vpn_key
           </span>
