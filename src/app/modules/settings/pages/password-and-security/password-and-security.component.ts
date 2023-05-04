@@ -31,12 +31,6 @@ export class PasswordAndSecurityComponent implements OnInit {
     console.log(this.updatePasswordForm.value);
   }
 
-  onForceResetPassword() {
-    this.adminService.forceResetPassword$(1).subscribe((res) => {
-      console.log(res);
-    });
-  }
-
   initComponent() {
     this.authService.current_user_subject$?.subscribe((user) => {
       if (user) {
@@ -52,20 +46,23 @@ export class PasswordAndSecurityComponent implements OnInit {
 
   resetPassword() {
     Swal.fire({
-      title: 'Are you sure you want to change your password?',
+      text: 'Are you sure you want to force reset your password?',
       icon: 'question',
       showCancelButton: true,
       confirmButtonText: 'Yes',
-      cancelButtonText: 'No'
+      cancelButtonText: 'No',
     }).then((result) => {
       if (result.isConfirmed) {
         // Code to reset the password goes here.
         // For example, you can call a reset password service API.
+        this.adminService.forceResetPassword$(1).subscribe((res) => {
+          console.log(res);
+          window.location.reload();
+        });
+        Swal.fire('Deleted!', 'Your password has been resetted.', 'success');
       }
     });
   }
-
-
 
   initSystemColor() {
     const color = this.systemService.color;

@@ -55,7 +55,7 @@ export class AdminService extends PropertiesService {
   }
 
   forceResetPassword$(user_id: number) {
-    return this.http.post<IUserCollection>(
+    return this.http.patch<IUserCollection>(
       this.adminApiRoute + '/reset-password',
       { user_id: user_id },
       { headers: this.options.headers }

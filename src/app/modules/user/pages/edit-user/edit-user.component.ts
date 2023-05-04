@@ -31,6 +31,26 @@ export class EditUserComponent implements OnInit {
     public systemService: SystemService
   ) {}
 
+  resetPassword() {
+    Swal.fire({
+      text: 'Are you sure you want to force reset your password?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Code to reset the password goes here.
+        // For example, you can call a reset password service API.
+        this.adminService.forceResetPassword$(1).subscribe((res) => {
+          console.log(res);
+          this.router.navigate(['/user']);
+        });
+        Swal.fire('Deleted!', 'Your password has been resetted.', 'success');
+      }
+    });
+  }
+
   loadUser() {
     this.route.paramMap.subscribe((params) => {
       this.userId = +(params.get('id') as string);
