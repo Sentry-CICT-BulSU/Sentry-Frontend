@@ -25,7 +25,7 @@ export class AttendanceMonitoringComponent implements OnInit {
     public systemService: SystemService
   ) {}
 
-  p = 1; 
+  p = 1;
 
   ngOnInit(): void {
     this.initComponent();

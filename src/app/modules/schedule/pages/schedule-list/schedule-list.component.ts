@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IScheduleCollection } from 'src/app/core/models/schedule.model';
 import { ScheduleService } from 'src/app/core/services/schedule.service';
 import { SystemService } from 'src/app/core/services/system.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-schedule-list',
@@ -11,7 +12,10 @@ export class ScheduleListComponent implements OnInit {
   schedules?: IScheduleCollection;
   isMultiPage?: boolean;
 
-  constructor(private scheduleService: ScheduleService, public systemService: SystemService) {}
+  constructor(
+    private scheduleService: ScheduleService,
+    public systemService: SystemService
+  ) {}
 
   ngOnInit(): void {
     this.initComponent();
@@ -32,13 +36,28 @@ export class ScheduleListComponent implements OnInit {
     console.log('system color: ', color);
     this.replaceClassName('bg-primary-', `bg-${this.systemService.color}-`);
     this.replaceClassName('text-primary-', `text-${this.systemService.color}-`);
-    this.replaceClassName('border-primary-', `border-${this.systemService.color}-`);
+    this.replaceClassName(
+      'border-primary-',
+      `border-${this.systemService.color}-`
+    );
     this.replaceClassName('ring-primary-', `ring-${this.systemService.color}-`);
-    this.replaceClassName('hover:bg-primary-', `hover:bg-${this.systemService.color}-`);
-    this.replaceClassName('button-primary', `button-${this.systemService.color}`);
+    this.replaceClassName(
+      'hover:bg-primary-',
+      `hover:bg-${this.systemService.color}-`
+    );
+    this.replaceClassName(
+      'button-primary',
+      `button-${this.systemService.color}`
+    );
     this.replaceClassName('tab-link', `tab-link-${this.systemService.color}`);
-    this.replaceClassName('peer-checked:bg-primary-', `peer-checked:bg-${this.systemService.color}-`);
-    this.replaceClassName('peer-checked:border-primary-', `peer-checked:border-${this.systemService.color}-`);
+    this.replaceClassName(
+      'peer-checked:bg-primary-',
+      `peer-checked:bg-${this.systemService.color}-`
+    );
+    this.replaceClassName(
+      'peer-checked:border-primary-',
+      `peer-checked:border-${this.systemService.color}-`
+    );
   }
 
   private replaceClassName(prefix: string, replacement: string) {
@@ -83,6 +102,30 @@ export class ScheduleListComponent implements OnInit {
           'active'
         );
       });
+    });
+  }
+
+  onDelete(id: number) {
+    console.log('hit!', id);
+    Swal.fire({
+      title: 'Confirm Delete',
+      text: 'Are you sure you want to delete this schedule?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#6941C6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log('delete room');
+        this.scheduleService.deleteSchedule$(id).subscribe({
+          next: (resp) => {
+            console.log(resp);
+            window.location.reload();
+          },
+        });
+        Swal.fire('Deleted!', 'Schedule has been deleted.', 'success');
+      }
     });
   }
 

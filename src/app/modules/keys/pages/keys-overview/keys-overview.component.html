@@ -1,16 +1,22 @@
 <div class="flex flex-col">
   <!-- title bar -->
   <div class="flex flex-col gap-4 px-4 pt-8">
-    <span class="text-[24px] text-gray-900 font-medium dark:text-white">Classroom Keys</span>
+    <span class="text-[24px] text-gray-900 font-medium dark:text-white">
+      Classroom Keys
+    </span>
   </div>
 
-  <div class="border-light-dark rounded-lg mx-4 mt-8">
+  <div *ngIf="availableKeys" class="border-light-dark rounded-lg mx-4 mt-8">
     <!-- card-title -->
     <div class="flex flex-row gap-4 p-4 justify-between border-b border-gray-300 dark:border-night-500">
       <!-- title and description -->
       <div class="grow flex flex-col gap-0">
-        <span class="text-gray-700 text-[16px] font-bold dark:text-white">Classroom key availability</span>
-        <span class="text-gray-500 text-[14px] dark:text-night-100">This is the availability of keys for room access.</span>
+        <span class="text-gray-700 text-[16px] font-bold dark:text-white">
+          Classroom key availability
+        </span>
+        <span class="text-gray-500 text-[14px] dark:text-night-100">
+          This is the availability of keys for room access.
+        </span>
       </div>
 
       <!-- triple dot -->
@@ -22,16 +28,17 @@
     <!-- place chart here -->
     <div class="flex flex-col gap-4 p-6 border-b border-gray-300 dark:border-night-500">
       <div class="flex flex-row justify-center items-end">
-        <div class="radial-progress text-green-400" style="--value:70; --size:10rem;">
+        <div class="radial-progress text-green-400" style="--value:{{availableKeys.available_percentage}}; --size:10rem;">
           <span class="text-black text-[30px] dark:text-night-200">
-            7
+            {{availableKeys.available}}
           </span>
         </div>
       </div>
 
       <div class="">
-        <div class="text-gray-900 text-[16px] dark:text-white">There are only few keys left for rooms.</div>
-        <div class="text-gray-500 text-[14px] dark:text-night-100">Contact the responsible authority for the designated room and key.</div>
+        <!-- <div class="text-gray-900 text-[16px] dark:text-white">There are only few keys left for rooms.</div> -->
+        <div class="text-gray-500 text-[14px] dark:text-night-100">Contact the responsible authority for the designated
+          room and key.</div>
       </div>
     </div>
 
@@ -46,8 +53,6 @@
       </button>
     </div>
   </div>
-
-
 
   <!-- Key logs -->
   <div class="flex flex-col gap-4 py-8 justify-between">
@@ -91,7 +96,8 @@
     </div>
 
     <div id="keylogs-all" class="tab-content active">
-      <ul *ngIf="keyLogs && keyLogs.length > 0; else noKeylogsAllBlock" class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
+      <ul *ngIf="keyLogs && keyLogs.length > 0; else noKeylogsAllBlock"
+          class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
         <!-- list header -->
         <div
              class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
@@ -126,7 +132,8 @@
             <!-- image -->
             <div [ngClass]="'bg-' + systemService.color + '-700'"
                  class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
-              <i class="fa-solid fa-chart-simple"></i>
+              <!-- <i class="fa-solid fa-chart-simple"></i> -->
+              <img src='assets/avatars/user-profile.png' class="" alt="" />
             </div>
 
             <!-- name and email -->
@@ -181,7 +188,8 @@
     </div>
 
     <div id="keylogs-returned" class="tab-content">
-      <ul *ngIf="keyLogsReturned && keyLogsReturned.length > 0; else noKeylogsReturnedBlock" class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
+      <ul *ngIf="keyLogsReturned && keyLogsReturned.length > 0; else noKeylogsReturnedBlock"
+          class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
         <!-- list header -->
         <div
              class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
@@ -216,7 +224,8 @@
             <!-- image -->
             <div [ngClass]="'bg-' + systemService.color + '-700'"
                  class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
-              <i class="fa-solid fa-chart-simple"></i>
+              <!-- <i class="fa-solid fa-chart-simple"></i> -->
+              <img src='assets/avatars/user-profile.png' class="" alt="" />
             </div>
 
             <!-- name and email -->
@@ -272,7 +281,8 @@
     </div>
 
     <div id="keylogs-borrowed" class="tab-content">
-      <ul *ngIf="keyLogsBorrowed && keyLogsBorrowed.length > 0; else noKeylogsBorrowedBlock" class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
+      <ul *ngIf="keyLogsBorrowed && keyLogsBorrowed.length > 0; else noKeylogsBorrowedBlock"
+          class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
         <!-- list header -->
         <div
              class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
@@ -307,7 +317,8 @@
             <!-- image -->
             <div [ngClass]="'bg-' + systemService.color + '-700'"
                  class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
-              <i class="fa-solid fa-chart-simple"></i>
+              <!-- <i class="fa-solid fa-chart-simple"></i> -->
+              <img src='assets/avatars/user-profile.png' class="" alt="" />
             </div>
 
             <!-- name and email -->
@@ -362,7 +373,8 @@
     </div>
 
     <div id="keylogs-lost" class="tab-content">
-      <ul *ngIf="keyLogsLost && keyLogsLost.length > 0; else noKeylogsLostBlock" class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
+      <ul *ngIf="keyLogsLost && keyLogsLost.length > 0; else noKeylogsLostBlock"
+          class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll">
         <!-- list header -->
         <div
              class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
@@ -397,7 +409,8 @@
             <!-- image -->
             <div [ngClass]="'bg-' + systemService.color + '-700'"
                  class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
-              <i class="fa-solid fa-chart-simple"></i>
+              <!-- <i class="fa-solid fa-chart-simple"></i> -->
+              <img src='assets/avatars/user-profile.png' class="" alt="" />
             </div>
 
             <!-- name and email -->

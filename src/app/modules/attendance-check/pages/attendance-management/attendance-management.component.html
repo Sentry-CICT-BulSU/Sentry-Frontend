@@ -34,14 +34,11 @@
       </div>
 
       <!-- place chart here -->
-      <div class="border-b border-gray-300 dark:border-night-500 xl:grow">
+      <div class="  dark:border-night-500 xl:grow">
         <div chart-card-column class></div>
       </div>
 
-      <!-- card-footer -->
-      <div class="flex justify-end items-center p-4">
-        <button class="button-plain w-fit">View Full Report</button>
-      </div>
+
     </div>
 
     <!-- attendance monitored -->
@@ -106,21 +103,7 @@
     </div>
 
     <!-- search bar and filter buttons-->
-    <div class="flex flex-col mx-4 gap-2 xl:flex-row-reverse xl:items-center">
-      <!-- search bar row -->
-      <div class="flex flex-row gap-2 mb-2 xl:grow xl:mb-0">
-        <div class="grow border-light-dark rounded-lg flex flex-row justify-start items-center px-2">
-          <i class="fa-solid fa-magnifying-glass dark:text-night-200"></i>
-          <input class="border-none" type="text" name="faculty-member-search" id="faculty-member-search"
-                 placeholder="Search">
-        </div>
-
-        <button class="shrink-0 button-plain w-fit"
-                type="submit">
-          <i class="fa-solid fa-filter"></i>
-        </button>
-      </div>
-
+    <div class="flex flex-col mx-4 gap-2 xl:flex-row xl:items-center">
       <div class="flex flex-row gap-2 items-center">
         <a href="#view-all" class="button-plain tab-link active1">View All</a>
         <a href="#monitored" class="button-plain tab-link">Monitored</a>
@@ -129,17 +112,12 @@
     </div>
 
     <div id="view-all" class="tab-content active">
-      <ul *ngIf="schedules; else noSchedulesBlock" 
+      <ul *ngIf="schedules; else noSchedulesBlock"
         class="flex flex-col border-light-dark max-h-[500px] overflow-y-scroll xl:max-h-[700px]">
         <!-- list header -->
         <div
              class="sticky top-0 flex flex-row items-center text-[12px] border-y px-4 py-4 bg-white  border-gray-300 dark:border-night-500 dark:bg-night-700 dark:text-night-200">
-          <div class="basis-2/5">
-            <button class="w-fit flex flex-row items-center justify-start gap-2">
-              <span>A-Z</span>
-              <i class="fa-solid fa-arrow-up"></i>
-            </button>
-          </div>
+          <span class="basis-2/5 text-left">Name</span>
           <span class="basis-2/5 text-center">Attendance</span>
           <!-- this is a space for the action column -->
           <span class="basis-1/5"></span>
@@ -153,7 +131,8 @@
             <!-- image -->
             <div [ngClass]="'bg-' + systemService.color + '-700'"
               class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
-              <i class="fa-solid fa-chart-simple"></i>
+              <!-- <i class="fa-solid fa-chart-simple"></i> -->
+              <img src='assets/avatars/user-profile.png' class="" alt="" />
             </div>
 
             <!-- name and email -->
@@ -184,21 +163,7 @@
             </div>
           </div>
 
-          <!-- actions -->
-          <div
-               class="shrink-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
-            <!-- The button to open modal -->
-            <label for="delete-modal" class="cursor-pointer">
-              <span class="material-icons">
-                delete
-              </span>
-            </label>
-            <button>
-              <span class="material-icons">
-                edit
-              </span>
-            </button>
-          </div>
+
         </li>
 
         <!-- pagination -->
@@ -242,7 +207,8 @@
             <!-- image -->
             <div [ngClass]="'bg-' + systemService.color + '-700'"
               class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
-              <i class="fa-solid fa-chart-simple"></i>
+              <!-- <i class="fa-solid fa-chart-simple"></i> -->
+              <img src='assets/avatars/user-profile.png' class="" alt="" />
             </div>
 
             <!-- name and email -->
@@ -274,20 +240,7 @@
           </div>
 
           <!-- actions -->
-          <div
-               class="shrink-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
-            <!-- The button to open modal -->
-            <label for="delete-modal" class="cursor-pointer">
-              <span class="material-icons">
-                delete
-              </span>
-            </label>
-            <button>
-              <span class="material-icons">
-                edit
-              </span>
-            </button>
-          </div>
+
         </li>
 
         <!-- pagination -->
@@ -330,7 +283,8 @@
             <!-- image -->
             <div [ngClass]="'bg-' + systemService.color + '-700'"
                  class="mr-2 shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[70px] text-white overflow-hidden">
-              <i class="fa-solid fa-chart-simple"></i>
+              <!-- <i class="fa-solid fa-chart-simple"></i> -->
+              <img src='assets/avatars/user-profile.png' class="" alt="" />
             </div>
 
             <!-- name and email -->
@@ -362,20 +316,7 @@
           </div>
 
           <!-- actions -->
-          <div
-               class="shrink-0 basis-1/5 flex flex-row justify-center items-center gap-4 text-gray-500 dark:text-night-200">
-            <!-- The button to open modal -->
-            <label for="delete-modal" class="cursor-pointer">
-              <span class="material-icons">
-                delete
-              </span>
-            </label>
-            <button>
-              <span class="material-icons">
-                edit
-              </span>
-            </button>
-          </div>
+
         </li>
 
         <!-- pagination -->

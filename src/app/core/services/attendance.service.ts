@@ -55,8 +55,11 @@ export class AttendanceService extends PropertiesService {
   }
 
   loadStatistics$() {
-    return this.http.get<IAttendanceStatistics>(this.url + '/stats', {
-      headers: this.options.headers,
-    });
+    return this.http.get<IAttendanceStatistics>(
+      env.apiRootRoute + '/api/attendances/stats',
+      {
+        headers: this.options.headers,
+      }
+    );
   }
 }

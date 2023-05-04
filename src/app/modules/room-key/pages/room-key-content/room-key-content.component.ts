@@ -6,6 +6,7 @@ import {
 import { RoomKeyLogsService } from './../../../../core/services/roomkey-logs.service';
 // Importing necessary modules from @angular
 import { Component, OnInit } from '@angular/core';
+import { forkJoin } from 'rxjs';
 
 // Defining a new component with the selector 'app-dashboard' and the template URL 'dashboard.component.html'
 @Component({
@@ -26,16 +27,32 @@ export class RoomKeyContentComponent implements OnInit {
   };
   constructor(private roomKeyLogsService: RoomKeyLogsService) {}
 
+  getStatusClass(status: string): string {
+    if (status === 'Returned') {
+      return 'bg-green-500/25 text-green-500';
+    } else if (status === 'Borrowed') {
+      return 'bg-blue-300/25 text-blue-500 dark:text-blue-300';
+    } else {
+      return 'bg-gray-300/25 text-gray-500 dark:text-gray-300';
+    }
+  }
+
+  p = 1;
+
   ngOnInit(): void {
     // comment below for frontend
-    this.roomKeyLogsService.getRoomKeyLogs$().subscribe((roomKeyLogs) => {
-      this.roomKeyLogCollection = roomKeyLogs;
-      this.roomKeyLogs = roomKeyLogs.data as IRoomKeyLog[];
-      console.log(roomKeyLogs);
-    });
-    this.roomKeyLogsService.getAvailableRoomKeys$().subscribe((response) => {
-      this.availableKeys = response;
-      console.log(response);
+    forkJoin([
+      this.roomKeyLogsService.getRoomKeyLogs$(),
+      this.roomKeyLogsService.getAvailableRoomKeys$(),
+    ]).subscribe({
+      next: ([roomKeyLogs, roomKeys]) => {
+        console.log(roomKeyLogs);
+        console.log(roomKeys);
+        this.roomKeyLogCollection = roomKeyLogs;
+        this.roomKeyLogs = roomKeyLogs.data as IRoomKeyLog[];
+        this.availableKeys = roomKeys;
+      },
+      error: (err) => console.debug(err),
     });
   }
 }

@@ -13,7 +13,7 @@ import { SystemSettingsComponent } from './pages/system-settings/system-settings
   imports: [
     CommonModule,
     SettingsRoutingModule,
-    SharedModule,
+    SharedModule.forRoot(),
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
@@ -23,6 +23,6 @@ import { SystemSettingsComponent } from './pages/system-settings/system-settings
     PersonalInformationComponent,
     PasswordAndSecurityComponent,
     SystemSettingsComponent,
-]
+  ],
 })
-export class SettingsModule { }
+export class SettingsModule {}

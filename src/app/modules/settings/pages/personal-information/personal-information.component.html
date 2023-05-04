@@ -23,7 +23,8 @@
         Cancel
       </button>
       <button type="submit"
-              class="relative flex w-20 justify-center button-size" [ngClass]="'bg-' + systemService.color + '-700 hover:bg-' + systemService.color + '-600 border-' + systemService.color + '-700'">
+              class="relative flex w-20 justify-center button-size"
+              [ngClass]="'bg-' + systemService.color + '-700 hover:bg-' + systemService.color + '-600 border-' + systemService.color + '-700'">
         Save
       </button>
     </div>
@@ -91,7 +92,7 @@
     <img class="rounded-full w-10" src="assets/avatars/user-profile.png" alt="" />
 
     <div class="relative col-span-3">
-      <input formControlName="profile_img" (change)="onImgChange($event)" type="file"
+      <input (change)="onImgChange($event)" type="file"
              class="file-input bg-white dark:text-night-300 dark:bg-night-700 w-full rounded-md border text-sm border-light-dark " />
     </div>
 

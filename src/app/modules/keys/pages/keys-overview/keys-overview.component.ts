@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { forkJoin } from 'rxjs';
-import { IRoomKeyLog, IRoomKeyLogCollection } from 'src/app/core/models';
+import {
+  IAvailableKeys,
+  IRoomKeyLog,
+  IRoomKeyLogCollection,
+} from 'src/app/core/models';
 import { RoomKeyLogsService } from 'src/app/core/services/roomkey-logs.service';
 import { SystemService } from 'src/app/core/services/system.service';
 
@@ -17,13 +21,23 @@ export class KeysOverviewComponent implements OnInit {
   keyLogsBorrowedCollection?: IRoomKeyLogCollection;
   keyLogsLost?: IRoomKeyLog[];
   keyLogsLostCollection?: IRoomKeyLogCollection;
-  constructor(private keyLogsService: RoomKeyLogsService, public systemService: SystemService) {}
+  availableKeys: IAvailableKeys = {
+    available: 0,
+    available_percentage: 0,
+    unavailable: 0,
+    unavailable_percentage: 0,
+    total_keys: 0,
+  };
+  constructor(
+    private keyLogsService: RoomKeyLogsService,
+    public systemService: SystemService
+  ) {}
 
   p = 1;
 
   ngOnInit() {
     this.initComponent();
-    this.loadRoomKeyLogs()
+    this.loadRoomKeyLogs();
   }
 
   loadRoomKeyLogs() {
@@ -32,9 +46,10 @@ export class KeysOverviewComponent implements OnInit {
       this.keyLogsService.getRoomKeyLogs$({ q: 'Returned' }),
       this.keyLogsService.getRoomKeyLogs$({ q: 'Borrowed' }),
       this.keyLogsService.getRoomKeyLogs$({ q: 'Lost' }),
+      this.keyLogsService.getAvailableRoomKeys$(),
     ]).subscribe({
-      next: ([all, returned, borrowed, lost]) => {
-        console.log(all, returned, borrowed, lost);
+      next: ([all, returned, borrowed, lost, stats]) => {
+        console.log(all, returned, borrowed, lost, stats);
         this.keyLogs = all.data as IRoomKeyLog[];
         this.keyLogsCollection = all;
         this.keyLogsReturned = returned.data as IRoomKeyLog[];
@@ -43,6 +58,7 @@ export class KeysOverviewComponent implements OnInit {
         this.keyLogsBorrowedCollection = borrowed;
         this.keyLogsLost = lost.data as IRoomKeyLog[];
         this.keyLogsLostCollection = lost;
+        this.availableKeys = stats;
       },
       error: (err) => console.debug(err),
     });

@@ -122,7 +122,8 @@
         Confirm Password
       </label>
     </div>
-    <button class="button-size w-48" [ngClass]="'bg-' + systemService.color + '-700 hover:bg-' + systemService.color + '-600 border-' + systemService.color + '-700'">
+    <button type="button" (click)="resetPassword()" class="button-size w-48"
+            [ngClass]="'bg-' + systemService.color + '-700 hover:bg-' + systemService.color + '-600 border-' + systemService.color + '-700'">
       Reset Password
     </button>
   </div>
@@ -195,7 +196,8 @@
       Cancel
     </button>
     <button type="submit"
-            class="relative mb-10 flex w-20 justify-center button-size" [ngClass]="'bg-' + systemService.color + '-700 hover:bg-' + systemService.color + '-600 border-' + systemService.color + '-700'">
+            class="relative mb-10 flex w-20 justify-center button-size"
+            [ngClass]="'bg-' + systemService.color + '-700 hover:bg-' + systemService.color + '-600 border-' + systemService.color + '-700'">
       Save
     </button>
   </div>

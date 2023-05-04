@@ -10,6 +10,7 @@ import { SystemService } from 'src/app/core/services/system.service';
 export class ReportsComponent implements OnInit {
   generateReportForm?: FormGroup;
   report?: any;
+  blob?: Blob;
   constructor(
     public systemService: SystemService,
     private reportsService: ReportsService,

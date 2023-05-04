@@ -87,7 +87,9 @@ export class AuthService extends PropertiesService {
   }
 
   updateUser$(body: any) {
-    return this.http.patch<IUserCollection>(this.url, body);
+    return this.http.patch<IUserCollection>(this.url, body, {
+      headers: this.options.headers,
+    });
   }
 
   get url() {

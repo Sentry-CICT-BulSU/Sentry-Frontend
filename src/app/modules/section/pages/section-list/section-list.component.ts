@@ -23,9 +23,122 @@ export class SectionListComponent implements OnInit {
     public systemService: SystemService
   ) {}
 
+  public searchTerm = '';
+
+  p = 1;
+
+  selectedSort = 'latest';
+
+  currentSortType!: string;
+
+  get filteredSearchSections() {
+    if (!this.sections) {
+      return [];
+    }
+    return this.sections.filter((section) => {
+      return (
+        section.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        section.adviser?.full_name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    });
+  }
+
+  get filteredSearchActiveSections() {
+    if (!this.sectionsActive) {
+      return [];
+    }
+    return this.sectionsActive.filter((section) => {
+      return (
+        section.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        section.adviser?.full_name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    });
+  }
+
+  get filteredSearchInactiveSections() {
+    if (!this.sectionsInactive) {
+      return [];
+    }
+    return this.sectionsInactive.filter((section) => {
+      return (
+        section.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        section.adviser?.full_name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    });
+  }
+
+
+
+
+
+
+  sortSections(sections: any[], sortParam: string): any[] {
+    return sections.sort((a, b) => {
+      if (sortParam === 'name') {
+        return a.name.localeCompare(b.name);
+      } else if (sortParam === 'latest') {
+        return (
+          new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        );
+      } else if (sortParam === 'oldest') {
+        return (
+          new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+        );
+      } else {
+        return 0;
+      }
+    });
+  }
+
+  sortActiveSections(sectionsActive: any[], sortParam: string): any[] {
+    return sectionsActive.sort((a, b) => {
+      if (sortParam === 'name') {
+        return a.name.localeCompare(b.name);
+      } else if (sortParam === 'latest') {
+        return (
+          new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        );
+      } else if (sortParam === 'oldest') {
+        return (
+          new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+        );
+      } else {
+        return 0;
+      }
+    });
+  }
+
+
+  sortInactiveSections(sectionsInactive: any[], sortParam: string): any[] {
+    return sectionsInactive.sort((a, b) => {
+      if (sortParam === 'name') {
+        return a.name.localeCompare(b.name);
+      } else if (sortParam === 'latest') {
+        return (
+          new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        );
+      } else if (sortParam === 'oldest') {
+        return (
+          new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+        );
+      } else {
+        return 0;
+      }
+    });
+  }
+
+
   ngOnInit(): void {
     this.initComponent();
     this.loadSections();
+  }
+
+  getStatusClass(status: string): string {
+    if (status === 'Active') {
+      return 'bg-green-500/25 text-green-500';
+    } else {
+      return 'bg-gray-300/25 text-gray-500 dark:text-gray-300';
+    }
   }
 
   loadSections() {
