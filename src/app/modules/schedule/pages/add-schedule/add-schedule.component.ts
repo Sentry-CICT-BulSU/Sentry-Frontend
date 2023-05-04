@@ -154,7 +154,9 @@ export class AddScheduleComponent implements OnInit, OnDestroy {
       time_end: this.newScheduleForm.value.time_end,
       active_days: Object.entries(
         this.newScheduleForm.controls['active_days'].value
-      ).map(([v, b]) => (b ? v.toLowerCase() : false)),
+      )
+        .map(([v, b]) => (b ? v.toLowerCase() : false))
+        .filter((v) => !!v),
     };
     console.log(this.newScheduleForm.value);
     console.log(body);
