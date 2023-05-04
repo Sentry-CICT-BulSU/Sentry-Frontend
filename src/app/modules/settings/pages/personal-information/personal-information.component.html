@@ -1,6 +1,4 @@
-<pre *ngIf="updateUserForm">
-  {{updateUserForm.value|json}}
-</pre>
+
 
 <form *ngIf="updateUserForm" [formGroup]="updateUserForm" (ngSubmit)="onSubmit()" class="grid grid-cols-1">
   <div class="flex flex-col md:flex-row gap-4 justify-between">

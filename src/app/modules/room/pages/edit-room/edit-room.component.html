@@ -22,9 +22,7 @@
     </div>
   </div>
 
-  <pre *ngIf="editRoomForm">
-      {{editRoomForm.value|json}}
-    </pre>
+
 
   <form *ngIf="editRoomForm" [formGroup]="editRoomForm" (ngSubmit)="onSubmit()" class="grid grid-cols-1" novalidate>
     <!-- Separator -->

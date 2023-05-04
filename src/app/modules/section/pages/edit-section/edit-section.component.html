@@ -22,9 +22,6 @@
     </div>
   </div>
 
-  <pre *ngIf="editSectionForm">
-    {{editSectionForm.value|json}}
-  </pre>
 
   <form *ngIf="editSectionForm && section" [formGroup]="editSectionForm" (ngSubmit)="onSubmit()" novalidate
         class="grid grid-cols-1">
