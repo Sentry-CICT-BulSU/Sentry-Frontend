@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { IAttendanceStatistics } from 'src/app/core/models';
+import { forkJoin } from 'rxjs';
+import {
+  IAttendance,
+  IAttendanceStatistics,
+  ISchedule,
+} from 'src/app/core/models';
 import { AttendanceService } from 'src/app/core/services/attendance.service';
+import { ScheduleService } from 'src/app/core/services/schedule.service';
 import { SystemService } from 'src/app/core/services/system.service';
 
 @Component({
@@ -9,9 +15,12 @@ import { SystemService } from 'src/app/core/services/system.service';
 })
 export class AttendanceComponent implements OnInit {
   attendancesStatistics?: IAttendanceStatistics;
+  attendances?: IAttendance[];
+  schedules?: ISchedule[];
   constructor(
     public systemService: SystemService,
-    private attendanceService: AttendanceService
+    private attendanceService: AttendanceService,
+    private scheduleService: ScheduleService
   ) {}
 
   initSystemColor() {
@@ -59,13 +68,33 @@ export class AttendanceComponent implements OnInit {
   ngOnInit(): void {
     this.initSystemColor();
     this.initComponent();
-    this.loadStatistics()
+    this.loadAttendance();
   }
 
-  loadStatistics() {
-    this.attendanceService.loadStatistics$().subscribe((stats) => {
+  loadAttendance() {
+    forkJoin([
+      this.attendanceService.loadAttendances$(),
+      this.attendanceService.loadStatistics$(),
+    ]).subscribe(([schedules, stats]) => {
+      console.log(schedules, stats);
       this.attendancesStatistics = stats;
+      this.schedules = schedules.data as ISchedule[];
     });
+  }
+  filterMonitoredAttendances(monitored: boolean) {
+    if (!this.schedules) return;
+    return this.schedules?.filter((schedule) => {
+      if ((schedule.attendance as IAttendance) && monitored) {
+        return true;
+      } else if (!(schedule.attendance as IAttendance) && !monitored) {
+        return true;
+      }
+      return false;
+    });
+  }
+
+  parseAttendance(schedule: ISchedule) {
+    return schedule.attendance as IAttendance;
   }
 
   initComponent() {
