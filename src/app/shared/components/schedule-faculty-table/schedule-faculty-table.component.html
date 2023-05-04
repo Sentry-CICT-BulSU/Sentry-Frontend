@@ -46,15 +46,14 @@
           </div>
         </td>
 
-            <td class="py-2 pr-2">
-                <div class="flex justify-end">
-
-                    <span class="material-symbols-rounded font-medium cursor-pointer mr-6 justify-center rounded-md text-gray-500 hover:text-red-500 dark:text-night-300">
-                        delete
-                    </span>
-
-                </div>
-            </td>
+        <td class="py-2 pr-2">
+          <div class="flex justify-end">
+            <span (click)="onDelete(schedule.id)"
+                  class="material-symbols-rounded font-medium cursor-pointer mr-6 justify-center rounded-md text-gray-500 hover:text-red-500 dark:text-night-300">
+              delete
+            </span>
+          </div>
+        </td>
       </tr>
     </tbody>
     <!--end::Table body-->

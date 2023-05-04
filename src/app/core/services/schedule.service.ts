@@ -59,4 +59,9 @@ export class ScheduleService extends PropertiesService {
       headers: this.options.headers,
     });
   }
+  deleteSchedule$(id: number): Observable<IScheduleCollection> {
+    return this.http.delete<IScheduleCollection>(this.url + '/' + id, {
+      headers: this.options.headers,
+    });
+  }
 }
