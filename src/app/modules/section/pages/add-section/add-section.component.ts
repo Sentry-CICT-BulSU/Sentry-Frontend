@@ -5,6 +5,7 @@ import { BehaviorSubject, forkJoin, tap } from 'rxjs';
 import { AdminService } from 'src/app/core/services/admin.service';
 import { SectionService } from 'src/app/core/services/section.service';
 import { SystemService } from 'src/app/core/services/system.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-section',
@@ -60,6 +61,13 @@ export class AddSectionComponent implements OnInit {
       next: (section) => {
         console.log(section);
         this.router.navigate(['/section']);
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Section added successfully!',
+        });
+
       },
       error: (err) => console.debug(err),
     });

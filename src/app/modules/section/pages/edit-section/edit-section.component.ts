@@ -6,6 +6,7 @@ import { ISection } from 'src/app/core/models';
 import { AdminService } from 'src/app/core/services/admin.service';
 import { SectionService } from 'src/app/core/services/section.service';
 import { SystemService } from 'src/app/core/services/system.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-section',
@@ -74,6 +75,13 @@ export class EditSectionComponent implements OnInit {
         next: (section) => {
           console.log(section);
           this.router.navigate(['/section']);
+
+          Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'Section edited successfully!',
+          });
+
         },
         error: (err) => console.debug(err),
       });
