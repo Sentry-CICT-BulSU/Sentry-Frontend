@@ -11,6 +11,7 @@ import { RoomKeyComponent } from './room-key.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { KeyInfoComponent } from './pages/key-info/key-info.component';
 import { RoomKeyContentComponent } from './pages/room-key-content/room-key-content.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -28,7 +29,8 @@ import { RoomKeyContentComponent } from './pages/room-key-content/room-key-conte
         SharedModule.forRoot(),
         HttpClientModule,
         NgApexchartsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        NgxPaginationModule,
     ],
 })
 
