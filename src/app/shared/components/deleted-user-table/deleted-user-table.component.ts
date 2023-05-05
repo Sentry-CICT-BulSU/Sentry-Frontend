@@ -42,7 +42,7 @@ export class DeletedUserTableComponent implements OnInit {
         Swal.fire({
           icon: 'success',
           title: 'Success',
-          text: 'User restored successfully!',
+          text: 'User restored from archive!',
         });
 
       },

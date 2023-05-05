@@ -36,12 +36,12 @@ export class UserTableComponent implements OnChanges {
     // Show SweetAlert2 confirmation dialog
     Swal.fire({
       title: 'Confirm Delete',
-      text: 'Are you sure you want to delete this user?',
+      text: 'Are you sure you want to archive this user?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#6941C6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
+      confirmButtonText: 'Yes, archive it!',
     }).then((result) => {
       if (result.isConfirmed) {
         this.adminService.softDeleteUser$(user.id).subscribe({
@@ -51,7 +51,7 @@ export class UserTableComponent implements OnChanges {
           },
         });
         // Show success message
-        Swal.fire('Deleted!', 'User has been deleted.', 'success');
+        Swal.fire('Deleted!', 'User has been archived.', 'success');
       }
     });
   }
