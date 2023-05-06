@@ -1,5 +1,24 @@
+
+
+  <!--preloader start-->
+  <div *ngIf="loading$ | async" class="preloader">
+    <div class="box">
+      <div [ngClass]="'bg-' + systemService.color + '-700'"></div><div [ngClass]="'bg-' + systemService.color + '-700'"></div><div [ngClass]="'bg-' + systemService.color + '-700'"></div>
+    </div>
+  </div>
+  <!--preloader end-->
+
+
+
+
 <!-- Create a div element with a ngClass directive that binds to an object -->
+
+
 <div [ngClass]="{ dark: this.themeService.isDark }">
+
+  <!-- <div *ngIf="loading$ | async">Loading...</div> -->
+
+
 
   <!-- Create a router-outlet element that serves as a placeholder for rendering the component defined in the current route. -->
   <router-outlet></router-outlet>
