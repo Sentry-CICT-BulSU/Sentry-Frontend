@@ -6,6 +6,7 @@ import { BehaviorSubject, Observable, forkJoin, tap } from 'rxjs';
 import { AdminService } from 'src/app/core/services/admin.service';
 import { ScheduleService } from 'src/app/core/services/schedule.service';
 import { SystemService } from 'src/app/core/services/system.service';
+import Swal from 'sweetalert2';
 
 // Defining a new component with the selector 'app-dashboard' and the template URL 'dashboard.component.html'
 @Component({
@@ -164,6 +165,13 @@ export class AddScheduleComponent implements OnInit, OnDestroy {
       next: (schedule) => {
         console.log(schedule);
         this.router.navigate(['/schedule']);
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Schedule added successfully!',
+        });
+
       },
       error: (err) => console.debug(err),
     });
