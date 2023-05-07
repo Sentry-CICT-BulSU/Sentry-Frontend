@@ -64,7 +64,7 @@
 
           <div class="flex justify-between items-center p-4">
             <span class="text-gray-500 text-[14px]">
-              Marked as {{parseAttendance(schedule)}}
+              Marked as {{parseAttendance(schedule)|titlecase}}
             </span>
             <div class="flex flex-row items-center justify-end gap-4 text-center">
 
@@ -142,7 +142,7 @@
         <ng-template #hasAttendance>
           <div class="flex justify-between items-center p-4">
             <span class="text-gray-500 text-[14px]">
-              Marked as {{parseAttendance(schedule)}}
+              Marked as {{parseAttendance(schedule)|titlecase}}
             </span>
             <div class="flex flex-row items-center justify-end gap-4 text-center">
 
@@ -220,7 +220,7 @@
         <ng-template #hasAttendance>
           <div class="flex justify-between items-center p-4">
             <span class="text-gray-500 text-[14px]">
-              Marked as {{parseAttendance(schedule)}}
+              Marked as {{parseAttendance(schedule)|titlecase}}
             </span>
             <div class="flex flex-row items-center justify-end gap-4 text-center">
 
