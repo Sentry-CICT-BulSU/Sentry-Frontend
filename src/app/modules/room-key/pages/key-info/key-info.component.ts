@@ -43,17 +43,10 @@ export class KeyInfoComponent implements OnInit {
   }
 
   loadSubs() {
-    if (!this.roomKeyId) return;
-
-    console.log(this.roomKeyId);
-    return this.roomKeyService
-      .getRoomKey$(this.roomKeyId)
-      .subscribe((roomKey) => {
-        if (
-          (roomKey.data as IRoomKey) &&
-          (roomKey.data as IRoomKey).logs &&
-          ((roomKey.data as IRoomKey).schedules as ISchedule[]).length > 0
-        ) {
+    if (this.roomKeyId) {
+      console.log(this.roomKeyId);
+      this.roomKeyService.getRoomKey$(this.roomKeyId).subscribe((roomKey) => {
+        if (roomKey) {
           this.roomKey = roomKey.data as IRoomKey;
           this.logs = this.roomKey.logs as IRoomKeyLog[];
           this.schedules = this.roomKey.schedules as ISchedule[];
@@ -64,6 +57,7 @@ export class KeyInfoComponent implements OnInit {
           this.loadFormControls();
         }
       });
+    }
   }
   initForm() {
     this.roomKeyForm = this.fb.group({
