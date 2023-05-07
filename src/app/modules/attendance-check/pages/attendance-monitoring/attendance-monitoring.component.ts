@@ -89,7 +89,7 @@ export class AttendanceMonitoringComponent implements OnInit {
     return !!(schedule.attendances as IAttendance);
   }
   parseAttendance(schedule: ISchedule) {
-    if (!schedule.attendance) return;
+    if (!schedule.attendances) return;
     return (schedule.attendances as IAttendance).status;
   }
   onMarkAsAbsent(schedule: ISchedule) {
