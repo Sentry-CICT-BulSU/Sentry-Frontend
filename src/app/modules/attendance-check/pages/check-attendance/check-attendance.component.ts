@@ -85,10 +85,11 @@ export class CheckAttendanceComponent implements OnInit {
         next: (attendance) => {
           console.log(attendance);
           this.router.navigate(['/attendance-check/attendance-monitoring']);
+          Swal.fire('Marked as Present!', 'Faculty has been marked as present.', 'success');
         },
         error: (err) => console.debug(err),
       });
-      Swal.fire('Marked as Present!', 'Faculty has been marked as present.', 'success');
+
   }
 
 

@@ -22,7 +22,7 @@
     </div>
   </div>
 
- 
+
 
   <form *ngIf="editSubjectForm" [formGroup]="editSubjectForm" class="grid grid-cols-1"
         novalidate (ngSubmit)="onSubmit()">
@@ -85,7 +85,7 @@
     </div>
 
     <div class="flex items-center justify-end space-x-3">
-      <button type="reset"
+      <button type="reset" routerLink="/subject"
               class="relative mb-10 button-plain">
         Cancel
       </button>

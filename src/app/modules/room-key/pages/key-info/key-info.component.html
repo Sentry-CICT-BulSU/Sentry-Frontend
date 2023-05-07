@@ -97,7 +97,7 @@
       </div>
     </form>
 
-    <div *ngIf="roomKey"
+    <div *ngIf="roomKey; else elseBlock"
          class="grid grid-cols-1 rounded-b-lg border-light-dark bg-white p-5 dark:bg-night-700">
       <div *ngIf="roomKey.status !== 'Available'" class="flex items-center justify-end space-x-3">
         <button *ngIf="roomKey.status !== 'Lost'" type="button" (click)="lostRoomKey()"
@@ -120,6 +120,25 @@
         </button>
       </div>
     </div>
+
+    <ng-template #elseBlock>
+
+      <div
+         class="grid grid-cols-1 rounded-b-lg border-light-dark bg-white p-5 dark:bg-night-700">
+      <div class="flex items-center justify-end space-x-3">
+        <p>
+          There are currently no scheduled users for this key.
+        </p>
+        <button type="button" routerLink="/room-key"
+                class="button-colored">
+          Go Back
+        </button>
+      </div>
+
+    </div>
+
+    </ng-template>
+
   </div>
 
   <!-- Key Logs -->
