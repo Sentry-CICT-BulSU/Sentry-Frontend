@@ -40,17 +40,20 @@ export class KeyInfoComponent implements OnInit {
   loadSubs() {
     if (this.roomKeyId) {
       console.log(this.roomKeyId);
-      this.roomKeyService.getRoomKey$(this.roomKeyId).subscribe((roomKey) => {
-        if (roomKey) {
-          this.roomKey = roomKey.data as IRoomKey;
-          this.logs = this.roomKey.logs as IRoomKeyLog[];
-          this.schedules = this.roomKey.schedules as ISchedule[];
-          this.facultyToBorrow =
-            this.schedules.length > 0
-              ? (this.schedules[0].adviser as IUser)
-              : undefined;
-          this.loadFormControls();
-        }
+      this.roomKeyService.getRoomKey$(this.roomKeyId).subscribe({
+        next: (roomKey) => {
+          if (roomKey) {
+            this.roomKey = roomKey.data as IRoomKey;
+            this.logs = this.roomKey.logs as IRoomKeyLog[];
+            this.schedules = this.roomKey.schedules as ISchedule[];
+            this.facultyToBorrow =
+              this.schedules.length > 0
+                ? (this.schedules[0].adviser as IUser)
+                : undefined;
+            this.loadFormControls();
+          }
+        },
+        error: (err) => console.log(err),
       });
     }
   }
@@ -71,17 +74,23 @@ export class KeyInfoComponent implements OnInit {
     const roomKey: IRoomKey = this.roomKey as IRoomKey;
     const log: IRoomKeyLog = (this.logs as IRoomKeyLog[])[0] as IRoomKeyLog;
     let roomKeyForm;
-    if (roomKey.status === 'Available') {
+    if (
+      roomKey.status === 'Available' &&
+      this.facultyToBorrow &&
+      this.schedules &&
+      this.schedules.length > 0
+    ) {
       roomKeyForm = {
         id: this.roomKeyId,
-        user_id: user.id,
+        user_id: user?.id,
         subject_id: sched.subject?.id,
-        faculty: user.full_name,
+        faculty: user?.full_name,
         subject_code: sched.subject?.code,
         subject_name: sched.subject?.title,
         time: sched.time_start + ' - ' + sched.time_end,
       };
-    } else {
+      this.patchForm(roomKeyForm);
+    } else if (this.logs && this.logs.length > 0) {
       roomKeyForm = {
         id: log.room_key?.id,
         user_id: log.faculty?.id,
@@ -91,7 +100,12 @@ export class KeyInfoComponent implements OnInit {
         subject_name: log.subject?.title,
         time: log.time_block,
       };
+      this.patchForm(roomKeyForm);
+    } else {
+      alert('No user, or schedule nor logs found!');
     }
+  }
+  patchForm(roomKeyForm: any) {
     this.roomKeyForm?.controls['room_key_id'].setValue(roomKeyForm.id);
     this.roomKeyForm?.controls['faculty_id'].setValue(roomKeyForm.user_id);
     this.roomKeyForm?.controls['subject_id'].setValue(roomKeyForm.subject_id);
