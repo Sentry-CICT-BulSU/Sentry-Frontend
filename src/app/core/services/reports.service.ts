@@ -3,8 +3,7 @@ import { PropertiesService } from './properties.service';
 import { AuthService } from './auth.service';
 import { IUser } from '../models';
 import { environment as env } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -29,28 +28,32 @@ export class ReportsService extends PropertiesService {
     }
   }
 
-  getReport$(query: any) {
+  getReport$(query: {
+    type: string;
+    time: string;
+    preview?: boolean;
+    pdf?: boolean;
+    csv?: boolean;
+  }) {
+    const url = query.pdf ? this.url + '/pdf' : this.url + '/csv';
+    const options = {
+      headers: new HttpHeaders({
+        Accept: 'application/pdf',
+      }),
+    };
+    // ? this.url + '/pdf'
+    // : query.type === 'generate'
+    // ? this.url + '/csv'
+    // : this.url + '/view';
     return query.preview
-      ? this.http.get(this.url, {
+      ? this.http.get(url, {
           headers: this.options.headers,
           params: query,
         })
-      : this.http
-          .get(this.url, {
-            headers: this.options.headers,
-            responseType: 'blob',
-            params: query,
-          })
-          .pipe(
-            map((report) => {
-              if (!query.preview) {
-                const downloadURL = window.URL.createObjectURL(
-                  new Blob([report as Blob], { type: 'text/csv' })
-                );
-                window.open(downloadURL);
-              }
-              return report;
-            })
-          );
+      : this.http.get(url, {
+          headers: options.headers,
+          responseType: 'blob',
+          params: query,
+        });
   }
 }
