@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ISchedule, IUser } from 'src/app/core/models';
 import { AttendanceService } from 'src/app/core/services/attendance.service';
 import { ScheduleService } from 'src/app/core/services/schedule.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-check-attendance',
@@ -50,9 +51,34 @@ export class CheckAttendanceComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  // onSubmit() {
+  //   if (!this.schedule) return;
+  //   if (!this.markAsPresentForm) return;
+  //   this.attendanceService
+  //     .addAttendance$(this.schedule.id, this.markAsPresentForm.value)
+  //     .subscribe({
+  //       next: (attendance) => {
+  //         console.log(attendance);
+  //         this.router.navigate(['/attendance-check/attendance-monitoring']);
+  //       },
+  //       error: (err) => console.debug(err),
+  //     });
+  // }
+
+   onSubmit() {
     if (!this.schedule) return;
     if (!this.markAsPresentForm) return;
+
+    Swal.fire({
+      title: 'Confirm Present',
+      text: 'Are you sure that this faculty is present?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#6941C6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, present!',
+    })
+
     this.attendanceService
       .addAttendance$(this.schedule.id, this.markAsPresentForm.value)
       .subscribe({
@@ -62,5 +88,9 @@ export class CheckAttendanceComponent implements OnInit {
         },
         error: (err) => console.debug(err),
       });
+      Swal.fire('Marked as Present!', 'Faculty has been marked as present.', 'success');
   }
+
+
+
 }

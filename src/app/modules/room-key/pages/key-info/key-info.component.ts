@@ -10,6 +10,7 @@ import {
   IRoomKeyLog,
 } from 'src/app/core/models';
 import { RoomKeyService } from 'src/app/core/services/roomkey.service';
+import Swal from 'sweetalert2';
 
 // Defining a new component with the selector 'app-dashboard' and the template URL 'dashboard.component.html'
 @Component({
@@ -128,16 +129,34 @@ export class KeyInfoComponent implements OnInit {
     this.roomKeyService
       .borrowRoomKey$(this.roomKeyForm?.value)
       .subscribe(this.handleSubs);
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Key borrowed successfully!',
+      });
   }
   returnRoomKey() {
     if (!this.roomKeyId) return;
     this.roomKeyService
       .returnRoomKey$(this.roomKeyId)
       .subscribe(this.handleSubs);
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Key returned successfully!',
+      });
   }
   lostRoomKey() {
     if (!this.roomKeyId) return;
     this.roomKeyService.lostRoomKey$(this.roomKeyId).subscribe(this.handleSubs);
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Warning',
+      text: 'Key is marked lost!',
+    });
   }
 
   get handleSubs() {
