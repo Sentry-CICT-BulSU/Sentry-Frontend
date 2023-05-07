@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
-import { ISchedule, IScheduleCollection } from 'src/app/core/models';
+import {
+  IAttendance,
+  ISchedule,
+  IScheduleCollection,
+} from 'src/app/core/models';
 import { AttendanceService } from 'src/app/core/services/attendance.service';
 import { ScheduleService } from 'src/app/core/services/schedule.service';
 import Swal from 'sweetalert2';
@@ -80,6 +84,14 @@ export class AttendanceMonitoringComponent implements OnInit {
     });
   }
 
+  haveAttendance(schedule: ISchedule): boolean {
+    if (!schedule.attendances) return false;
+    return !!(schedule.attendances as IAttendance);
+  }
+  parseAttendance(schedule: ISchedule) {
+    if (!schedule.attendance) return;
+    return (schedule.attendances as IAttendance).status;
+  }
   onMarkAsAbsent(schedule: ISchedule) {
     Swal.fire({
       title: 'Mark as Absent',

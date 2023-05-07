@@ -26,6 +26,7 @@ export interface ISchedule extends IMetaData {
   section?: ISection | null;
 
   attendance?: IAttendance | IAttendance[] | null;
+  attendances?: IAttendance | IAttendance[] | null;
 
   date_start: string;
   date_end: string;
