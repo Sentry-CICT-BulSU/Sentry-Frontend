@@ -27,7 +27,6 @@ export class RoomKeysComponent implements OnInit {
     this.loadRoomInfo();
   }
 
-
   getStatusClass(status: string): string {
     if (status === 'Available') {
       return 'bg-green-500/25 text-green-500';
@@ -40,18 +39,12 @@ export class RoomKeysComponent implements OnInit {
 
   initSystemColor() {
     const color = this.systemService.color;
-    console.log('system color: ', color);
-    this.replaceClassName('bg-primary-', `bg-${this.systemService.color}-`);
-    this.replaceClassName('text-primary-', `text-${this.systemService.color}-`);
-    this.replaceClassName(
-      'border-primary-',
-      `border-${this.systemService.color}-`
-    );
-    this.replaceClassName('ring-primary-', `ring-${this.systemService.color}-`);
-    this.replaceClassName(
-      'hover:bg-primary-',
-      `hover:bg-${this.systemService.color}-`
-    );
+
+    this.replaceClassName('bg-primary-', `bg-${color}-`);
+    this.replaceClassName('text-primary-', `text-${color}-`);
+    this.replaceClassName('border-primary-', `border-${color}-`);
+    this.replaceClassName('ring-primary-', `ring-${color}-`);
+    this.replaceClassName('hover:bg-primary-', `hover:bg-${color}-`);
   }
 
   private replaceClassName(prefix: string, replacement: string) {

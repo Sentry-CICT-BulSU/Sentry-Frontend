@@ -63,15 +63,21 @@ export class SemesterListComponent implements OnInit {
 
   initSystemColor() {
     const color = this.systemService.color;
-    console.log('system color: ', color);
-    this.replaceClassName('bg-primary-', `bg-${this.systemService.color}-`);
-    this.replaceClassName('text-primary-', `text-${this.systemService.color}-`);
-    this.replaceClassName('border-primary-', `border-${this.systemService.color}-`);
-    this.replaceClassName('ring-primary-', `ring-${this.systemService.color}-`);
-    this.replaceClassName('hover:bg-primary-', `hover:bg-${this.systemService.color}-`);
-    this.replaceClassName('scrollbar-track-primary-', `scrollbar-track-${this.systemService.color}-`);
-    this.replaceClassName('scrollbar-thumb-primary-', `scrollbar-thumb-${this.systemService.color}-`);
-    // this.replaceClassName('tab-link', `tab-link-${this.systemService.color}`);
+
+    this.replaceClassName('bg-primary-', `bg-${color}-`);
+    this.replaceClassName('text-primary-', `text-${color}-`);
+    this.replaceClassName('border-primary-', `border-${color}-`);
+    this.replaceClassName('ring-primary-', `ring-${color}-`);
+    this.replaceClassName('hover:bg-primary-', `hover:bg-${color}-`);
+    this.replaceClassName(
+      'scrollbar-track-primary-',
+      `scrollbar-track-${color}-`
+    );
+    this.replaceClassName(
+      'scrollbar-thumb-primary-',
+      `scrollbar-thumb-${color}-`
+    );
+    // this.replaceClassName('tab-link', `tab-link-${color}`);
   }
 
   private replaceClassName(prefix: string, replacement: string) {
@@ -88,7 +94,6 @@ export class SemesterListComponent implements OnInit {
       }
     }
   }
-
 
   ngOnInit(): void {
     this.initSystemColor();

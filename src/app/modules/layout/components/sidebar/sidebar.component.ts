@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { ThemeService } from 'src/app/core/services/theme.service';
 import packageJson from '../../../../../../package.json';
 import { MenuService } from '../../services/menu.service';
-import { AuthService } from 'src/app/core/services/auth.service';
 import { IUser, MenuItem } from 'src/app/core/models';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -62,14 +61,20 @@ export class SidebarComponent implements OnInit {
 
   initSystemColor() {
     const color = this.systemService.color;
-    console.log('system color: ', color);
-    this.replaceClassName('bg-primary-', `bg-${this.systemService.color}-`);
-    this.replaceClassName('text-primary-', `text-${this.systemService.color}-`);
-    this.replaceClassName('border-primary-', `border-${this.systemService.color}-`);
-    this.replaceClassName('ring-primary-', `ring-${this.systemService.color}-`);
-    this.replaceClassName('hover:bg-primary-', `hover:bg-${this.systemService.color}-`);
-    this.replaceClassName('scrollbar-track-primary-', `scrollbar-track-${this.systemService.color}-`);
-    this.replaceClassName('scrollbar-thumb-primary-', `scrollbar-thumb-${this.systemService.color}-`);
+
+    this.replaceClassName('bg-primary-', `bg-${color}-`);
+    this.replaceClassName('text-primary-', `text-${color}-`);
+    this.replaceClassName('border-primary-', `border-${color}-`);
+    this.replaceClassName('ring-primary-', `ring-${color}-`);
+    this.replaceClassName('hover:bg-primary-', `hover:bg-${color}-`);
+    this.replaceClassName(
+      'scrollbar-track-primary-',
+      `scrollbar-track-${color}-`
+    );
+    this.replaceClassName(
+      'scrollbar-thumb-primary-',
+      `scrollbar-thumb-${color}-`
+    );
   }
 
   private replaceClassName(prefix: string, replacement: string) {

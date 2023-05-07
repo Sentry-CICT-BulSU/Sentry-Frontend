@@ -13,28 +13,29 @@ import { SystemService } from 'src/app/core/services/system.service';
 // Exporting the SidebarSubmenuComponent class and defining its submenu input property of type SubMenuItem and showSideBar$
 // observable property of type Observable<boolean>. It also creates a constructor with MenuService dependency injection and
 // sets showSideBar$ to the value of menuService.showSideBar$.
-
 export class SidebarSubmenuComponent implements OnInit {
   @Input() public submenu = <SubMenuItem>{};
   public showSideBar$: Observable<boolean> = new Observable<boolean>();
 
-  constructor(private menuService: MenuService,public systemService: SystemService) {
+  constructor(
+    private menuService: MenuService,
+    public systemService: SystemService
+  ) {
     this.showSideBar$ = this.menuService.showSideBar$;
   }
 
   ngOnInit(): void {
-
     this.initSystemColor();
   }
 
   initSystemColor() {
     const color = this.systemService.color;
-    console.log('system color: ', color);
-    this.replaceClassName('bg-primary-', `bg-${this.systemService.color}-`);
-    this.replaceClassName('text-primary-', `text-${this.systemService.color}-`);
-    this.replaceClassName('border-primary-', `border-${this.systemService.color}-`);
-    this.replaceClassName('ring-primary-', `ring-${this.systemService.color}-`);
-    this.replaceClassName('hover:bg-primary-', `hover:bg-${this.systemService.color}-`);
+
+    this.replaceClassName('bg-primary-', `bg-${color}-`);
+    this.replaceClassName('text-primary-', `text-${color}-`);
+    this.replaceClassName('border-primary-', `border-${color}-`);
+    this.replaceClassName('ring-primary-', `ring-${color}-`);
+    this.replaceClassName('hover:bg-primary-', `hover:bg-${color}-`);
   }
 
   private replaceClassName(prefix: string, replacement: string) {
