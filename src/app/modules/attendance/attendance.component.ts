@@ -40,6 +40,14 @@ export class AttendanceComponent implements OnInit {
     );
   }
 
+  getStatusClass(status: string): string {
+    if (status === 'present') {
+      return 'bg-green-500/25 text-green-500';
+    } else {
+      return 'bg-gray-300/25 text-gray-500 dark:text-gray-300';
+    }
+  }
+
   private replaceClassName(prefix: string, replacement: string) {
     const elements = document.querySelectorAll(`[class*="${prefix}"]`);
     for (let i = 0; i < elements.length; i++) {
