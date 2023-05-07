@@ -2,13 +2,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-deleted-user',
-    templateUrl: './deleted-user.component.html',
+  selector: 'app-deleted-user',
+  templateUrl: './deleted-user.component.html',
 })
-
 export class DeletedUserComponent implements OnInit {
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-}
+  ngOnInit() {}
 }
