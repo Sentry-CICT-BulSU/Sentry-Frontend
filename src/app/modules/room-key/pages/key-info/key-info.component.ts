@@ -73,7 +73,7 @@ export class KeyInfoComponent implements OnInit {
     let roomKeyForm;
     if (roomKey.status === 'Available') {
       roomKeyForm = {
-        id: roomKey.id,
+        id: this.roomKeyId,
         user_id: user.id,
         subject_id: sched.subject?.id,
         faculty: user.full_name,
