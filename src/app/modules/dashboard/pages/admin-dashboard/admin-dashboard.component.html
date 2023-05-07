@@ -11,55 +11,42 @@
   <!-- end Header -->
 
   <div
-    class="grid grid-cols-1 gap-x-8 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4"
-  >
+       class="grid grid-cols-1 gap-x-8 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
     <div
-      class="col-span-3 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3"
-    >
+         class="col-span-3 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
       <!-- start of Today's present -->
 
       <div
-        class="border-light-dark flex min-h-[120px] flex-col rounded-lg bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-1"
-      >
+           class="border-light-dark flex min-h-[120px] flex-col rounded-lg bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-1">
         <div
-          class="mt-4 flex flex-1 flex-col justify-between space-y-1 md:mt-0"
-        >
+             class="mt-4 flex flex-1 flex-col justify-between space-y-1 md:mt-0">
           <div class="dropdown-top dropdown flex items-center justify-between">
             <small
-              class="text-sm font-medium text-gray-400 dark:text-night-300"
-            >
+                   class="text-sm font-medium text-gray-400 dark:text-night-300">
               Today's Present
             </small>
             <div
-              class="hover:bg-primary-500/25 dark:hover:bg-primary-500/25 dark:hover:text-primary-500 cursor-pointer rounded-sm px-1 py-1 text-center text-xs text-gray-500 hover:bg-gray-100 dark:bg-night-500 dark:text-night-300"
-            >
-              <label tabindex="0"
-                ><i
-                  class="fa-solid fa-ellipsis-vertical h-3 w-3 cursor-pointer"
-                ></i
-              ></label>
+                 class="hover:bg-primary-500/25 dark:hover:bg-primary-500/25 dark:hover:text-primary-500 cursor-pointer rounded-sm px-1 py-1 text-center text-xs text-gray-500 hover:bg-gray-100 dark:bg-night-500 dark:text-night-300">
+              <label tabindex="0"><i
+                   class="fa-solid fa-ellipsis-vertical h-3 w-3 cursor-pointer"></i></label>
             </div>
             <ul
-              tabindex="0"
-              class="button-plain dropdown-content menu rounded-md bg-white dark:bg-night-800"
-            >
+                tabindex="0"
+                class="button-plain dropdown-content menu rounded-md bg-white dark:bg-night-800">
               <li>
                 <a
-                  class="cursor-pointer rounded-md text-xs"
-                  [routerLink]="['/attendance']"
-                  >Go to Attedance Monitoring</a
-                >
+                   class="cursor-pointer rounded-md text-xs"
+                   [routerLink]="['/attendance']">Go to Attedance Monitoring</a>
               </li>
             </ul>
           </div>
 
           <div class="flex items-center justify-between">
-            <span class="text-3xl font-medium text-gray-900 dark:text-white"
-              >28</span
-            >
+            <span class="text-3xl font-medium text-gray-900 dark:text-white">
+              {{attendanceToday.present??0}}
+            </span>
             <div
-              class="flex items-center rounded-md bg-green-500/25 px-2 py-0.5 text-xs font-medium text-green-500"
-            >
+                 class="flex items-center rounded-md bg-green-500/25 px-2 py-0.5 text-xs font-medium text-green-500">
               <span class="material-symbols-rounded pr-1 text-sm font-bold">
                 arrow_upward
               </span>
@@ -74,47 +61,36 @@
       <!-- start of Today's absent -->
 
       <div
-        class="border-light-dark flex min-h-[120px] flex-col rounded-lg bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-1"
-      >
+           class="border-light-dark flex min-h-[120px] flex-col rounded-lg bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-1">
         <div
-          class="mt-4 flex flex-1 flex-col justify-between space-y-1 md:mt-0"
-        >
+             class="mt-4 flex flex-1 flex-col justify-between space-y-1 md:mt-0">
           <div class="dropdown-top dropdown flex items-center justify-between">
             <small
-              class="text-sm font-medium text-gray-400 dark:text-night-300"
-            >
+                   class="text-sm font-medium text-gray-400 dark:text-night-300">
               Today's Absent
             </small>
             <div
-              class="hover:bg-primary-500/25 dark:hover:bg-primary-500/25 dark:hover:text-primary-500 cursor-pointer rounded-sm px-1 py-1 text-center text-xs text-gray-500 hover:bg-gray-100 dark:bg-night-500 dark:text-night-300"
-            >
-              <label tabindex="0"
-                ><i
-                  class="fa-solid fa-ellipsis-vertical h-3 w-3 cursor-pointer"
-                ></i
-              ></label>
+                 class="hover:bg-primary-500/25 dark:hover:bg-primary-500/25 dark:hover:text-primary-500 cursor-pointer rounded-sm px-1 py-1 text-center text-xs text-gray-500 hover:bg-gray-100 dark:bg-night-500 dark:text-night-300">
+              <label tabindex="0"><i
+                   class="fa-solid fa-ellipsis-vertical h-3 w-3 cursor-pointer"></i></label>
             </div>
             <ul
-              tabindex="0"
-              class="button-plain dropdown-content menu rounded-md bg-white dark:bg-night-800"
-            >
+                tabindex="0"
+                class="button-plain dropdown-content menu rounded-md bg-white dark:bg-night-800">
               <li>
                 <a
-                  class="cursor-pointer rounded-md text-xs"
-                  [routerLink]="['/attendance']"
-                  >Go to Attedance Monitoring</a
-                >
+                   class="cursor-pointer rounded-md text-xs"
+                   [routerLink]="['/attendance']">Go to Attedance Monitoring</a>
               </li>
             </ul>
           </div>
 
           <div class="flex items-center justify-between">
-            <span class="text-3xl font-medium text-gray-900 dark:text-white"
-              >2</span
-            >
+            <span class="text-3xl font-medium text-gray-900 dark:text-white">
+              {{attendanceToday.absent??0}}
+            </span>
             <div
-              class="flex items-center rounded-md bg-green-500/25 px-2 py-0.5 text-xs font-medium text-green-500"
-            >
+                 class="flex items-center rounded-md bg-green-500/25 px-2 py-0.5 text-xs font-medium text-green-500">
               <span class="material-symbols-rounded pr-1 text-sm font-bold">
                 arrow_upward
               </span>
@@ -129,44 +105,34 @@
       <!-- start of available keys -->
 
       <div
-        class="border-light-dark flex min-h-[120px] flex-col rounded-lg bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-1"
-      >
+           class="border-light-dark flex min-h-[120px] flex-col rounded-lg bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-1">
         <div
-          class="mt-4 flex flex-1 flex-col justify-between space-y-1 md:mt-0"
-        >
+             class="mt-4 flex flex-1 flex-col justify-between space-y-1 md:mt-0">
           <div class="dropdown-top dropdown flex items-center justify-between">
             <small
-              class="text-sm font-medium text-gray-400 dark:text-night-300"
-            >
+                   class="text-sm font-medium text-gray-400 dark:text-night-300">
               Unmarked Attendances
             </small>
             <div
-              class="hover:bg-primary-500/25 dark:hover:bg-primary-500/25 dark:hover:text-primary-500 cursor-pointer rounded-sm px-1 py-1 text-center text-xs text-gray-500 hover:bg-gray-100 dark:bg-night-500 dark:text-night-300"
-            >
-              <label tabindex="0"
-                ><i
-                  class="fa-solid fa-ellipsis-vertical h-3 w-3 cursor-pointer"
-                ></i
-              ></label>
+                 class="hover:bg-primary-500/25 dark:hover:bg-primary-500/25 dark:hover:text-primary-500 cursor-pointer rounded-sm px-1 py-1 text-center text-xs text-gray-500 hover:bg-gray-100 dark:bg-night-500 dark:text-night-300">
+              <label tabindex="0"><i
+                   class="fa-solid fa-ellipsis-vertical h-3 w-3 cursor-pointer"></i></label>
             </div>
             <ul
-              tabindex="0"
-              class="button-plain dropdown-content menu rounded-md bg-white dark:bg-night-800"
-            >
+                tabindex="0"
+                class="button-plain dropdown-content menu rounded-md bg-white dark:bg-night-800">
               <li>
                 <a
-                  class="cursor-pointer rounded-md text-xs"
-                  [routerLink]="['/attendance']"
-                  >Go to Attedance Monitoring</a
-                >
+                   class="cursor-pointer rounded-md text-xs"
+                   [routerLink]="['/attendance']">Go to Attedance Monitoring</a>
               </li>
             </ul>
           </div>
 
           <div class="flex items-center justify-between">
-            <span class="text-3xl font-medium text-gray-900 dark:text-white"
-              >6</span
-            >
+            <span class="text-3xl font-medium text-gray-900 dark:text-white">
+              {{attendanceToday.not_visited??0}}
+            </span>
           </div>
         </div>
       </div>
@@ -176,11 +142,9 @@
       <!-- start of attendance report -->
 
       <div
-        class="border-light-dark flex min-h-[120px] flex-col rounded-lg bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-2"
-      >
+           class="border-light-dark flex min-h-[120px] flex-col rounded-lg bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-2">
         <div
-          class="mt-4 flex flex-1 flex-col justify-between space-y-1 md:mt-0"
-        >
+             class="mt-4 flex flex-1 flex-col justify-between space-y-1 md:mt-0">
           <div class="mb-2 flex items-center justify-between">
             <div class="flex-col items-center">
               <h3 class="text-md font-medium text-gray-900 dark:text-night-50">
@@ -201,19 +165,16 @@
       <!-- start of available keys -->
 
       <div
-        class="border-light-dark flex min-h-[120px] flex-col rounded-lg bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-1"
-      >
+           class="border-light-dark flex min-h-[120px] flex-col rounded-lg bg-white p-5 dark:bg-night-700 sm:flex-row md:col-span-1">
         <div
-          class="mt-4 flex flex-1 flex-col justify-between space-y-1 md:mt-0"
-        >
+             class="mt-4 flex flex-1 flex-col justify-between space-y-1 md:mt-0">
           <div>
             <div class="flex items-center justify-between">
               <h3 class="text-md font-medium text-gray-900 dark:text-night-50">
                 Available Keys
               </h3>
               <div
-                class="hover:bg-primary-500/25 dark:hover:bg-primary-500/25 dark:hover:text-primary-500 cursor-pointer rounded-sm px-1 py-1 text-center text-xs text-gray-500 hover:bg-gray-100 dark:bg-night-500 dark:text-night-300"
-              >
+                   class="hover:bg-primary-500/25 dark:hover:bg-primary-500/25 dark:hover:text-primary-500 cursor-pointer rounded-sm px-1 py-1 text-center text-xs text-gray-500 hover:bg-gray-100 dark:bg-night-500 dark:text-night-300">
                 <i class="fa-solid fa-ellipsis-vertical h-3 w-3"></i>
               </div>
             </div>
@@ -225,12 +186,10 @@
           </div>
 
           <div
-            class="radial-progress mx-auto text-primary-700"
-            style="--value: 90; --size: 12rem"
-          >
+               class="radial-progress mx-auto text-primary-700"
+               style="--value: 90; --size: 12rem">
             <span
-              class="text-4xl font-medium text-gray-700 dark:text-night-200"
-            >
+                  class="text-4xl font-medium text-gray-700 dark:text-night-200">
               90%
             </span>
           </div>
@@ -242,8 +201,7 @@
               </p>
 
               <div
-                class="space-x-1 text-sm font-medium text-gray-400 dark:text-night-300"
-              >
+                   class="space-x-1 text-sm font-medium text-gray-400 dark:text-night-300">
                 <p class="hover:text-primary-800">
                   The faculty members are currently using 90% of the rooms..
                 </p>
@@ -276,9 +234,8 @@
           </h3>
         </div>
         <button
-          [routerLink]="['/user']"
-          class="flex-none rounded-md px-4 py-2.5 text-xs font-medium text-gray-500 hover:bg-gray-100 dark:text-night-200 dark:hover:bg-night-500"
-        >
+                [routerLink]="['/user']"
+                class="flex-none rounded-md px-4 py-2.5 text-xs font-medium text-gray-500 hover:bg-gray-100 dark:text-night-200 dark:hover:bg-night-500">
           View Users
         </button>
       </div>
@@ -294,26 +251,22 @@
           <!--Table body-->
           <tbody>
             <tr
-              *ngFor="let log of roomKeyLogs"
-              class="border-gray-200 hover:bg-gray-100 dark:border-night-500 dark:hover:bg-night-600"
-            >
+                *ngFor="let log of roomKeyLogs"
+                class="border-gray-200 hover:bg-gray-100 dark:border-night-500 dark:hover:bg-night-600">
               <td class="rounded-md py-3 pr-2">
                 <div class="mx-2 flex items-center">
                   <img
-                    src="assets/avatars/user-profile.png"
-                    class="mr-2 h-10 w-10 flex-none rounded-full"
-                    alt=""
-                  />
+                       src="assets/avatars/user-profile.png"
+                       class="mr-2 h-10 w-10 flex-none rounded-full"
+                       alt="" />
                   <div class="flex flex-col justify-items-start">
                     <a
-                      href="#"
-                      class="dark:hover:text-primary-500 mb-1 text-sm font-medium text-gray-900 dark:text-night-100"
-                    >
+                       href="#"
+                       class="dark:hover:text-primary-500 mb-1 text-sm font-medium text-gray-900 dark:text-night-100">
                       {{ log.faculty?.full_name }}
                     </a>
                     <p
-                      class="text-xs font-medium text-gray-400 dark:text-night-300"
-                    >
+                       class="text-xs font-medium text-gray-400 dark:text-night-300">
                       {{ log.status }} a key for
                       <span class="text-primary-700">
                         {{ log.room_key?.room?.name }}

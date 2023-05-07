@@ -3,8 +3,6 @@ import { Observable } from 'rxjs';
 import { MenuItem, SubMenuItem } from 'src/app/core/models/menu.model';
 import { MenuService } from '../../../services/menu.service';
 import { ActivatedRoute } from '@angular/router';
-import { IUser } from 'src/app/core/models';
-import { environment as env } from 'src/environments/environment';
 import { SystemService } from 'src/app/core/services/system.service';
 
 @Component({
@@ -41,12 +39,12 @@ export class SidebarMenuComponent implements OnInit {
 
   initSystemColor() {
     const color = this.systemService.color;
-    console.log('system color: ', color);
-    this.replaceClassName('bg-primary-', `bg-${this.systemService.color}-`);
-    this.replaceClassName('text-primary-', `text-${this.systemService.color}-`);
-    this.replaceClassName('border-primary-', `border-${this.systemService.color}-`);
-    this.replaceClassName('ring-primary-', `ring-${this.systemService.color}-`);
-    this.replaceClassName('hover:bg-primary-', `hover:bg-${this.systemService.color}-`);
+
+    this.replaceClassName('bg-primary-', `bg-${color}-`);
+    this.replaceClassName('text-primary-', `text-${color}-`);
+    this.replaceClassName('border-primary-', `border-${color}-`);
+    this.replaceClassName('ring-primary-', `ring-${color}-`);
+    this.replaceClassName('hover:bg-primary-', `hover:bg-${color}-`);
   }
 
   private replaceClassName(prefix: string, replacement: string) {

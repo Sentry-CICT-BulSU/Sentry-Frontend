@@ -2,13 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import {
-  IUser,
-  IRoomKey,
-  ISchedule,
-  IRoomKeyCollection,
-  IRoomKeyLog,
-} from 'src/app/core/models';
+import { IUser, IRoomKey, ISchedule, IRoomKeyLog } from 'src/app/core/models';
 import { RoomKeyService } from 'src/app/core/services/roomkey.service';
 import Swal from 'sweetalert2';
 
@@ -49,16 +43,10 @@ export class KeyInfoComponent implements OnInit {
   }
 
   loadSubs() {
-    if (!this.roomKeyId) return;
-    console.log(this.roomKeyId);
-    return this.roomKeyService
-      .getRoomKey$(this.roomKeyId)
-      .subscribe((roomKey) => {
-        if (
-          (roomKey.data as IRoomKey) &&
-          (roomKey.data as IRoomKey).logs &&
-          ((roomKey.data as IRoomKey).schedules as ISchedule[]).length > 0
-        ) {
+    if (this.roomKeyId) {
+      console.log(this.roomKeyId);
+      this.roomKeyService.getRoomKey$(this.roomKeyId).subscribe((roomKey) => {
+        if (roomKey) {
           this.roomKey = roomKey.data as IRoomKey;
           this.logs = this.roomKey.logs as IRoomKeyLog[];
           this.schedules = this.roomKey.schedules as ISchedule[];
@@ -69,6 +57,7 @@ export class KeyInfoComponent implements OnInit {
           this.loadFormControls();
         }
       });
+    }
   }
   initForm() {
     this.roomKeyForm = this.fb.group({
@@ -130,11 +119,11 @@ export class KeyInfoComponent implements OnInit {
       .borrowRoomKey$(this.roomKeyForm?.value)
       .subscribe(this.handleSubs);
 
-      Swal.fire({
-        icon: 'success',
-        title: 'Success',
-        text: 'Key borrowed successfully!',
-      });
+    Swal.fire({
+      icon: 'success',
+      title: 'Success',
+      text: 'Key borrowed successfully!',
+    });
   }
   returnRoomKey() {
     if (!this.roomKeyId) return;
@@ -142,11 +131,11 @@ export class KeyInfoComponent implements OnInit {
       .returnRoomKey$(this.roomKeyId)
       .subscribe(this.handleSubs);
 
-      Swal.fire({
-        icon: 'success',
-        title: 'Success',
-        text: 'Key returned successfully!',
-      });
+    Swal.fire({
+      icon: 'success',
+      title: 'Success',
+      text: 'Key returned successfully!',
+    });
   }
   lostRoomKey() {
     if (!this.roomKeyId) return;
