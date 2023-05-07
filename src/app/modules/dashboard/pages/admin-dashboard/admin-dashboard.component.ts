@@ -11,6 +11,11 @@ import { IRoomKeyLog, IRoomKeyLogCollection } from 'src/app/core/models';
 export class AdminDashboardComponent implements OnInit {
   roomKeyLogs?: IRoomKeyLog[];
   roomKeyLogsCollection?: IRoomKeyLogCollection;
+  attendanceToday: any = {
+    presents: 0,
+    absents: 0,
+    not_visited: 0,
+  };
   // Defining a constructor for the DashboardComponent class
   constructor(
     private roomKeyLogsService: RoomKeyLogsService,
@@ -24,6 +29,7 @@ export class AdminDashboardComponent implements OnInit {
       this.schedulesService.loadSchedules$({ 'admin-dash': true }),
     ]).subscribe(([logs, schedules]) => {
       console.log(logs, schedules);
+      this.attendanceToday = schedules;
       this.roomKeyLogsCollection = logs;
       if (
         this.roomKeyLogsCollection.data &&
