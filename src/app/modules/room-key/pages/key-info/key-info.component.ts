@@ -2,13 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import {
-  IUser,
-  IRoomKey,
-  ISchedule,
-  IRoomKeyCollection,
-  IRoomKeyLog,
-} from 'src/app/core/models';
+import { IUser, IRoomKey, ISchedule, IRoomKeyLog } from 'src/app/core/models';
 import { RoomKeyService } from 'src/app/core/services/roomkey.service';
 import Swal from 'sweetalert2';
 
@@ -50,6 +44,7 @@ export class KeyInfoComponent implements OnInit {
 
   loadSubs() {
     if (!this.roomKeyId) return;
+
     console.log(this.roomKeyId);
     return this.roomKeyService
       .getRoomKey$(this.roomKeyId)
@@ -130,11 +125,11 @@ export class KeyInfoComponent implements OnInit {
       .borrowRoomKey$(this.roomKeyForm?.value)
       .subscribe(this.handleSubs);
 
-      Swal.fire({
-        icon: 'success',
-        title: 'Success',
-        text: 'Key borrowed successfully!',
-      });
+    Swal.fire({
+      icon: 'success',
+      title: 'Success',
+      text: 'Key borrowed successfully!',
+    });
   }
   returnRoomKey() {
     if (!this.roomKeyId) return;
@@ -142,11 +137,11 @@ export class KeyInfoComponent implements OnInit {
       .returnRoomKey$(this.roomKeyId)
       .subscribe(this.handleSubs);
 
-      Swal.fire({
-        icon: 'success',
-        title: 'Success',
-        text: 'Key returned successfully!',
-      });
+    Swal.fire({
+      icon: 'success',
+      title: 'Success',
+      text: 'Key returned successfully!',
+    });
   }
   lostRoomKey() {
     if (!this.roomKeyId) return;
