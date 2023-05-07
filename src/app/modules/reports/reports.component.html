@@ -62,7 +62,7 @@
                 class="relative selection:flex justify-center button-plain">
           Generate CSV
         </button>
-        <button type="button"
+        <button type="button" [routerLink]="['/pdf']"
                 class="my-auto flex-none button-size"
                 [ngClass]="'bg-' + systemService.color + '-700 hover:bg-' + systemService.color + '-600 border-' + systemService.color + '-700'">
           Generate PDF
