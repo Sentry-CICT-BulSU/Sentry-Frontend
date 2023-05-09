@@ -102,6 +102,7 @@ export class ChartCardComponent implements OnInit, OnDestroy {
     this.initComponent();
     this.chartService.loadCharts$().subscribe({
       next: (resp: any) => {
+        console.log('chart data: ', resp);
         this.chartOptions.series = [
           {
             name: 'Present',
