@@ -3,6 +3,7 @@ import { PropertiesService } from './properties.service';
 import { HttpClient } from '@angular/common/http';
 import { environment as env } from 'src/environments/environment';
 import { tap } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,7 @@ export class SystemService extends PropertiesService {
     icon: 'assets/icons/CICT Logo.png',
     color: 'primary',
   };
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private title: Title) {
     super();
   }
 
@@ -25,7 +26,7 @@ export class SystemService extends PropertiesService {
   }
 
   get color() {
-    return localStorage.getItem('selectedColor') ?? 'primary'; // defaults to primary if 'selelctedColor' from localStorage is null
+    return localStorage.getItem('selectedColor') || 'primary'; // defaults to primary if 'selelctedColor' from localStorage is null
   }
 
   get url() {
@@ -33,16 +34,16 @@ export class SystemService extends PropertiesService {
   }
 
   get name() {
-    return localStorage.getItem('sys_name') ?? 'CICT Sentry';
+    return localStorage.getItem('sys_name') || 'CICT Sentry';
   }
   get about() {
     return (
-      localStorage.getItem('sys_about') ??
+      localStorage.getItem('sys_about') ||
       'Welcome to the Web-based CICT Class Monitoring and Key Inventory System Introducing a cutting-edge attendance and key inventory management system for the College of Information and Communications Technology (CICT) ! With user-friendly registration and login, easy faculty and schedule management, mobile-friendly attendance tracking, and visual key inventory tracking, our system streamlines administrative tasks. Generate comprehensive reports, manage website content, and stay organized with our intuitive dashboard. Upgrade your CICT operations with our powerful system today!'
     );
   }
   get icon() {
-    return localStorage.getItem('sys_icon') ?? 'assets/icons/CICT Logo.png';
+    return localStorage.getItem('sys_icon') || 'assets/icons/CICT Logo.png';
   }
 
   getSystemSettings$() {
@@ -53,22 +54,22 @@ export class SystemService extends PropertiesService {
       .pipe(
         tap((settings) => {
           console.log('system settings: ', settings);
-          localStorage.setItem(
-            'sys_name',
-            settings.data.name ?? this.defaults.name
-          );
-          localStorage.setItem(
-            'sys_about',
-            settings.data.about ?? this.defaults.about
-          );
-          localStorage.setItem(
-            'sys_icon',
-            settings.data.icon ?? this.defaults.icon
-          );
-          localStorage.setItem(
-            'selectedColor',
-            settings.data.color ?? this.defaults.color
-          );
+          if (settings.data.name)
+            localStorage.setItem('sys_name', settings.data.name);
+          else localStorage.setItem('sys_name', this.defaults.name);
+          this.title.setTitle(this.name);
+
+          if (settings.data.about)
+            localStorage.setItem('sys_about', settings.data.about);
+          else localStorage.setItem('sys_about', this.defaults.about);
+
+          if (settings.data.icon)
+            localStorage.setItem('sys_icon', settings.data.icon);
+          else localStorage.setItem('sys_icon', this.defaults.icon);
+
+          if (settings.data.color)
+            localStorage.setItem('selectedColor', settings.data.color);
+          else localStorage.setItem('selectedColor', this.defaults.color);
         })
       );
   }
