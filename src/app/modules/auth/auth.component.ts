@@ -15,10 +15,14 @@ import { SystemService } from 'src/app/core/services/system.service';
 export class AuthComponent implements OnInit {
   // Constructor method to create an instance of this component
   sysIcon?: string;
+  sysName?: string;
+  sysAbout?: string;
   constructor(private system: SystemService) {}
 
   // Lifecycle hook method called after the component is initialized
   ngOnInit(): void {
+    this.sysName = this.system.name;
+    this.sysAbout = this.system.about;
     this.sysIcon = this.system.icon;
   }
 }

@@ -20,6 +20,9 @@ const routes: Routes = [
   },
   {
     path: 'auth', // If the path is 'auth', load the AuthModule.
+    resolve: {
+      sys_settings: SystemResolver,
+    },
     loadChildren: () =>
       import('./modules/auth/auth.module').then((m) => m.AuthModule),
   },

@@ -30,13 +30,10 @@ export class AppComponent implements OnInit {
   constructor(
     public themeService: ThemeService,
     private router: Router,
-    public systemService: SystemService,
-    private system: SystemService,
-    private sysTitle: Title
+    public systemService: SystemService
   ) {}
 
   ngOnInit() {
-    this.sysTitle.setTitle(this.system.name);
     this.loading$ = this.router.events.pipe(
       filter(
         (e) =>
