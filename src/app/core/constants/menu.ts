@@ -39,8 +39,8 @@ export class Menu {
           label: 'Attendance and Schedule',
           children: [
             // { label: 'Faculty Management', route: '/faculty' },
-            { label: 'Schedule Management', route: '/schedule' },
             { label: 'Attendance Monitoring', route: '/attendance' },
+            { label: 'Schedule Management', route: '/schedule' },
           ],
         },
       ],
