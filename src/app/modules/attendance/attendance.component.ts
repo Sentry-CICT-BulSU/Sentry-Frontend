@@ -84,7 +84,8 @@ export class AttendanceComponent implements OnInit {
   }
 
   parseAttendance(schedule: ISchedule) {
-    return schedule.attendance as IAttendance;
+    if (!schedule.attendance) return null;
+    return (schedule.attendance as IAttendance).status;
   }
 
   initComponent() {
