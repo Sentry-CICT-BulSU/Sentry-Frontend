@@ -56,6 +56,8 @@ export class SystemSettingsComponent {
     );
     if (this.file && this.systemForm.contains('icon')) {
       formData.set('icon', this.file);
+    } else {
+      formData.delete('icon');
     }
     this.systemService.updateSystem$(formData).subscribe({
       next: (resp) => {
