@@ -46,16 +46,10 @@ export class SystemService extends PropertiesService {
       .pipe(
         tap((settings) => {
           console.log('system settings: ', settings);
-          localStorage.setItem('sys_name', JSON.stringify(settings.data.name));
-          localStorage.setItem(
-            'sys_about',
-            JSON.stringify(settings.data.about)
-          );
-          localStorage.setItem('sys_icon', JSON.stringify(settings.data.icon));
-          localStorage.setItem(
-            'sys_color',
-            JSON.stringify(settings.data.color)
-          );
+          localStorage.setItem('sys_name', settings.data.name);
+          localStorage.setItem('sys_about', settings.data.about);
+          localStorage.setItem('sys_icon', settings.data.icon);
+          localStorage.setItem('sys_color', settings.data.color);
         })
       );
   }

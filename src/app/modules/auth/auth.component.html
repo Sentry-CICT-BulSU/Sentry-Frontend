@@ -1,44 +1,44 @@
 <div class="flex h-screen w-screen">
-    <div style="background-image: url('assets/bg/cict-building-bg.png');"
-         class="hidden flex-1 items-center justify-center bg-primary-700 bg-cover lg:flex">
-        <div class="max-w-2xl space-y-4 p-8 text-center text-white">
-            <!-- <img src="./assets/images/auth-screens.png" alt="dashboard widget" /> -->
-            <h1 class="text-4xl font-medium">
-                "Sentry: CICT Class Monitoring and Key Inventory System"
-            </h1>
-            <p class="text-sm font-light">
-                Welcome to the
-                <span class="cursor-pointer font-medium text-primary-300">
-                    Web-based CICT Class Monitoring and Key
-                    Inventory System
-                </span>
-                Introducing a cutting-edge attendance and key inventory management system for the College of Information
-                and Communications
-                Technology (CICT) !
-                <span class="cursor-pointer font-medium text-primary-300">
-                    With user-friendly
-                </span>
-                registration and login, easy faculty and schedule management, mobile-friendly
-                attendance tracking, and visual key inventory tracking, our system streamlines administrative tasks.
-                Generate comprehensive reports,
-                manage website content, and stay organized with our intuitive dashboard. Upgrade your CICT operations
-                with our powerful system today!
-            </p>
-        </div>
+  <div style="background-image: url('assets/bg/cict-building-bg.png');"
+       class="hidden flex-1 items-center justify-center bg-primary-700 bg-cover lg:flex">
+    <div class="max-w-2xl space-y-4 p-8 text-center text-white">
+      <!-- <img src="./assets/images/auth-screens.png" alt="dashboard widget" /> -->
+      <h1 class="text-4xl font-medium">
+        "Sentry: CICT Class Monitoring and Key Inventory System"
+      </h1>
+      <p class="text-sm font-light">
+        Welcome to the
+        <span class="cursor-pointer font-medium text-primary-300">
+          Web-based CICT Class Monitoring and Key
+          Inventory System
+        </span>
+        Introducing a cutting-edge attendance and key inventory management system for the College of Information
+        and Communications
+        Technology (CICT) !
+        <span class="cursor-pointer font-medium text-primary-300">
+          With user-friendly
+        </span>
+        registration and login, easy faculty and schedule management, mobile-friendly
+        attendance tracking, and visual key inventory tracking, our system streamlines administrative tasks.
+        Generate comprehensive reports,
+        manage website content, and stay organized with our intuitive dashboard. Upgrade your CICT operations
+        with our powerful system today!
+      </p>
     </div>
-    <div class="flex flex-1 items-center justify-center bg-white dark:bg-night-700">
-        <div class="max-w-md overflow-y-auto px-4 sm:w-[500px]">
-            <!-- logo -->
-            <div class="block">
-                <a class="rounded p-2">
-                    <img src="assets/icons/CICT Logo.png" alt="Logo" class="mx-auto w-16 h-16">
-                </a>
-                <b class="hidden md:block text-center text-lg font-medium text-gray-700 dark:text-white">
-                    College of Information and Communications Technology
-                </b>
-            </div>
-            <!-- Route -->
-            <router-outlet></router-outlet>
-        </div>
+  </div>
+  <div class="flex flex-1 items-center justify-center bg-white dark:bg-night-700">
+    <div class="max-w-md overflow-y-auto px-4 sm:w-[500px]">
+      <!-- logo -->
+      <div class="block">
+        <a class="rounded p-2">
+          <img [src]="sysIcon" alt="Logo" class="mx-auto w-16 h-16">
+        </a>
+        <b class="hidden md:block text-center text-lg font-medium text-gray-700 dark:text-white">
+          College of Information and Communications Technology
+        </b>
+      </div>
+      <!-- Route -->
+      <router-outlet></router-outlet>
     </div>
+  </div>
 </div>
