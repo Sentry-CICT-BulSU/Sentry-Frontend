@@ -61,7 +61,7 @@ export class PersonalInformationComponent implements OnInit {
         if (data) {
           this.initForm(data as IUser);
           this.profile_img =
-            data.profile_img ?? 'assets/avatars/user-profile.png';
+            /* data.profile_img ?? */ 'assets/avatars/user-profile.png';
         }
       },
       error: (err) => console.debug(err),
@@ -73,7 +73,7 @@ export class PersonalInformationComponent implements OnInit {
       first_name: [user.first_name],
       last_name: [user.last_name],
       email: [user.email],
-      profile_img: [user.profile_img],
+      profile_img: [null],
     });
   }
 
