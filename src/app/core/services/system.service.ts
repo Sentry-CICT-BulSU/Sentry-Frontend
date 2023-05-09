@@ -49,7 +49,7 @@ export class SystemService extends PropertiesService {
           localStorage.setItem('sys_name', settings.data.name);
           localStorage.setItem('sys_about', settings.data.about);
           localStorage.setItem('sys_icon', settings.data.icon);
-          localStorage.setItem('sys_color', settings.data.color);
+          localStorage.setItem('selectedColor', settings.data.color);
         })
       );
   }
