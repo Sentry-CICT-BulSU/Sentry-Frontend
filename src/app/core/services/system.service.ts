@@ -20,17 +20,18 @@ export class SystemService extends PropertiesService {
     return localStorage.getItem('selectedColor') || 'primary'; // defaults to primary if 'selelctedColor' from localStorage is null
   }
 
+  get url() {
+    return env.apiRootRoute + '/api/system-settings';
+  }
+
   getSystemSettings$() {
-    return this.http.get(env.apiRootRoute + '/api/admin/system-settings', {
+    return this.http.get(this.url, {
       headers: this.options.headers,
     });
   }
 
   updateSystem$(body: any) {
-    return this.http.post(
-      env.apiRootRoute + '/api/admin/system-settings',
-      body
-    );
+    return this.http.post(this.url, body);
   }
 }
 
