@@ -54,16 +54,6 @@ export class SystemService extends PropertiesService {
       .pipe(
         tap((settings) => {
           console.log('system settings: ', settings);
-          console.log('system settings: ', Object.values(settings));
-
-          console.log('value', settings.data.name);
-          console.log('value', settings.data.about);
-          console.log('value', settings.data.icon);
-          console.log('value', settings.data.color);
-          console.log('isNUll', 'null' === settings.data.name);
-          console.log('isNUll', 'null' === settings.data.about);
-          console.log('isNUll', 'null' === settings.data.icon);
-          console.log('isNUll', 'null' === settings.data.color);
 
           if (settings.data.name !== 'null')
             localStorage.setItem('sys_name', settings.data.name);
