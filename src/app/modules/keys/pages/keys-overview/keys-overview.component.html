@@ -139,10 +139,10 @@
             <!-- name and email -->
             <div class="text-[14px] min-w-0">
               <div class="text-gray-900 min-w-0 truncate dark:text-white">
-                {{ keyLog.faculty?.full_name }}
+                {{ keyLog.faculty?.full_name ?? 'Unknown' }}
               </div>
               <div class="text-gray-500 min-w-0 truncate dark:text-night-100">
-                {{ keyLog.faculty?.email }}
+                {{ keyLog.faculty?.email ?? 'Unknown' }}
               </div>
             </div>
           </div>
@@ -150,7 +150,7 @@
           <!-- key monitoring badges -->
           <div class="shrink-0 basis-1/5 text-center flex justify-center items-center min-w-0 truncate dark:text-white">
             <span>
-              {{ keyLog.faculty?.full_name }}
+              {{ keyLog.room_key?.room?.name ?? 'Unknown' }}
             </span>
           </div>
 
@@ -158,7 +158,7 @@
             <!-- returned -->
             <div *ngIf="keyLog.status==='Returned'" class="shrink-0 badge badge-accent">Returned</div>
             <!-- borrowed -->
-            <div *ngIf="keyLog.status==='Borrowed'" class="shrink-0 badge badge-secondary">Borrowed</div>
+            <div *ngIf="keyLog.status==='Borrowed'" class="shrink-0 badge bg-[#00359E] border-none">Borrowed</div>
             <!-- lost -->
             <div *ngIf="keyLog.status==='Lost'" class="shrink-0 badge badge-error">Lost</div>
           </div>
@@ -231,10 +231,10 @@
             <!-- name and email -->
             <div class="text-[14px] min-w-0">
               <div class="text-gray-900 min-w-0 truncate dark:text-white">
-                {{ keyLog.faculty?.full_name }}
+                {{ keyLog.faculty?.full_name ?? 'Unknown' }}
               </div>
               <div class="text-gray-500 min-w-0 truncate dark:text-night-100">
-                {{ keyLog.faculty?.email }}
+                {{ keyLog.faculty?.email ?? 'Unknown' }}
               </div>
             </div>
           </div>
@@ -242,7 +242,7 @@
           <!-- key monitoring badges -->
           <div class="shrink-0 basis-1/5 text-center flex justify-center items-center min-w-0 truncate dark:text-white">
             <span>
-              {{ keyLog.faculty?.full_name }}
+              {{ keyLog.room_key?.room?.name ?? 'Unknown' }}
             </span>
           </div>
 
@@ -251,7 +251,7 @@
             <!-- returned -->
             <div *ngIf="keyLog.status==='Returned'" class="shrink-0 badge badge-accent">Returned</div>
             <!-- borrowed -->
-            <div *ngIf="keyLog.status==='Borrowed'" class="shrink-0 badge badge-secondary">Borrowed</div>
+            <div *ngIf="keyLog.status==='Borrowed'" class="shrink-0 badge bg-[#00359E] border-none">Borrowed</div>
             <!-- lost -->
             <div *ngIf="keyLog.status==='Lost'" class="shrink-0 badge badge-error">Lost</div>
           </div>
@@ -324,10 +324,10 @@
             <!-- name and email -->
             <div class="text-[14px] min-w-0">
               <div class="text-gray-900 min-w-0 truncate dark:text-white">
-                {{ keyLog.faculty?.full_name }}
+                {{ keyLog.faculty?.full_name ?? 'Unknown' }}
               </div>
               <div class="text-gray-500 min-w-0 truncate dark:text-night-100">
-                {{ keyLog.faculty?.email }}
+                {{ keyLog.faculty?.email ?? 'Unknown' }}
               </div>
             </div>
           </div>
@@ -335,7 +335,7 @@
           <!-- key monitoring badges -->
           <div class="shrink-0 basis-1/5 text-center flex justify-center items-center min-w-0 truncate dark:text-white">
             <span>
-              {{ keyLog.faculty?.full_name }}
+              {{ keyLog.room_key?.room?.name ?? 'unknown' }}
             </span>
           </div>
 
@@ -343,7 +343,7 @@
             <!-- returned -->
             <div *ngIf="keyLog.status==='Returned'" class="shrink-0 badge badge-accent">Returned</div>
             <!-- borrowed -->
-            <div *ngIf="keyLog.status==='Borrowed'" class="shrink-0 badge badge-secondary">Borrowed</div>
+            <div *ngIf="keyLog.status==='Borrowed'" class="shrink-0 badge bg-[#00359E] border-none">Borrowed</div>
             <!-- lost -->
             <div *ngIf="keyLog.status==='Lost'" class="shrink-0 badge badge-error">Lost</div>
           </div>
@@ -416,10 +416,10 @@
             <!-- name and email -->
             <div class="text-[14px] min-w-0">
               <div class="text-gray-900 min-w-0 truncate dark:text-white">
-                {{ keyLog.faculty?.full_name }}
+                {{ keyLog.faculty?.full_name ?? 'Unknown' }}
               </div>
               <div class="text-gray-500 min-w-0 truncate dark:text-night-100">
-                {{ keyLog.faculty?.email }}
+                {{ keyLog.faculty?.email ?? 'Unknown' }}
               </div>
             </div>
           </div>
@@ -427,7 +427,7 @@
           <!-- key monitoring badges -->
           <div class="shrink-0 basis-1/5 text-center flex justify-center items-center min-w-0 truncate dark:text-white">
             <span>
-              {{ keyLog.faculty?.full_name }}
+              {{ keyLog.room_key?.room?.name ?? 'Unknown' }}
             </span>
           </div>
 
@@ -435,7 +435,7 @@
             <!-- returned -->
             <div *ngIf="keyLog.status==='Returned'" class="shrink-0 badge badge-accent">Returned</div>
             <!-- borrowed -->
-            <div *ngIf="keyLog.status==='Borrowed'" class="shrink-0 badge badge-secondary">Borrowed</div>
+            <div *ngIf="keyLog.status==='Borrowed'" class="shrink-0 badge bg-[#00359E] border-none">Borrowed</div>
             <!-- lost -->
             <div *ngIf="keyLog.status==='Lost'" class="shrink-0 badge badge-error">Lost</div>
           </div>

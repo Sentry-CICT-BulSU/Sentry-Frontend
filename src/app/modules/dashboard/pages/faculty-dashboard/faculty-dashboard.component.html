@@ -76,10 +76,10 @@
             <!-- name and email -->
             <div class="text-[14px] min-w-0">
               <div class="text-gray-900 min-w-0 truncate dark:text-white">
-                {{keyLog.faculty?.full_name}}
+                {{keyLog.faculty?.full_name ?? 'Unknown'}}
               </div>
               <div class="text-gray-500 min-w-0 truncate dark:text-night-100">
-                {{keyLog.faculty?.email}}
+                {{keyLog.faculty?.email ?? 'Unknown'}}
               </div>
             </div>
           </div>
