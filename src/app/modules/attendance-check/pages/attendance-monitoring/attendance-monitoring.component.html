@@ -10,7 +10,8 @@
   </div>
 
   <div id="active-schedule" class="tab-content active">
-    <ul *ngIf="schedules; else noActiveScheduleBlock" class="grid grid-cols-1 gap-4 place-items-center px-4 xl:grid-cols-2 xl:pb-4">
+    <ul *ngIf="schedules; else noActiveScheduleBlock"
+        class="grid grid-cols-1 gap-4 place-items-center px-4 xl:grid-cols-2 xl:pb-4">
       <!-- before clicking present or absent -->
       <li *ngFor="let schedule of schedules"
           class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4 xl:last:mb-0">
@@ -43,7 +44,7 @@
         </div>
 
         <!-- card-footer -->
-        <div *ngIf="!schedule.attendance;else hasAttendance" class="flex justify-between items-center p-4">
+        <div *ngIf="!haveAttendance(schedule);else hasAttendance" class="flex justify-between items-center p-4">
           <span class="text-gray-500 text-[14px]">Is the assigned faculty present?</span>
           <!-- <span class="text-gray-500 text-[14px]">Marked as present (Apr 3, 2023 - 10:46 am)</span> -->
           <!-- use this when the user clicks present/absent -->
@@ -62,11 +63,13 @@
         <ng-template #hasAttendance>
 
           <div class="flex justify-between items-center p-4">
-          <span class="text-gray-500 text-[14px]">Completely Marked</span>
-          <div class="flex flex-row items-center justify-end gap-4 text-center">
+            <span class="text-gray-500 text-[14px]">
+              Marked as {{parseAttendance(schedule)|titlecase}}
+            </span>
+            <div class="flex flex-row items-center justify-end gap-4 text-center">
 
+            </div>
           </div>
-        </div>
         </ng-template>
       </li>
 
@@ -85,7 +88,8 @@
   </div>
 
   <div id="am" class="tab-content">
-    <ul *ngIf="schedulesActive; else noAmScheduleBlock" class="grid grid-cols-1 gap-4 place-items-center px-4 xl:grid-cols-2 xl:pb-4">
+    <ul *ngIf="schedulesActive; else noAmScheduleBlock"
+        class="grid grid-cols-1 gap-4 place-items-center px-4 xl:grid-cols-2 xl:pb-4">
       <!-- before clicking present or absent -->
       <li *ngFor="let schedule of schedulesActive"
           class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4 xl:last:mb-0">
@@ -118,7 +122,8 @@
         </div>
 
         <!-- card-footer -->
-        <div *ngIf="!schedule.attendance;else hasAttendance" class="flex justify-between items-center p-4">
+        <div *ngIf="!haveAttendance(schedule);else hasAttendance"
+             class="flex justify-between items-center p-4">
           <span class="text-gray-500 text-[14px]">Is the assigned faculty present?</span>
           <!-- <span class="text-gray-500 text-[14px]">Marked as present (Apr 3, 2023 - 10:46 am)</span> -->
           <!-- use this when the user clicks present/absent -->
@@ -136,7 +141,9 @@
         </div>
         <ng-template #hasAttendance>
           <div class="flex justify-between items-center p-4">
-            <span class="text-gray-500 text-[14px]">Completely Marked</span>
+            <span class="text-gray-500 text-[14px]">
+              Marked as {{parseAttendance(schedule)|titlecase}}
+            </span>
             <div class="flex flex-row items-center justify-end gap-4 text-center">
 
             </div>
@@ -160,7 +167,8 @@
   </div>
 
   <div id="pm" class="tab-content">
-    <ul *ngIf="schedulesInactive; else noPmScheduleBlock" class="grid grid-cols-1 gap-4 place-items-center px-4 xl:grid-cols-2 xl:pb-4">
+    <ul *ngIf="schedulesInactive; else noPmScheduleBlock"
+        class="grid grid-cols-1 gap-4 place-items-center px-4 xl:grid-cols-2 xl:pb-4">
       <!-- before clicking present or absent -->
       <li *ngFor="let schedule of schedulesInactive"
           class="border-light-dark rounded-lg mx-4 w-full max-w-4xl last:mb-4 xl:last:mb-0">
@@ -193,7 +201,7 @@
         </div>
 
         <!-- card-footer -->
-        <div *ngIf="!schedule.attendance;else hasAttendance" class="flex justify-between items-center p-4">
+        <div *ngIf="!haveAttendance(schedule);else hasAttendance" class="flex justify-between items-center p-4">
           <span class="text-gray-500 text-[14px]">Is the assigned faculty present?</span>
           <!-- <span class="text-gray-500 text-[14px]">Marked as present (Apr 3, 2023 - 10:46 am)</span> -->
           <!-- use this when the user clicks present/absent -->
@@ -211,7 +219,9 @@
         </div>
         <ng-template #hasAttendance>
           <div class="flex justify-between items-center p-4">
-            <span class="text-gray-500 text-[14px]">Completely Marked</span>
+            <span class="text-gray-500 text-[14px]">
+              Marked as {{parseAttendance(schedule)|titlecase}}
+            </span>
             <div class="flex flex-row items-center justify-end gap-4 text-center">
 
             </div>

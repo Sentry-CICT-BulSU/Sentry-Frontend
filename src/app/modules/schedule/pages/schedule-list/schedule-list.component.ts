@@ -33,30 +33,21 @@ export class ScheduleListComponent implements OnInit {
 
   initSystemColor() {
     const color = this.systemService.color;
-    console.log('system color: ', color);
-    this.replaceClassName('bg-primary-', `bg-${this.systemService.color}-`);
-    this.replaceClassName('text-primary-', `text-${this.systemService.color}-`);
-    this.replaceClassName(
-      'border-primary-',
-      `border-${this.systemService.color}-`
-    );
-    this.replaceClassName('ring-primary-', `ring-${this.systemService.color}-`);
-    this.replaceClassName(
-      'hover:bg-primary-',
-      `hover:bg-${this.systemService.color}-`
-    );
-    this.replaceClassName(
-      'button-primary',
-      `button-${this.systemService.color}`
-    );
-    this.replaceClassName('tab-link', `tab-link-${this.systemService.color}`);
+
+    this.replaceClassName('bg-primary-', `bg-${color}-`);
+    this.replaceClassName('text-primary-', `text-${color}-`);
+    this.replaceClassName('border-primary-', `border-${color}-`);
+    this.replaceClassName('ring-primary-', `ring-${color}-`);
+    this.replaceClassName('hover:bg-primary-', `hover:bg-${color}-`);
+    this.replaceClassName('button-primary', `button-${color}`);
+    this.replaceClassName('tab-link', `tab-link-${color}`);
     this.replaceClassName(
       'peer-checked:bg-primary-',
-      `peer-checked:bg-${this.systemService.color}-`
+      `peer-checked:bg-${color}-`
     );
     this.replaceClassName(
       'peer-checked:border-primary-',
-      `peer-checked:border-${this.systemService.color}-`
+      `peer-checked:border-${color}-`
     );
   }
 

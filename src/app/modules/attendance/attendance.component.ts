@@ -19,35 +19,33 @@ export class AttendanceComponent implements OnInit {
   schedules?: ISchedule[];
   constructor(
     public systemService: SystemService,
-    private attendanceService: AttendanceService,
-    private scheduleService: ScheduleService
+    private attendanceService: AttendanceService
   ) {}
 
   initSystemColor() {
     const color = this.systemService.color;
-    console.log('system color: ', color);
-    this.replaceClassName(
-      'md:bg-primary-',
-      `md:bg-${this.systemService.color}-`
-    );
-    this.replaceClassName('text-primary-', `text-${this.systemService.color}-`);
-    this.replaceClassName(
-      'border-primary-',
-      `border-${this.systemService.color}-`
-    );
-    this.replaceClassName('ring-primary-', `ring-${this.systemService.color}-`);
-    this.replaceClassName(
-      'hover:bg-primary-',
-      `hover:bg-${this.systemService.color}-`
-    );
+
+    this.replaceClassName('md:bg-primary-', `md:bg-${color}-`);
+    this.replaceClassName('text-primary-', `text-${color}-`);
+    this.replaceClassName('border-primary-', `border-${color}-`);
+    this.replaceClassName('ring-primary-', `ring-${color}-`);
+    this.replaceClassName('hover:bg-primary-', `hover:bg-${color}-`);
     this.replaceClassName(
       'peer-checked:bg-primary-',
-      `peer-checked:bg-${this.systemService.color}-`
+      `peer-checked:bg-${color}-`
     );
     this.replaceClassName(
       'peer-checked:border-primary-',
-      `peer-checked:border-${this.systemService.color}-`
+      `peer-checked:border-${color}-`
     );
+  }
+
+  getStatusClass(status: string): string {
+    if (status === 'present') {
+      return 'bg-green-500/25 text-green-500';
+    } else {
+      return 'bg-gray-300/25 text-gray-500 dark:text-gray-300';
+    }
   }
 
   private replaceClassName(prefix: string, replacement: string) {
@@ -94,7 +92,8 @@ export class AttendanceComponent implements OnInit {
   }
 
   parseAttendance(schedule: ISchedule) {
-    return schedule.attendance as IAttendance;
+    if (!schedule.attendance) return null;
+    return (schedule.attendance as IAttendance).status;
   }
 
   initComponent() {

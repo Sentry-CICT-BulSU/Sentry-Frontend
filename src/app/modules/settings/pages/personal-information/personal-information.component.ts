@@ -14,39 +14,29 @@ export class PersonalInformationComponent implements OnInit {
   updateUserForm?: FormGroup;
   user?: IUser;
   file?: File;
+  profile_img: any = 'assets/avatars/user-profile.png';
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private route: ActivatedRoute,
-    private router: Router,
     public systemService: SystemService
   ) {}
 
   initSystemColor() {
     const color = this.systemService.color;
-    console.log('system color: ', color);
-    this.replaceClassName(
-      'md:bg-primary-',
-      `md:bg-${this.systemService.color}-`
-    );
-    this.replaceClassName('text-primary-', `text-${this.systemService.color}-`);
-    this.replaceClassName(
-      'border-primary-',
-      `border-${this.systemService.color}-`
-    );
-    this.replaceClassName('ring-primary-', `ring-${this.systemService.color}-`);
-    this.replaceClassName(
-      'hover:bg-primary-',
-      `hover:bg-${this.systemService.color}-`
-    );
-    this.replaceClassName('tab-link', `tab-link-${this.systemService.color}`);
+
+    this.replaceClassName('md:bg-primary-', `md:bg-${color}-`);
+    this.replaceClassName('text-primary-', `text-${color}-`);
+    this.replaceClassName('border-primary-', `border-${color}-`);
+    this.replaceClassName('ring-primary-', `ring-${color}-`);
+    this.replaceClassName('hover:bg-primary-', `hover:bg-${color}-`);
+    this.replaceClassName('tab-link', `tab-link-${color}`);
     this.replaceClassName(
       'peer-checked:bg-primary-',
-      `peer-checked:bg-${this.systemService.color}-`
+      `peer-checked:bg-${color}-`
     );
     this.replaceClassName(
       'peer-checked:border-primary-',
-      `peer-checked:border-${this.systemService.color}-`
+      `peer-checked:border-${color}-`
     );
   }
 
@@ -70,6 +60,8 @@ export class PersonalInformationComponent implements OnInit {
       next: (data) => {
         if (data) {
           this.initForm(data as IUser);
+          this.profile_img =
+            data.profile_img ?? 'assets/avatars/user-profile.png';
         }
       },
       error: (err) => console.debug(err),
@@ -81,7 +73,7 @@ export class PersonalInformationComponent implements OnInit {
       first_name: [user.first_name],
       last_name: [user.last_name],
       email: [user.email],
-      // profile_img: [user.profile_img],
+      profile_img: [user.profile_img],
     });
   }
 
@@ -98,6 +90,10 @@ export class PersonalInformationComponent implements OnInit {
       );
     }
     this.file = img;
+
+    const reader = new FileReader();
+    reader.onload = (e) => (this.profile_img = reader.result);
+    reader.readAsDataURL(img);
   }
 
   onSubmit() {
@@ -122,18 +118,19 @@ export class PersonalInformationComponent implements OnInit {
 
     console.log(this.updateUserForm.value);
     // eslint-disable-next-line prefer-const
-    // const formData: FormData = new FormData();
+    const formData: FormData = new FormData();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    // Object.entries(this.updateUserForm.value).forEach(([key, value]: any[]) =>
-    //   formData.append(key, value)
-    // );
-    // if (this.file && this.updateUserForm.contains('profile_img'))
-    //   formData.set('profile_img', this.file as Blob);
+    Object.entries(this.updateUserForm.value).forEach(([key, value]: any[]) =>
+      formData.append(key, value)
+    );
+    if (this.file && this.updateUserForm.contains('profile_img')) {
+      formData.set('profile_img', this.file);
+    }
 
     // eslint-disable-next-line
-    // console.log(formData);
+    console.log(formData);
 
-    this.authService.updateUser$(this.updateUserForm.value).subscribe({
+    this.authService.updateUser$(formData).subscribe({
       next: (user: IUserCollection) => {
         console.log(user);
         window.location.reload();

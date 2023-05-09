@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { forkJoin } from 'rxjs';
-import { ISchedule, IScheduleCollection } from 'src/app/core/models';
+import { forkJoin, tap } from 'rxjs';
+import { IAttendance, ISchedule } from 'src/app/core/models';
 import { AttendanceService } from 'src/app/core/services/attendance.service';
 import { ScheduleService } from 'src/app/core/services/schedule.service';
 import Swal from 'sweetalert2';
@@ -12,11 +12,8 @@ import { SystemService } from 'src/app/core/services/system.service';
   templateUrl: './attendance-monitoring.component.html',
 })
 export class AttendanceMonitoringComponent implements OnInit {
-  schedulesCollection?: IScheduleCollection;
   schedules?: ISchedule[];
-  schedulesActiveCollection?: IScheduleCollection;
   schedulesActive?: ISchedule[];
-  schedulesInactiveCollection?: IScheduleCollection;
   schedulesInactive?: ISchedule[];
   constructor(
     private scheduleService: ScheduleService,
@@ -33,22 +30,42 @@ export class AttendanceMonitoringComponent implements OnInit {
   }
 
   loadSchedules() {
-    forkJoin([
-      this.scheduleService.loadSchedules$(),
-      this.scheduleService.loadSchedules$({ q: 'am' }),
-      this.scheduleService.loadSchedules$({ q: 'pm' }),
-    ]).subscribe({
-      next: ([schedules, active, inactive]) => {
-        this.schedulesCollection = schedules;
-        this.schedules = schedules.data as ISchedule[];
-        this.schedulesActiveCollection = active;
-        this.schedulesActive = active.data as ISchedule[];
-        this.schedulesInactiveCollection = inactive;
-        this.schedulesInactive = inactive.data as ISchedule[];
-        console.log(schedules, active, inactive);
-      },
-      error: (err) => console.debug(err),
-    });
+    this.scheduleService
+      .loadSchedules$()
+      .pipe(
+        tap((schedules) => {
+          if (schedules.data) {
+            this.schedules = (schedules.data as ISchedule[]).filter(
+              (schedule) => {
+                const timeString = schedule.time_start;
+                const date = new Date();
+                date.setHours(parseInt(timeString.split(':')[0]));
+                date.setMinutes(
+                  parseInt(timeString.split(':')[1].split(' ')[0])
+                );
+                date.setSeconds(0);
+                return date.getTime() >= new Date().getTime();
+              }
+            );
+            this.schedulesActive = (schedules.data as ISchedule[]).filter(
+              (schedule) => schedule.time_start.includes('AM')
+            );
+            this.schedulesInactive = (schedules.data as ISchedule[]).filter(
+              (schedule) => schedule.time_start.includes('PM')
+            );
+          }
+        })
+      )
+      .subscribe({
+        next: () => {
+          console.log(
+            this.schedules,
+            this.schedulesActive,
+            this.schedulesInactive
+          );
+        },
+        error: (err) => console.debug(err),
+      });
   }
 
   initComponent() {
@@ -80,6 +97,14 @@ export class AttendanceMonitoringComponent implements OnInit {
     });
   }
 
+  haveAttendance(schedule: ISchedule): boolean {
+    if (!schedule.attendances) return false;
+    return !!(schedule.attendances as IAttendance);
+  }
+  parseAttendance(schedule: ISchedule) {
+    if (!schedule.attendances) return;
+    return (schedule.attendances as IAttendance).status;
+  }
   onMarkAsAbsent(schedule: ISchedule) {
     Swal.fire({
       title: 'Mark as Absent',

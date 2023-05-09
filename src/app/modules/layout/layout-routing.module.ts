@@ -104,6 +104,12 @@ const routes: Routes = [
         (m) => m.FacultyModeModule
       ),
   },
+  {
+    path: 'pdf',
+    component: LayoutComponent,
+    loadChildren: () =>
+      import('../pdf/pdf.module').then((m) => m.PdfModule),
+  },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   // A route definition that redirects any undefined path to the error/404 path.
   { path: 'error-404', component: Error404Component },

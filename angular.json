@@ -21,7 +21,8 @@
               "apexcharts",
               "crypto-js",
               "crypto-js/sha256",
-              "sweetalert2"
+              "sweetalert2",
+              "print-js"
             ],
             "outputPath": "dist/sentry-frontend",
             "index": "src/index.html",

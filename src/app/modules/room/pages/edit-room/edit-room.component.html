@@ -40,16 +40,40 @@
       </div>
     </div>
 
+    <!-- <div class="grid md:grid-cols-8 gap-8 pb-6">
+            <div class="col-span-2 space-x-1 text-sm font-medium text-gray-600 dark:text-night-300">
+                <p>Floor</p>
+            </div>
+
+            <div class="relative col-span-4">
+                <input formControlName="location" name="location" type="text" id="location" class="peer block"
+                       placeholder=" " />
+            </div>
+        </div> -->
+
     <div class="grid md:grid-cols-8 gap-8 pb-6">
       <div class="col-span-2 space-x-1 text-sm font-medium text-gray-600 dark:text-night-300">
         <p>Floor</p>
       </div>
 
       <div class="relative col-span-4">
-        <input formControlName="location" name="location" type="text" id="location" class="peer block"
-               placeholder=" " />
+        <select formControlName="location" name="location" id="location" class="peer block">
+          <option value="1st Floor">
+            1st Floor
+          </option>
+          <option value="2nd Floor">
+            2nd Floor
+          </option>
+          <option value="3rd Floor">
+            3rd Floor
+          </option>
+          <option value="4th Floor">
+            4th Floor
+          </option>
+        </select>
       </div>
     </div>
+
     <div class="grid md:grid-cols-8 gap-8 pb-6">
       <div class="col-span-2 space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
         <p>Status</p>
@@ -88,7 +112,7 @@
     </div>
 
     <div class="flex items-center justify-end space-x-3">
-      <button type="reset"
+      <button type="reset" routerLink="/room"
               class="relative mb-10 button-plain">
         Cancel
       </button>

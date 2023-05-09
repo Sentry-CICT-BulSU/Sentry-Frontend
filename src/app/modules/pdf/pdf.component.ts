@@ -2,11 +2,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-add-user',
-  templateUrl: './add-user.component.html',
+  selector: 'app-pdf',
+  templateUrl: './pdf.component.html',
+  styleUrls: ['./pdf.component.scss'],
 })
 
-export class AddUserComponent implements OnInit {
+export class PdfComponent implements OnInit {
 
   constructor() {}
 

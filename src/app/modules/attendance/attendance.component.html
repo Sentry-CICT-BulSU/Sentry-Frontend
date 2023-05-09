@@ -43,7 +43,7 @@
       <div class="grid grid-cols-1 rounded-b-lg border-light-dark bg-white p-5 dark:bg-night-700">
         <div class="flex items-center justify-end space-x-3">
 
-          <button type="button"
+          <button type="button" routerLink="/reports"
                   class="relative selection:flex justify-center button-plain">
             View Full Report
           </button>
@@ -160,7 +160,7 @@
         <div class="grid grid-cols-1 border-x border-b rounded-b-lg border-gray-200 dark:border-night-500 bg-white p-5 dark:bg-night-700">
           <!-- start of table -->
           <div class="relative overflow-x-auto">
-            <table *ngIf="schedules" class="w-full table-fixed">
+            <table *ngIf="schedules && schedules.length > 0; else elseBlock" class="w-full table-fixed">
               <!--Table head-->
               <thead class="text-xs text-gray-400 dark:text-night-300">
                 <tr>
@@ -188,8 +188,8 @@
                     </div>
                   </td>
                   <td class="p-2">
-                    <div class="inline-block rounded-xl bg-green-500/25 py-1 px-2 text-xs font-medium text-green-500">
-                      {{parseAttendance(attendance).status}}
+                    <div class="inline-block rounded-xl py-1 px-2 text-xs font-medium {{ getStatusClass(parseAttendance(attendance)??'not yet visisted') }}">
+                      {{parseAttendance(attendance)??'not yet visisted'}}
                     </div>
                   </td>
                   <td class="py-2 pl-2">
@@ -212,6 +212,30 @@
               </tbody>
               <!--end::Table body-->
             </table>
+
+
+            <ng-template #elseBlock>
+
+              <div class="mt-4 w-full h-64">
+                <div class="flex flex-col items-center justify-center">
+                  <span
+                        class="material-symbols-rounded floating-icon w-24 h-24 text-7xl text-center text-gray-500 dark:text-night-300">
+                    quick_reference_all
+                  </span>
+                  <div class="font-medium mt-4">
+                    <span class="text-gray-500 dark:text-night-300 text-lg text-center">Hmm.. There's no data to display
+                      yet</span>
+
+                  </div>
+                  <div class="mt-6">
+                    <button [routerLink]="['/dashboard']" class="button-plain">Go to Dashboard </button>
+                  </div>
+                </div>
+
+              </div>
+
+            </ng-template>
+
           </div>
           <!-- end of table -->
         </div>
@@ -225,7 +249,7 @@
         <div class="grid grid-cols-1 border-x border-gray-200 dark:border-night-500 bg-white p-5 dark:bg-night-700">
           <!-- start of table -->
           <div class="relative overflow-x-auto">
-            <table *ngIf="schedules" class="w-full table-fixed">
+            <table *ngIf="schedules && schedules.length > 0; else elseBlock" class="w-full table-fixed">
               <!--Table head-->
               <thead class="text-xs text-gray-400 dark:text-night-300">
                 <tr>
@@ -253,8 +277,8 @@
                     </div>
                   </td>
                   <td class="p-2">
-                    <div class="inline-block rounded-xl bg-green-500/25 py-1 px-2 text-xs font-medium text-green-500">
-                      {{parseAttendance(attendance).status}}
+                    <div class="inline-block rounded-xl py-1 px-2 text-xs font-medium {{ getStatusClass(parseAttendance(attendance)??'not yet visisted') }}">
+                      {{parseAttendance(attendance)??'not yet visisted'}}
                     </div>
                   </td>
                   <td class="py-2 pl-2">
@@ -277,6 +301,29 @@
               </tbody>
               <!--end::Table body-->
             </table>
+
+            <ng-template #elseBlock>
+
+              <div class="mt-4 w-full h-64">
+                <div class="flex flex-col items-center justify-center">
+                  <span
+                        class="material-symbols-rounded floating-icon w-24 h-24 text-7xl text-center text-gray-500 dark:text-night-300">
+                    quick_reference_all
+                  </span>
+                  <div class="font-medium mt-4">
+                    <span class="text-gray-500 dark:text-night-300 text-lg text-center">Hmm.. There's no data to display
+                      yet</span>
+
+                  </div>
+                  <div class="mt-6">
+                    <button [routerLink]="['/dashboard']" class="button-plain">Go to Dashboard </button>
+                  </div>
+                </div>
+
+              </div>
+
+            </ng-template>
+
           </div>
           <!-- end of table -->
         </div>
@@ -288,7 +335,7 @@
       <div id="unmonitored" class="tab-content">
         <div class="grid grid-cols-1 border-x border-gray-200 dark:border-night-500 bg-white p-5 dark:bg-night-700">
           <div class="relative overflow-x-auto">
-            <table *ngIf="schedules" class="w-full table-fixed">
+            <table *ngIf="schedules && schedules.length > 0; else elseBlock" class="w-full table-fixed">
               <!--Table head-->
               <thead class="text-xs text-gray-400 dark:text-night-300">
                 <tr>
@@ -316,8 +363,8 @@
                     </div>
                   </td>
                   <td class="p-2">
-                    <div class="inline-block rounded-xl bg-green-500/25 py-1 px-2 text-xs font-medium text-green-500">
-                      {{parseAttendance(attendance).status}}
+                    <div class="inline-block rounded-xl py-1 px-2 text-xs font-medium {{ getStatusClass(parseAttendance(attendance)??'not yet visisted') }}">
+                      {{parseAttendance(attendance)??'not yet visisted'}}
                     </div>
                   </td>
                   <td class="py-2 pl-2">
@@ -340,6 +387,29 @@
               </tbody>
               <!--end::Table body-->
             </table>
+
+            <ng-template #elseBlock>
+
+              <div class="mt-4 w-full h-64">
+                <div class="flex flex-col items-center justify-center">
+                  <span
+                        class="material-symbols-rounded floating-icon w-24 h-24 text-7xl text-center text-gray-500 dark:text-night-300">
+                    quick_reference_all
+                  </span>
+                  <div class="font-medium mt-4">
+                    <span class="text-gray-500 dark:text-night-300 text-lg text-center">Hmm.. There's no data to display
+                      yet</span>
+
+                  </div>
+                  <div class="mt-6">
+                    <button [routerLink]="['/dashboard']" class="button-plain">Go to Dashboard </button>
+                  </div>
+                </div>
+
+              </div>
+
+            </ng-template>
+
           </div>
         </div>
 
