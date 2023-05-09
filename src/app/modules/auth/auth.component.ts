@@ -1,5 +1,6 @@
 // Import Component and OnInit modules from the Angular core library
 import { Component, OnInit } from '@angular/core';
+import { SystemService } from 'src/app/core/services/system.service';
 
 // Decorator to define a new Angular component
 @Component({
@@ -13,8 +14,15 @@ import { Component, OnInit } from '@angular/core';
 // Define the class for this component
 export class AuthComponent implements OnInit {
   // Constructor method to create an instance of this component
-  constructor() {}
+  sysIcon?: string;
+  sysName?: string;
+  sysAbout?: string;
+  constructor(private system: SystemService) {}
 
   // Lifecycle hook method called after the component is initialized
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.sysName = this.system.name;
+    this.sysAbout = this.system.about;
+    this.sysIcon = this.system.icon;
+  }
 }

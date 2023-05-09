@@ -29,6 +29,8 @@ export class SidebarComponent implements OnInit {
 
   public appJson = packageJson;
   user?: IUser;
+  sysIcon?: string;
+  sysName?: string;
 
   @Output() signOut: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -39,7 +41,8 @@ export class SidebarComponent implements OnInit {
     public themeService: ThemeService,
     private menuService: MenuService,
     private activatedRoute: ActivatedRoute,
-    public systemService: SystemService
+    public systemService: SystemService,
+    private system: SystemService
   ) {
     // Subscribing to the showSideBar$ and pagesMenu$ observables and storing their state in the class variables.
 
@@ -52,6 +55,8 @@ export class SidebarComponent implements OnInit {
     //     (user: IUser | undefined) => (this.user = user)
     // );
     // comment below for frontend
+    this.sysName = this.systemService.name;
+    this.sysIcon = this.systemService.icon;
     this.user = this.activatedRoute.snapshot.data['user'];
 
     // uncomment below for frontend

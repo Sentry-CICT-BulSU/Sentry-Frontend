@@ -3,6 +3,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthResolver } from './core/resolvers/auth.resolver';
+import { SystemResolver } from './core/resolvers/system.resolver';
 
 // Define an array of route objects using the Routes interface.
 const routes: Routes = [
@@ -12,12 +13,16 @@ const routes: Routes = [
     resolve: {
       // tokens: AccessTokenResolver,
       user: AuthResolver,
+      sys_settings: SystemResolver,
     },
     loadChildren: () =>
       import('./modules/layout/layout.module').then((m) => m.LayoutModule),
   },
   {
     path: 'auth', // If the path is 'auth', load the AuthModule.
+    resolve: {
+      sys_settings: SystemResolver,
+    },
     loadChildren: () =>
       import('./modules/auth/auth.module').then((m) => m.AuthModule),
   },

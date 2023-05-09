@@ -15,7 +15,16 @@ export class SystemSettingsComponent {
 
   ngOnInit(): void {
     this.initSystemColor();
-    this.initForm();
+    this.systemService.getSystemSettings$().subscribe({
+      next: (resp: any) => {
+        if (resp) {
+          console.log(resp);
+          this.icon_preview = resp.data.icon;
+          this.initForm(resp);
+        }
+      },
+      error: (err) => console.debug(err),
+    });
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -56,12 +65,12 @@ export class SystemSettingsComponent {
     });
   }
 
-  initForm() {
+  initForm(data: any) {
     this.systemForm = this.fb.group({
-      name: ['', []],
-      about: ['', []],
-      icon: ['', []],
-      color: ['', []],
+      name: [data.data.name, []],
+      about: [data.data.about, []],
+      icon: [null, []],
+      color: [data.data.color, []],
     });
   }
 
