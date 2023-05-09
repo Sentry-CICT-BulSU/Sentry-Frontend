@@ -32,8 +32,7 @@
       <li *ngFor="let schedule of schedules"
           class="border-light-dark rounded-lg mx-4 w-full max-w-4xl overflow-hidden last:mb-4 xl:last:mb-0">
         <!-- card-title -->
-        <div [routerLink]="['/attendance-check/check-attendance',schedule.id]"
-             class="flex flex-row gap-4 p-4 justify-between border-b cursor-pointer hover:bg-gray-100 transition-colors dark:border-night-500 dark:hover:bg-night-500">
+        <div class="flex flex-row gap-4 p-4 justify-between border-b transition-colors dark:border-night-500">
           <!-- icon -->
           <div [ngClass]="'bg-' + systemService.color + '-700'"
                class="shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[32px] text-white">
@@ -93,8 +92,7 @@
       <li *ngFor="let schedule of schedules"
           class="border-light-dark rounded-lg mx-4 w-full max-w-4xl overflow-hidden last:mb-4 xl:last:mb-0">
         <!-- card-title -->
-        <div [routerLink]="['/attendance-check/check-attendance',schedule.id]"
-             class="flex flex-row gap-4 p-4 justify-between border-b cursor-pointer transition-colors dark:border-night-500 dark:hover:bg-night-500 hover:bg-gray-100">
+        <div class="flex flex-row gap-4 p-4 justify-between border-b transition-colors dark:border-night-500">
           <!-- icon -->
           <div [ngClass]="'bg-' + systemService.color + '-700'"
             class="shrink-0 flex items-center justify-center w-12 h-12 rounded-full text-[32px] text-white">

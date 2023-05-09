@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { forkJoin, map } from 'rxjs';
-import {
-  IAttendance,
-  ISchedule,
-  IScheduleCollection,
-} from 'src/app/core/models';
+import { forkJoin, tap } from 'rxjs';
+import { IAttendance, ISchedule } from 'src/app/core/models';
 import { AttendanceService } from 'src/app/core/services/attendance.service';
 import { ScheduleService } from 'src/app/core/services/schedule.service';
 import Swal from 'sweetalert2';
@@ -16,11 +12,8 @@ import { SystemService } from 'src/app/core/services/system.service';
   templateUrl: './attendance-monitoring.component.html',
 })
 export class AttendanceMonitoringComponent implements OnInit {
-  // schedulesCollection?: IScheduleCollection;
   schedules?: ISchedule[];
-  // schedulesActiveCollection?: IScheduleCollection;
   schedulesActive?: ISchedule[];
-  // schedulesInactiveCollection?: IScheduleCollection;
   schedulesInactive?: ISchedule[];
   constructor(
     private scheduleService: ScheduleService,
@@ -37,29 +30,39 @@ export class AttendanceMonitoringComponent implements OnInit {
   }
 
   loadSchedules() {
-    forkJoin([
-      this.scheduleService.loadSchedules$(),
-      // this.scheduleService.loadSchedules$({ q: 'am' }),
-      // this.scheduleService.loadSchedules$({ q: 'pm' }),
-    ])
+    this.scheduleService
+      .loadSchedules$()
       .pipe(
-        map(([schedules /* active, inactive */]) => {
-          // this.schedulesCollection = schedules;
-          this.schedules = schedules.data as ISchedule[];
-          // this.schedulesActiveCollection = active;
-          this.schedulesActive = this.schedules.filter((schedule) =>
-            schedule.time_start.includes('AM')
-          );
-          // this.schedulesInactiveCollection = inactive;
-          this.schedulesInactive = this.schedules.filter((schedule) =>
-            schedule.time_start.includes('PM')
-          );
-          return [schedules /* active, inactive */];
+        tap((schedules) => {
+          if (schedules.data) {
+            this.schedules = (schedules.data as ISchedule[]).filter(
+              (schedule) => {
+                const timeString = schedule.time_start;
+                const date = new Date();
+                date.setHours(parseInt(timeString.split(':')[0]));
+                date.setMinutes(
+                  parseInt(timeString.split(':')[1].split(' ')[0])
+                );
+                date.setSeconds(0);
+                return date.getTime() >= new Date().getTime();
+              }
+            );
+            this.schedulesActive = (schedules.data as ISchedule[]).filter(
+              (schedule) => schedule.time_start.includes('AM')
+            );
+            this.schedulesInactive = (schedules.data as ISchedule[]).filter(
+              (schedule) => schedule.time_start.includes('PM')
+            );
+          }
         })
       )
       .subscribe({
-        next: ([schedules /* active, inactive */]) => {
-          console.log(schedules /*  active, inactive */);
+        next: () => {
+          console.log(
+            this.schedules,
+            this.schedulesActive,
+            this.schedulesInactive
+          );
         },
         error: (err) => console.debug(err),
       });

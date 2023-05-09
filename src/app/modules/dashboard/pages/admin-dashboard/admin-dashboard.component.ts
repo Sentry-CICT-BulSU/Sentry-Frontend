@@ -16,6 +16,7 @@ export class AdminDashboardComponent implements OnInit {
   roomKeyLogs?: IRoomKeyLog[];
   roomKeyLogsCollection?: IRoomKeyLogCollection;
   attendanceToday: any = {
+    total: 0,
     presents: 0,
     absents: 0,
     not_visited: 0,
@@ -40,7 +41,7 @@ export class AdminDashboardComponent implements OnInit {
       this.schedulesService.loadSchedules$({ 'admin-dash': true }),
       this.roomKeyLogsService.getAvailableRoomKeys$(),
     ]).subscribe(([logs, schedules, available]) => {
-      console.log(logs, schedules);
+      console.log(logs, schedules, available);
       this.attendanceToday = schedules;
       this.roomKeyLogsCollection = logs;
       if (
