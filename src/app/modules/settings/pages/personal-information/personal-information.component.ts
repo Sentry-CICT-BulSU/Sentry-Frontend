@@ -128,7 +128,7 @@ export class PersonalInformationComponent implements OnInit {
     this.authService.updateUser$(formData).subscribe({
       next: (user: IUserCollection) => {
         console.log(user);
-        // window.location.reload();
+        window.location.reload();
       },
       error: (err) => console.debug(err),
     });
