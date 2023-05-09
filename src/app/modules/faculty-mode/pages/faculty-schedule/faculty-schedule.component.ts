@@ -60,6 +60,10 @@ export class FacultyScheduleComponent implements OnInit {
   schedules?: ISchedule[];
   user?: IUser;
 
+  printThisPage() {
+    window.print();
+  }
+
   constructor(
     private schedulesService: ScheduleService,
     private authService: AuthService
