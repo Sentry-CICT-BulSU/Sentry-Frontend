@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { ChartsService } from 'src/app/core/services/charts.service';
 import { ThemeService } from 'src/app/core/services/theme.service';
 import { ChartOptions } from 'src/app/shared/models/chart-options';
 
@@ -12,7 +13,10 @@ export class ChartCardColumnComponent implements OnInit, OnDestroy {
   public chartOptions: Partial<ChartOptions>;
   private subscription: Subscription = new Subscription();
 
-  constructor(private themeService: ThemeService) {
+  constructor(
+    private themeService: ThemeService,
+    private chartService: ChartsService
+  ) {
     const data = [0, 0, 0, 5, 4, 0, 2];
     const data2 = [0, 0, 0, 3, 4, 8, 6];
 
@@ -21,24 +25,24 @@ export class ChartCardColumnComponent implements OnInit, OnDestroy {
         {
           name: 'Present',
           data: data,
-          color: '#7239ea'
+          color: '#7239ea',
         },
         {
           name: 'Absent',
           data: data2,
-          color: '#D6BBFB'
-        }
+          color: '#D6BBFB',
+        },
       ],
       chart: {
-        type: "bar",
+        type: 'bar',
         height: 250,
         stacked: true,
         toolbar: {
-          show: true
+          show: true,
         },
         zoom: {
-          enabled: true
-        }
+          enabled: true,
+        },
       },
       dataLabels: {
         enabled: false,
@@ -48,37 +52,37 @@ export class ChartCardColumnComponent implements OnInit, OnDestroy {
           breakpoint: 480,
           options: {
             legend: {
-              position: "bottom",
+              position: 'bottom',
               offsetX: -10,
-              offsetY: 0
-            }
-          }
-        }
+              offsetY: 0,
+            },
+          },
+        },
       ],
       plotOptions: {
         bar: {
-          horizontal: false
-        }
+          horizontal: false,
+        },
       },
       xaxis: {
-        type: "category",
+        type: 'category',
         categories: [
-          "7 days ago",
-          "6 days ago",
-          "5 days ago",
-          "4 days ago",
-          "3 days ago",
-          "2 days ago",
-          "Yesterday",
-        ]
+          '6 days ago',
+          '5 days ago',
+          '4 days ago',
+          '3 days ago',
+          '2 days ago',
+          'Yesterday',
+          'Today',
+        ],
       },
 
       legend: {
-        position: "right",
-        offsetY: 40
+        position: 'right',
+        offsetY: 40,
       },
       fill: {
-        opacity: 1
+        opacity: 1,
       },
       tooltip: {
         theme: 'light',
@@ -93,8 +97,30 @@ export class ChartCardColumnComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.initComponent();
+    this.chartService.loadCharts$().subscribe({
+      next: (resp) => {
+        console.log(resp);
+        this.chartOptions.series = [
+          {
+            name: 'Present',
+            data: resp.presentees,
+            color: '#7239ea',
+          },
+          {
+            name: 'Absent',
+            data: resp.absentees,
+            color: '#D6BBFB',
+          },
+        ];
+      },
+      error: (err) => console.debug(err),
+    });
+  }
+
+  initComponent() {
     /** Chand chart theme */
-    let sub = this.themeService.themeChanged.subscribe((theme) => {
+    const sub = this.themeService.themeChanged.subscribe((theme) => {
       this.chartOptions.tooltip = {
         theme: theme,
       };
