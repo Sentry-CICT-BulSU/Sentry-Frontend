@@ -19,7 +19,7 @@ export class SystemSettingsComponent {
       next: (resp: any) => {
         if (resp) {
           console.log(resp);
-          this.icon_preview = resp.data.icon;
+          // this.icon_preview = resp.data.icon;
           this.initForm(resp);
         }
       },
@@ -56,10 +56,13 @@ export class SystemSettingsComponent {
     );
     if (this.file && this.systemForm.contains('icon')) {
       formData.set('icon', this.file);
+    } else {
+      formData.delete('icon');
     }
     this.systemService.updateSystem$(formData).subscribe({
       next: (resp) => {
         console.debug(resp);
+        window.location.reload();
       },
       error: (err) => console.debug(err),
     });

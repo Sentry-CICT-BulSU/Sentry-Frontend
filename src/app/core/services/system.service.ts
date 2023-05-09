@@ -25,7 +25,7 @@ export class SystemService extends PropertiesService {
   }
 
   get color() {
-    return localStorage.getItem('selectedColor') || 'primary'; // defaults to primary if 'selelctedColor' from localStorage is null
+    return localStorage.getItem('selectedColor') ?? 'primary'; // defaults to primary if 'selelctedColor' from localStorage is null
   }
 
   get url() {
@@ -33,16 +33,16 @@ export class SystemService extends PropertiesService {
   }
 
   get name() {
-    return localStorage.getItem('sys_name') || 'CICT Sentry';
+    return localStorage.getItem('sys_name') ?? 'CICT Sentry';
   }
   get about() {
     return (
-      localStorage.getItem('sys_about') ||
+      localStorage.getItem('sys_about') ??
       'Welcome to the Web-based CICT Class Monitoring and Key Inventory System Introducing a cutting-edge attendance and key inventory management system for the College of Information and Communications Technology (CICT) ! With user-friendly registration and login, easy faculty and schedule management, mobile-friendly attendance tracking, and visual key inventory tracking, our system streamlines administrative tasks. Generate comprehensive reports, manage website content, and stay organized with our intuitive dashboard. Upgrade your CICT operations with our powerful system today!'
     );
   }
   get icon() {
-    return localStorage.getItem('sys_icon') || 'assets/icons/CICT Logo.png';
+    return localStorage.getItem('sys_icon') ?? 'assets/icons/CICT Logo.png';
   }
 
   getSystemSettings$() {
