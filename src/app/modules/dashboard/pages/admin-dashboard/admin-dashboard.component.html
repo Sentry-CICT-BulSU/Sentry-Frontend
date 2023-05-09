@@ -175,7 +175,7 @@
 
           <div
                class="radial-progress mx-auto text-primary-700"
-               style="--value: 90; --size: 12rem">
+               style="--value: {{availableKeys.available_percentage}}; --size: 12rem">
             <span
                   class="text-4xl font-medium text-gray-700 dark:text-night-200">
               {{availableKeys.available_percentage}}%
@@ -191,7 +191,7 @@
               <div
                    class="space-x-1 text-sm font-medium text-gray-400 dark:text-night-300">
                 <p class="hover:text-primary-800">
-                  The faculty members are currently using 90% of the rooms..
+                  The faculty members are currently using {{availableKeys.unavailable_percentage}}% of the rooms..
                 </p>
               </div>
             </div>
