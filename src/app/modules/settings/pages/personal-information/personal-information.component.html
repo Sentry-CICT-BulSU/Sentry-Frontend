@@ -85,10 +85,10 @@
       <p class="text-gray-400">This will be displayed on your profile.</p>
     </div>
 
-    <img class="rounded-full w-10" src="assets/avatars/user-profile.png" alt="" />
+    <img class="rounded-full w-10" [src]="profile_img" alt="" />
 
     <div class="relative col-span-3">
-      <input formControlName="profile_img" (change)="onImgChange($event)" type="file"
+      <input formControlName="profile_img" (change)="onImgChange($event)" type="file" accept="image/*"
              class="file-input bg-white dark:text-night-300 dark:bg-night-700 w-full rounded-md border text-sm border-light-dark " />
     </div>
 

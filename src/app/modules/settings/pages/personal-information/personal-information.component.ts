@@ -14,11 +14,10 @@ export class PersonalInformationComponent implements OnInit {
   updateUserForm?: FormGroup;
   user?: IUser;
   file?: File;
+  profile_img: any = 'assets/avatars/user-profile.png';
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private route: ActivatedRoute,
-    private router: Router,
     public systemService: SystemService
   ) {}
 
@@ -61,6 +60,8 @@ export class PersonalInformationComponent implements OnInit {
       next: (data) => {
         if (data) {
           this.initForm(data as IUser);
+          this.profile_img =
+            data.profile_img ?? 'assets/avatars/user-profile.png';
         }
       },
       error: (err) => console.debug(err),
@@ -89,6 +90,10 @@ export class PersonalInformationComponent implements OnInit {
       );
     }
     this.file = img;
+
+    const reader = new FileReader();
+    reader.onload = (e) => (this.profile_img = reader.result);
+    reader.readAsDataURL(img);
   }
 
   onSubmit() {
