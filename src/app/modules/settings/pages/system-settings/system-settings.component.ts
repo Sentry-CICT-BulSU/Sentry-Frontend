@@ -1,19 +1,68 @@
 import { Component } from '@angular/core';
-// import { ColorService } from 'src/app/core/services/color.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { SystemService } from 'src/app/core/services/system.service';
+import { environment as env } from 'src/environments/environment';
 
 @Component({
   selector: 'app-system-settings',
   templateUrl: './system-settings.component.html',
 })
 export class SystemSettingsComponent {
-  constructor(
-    // private colorService: ColorService,
-    private systemService: SystemService
-  ) {}
+  systemForm?: FormGroup;
+  file?: File;
+  icon_preview: any = 'assets/icons/CICT Logo.png';
+  constructor(private systemService: SystemService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.initSystemColor();
+    this.initForm();
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onFileChange(event: any) {
+    const file: File = event.target.files[0];
+    if (!this.systemForm) return;
+    if (!file) {
+      return alert('No file selected');
+    } else if (file.length > env.MAX_FILE_SIZE) {
+      return alert(
+        'File size is too large, max accepted file size is: ' +
+          env.MAX_FILE_SIZE / 1000
+      );
+    }
+    this.file = file;
+    const reader = new FileReader();
+    reader.onload = (e) =>
+      (this.icon_preview = reader.result ?? 'assets/icons/CICT Logo.png');
+    reader.readAsDataURL(file);
+  }
+  onSubmit() {
+    if (!this.systemForm) return;
+    console.log(this.systemForm.value);
+    // eslint-disable-next-line prefer-const
+    const formData: FormData = new FormData();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    Object.entries(this.systemForm.value).forEach(([key, value]: any[]) =>
+      formData.append(key, value)
+    );
+    if (this.file && this.systemForm.contains('icon')) {
+      formData.set('icon', this.file);
+    }
+    this.systemService.updateSystem$(formData).subscribe({
+      next: (resp) => {
+        console.debug(resp);
+      },
+      error: (err) => console.debug(err),
+    });
+  }
+
+  initForm() {
+    this.systemForm = this.fb.group({
+      name: ['', []],
+      about: ['', []],
+      icon: ['', []],
+      color: ['', []],
+    });
   }
 
   initSystemColor() {
@@ -53,7 +102,5 @@ export class SystemSettingsComponent {
 
   setColor(color: string) {
     this.systemService.color = color;
-    // this.colorService.selectedColor = color;
-    // localStorage.setItem('selectedColor', color); // Save selected color in local storage
   }
 }
