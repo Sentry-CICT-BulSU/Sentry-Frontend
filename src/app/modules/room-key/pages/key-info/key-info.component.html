@@ -28,11 +28,11 @@
           </span>
         </div>
 
-        <span class="text-xl font-medium text-gray-900 dark:text-white">
+        <span class="text-xl font-medium text-gray-900 dark:text-white uppercase">
           {{ roomKey?.room?.name | titlecase}}
         </span>
         <div [ngClass]="{'bg-green-500/25 text-green-500': roomKey?.status === 'Available',
-        'bg-blue-300/25 text-blue-500 dark:text-blue-300': roomKey?.status === 'Borrowed',
+        'bg-blue-300/25 text-blue-500 dark:text-blue-300': roomKey?.status === 'In Use',
         'bg-red-300/25 text-red-500 dark:text-red-300': roomKey?.status === 'Lost'}"
              class="flex items-center rounded-xl py-1 pr-2 pl-2 text-xs font-medium">
           {{roomKey?.status | titlecase}}
