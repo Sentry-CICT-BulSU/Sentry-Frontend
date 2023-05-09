@@ -40,7 +40,7 @@
               <span class="text-gray-500 text-[14px] dark:text-night-100">SVG, PNG, JPG or GIF (max. 800x400px)</span>
             </label>
             <input formControlName="attachment" class="absolute -top-10"
-                   type="file" (change)="onFileChange($event)" name="attendance-attachment" id="attendance-attachment">
+                   type="file" name="attendance-attachment" id="attendance-attachment">
           </div>
 
           <!-- add remarks -->
@@ -54,8 +54,7 @@
         <!-- card-footer -->
         <div class="flex justify-end items-center p-4">
           <button type="submit"
-                  class="button-plain btn-success w-fit transition-colors text-white hover:bg-green-700 dark:text-white">Mark
-            as
+                  class="button-plain btn-success w-fit transition-colors text-white hover:bg-green-700 dark:text-white">Mark as
             present
           </button>
         </div>
