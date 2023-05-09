@@ -39,10 +39,11 @@ export class KeyInfoComponent implements OnInit {
 
   loadSubs() {
     if (this.roomKeyId) {
-      console.log(this.roomKeyId);
+      console.log('load subs: ', this.roomKeyId);
       this.roomKeyService.getRoomKey$(this.roomKeyId).subscribe({
         next: (roomKey) => {
           if (roomKey) {
+            console.log('getroomKey: ', roomKey);
             this.roomKey = roomKey.data as IRoomKey;
             this.logs = this.roomKey.logs as IRoomKeyLog[];
             this.schedules = this.roomKey.schedules as ISchedule[];
@@ -69,11 +70,14 @@ export class KeyInfoComponent implements OnInit {
     });
   }
   loadFormControls() {
+    console.log('oadFormControls');
     const sched: ISchedule = (this.schedules as ISchedule[])[0] as ISchedule;
     const user: IUser = this.facultyToBorrow as IUser;
     const roomKey: IRoomKey = this.roomKey as IRoomKey;
     const log: IRoomKeyLog = (this.logs as IRoomKeyLog[])[0] as IRoomKeyLog;
     let roomKeyForm;
+
+    console.log(this.facultyToBorrow, this.schedules);
     if (
       roomKey.status === 'Available' &&
       this.facultyToBorrow &&
