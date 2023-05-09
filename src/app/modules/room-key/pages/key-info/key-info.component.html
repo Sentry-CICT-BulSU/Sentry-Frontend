@@ -31,8 +31,10 @@
         <span class="text-xl font-medium text-gray-900 dark:text-white">
           {{ roomKey?.room?.name }}
         </span>
-        <div
-             class="flex items-center rounded-md bg-green-500/25 py-1 pr-2 pl-2 text-xs font-medium text-[#12B76A] bg-[#ECFDF3]">
+        <div [ngClass]="{'bg-green-500/25 text-green-500': roomKey?.status === 'Available',
+        'bg-blue-300/25 text-blue-500 dark:text-blue-300': roomKey?.status === 'Borrowed',
+        'bg-red-300/25 text-red-500 dark:text-red-300': roomKey?.status === 'Lost'}"
+             class="flex items-center rounded-xl py-1 pr-2 pl-2 text-xs font-medium">
           {{roomKey?.status}}
         </div>
       </div>
@@ -220,7 +222,7 @@
               </td>
               <td class="p-2">
                 <div
-                     class="inline-block rounded-xl bg-[#ECFDF3] py-1 px-2 text-xs font-medium text-[#027A48]">
+                     class="inline-block rounded-xl py-1 px-2 text-xs font-medium {{ getStatusClass(log.status) }}">
                   {{log.status}}
                 </div>
               </td>
