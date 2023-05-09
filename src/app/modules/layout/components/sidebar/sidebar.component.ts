@@ -30,6 +30,7 @@ export class SidebarComponent implements OnInit {
   public appJson = packageJson;
   user?: IUser;
   sysIcon?: string;
+  sysName?: string;
 
   @Output() signOut: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -54,6 +55,7 @@ export class SidebarComponent implements OnInit {
     //     (user: IUser | undefined) => (this.user = user)
     // );
     // comment below for frontend
+    this.sysName = this.systemService.name;
     this.sysIcon = this.systemService.icon;
     this.user = this.activatedRoute.snapshot.data['user'];
 

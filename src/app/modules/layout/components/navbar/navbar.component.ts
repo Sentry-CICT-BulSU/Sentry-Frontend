@@ -14,12 +14,14 @@ export class NavbarComponent implements OnInit {
   // This is the constructor of the NavbarComponent class, which takes an instance of MenuService as a parameter. The private keyword
   // in the constructor parameter declaration creates a class property that is accessible only within the class.
   sysIcon?: string;
+  sysName?: string;
   constructor(
     private menuService: MenuService,
     private system: SystemService
   ) {}
 
   ngOnInit(): void {
+    this.sysName = this.system.name;
     this.sysIcon = this.system.icon;
   }
 

@@ -12,11 +12,13 @@ import { SystemService } from 'src/app/core/services/system.service';
 export class NavbarMobileComponent implements OnInit {
   public showMobileMenu$: Observable<boolean> = new Observable<boolean>();
   sysIcon?: string;
+  sysName?: string;
   constructor(private menuService: MenuService, private system: SystemService) {
     this.showMobileMenu$ = this.menuService.showMobileMenu$;
   }
 
   ngOnInit(): void {
+    this.sysName = this.system.name;
     this.sysIcon = this.system.icon;
   }
 
