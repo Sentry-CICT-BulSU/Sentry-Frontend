@@ -2,7 +2,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BehaviorSubject, forkJoin, tap } from 'rxjs';
 import { IUser, IRoomKey, ISchedule, IRoomKeyLog } from 'src/app/core/models';
+import { AdminService } from 'src/app/core/services/admin.service';
 import { RoomKeyService } from 'src/app/core/services/roomkey.service';
 import Swal from 'sweetalert2';
 
@@ -20,11 +22,15 @@ export class KeyInfoComponent implements OnInit {
   schedules?: ISchedule[];
   facultyToBorrow?: IUser;
   roomKeyForm?: FormGroup;
+  formIsNull = false;
+  faculty = new BehaviorSubject<any>(null);
+  subject = new BehaviorSubject<any>(null);
   constructor(
     private route: ActivatedRoute,
     private roomKeyService: RoomKeyService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private adminService: AdminService
   ) {}
 
   ngOnInit(): void {
@@ -35,6 +41,20 @@ export class KeyInfoComponent implements OnInit {
         this.loadSubs();
       }
     });
+  }
+  initLists() {
+    forkJoin({
+      faculty: this.adminService.getLists$('faculty'),
+      subject: this.adminService.getLists$('subject'),
+    })
+      .pipe(
+        tap((resp) => {
+          this.faculty.next(resp.faculty);
+          this.subject.next(resp.subject);
+          console.log(resp);
+        })
+      )
+      .subscribe();
   }
 
   getStatusClass(status: string): string {
@@ -116,7 +136,25 @@ export class KeyInfoComponent implements OnInit {
       };
       this.patchForm(roomKeyForm);
     } else {
-      alert('No user, or schedule nor logs found!');
+      roomKeyForm = { id: this.roomKeyId };
+      this.patchForm(roomKeyForm);
+      alert('No active schedule found!');
+      this.formIsNull = true;
+      this.initLists();
+      this.removeValidators();
+    }
+  }
+  removeValidators() {
+    if (this.roomKeyForm) {
+      this.roomKeyForm.controls['room_key_id'].clearValidators();
+      this.roomKeyForm.controls['faculty_id'].clearValidators();
+      this.roomKeyForm.controls['subject_id'].clearValidators();
+      this.roomKeyForm.addControl(
+        'is_null',
+        this.fb.control(true, [Validators.required])
+      );
+      console.log(this.roomKeyForm.controls);
+      console.log(this.roomKeyForm.value);
     }
   }
   patchForm(roomKeyForm: any) {

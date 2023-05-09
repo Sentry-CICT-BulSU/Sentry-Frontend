@@ -159,7 +159,6 @@ export class AddScheduleComponent implements OnInit, OnDestroy {
           title: 'Success',
           text: 'Schedule added successfully!',
         });
-
       },
       error: (err) => console.debug(err),
     });

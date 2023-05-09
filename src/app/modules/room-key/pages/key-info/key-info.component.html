@@ -29,13 +29,13 @@
         </div>
 
         <span class="text-xl font-medium text-gray-900 dark:text-white">
-          {{ roomKey?.room?.name }}
+          {{ roomKey?.room?.name | titlecase}}
         </span>
         <div [ngClass]="{'bg-green-500/25 text-green-500': roomKey?.status === 'Available',
         'bg-blue-300/25 text-blue-500 dark:text-blue-300': roomKey?.status === 'Borrowed',
         'bg-red-300/25 text-red-500 dark:text-red-300': roomKey?.status === 'Lost'}"
              class="flex items-center rounded-xl py-1 pr-2 pl-2 text-xs font-medium">
-          {{roomKey?.status}}
+          {{roomKey?.status | titlecase}}
         </div>
       </div>
     </div>
@@ -70,7 +70,13 @@
         </div>
 
         <div class="relative col-span-3">
-          <input formControlName="faculty" readonly type="text" readonly class="peer block" placeholder=" ">
+          <input formControlName="faculty" *ngIf="!formIsNull" readonly type="text" readonly class="peer block"
+                 placeholder=" ">
+          <select formControlName="faculty" *ngIf="formIsNull" name="faculty" id="faculty" class="peer block">
+            <option *ngFor="let faculty of faculty|async" [value]="faculty.id">
+              {{faculty.full_name}}
+            </option>
+          </select>
         </div>
 
         <div class="col-span-2 space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
@@ -78,7 +84,8 @@
         </div>
 
         <div class="relative col-span-3">
-          <input formControlName="time" readonly type="text" class="peer block" placeholder=" " />
+          <input formControlName="time" [readonly]="!formIsNull" type="text" class="peer block"
+                 placeholder="00:00 AM - 00:00 PM" />
         </div>
 
         <div class="col-span-2 space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
@@ -86,7 +93,14 @@
         </div>
 
         <div class="relative col-span-3">
-          <input formControlName="subject_code" readonly type="text" class="peer block" placeholder=" " />
+          <input formControlName="subject_code" *ngIf="!formIsNull" readonly type="text" class="peer block"
+                 placeholder=" " />
+          <select formControlName="subject_code" *ngIf="formIsNull" name="subject_code"
+                  id="subject_code" class="peer block">
+            <option *ngFor="let subject of subject|async" [value]="subject.id">
+              {{subject.title}}
+            </option>
+          </select>
         </div>
 
         <div class="col-span-2 space-x-1 my-auto text-sm font-medium text-gray-600 dark:text-night-300">
@@ -94,7 +108,14 @@
         </div>
 
         <div class="relative col-span-3">
-          <input formControlName="subject_name" readonly type="text" class="peer block" placeholder=" " />
+          <input formControlName="subject_name" *ngIf="!formIsNull" readonly type="text" class="peer block"
+                 placeholder=" " />
+          <select formControlName="subject_name" *ngIf="formIsNull" name="subject_name"
+                  id="subject_name" class="peer block">
+            <option *ngFor="let subject of subject|async" [value]="subject.title">
+              {{subject.title}}
+            </option>
+          </select>
         </div>
       </div>
     </form>
@@ -112,7 +133,7 @@
         </button>
       </div>
       <div *ngIf="roomKey.status === 'Available'" class="flex items-center justify-end space-x-3">
-        <button type="button" (click)="loadFromSchedule()"
+        <button *ngIf="!formIsNull" type="button" (click)="loadFromSchedule()"
                 class="button-plain">
           Load data from schedule
         </button>
@@ -126,18 +147,18 @@
     <ng-template #elseBlock>
 
       <div
-         class="grid grid-cols-1 rounded-b-lg border-light-dark bg-white p-5 dark:bg-night-700">
-      <div class="flex items-center justify-end space-x-3">
-        <p>
-          There are currently no scheduled users for this key.
-        </p>
-        <button type="button" routerLink="/room-key"
-                class="button-colored">
-          Go Back
-        </button>
-      </div>
+           class="grid grid-cols-1 rounded-b-lg border-light-dark bg-white p-5 dark:bg-night-700">
+        <div class="flex items-center justify-end space-x-3">
+          <p>
+            There are currently no scheduled users for this key.
+          </p>
+          <button type="button" routerLink="/room-key"
+                  class="button-colored">
+            Go Back
+          </button>
+        </div>
 
-    </div>
+      </div>
 
     </ng-template>
 
@@ -212,10 +233,10 @@
                   <div class="flex flex-col justify-items-start">
                     <a href="#"
                        class="mb-1 text-sm font-medium text-gray-900 dark:text-night-100 dark:hover:text-primary-500">
-                      {{log.faculty?.full_name}}
+                      {{log.faculty?.full_name ?? 'Unknown'}}
                     </a>
                     <span class="text-sm font-medium text-gray-400 dark:text-night-200">
-                      {{log.faculty?.email}}
+                      {{log.faculty?.email ?? 'Unknown'}}
                     </span>
                   </div>
                 </div>
@@ -228,7 +249,7 @@
               </td>
               <td class="py-2 pl-2">
                 <span class="text-sm font-medium text-gray-400 dark:text-night-200">
-                  {{log.subject?.code}}
+                  {{log.subject?.code ?? 'Unknown'}}
                 </span>
               <td class="py-2 pl-2">
                 <span class="text-sm font-medium text-gray-400 dark:text-night-200">
