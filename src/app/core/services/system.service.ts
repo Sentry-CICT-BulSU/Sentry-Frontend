@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { PropertiesService } from './properties.service';
+import { HttpClient } from '@angular/common/http';
+import { environment as env } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SystemService extends PropertiesService {
-  constructor() {
+  constructor(private http: HttpClient) {
     super();
   }
 
@@ -16,6 +18,19 @@ export class SystemService extends PropertiesService {
 
   get color() {
     return localStorage.getItem('selectedColor') || 'primary'; // defaults to primary if 'selelctedColor' from localStorage is null
+  }
+
+  getSystemSettings$() {
+    return this.http.get(env.apiRootRoute + '/api/admin/system-settings', {
+      headers: this.options.headers,
+    });
+  }
+
+  updateSystem$(body: any) {
+    return this.http.post(
+      env.apiRootRoute + '/api/admin/system-settings',
+      body
+    );
   }
 }
 
