@@ -8,6 +8,13 @@ import { tap } from 'rxjs';
   providedIn: 'root',
 })
 export class SystemService extends PropertiesService {
+  defaults = {
+    name: 'CICT Sentry',
+    about:
+      'Welcome to the Web-based CICT Class Monitoring and Key Inventory System Introducing a cutting-edge attendance and key inventory management system for the College of Information and Communications Technology (CICT) ! With user-friendly registration and login, easy faculty and schedule management, mobile-friendly attendance tracking, and visual key inventory tracking, our system streamlines administrative tasks. Generate comprehensive reports, manage website content, and stay organized with our intuitive dashboard. Upgrade your CICT operations with our powerful system today!',
+    icon: 'assets/icons/CICT Logo.png',
+    color: 'primary',
+  };
   constructor(private http: HttpClient) {
     super();
   }
@@ -46,10 +53,22 @@ export class SystemService extends PropertiesService {
       .pipe(
         tap((settings) => {
           console.log('system settings: ', settings);
-          localStorage.setItem('sys_name', settings.data.name);
-          localStorage.setItem('sys_about', settings.data.about);
-          localStorage.setItem('sys_icon', settings.data.icon);
-          localStorage.setItem('selectedColor', settings.data.color);
+          localStorage.setItem(
+            'sys_name',
+            settings.data.name ?? this.defaults.name
+          );
+          localStorage.setItem(
+            'sys_about',
+            settings.data.about ?? this.defaults.about
+          );
+          localStorage.setItem(
+            'sys_icon',
+            settings.data.icon ?? this.defaults.icon
+          );
+          localStorage.setItem(
+            'selectedColor',
+            settings.data.color ?? this.defaults.color
+          );
         })
       );
   }
