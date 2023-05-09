@@ -54,20 +54,31 @@ export class SystemService extends PropertiesService {
       .pipe(
         tap((settings) => {
           console.log('system settings: ', settings);
-          if (settings.data.name)
+          console.log('system settings: ', Object.values(settings));
+
+          console.log('value', settings.data.name);
+          console.log('value', settings.data.about);
+          console.log('value', settings.data.icon);
+          console.log('value', settings.data.color);
+          console.log('isNUll', 'null' === settings.data.name);
+          console.log('isNUll', 'null' === settings.data.about);
+          console.log('isNUll', 'null' === settings.data.icon);
+          console.log('isNUll', 'null' === settings.data.color);
+
+          if (settings.data.name !== 'null')
             localStorage.setItem('sys_name', settings.data.name);
           else localStorage.setItem('sys_name', this.defaults.name);
           this.title.setTitle(this.name);
 
-          if (settings.data.about)
+          if (settings.data.about !== 'null')
             localStorage.setItem('sys_about', settings.data.about);
           else localStorage.setItem('sys_about', this.defaults.about);
 
-          if (settings.data.icon)
+          if (settings.data.icon !== 'null')
             localStorage.setItem('sys_icon', settings.data.icon);
           else localStorage.setItem('sys_icon', this.defaults.icon);
 
-          if (settings.data.color)
+          if (settings.data.color !== 'null')
             localStorage.setItem('selectedColor', settings.data.color);
           else localStorage.setItem('selectedColor', this.defaults.color);
         })
