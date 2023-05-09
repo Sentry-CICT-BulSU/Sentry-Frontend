@@ -3,6 +3,7 @@ import { PropertiesService } from './properties.service';
 import { HttpClient } from '@angular/common/http';
 import { environment as env } from 'src/environments/environment';
 import { tap } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,7 @@ export class SystemService extends PropertiesService {
     icon: 'assets/icons/CICT Logo.png',
     color: 'primary',
   };
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private title: Title) {
     super();
   }
 
@@ -57,6 +58,7 @@ export class SystemService extends PropertiesService {
             'sys_name',
             settings.data.name ?? this.defaults.name
           );
+          this.title.setTitle(this.name);
           localStorage.setItem(
             'sys_about',
             settings.data.about ?? this.defaults.about

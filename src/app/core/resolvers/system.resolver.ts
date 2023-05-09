@@ -14,15 +14,11 @@ import { Title } from '@angular/platform-browser';
   providedIn: 'root',
 })
 export class SystemResolver implements Resolve<IUser | null> {
-  constructor(private system: SystemService, private title: Title) {}
+  constructor(private system: SystemService) {}
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<any> {
-    return this.system.getSystemSettings$().pipe(
-      tap((settings) => {
-        this.title.setTitle(this.system.name);
-      })
-    );
+    return this.system.getSystemSettings$();
   }
 }
