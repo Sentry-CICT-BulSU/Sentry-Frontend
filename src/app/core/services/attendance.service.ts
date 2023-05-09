@@ -51,7 +51,8 @@ export class AttendanceService extends PropertiesService {
   addAttendance$(schedule_id: number, body: any) {
     return this.http.post<IAttendanceCollection>(
       env.apiRootRoute + '/api/schedules/' + schedule_id + '/attendances',
-      body
+      body,
+      {}
     );
   }
 
