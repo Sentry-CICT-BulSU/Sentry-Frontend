@@ -72,7 +72,7 @@ export class PersonalInformationComponent implements OnInit {
       first_name: [user.first_name],
       last_name: [user.last_name],
       email: [user.email],
-      // profile_img: [user.profile_img],
+      profile_img: [user.profile_img],
     });
   }
 
@@ -113,18 +113,19 @@ export class PersonalInformationComponent implements OnInit {
 
     console.log(this.updateUserForm.value);
     // eslint-disable-next-line prefer-const
-    // const formData: FormData = new FormData();
+    const formData: FormData = new FormData();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    // Object.entries(this.updateUserForm.value).forEach(([key, value]: any[]) =>
-    //   formData.append(key, value)
-    // );
-    // if (this.file && this.updateUserForm.contains('profile_img'))
-    //   formData.set('profile_img', this.file as Blob);
+    Object.entries(this.updateUserForm.value).forEach(([key, value]: any[]) =>
+      formData.append(key, value)
+    );
+    if (this.file && this.updateUserForm.contains('profile_img')) {
+      formData.set('profile_img', this.file);
+    }
 
     // eslint-disable-next-line
-    // console.log(formData);
+    console.log(formData);
 
-    this.authService.updateUser$(this.updateUserForm.value).subscribe({
+    this.authService.updateUser$(formData).subscribe({
       next: (user: IUserCollection) => {
         console.log(user);
         window.location.reload();
