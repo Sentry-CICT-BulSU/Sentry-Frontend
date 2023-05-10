@@ -62,13 +62,51 @@
       <p>Section</p>
     </div>
 
-    <div class="relative col-span-2">
+    <div class="relative col-span-1">
       <select formControlName="section" name="section"
               id="section" class="peer block">
         <option *ngFor="let section of section|async" [value]="section.id">
           {{section.name}}
         </option>
       </select>
+    </div>
+
+    <div class="relative col-span-3">
+      <!-- tabs -->
+      <div
+           class="grid w-full grid-cols-3 rounded-md border border-gray-300 text-xs">
+        <div>
+          <input value="all" type="radio" name="section" id="group-all"
+                 class="peer hidden" />
+          <label for="group-all"
+                 class="rounded-l-md border-r border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:first-line:text-white hover:bg-gray-200"
+                 [ngClass]="'peer-checked:border-' + systemService.color + '-700 peer-checked:bg-' + systemService.color + '-700'">
+            G1 & G2
+          </label>
+        </div>
+        <div>
+          <input value="g1" type="radio" name="section" id="group-g1"
+                 class="peer hidden" />
+          <label
+                 for="group-g1"
+                 class="border-gray-300 border-r px-3 py-3 block cursor-pointer select-none text-center peer-checked:first-line:text-white hover:bg-gray-200"
+                 [ngClass]="'peer-checked:border-' + systemService.color + '-700 peer-checked:bg-' + systemService.color + '-700'">
+            G1 Only
+          </label>
+        </div>
+
+        <div>
+          <input value="g2" type="radio" name="section" id="group-g2"
+                 class="peer hidden" />
+          <label
+                 for="group-g2"
+                 class="rounded-r-md border-gray-300 px-3 py-3 block cursor-pointer select-none text-center peer-checked:first-line:text-white hover:bg-gray-200"
+                 [ngClass]="'peer-checked:border-' + systemService.color + '-700 peer-checked:bg-' + systemService.color + '-700'">
+            G2 Only
+          </label>
+        </div>
+
+      </div>
     </div>
 
   </div>
