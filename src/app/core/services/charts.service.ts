@@ -23,7 +23,7 @@ export class ChartsService extends PropertiesService {
   loadCharts$() {
     // return this.http.get<any>(this.url, { headers: this.options.headers });
     return of({
-      presentees: [1, 1, 2, 1, 1, 31],
+      presentees: [1, 1, 2, 1, 1, 3, 1],
       period: [
         '2023-05-03',
         '2023-05-04',
