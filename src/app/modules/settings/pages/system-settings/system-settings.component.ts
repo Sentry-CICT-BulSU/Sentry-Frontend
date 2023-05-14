@@ -51,9 +51,12 @@ export class SystemSettingsComponent {
     // eslint-disable-next-line prefer-const
     const formData: FormData = new FormData();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    Object.entries(this.systemForm.value).forEach(([key, value]: any[]) =>
-      formData.append(key, value)
-    );
+    Object.entries(this.systemForm.value).forEach(([key, value]: any[]) => {
+      console.log(key, value, !!value && value != 'null');
+      if (!!value && value != 'null' && value !== null) {
+        formData.append(key, value);
+      }
+    });
     if (this.file && this.systemForm.contains('icon')) {
       formData.set('icon', this.file);
     } else {
