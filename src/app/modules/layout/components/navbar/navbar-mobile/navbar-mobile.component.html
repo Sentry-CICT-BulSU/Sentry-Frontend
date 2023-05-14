@@ -46,14 +46,16 @@
 
         <div class="group relative text-gray-400 mt-3 dark:text-night-400">
           <div class="pointer-events-none absolute m-2">
-            <span routerLinkActive="text-primary-700" class="material-symbols-rounded text-gray-600 text-center h-5 w-5">
+            <span routerLinkActive="text-primary-700"
+                  class="material-symbols-rounded text-gray-600 text-center h-5 w-5">
               settings
             </span>
           </div>
 
           <div routerLink="/settings"
-            class="flex h-9 cursor-pointer items-center justify-start rounded text-gray-600 hover:bg-gray-100 dark:text-night-100 dark:hover:bg-night-600">
-            <a routerLinkActive="text-primary-700" class="ml-10 truncate text-xs font-medium tracking-wide focus:outline-none">
+               class="flex h-9 cursor-pointer items-center justify-start rounded text-gray-600 hover:bg-gray-100 dark:text-night-100 dark:hover:bg-night-600">
+            <a routerLinkActive="text-primary-700"
+               class="ml-10 truncate text-xs font-medium tracking-wide focus:outline-none">
               Settings
             </a>
           </div>
@@ -62,13 +64,14 @@
 
         <div class="group relative text-gray-400 mt-3 dark:text-night-400" (click)="onSignOut()">
           <div class="pointer-events-none absolute m-2">
-            <span routerLinkActive="text-primary-700" class="material-symbols-rounded text-gray-600 text-center h-5 w-5">
+            <span routerLinkActive="text-primary-700"
+                  class="material-symbols-rounded text-gray-600 text-center h-5 w-5">
               logout
             </span>
           </div>
 
-          <div
-            class="flex h-9 cursor-pointer items-center justify-start rounded text-gray-600 hover:bg-gray-100 dark:text-night-100 dark:hover:bg-night-600">
+          <div (click)="onSignOut()"
+               class="flex h-9 cursor-pointer items-center justify-start rounded text-gray-600 hover:bg-gray-100 dark:text-night-100 dark:hover:bg-night-600">
             <a class="ml-10 truncate text-xs font-medium tracking-wide focus:outline-none">
               Logout
             </a>

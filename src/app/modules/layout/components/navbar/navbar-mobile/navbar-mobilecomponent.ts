@@ -1,9 +1,10 @@
-import { Component, Input, OnInit, } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MenuItem } from 'src/app/core/models/menu.model';
 import { MenuService } from '../../../services/menu.service';
 import { SystemService } from 'src/app/core/services/system.service';
 import Swal from 'sweetalert2';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-navbar-mobile',
@@ -15,12 +16,14 @@ export class NavbarMobileComponent implements OnInit {
   sysIcon?: string;
   sysName?: string;
 
-
-  constructor(private menuService: MenuService, private system: SystemService) {
-    this.showMobileMenu$ = this.menuService.showMobileMenu$;
-  }
+  constructor(
+    private menuService: MenuService,
+    private system: SystemService,
+    private authSerivce: AuthService
+  ) {}
 
   ngOnInit(): void {
+    this.showMobileMenu$ = this.menuService.showMobileMenu$;
     this.sysName = this.system.name;
     this.sysIcon = this.system.icon;
   }
@@ -38,10 +41,11 @@ export class NavbarMobileComponent implements OnInit {
       showCancelButton: true,
       confirmButtonText: 'Yes, sign out',
       cancelButtonText: 'Cancel',
-    }).then((result: { isConfirmed: any }) => {
+    }).then((result) => {
       // If user confirms, emit signOut event
       if (result.isConfirmed) {
         console.log('Sign out confirmed');
+        this.authSerivce.logout();
       }
     });
   }
