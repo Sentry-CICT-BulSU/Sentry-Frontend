@@ -1,7 +1,6 @@
-// const app_url = 'http://sentry-cict-bulsu.github.io/Sentry-Frontend';
-const app_url = 'https://sentry-frontend.up.railway.app';
+const app_url = 'https://cict-sentry.web.app';
 const api_url = 'https://sentry-backend.up.railway.app';
-const app_id = '1';
+const app_id = '3';
 export const environment = {
   production: true,
   apiRootRoute: api_url,

@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "cict-sentry"
+  },
+  "targets": {
+    "cict-sentry": {
+      "hosting": {
+        "sentry-frontend": [
+          "cict-sentry"
+        ]
+      }
+    }
   }
 }
