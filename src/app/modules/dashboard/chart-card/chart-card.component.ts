@@ -9,23 +9,46 @@ import { ChartOptions } from 'src/app/shared/models/chart-options';
   templateUrl: './chart-card.component.html',
 })
 export class ChartCardComponent implements OnInit, OnDestroy {
-  public chartOptions: Partial<ChartOptions>;
+  public chartOptions?: Partial<ChartOptions>;
   private subscription: Subscription = new Subscription();
   data = [0, 0, 0, 5, 4, 0, 2];
   data2 = [0, 0, 0, 3, 4, 8, 6];
-  categories = [
-    '6 days ago',
-    '5 days ago',
-    '4 days ago',
-    '3 days ago',
-    '2 days ago',
-    'Yesterday',
-    'Today',
-  ];
+  categories: string[] = [];
   constructor(
     private themeService: ThemeService,
     private chartService: ChartsService
-  ) {
+  ) {}
+
+  ngOnInit(): void {
+    /** Chand chart theme */
+    this.initComponent();
+    this.initChart();
+    this.chartService.loadCharts$().subscribe({
+      next: (resp) => {
+        console.log('chart data: ', resp);
+        if (this.chartOptions) {
+          this.chartOptions.series = [
+            {
+              name: 'Present',
+              data: resp.presentees,
+              color: '#7239ea',
+            },
+            {
+              name: 'Absent',
+              data: resp.absentees,
+              color: '#D6BBFB',
+            },
+          ];
+          this.categories = resp.period;
+          this.chartOptions.xaxis?.categories?.push(...resp.period);
+          console.log('apexcharts: ', resp);
+        }
+      },
+      error: (err) => console.log(err),
+    });
+  }
+
+  initChart() {
     this.chartOptions = {
       series: [
         {
@@ -69,7 +92,7 @@ export class ChartCardComponent implements OnInit, OnDestroy {
         width: 3,
       },
       xaxis: {
-        categories: this.categories,
+        // categories: this.categories,
         labels: {
           show: false,
         },
@@ -97,35 +120,13 @@ export class ChartCardComponent implements OnInit, OnDestroy {
     };
   }
 
-  ngOnInit(): void {
-    /** Chand chart theme */
-    this.initComponent();
-    this.chartService.loadCharts$().subscribe({
-      next: (resp: any) => {
-        console.log('chart data: ', resp);
-        this.chartOptions.series = [
-          {
-            name: 'Present',
-            data: resp.presentees,
-            color: '#7239ea',
-          },
-          {
-            name: 'Absent',
-            data: resp.absentees,
-            color: '#D6BBFB',
-          },
-        ];
-        console.log('apexcharts: ', resp);
-      },
-      error: (err) => console.log(err),
-    });
-  }
-
   initComponent() {
     const sub = this.themeService.themeChanged.subscribe((theme) => {
-      this.chartOptions.tooltip = {
-        theme: theme,
-      };
+      if (this.chartOptions) {
+        this.chartOptions.tooltip = {
+          theme: theme,
+        };
+      }
     });
     this.subscription.add(sub);
   }

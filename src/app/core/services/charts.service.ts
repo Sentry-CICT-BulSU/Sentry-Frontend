@@ -4,7 +4,7 @@ import { IUser } from '../models';
 import { AuthService } from './auth.service';
 import { environment as env } from 'src/environments/environment';
 import { PropertiesService } from './properties.service';
-import { delay, of } from 'rxjs';
+import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -21,20 +21,8 @@ export class ChartsService extends PropertiesService {
   }
 
   loadCharts$() {
-    // return this.http.get<any>(this.url, { headers: this.options.headers });
-    return of({
-      presentees: [1, 1, 2, 1, 1, 3, 1],
-      period: [
-        '2023-05-03',
-        '2023-05-04',
-        '2023-05-05',
-        '2023-05-06',
-        '2023-05-07',
-        '2023-05-08',
-        '2023-05-09',
-        '2023-05-10',
-      ],
-      absentees: [0, 1, 1, 0, 0, 1, 0],
-    }).pipe(delay(1000));
+    return this.http
+      .get<any>(this.url, { headers: this.options.headers })
+      .pipe(tap((data) => console.log('charts: ', data)));
   }
 }

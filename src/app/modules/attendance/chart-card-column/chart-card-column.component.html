@@ -7,7 +7,7 @@
   <!-- end Card Header -->
 
   <!-- Card Body -->
-  <apx-chart
+  <apx-chart *ngIf="chartOptions"
              [class]="chartClass"
              [series]="chartOptions.series!"
              [chart]="chartOptions.chart!"
@@ -28,10 +28,10 @@
 
   <!--months-->
 
-  <div
+  <!-- <div
        class="cursor-pointer text-center rounded-md px-4 py-2 text-sm text-gray-400  dark:text-night-300">
     Past 7 Days
-  </div>
+  </div> -->
 
   <!--end months-->
 </div>
