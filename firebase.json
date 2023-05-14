@@ -1,13 +1,17 @@
 {
   "hosting": {
-    "source": ".",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "source": "./dist/sentry-frontend",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "frameworksBackend": {
       "region": "asia-east1"
+    }
+  },
+  "deploy": {
+    "builder": "@angular/fire:deploy",
+    "options": {
+      "browserTarget": "sentry-frontend:build:production",
+      "serverTarget": "sentry-frontend:server:production",
+      "prerenderTarget": "sentry-frontend:prerender:production"
     }
   }
 }
