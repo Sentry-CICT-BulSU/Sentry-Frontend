@@ -5,7 +5,7 @@ import { AttendanceRoutingModule } from './attendance-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { ChartCardColumnComponent } from './chart-card-column/chart-card.-columncomponent';
+import { ChartCardColumnComponent } from './chart-card-column/chart-card-column.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @NgModule({

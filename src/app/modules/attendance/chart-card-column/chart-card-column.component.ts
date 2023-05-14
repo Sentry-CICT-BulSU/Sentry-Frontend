@@ -62,7 +62,7 @@ export class ChartCardColumnComponent implements OnInit, OnDestroy {
         },
       ],
       chart: {
-        type: 'bar',
+        type: 'area',
         height: 250,
         stacked: true,
         toolbar: {
