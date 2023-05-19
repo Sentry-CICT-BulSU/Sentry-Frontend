@@ -62,7 +62,7 @@
       <p>Section</p>
     </div>
 
-    <div class="relative col-span-1">
+    <div class="relative col-span-2">
       <select formControlName="section" name="section"
               id="section" class="peer block">
         <option *ngFor="let section of section|async" [value]="section.id">
@@ -71,7 +71,7 @@
       </select>
     </div>
 
-    <div class="relative col-span-3">
+    <div *ngIf="false" class="relative col-span-2">
       <!-- tabs -->
       <div
            class="grid w-full grid-cols-3 rounded-md border border-gray-300 text-xs">
